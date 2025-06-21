@@ -1,0 +1,172 @@
+.studentHome{
+    border: 2px solid rgba(0, 0, 0, 0.158);
+
+}
+.studentHomeBg{
+    background-image: url("../images/student3.jpg");
+    background-size: cover;
+    height: 75vh;
+
+}
+
+.studentCardSection{
+    display: flex;
+    padding: 2rem;
+   
+    &Container{
+        flex: 1;
+        border: 2px solid rgba(0, 0, 0, 0.158);
+    }
+    &Container:not(:last-child){
+        margin-right: 20px;   
+    }
+   
+    &Link{
+        text-decoration: none;
+        color: black;
+    }
+    &Image{
+        object-fit:cover;        
+        width: 100%;
+        height: 15rem;
+    }
+    &Heading{
+        font-size: 18px;
+        font-weight: bold;
+        color: black;
+        padding: 7px;
+
+    }
+    &Text1{
+        color: black;
+        font-size: 14px;
+        padding: 7px;
+    }
+    &Text2{
+        color: #003e74;
+        font-size: 15px;  
+        font-weight: bold;
+        padding: 7px;
+
+    }
+}
+.studentListContainer{
+    border: 2px solid rgba(255, 255, 255, 0.229);
+    display: flex;
+    flex-direction: column;
+}
+.tableContainer{
+    padding: 50px;
+}
+.tableHeading{
+    display: flex;
+    flex-direction: row;
+    border: 2px solid rgba(255, 255, 255, 0.193);
+    border-bottom: none;
+    padding: 8px;
+    font-weight: bold;
+    
+
+    &1{
+        flex: 0 0 10%;
+        padding: 8px;
+
+        
+    }
+    &2{
+        flex: 1;
+        padding: 8px;
+
+
+    }&3{
+        flex: 1;
+        padding: 8px;
+
+        
+    }&4{
+        flex: 0 0 10%;
+        padding: 8px;
+
+
+    }&5{
+        flex: 1;
+        padding: 8px;
+
+        &Btn1{
+            background-color: #3498db;
+            color: black;
+            padding: 6px;
+            text-decoration: none;
+            border-radius: 2px;
+
+            &:hover{
+                background-color: white;
+                color: black;
+            }
+        }
+        &Btn2{
+            background-color: #e74c3c;
+            color: black;
+            padding: 6px;
+            text-decoration: none;
+            border-radius: 2px;
+
+            &:hover{
+                background-color: red;
+            }
+        }
+    }
+}
+
+.tableData{
+    display: flex;
+    flex-direction: row;
+    border: 2px solid rgba(255, 255, 255, 0.199);
+    border-bottom: none;
+    padding: 8px;
+    font-size: 20px;
+}
+.tableData:last-child{
+    border-bottom: 2px solid rgba(255, 255, 255, 0.203);
+}
+.studentList{
+    background-image:linear-gradient(
+        90deg, 
+        black 0%, 
+        black 25%,
+        rgba(0, 0, 0, 0.728) 70%,
+        black 99%), url("../images/student2.jpg");
+        background-size: cover;
+        height: 100vh;
+        color: whitesmoke;
+
+        &Back{
+            padding-top: 7rem;
+            margin-left: 3rem;
+
+            &Btn{
+                background-color: #3498db;
+                color: black;
+                padding: 6px;
+                text-decoration: none;
+                border-radius: 2px;
+    
+                &:hover{
+                    background-color: white;
+                    color: black;
+                }
+        }
+        }
+}
+
+
+
+// Aspirant student
+
+.user_name_aspirant{
+    color: white;
+    font-size: 15px;
+    float: right;
+    margin-right: 20px;
+
+}

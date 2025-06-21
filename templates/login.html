@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+<!-- Excluding header  -->
+{% block content %}
+{% block header %} 
+{% endblock header %}
+
+<div class="loginBackground">
+    <div class="loginCardContainer">
+        <h3 class="loginSchoolName">
+            Imperial College 
+        </h3>
+        <h3 class="loginSchoolNameSub">London</h3> 
+        <form action="login_user/" method="post" class="loginForm">
+            {% csrf_token %}
+            <input required type="email" name='email'  placeholder="Email" class="emailField">
+            <input required type="password" name="password" placeholder="Password" class="passwordField"> <br>   
+            <a href="{% url 'home' %}" class="loginBackBtn">Back</a>
+
+            <button type="submit" class="loginSignInBtn">Sign In</button>
+        </form>
+        <div class="loginFormMessageContainer">
+            {% for message in messages %}
+            <p>{{message}}</p>
+            {% endfor %}
+        </div>
+            <a class="loginResetPassBtn" href="{% url 'reset_password'%}">Reset Password</a>
+            <div class="loginInfo">Please refer to the information security code of practice section on the Imperial College London website for advice on protecting your password and creating a strong password.</div>
+    </div>
+</div>
+
+
+    
+
+
+
+    <!-- Exluding footer -->
+{% block footer %} 
+{% endblock footer %}
+
+{% endblock content%}

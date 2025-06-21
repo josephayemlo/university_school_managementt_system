@@ -1,0 +1,35 @@
+{% load static %}
+<header class="nivigation">
+    <div class="navigationFixed">
+        <a href="{% url 'home' %}"class="navigationFixedBtn">Home</a>
+        <a href="{% url 'apply' %}"class="navigationFixedBtn">Apply here</a>
+
+
+
+     
+       {% if user.is_authenticated %}       
+            <a href="{% url 'logout_user' %}"class="navigationFixedBtn">Logout</a>
+            <a href="{% url 'scholarship_application_form' %}"class="navigationFixedBtn">Apply Scholarship</a>
+            <a href="{% url 'management_home' %}"class="navigationFixedBtn">Admin</a>
+
+
+       {% else %}
+            <a class="navigationFixedBtn" href="{% url 'login_page'%}">Login</a>
+       {% endif %}
+
+    </div>
+
+    <div class="navigationFirst">
+        <div class="row">
+          <a href="{% url 'home' %}" class="column1of4 column1of4One"><span class="title1">Imperial College London</span></a>
+          <a href="" class="column1of4 column1of4Two"><img src="{% static 'images/img1.jpg' %}" alt="StudentShapers" class="img1" > <p class="title2">StudentShapers – supporting students  beyond the curriculum</p></a>
+          <a href="" class="column1of4 column1of4Three"><img src="{% static 'images/img2.jpg' %}" alt="climate art" class="img1" > <p class="title3">Climate art and allergy guidance:  News from Imperial</p></a>      
+          <a href="" class="column1of4 column1of4Four"><p class="title4">More <br> News &#187;  </p></a>      
+
+        </div>
+       
+
+    </div>
+   
+ 
+</header>

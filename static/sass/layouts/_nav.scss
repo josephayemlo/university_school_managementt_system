@@ -1,0 +1,84 @@
+.apply{
+
+
+    &Heading{
+        font-size: 28px;
+        font-weight: bold;
+    }
+}
+
+.applyContentAndNavContainer{
+    display: flex;
+    flex-direction: row;
+
+}
+.applyLeftNavContainer{
+    flex: 0 0 20%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ebeeee  ;
+
+
+    &Btn{
+        text-decoration: none;
+        color: black;
+        padding: 10px;
+        border: 2px solid rgba(0, 0, 0, 0.142);
+        border-bottom: none;
+        font-size: 14px;
+        background-color: white;
+    }
+    &Btn:last-child{
+        border-bottom: 2px solid rgba(0, 0, 0, 0.142);
+
+    }
+}
+
+.applyRightContentContainer{
+    flex: 1;
+    border: 1.5px solid rgba(0, 0, 0, 0.213);
+    padding: 25px;
+}
+
+
+.navigationFixed{
+    background-color:#002147;
+    float: left;
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    top: 0;
+
+    &Btn{
+        text-decoration: none;
+        color: #003e74;
+        background-color: white;
+        padding: 5px;
+        border-radius: 2px;
+        font-size: 14px;
+        margin-left: 5px;
+
+
+    }
+}
+
+.applyNavAspirant{
+    background-color:#003e74;
+    float: left;
+    width: 100%;
+    overflow: hidden;
+
+    &Btn{
+        text-decoration: none;
+        color: #003e74;
+        background-color: white;
+        padding: 5px;
+        border-radius: 2px;
+        font-size: 14px;
+        margin-left: 5px;
+
+
+    }
+
+}

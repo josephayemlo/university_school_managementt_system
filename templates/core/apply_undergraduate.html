@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+<section class="applyUG">
+
+    <div class="applyNav"></div>
+    <div class="applyUdergraduateFrontPageBg">
+        <div class="applyUdergraduateFrontPageBgCard">
+            <h1 class="applyUdergraduateFrontPageBgText1">Undergraduate admissions process</h1>
+            <p class="applyUdergraduateFrontPageBgText2">Become an undergraduate student at Imperial</p>
+            <a href="{% url 'apply_undergraduate_process'%}" class="applyUdergraduateFrontPageBgBtn1">How to apply  &raquo;</a>
+            <a href="" class="applyUdergraduateFrontPageBgBtn">Key deadlines</a>
+            <a href="" class="applyUdergraduateFrontPageBgBtn">Personal statement guidance</a>
+
+        </div>
+    </div>
+    <div class="applyCard">
+        <div class="applyCardContainer">
+            <h1 class="applyCardContainerHeading"> Application process</h1>
+            <img src="{% static 'images/apply7.jpg' %}" alt="" class="applyCardContainerImage">
+            <p class="applyCardContainerText">Get more information about the application process.</p>
+            <a href="" class="applyCardContainerBtn">Writing a good personal statement</a>
+            <a href="" class="applyCardContainerBtn">English kabguage requirements</a>
+            <a href="" class="applyCardContainerBtn">Get advice at an Open Day</a>
+        </div>
+        <div class="applyCardContainer">
+            <h1 class="applyCardContainerHeading"> After you apply</h1>
+            <img src="{% static 'images/apply8.jpg' %}" alt="" class="applyCardContainerImage">
+            <p class="applyCardContainerText">Find out what happens after you apply</p>
+            <a href="" class="applyCardContainerBtn">Track your application</a>
+            <a href="" class="applyCardContainerBtn">Interviews</a>
+        </div>
+        <div class="applyCardContainer">
+            <h1 class="applyCardContainerHeading"> Offer holders</h1>
+            <img src="{% static 'images/apply9.jpg' %}" alt="" class="applyCardContainerImage">
+            <p class="applyCardContainerText">You're on your way to joining our community. Explore some of the next steps.</p>
+            <a href="" class="applyCardContainerBtn">Submit your offer conditions</a>
+            <a href="" class="applyCardContainerBtn">Apply for visa (if you need one) </a>
+            <a href="" class="applyCardContainerBtn">Attend an offer holder event</a>
+        </div>
+        <div class="applyUndergraduateAddedCard">
+            <h1 class="applyUndergraduateAddedCardText">Announcements and deadlines</h1>
+            <a href="" class="applyUndergraduateAddedCardBtn">Apply for 2024 entry courses by 18.00 (UK time) on 31 January 2024</a>
+            <a href="" class="applyUndergraduateAddedCardBtn">Apply for Medicine 2024 entry by 18.00 (UK time) on 16 October 2023</a>
+        </div>
+    </div>
+
+</section>
+
+
+
+{% endblock content%}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="studentHome">
+    <div class="applyNavAspirant">
+        <h3 class="user_name_aspirant">Welcome, {{user.first_name}} {{user.last_name}}</h3>
+        <a href="{% url 'edit_aspirant_student'%}" class="applyNavAspirantBtn">Edit/View Profile</a>
+
+        <a href="" class="applyNavAspirantBtn">Apply Scholarship</a>
+        <a href="" class="applyNavAspirantBtn">Pay your Application Fee</a>
+    </div>
+
+
+    <div class="studentHomeBg"></div>
+    
+    <!-- Resuable Card Start -->
+    <div class="studentCardSection">
+        <div class="studentCardSectionContainer">
+            <a  href="" class="studentCardSectionLink"> 
+                <img src="{% static 'images/student4.jpg' %}" alt="" class="studentCardSectionImage">
+                <h1 class="studentCardSectionHeading"> Imperial College Union </h1>   
+                <p class="studentCardSectionText1">Every student is automatically a member of the Student's Union. Learn about your Student Union, how they support you and you can actively be involved. </p>      
+                <span class="studentCardSectionText2">Find out more about the Student Union &raquo;</span>
+            </a>
+        </div>
+        <div class="studentCardSectionContainer">
+            <a  href="" class="studentCardSectionLink"> 
+                <img src="{% static 'images/student5.jpg' %}" alt="" class="studentCardSectionImage">
+                <h1 class="studentCardSectionHeading"> Student hub </h1>   
+                <p class="studentCardSectionText1">The student hub is the first stop for advice and information you need in one easily accessible place. Our team are on hand to answer your questions in person, by email or online. </p>      
+                <span class="studentCardSectionText2">Find out more about the Student hub &raquo;</span>
+            </a>
+        </div>
+        <div class="studentCardSectionContainer">
+            <a  href="" class="studentCardSectionLink"> 
+                <img src="{% static 'images/student6.jpg' %}" alt="" class="studentCardSectionImage">
+                <h1 class="studentCardSectionHeading"> Accommodation </h1>   
+                <p class="studentCardSectionText1">Imperial offers a range of accommodation in a variety of locations to suit your budget. Whether it's college accommodation or private accommodation, our team are here to assist you along the way.</p>      
+                <span class="studentCardSectionText2">Find out more about accommodation &raquo;</span>
+            </a>
+        </div>
+        
+    </div>
+    <!-- Resuable Card end -->
+
+
+
+
+</section>
+{% endblock content%}

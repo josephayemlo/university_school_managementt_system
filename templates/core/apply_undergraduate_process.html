@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+
+
+<section class="apply">
+    <div class="applyNav"></div>
+    <div class="applyContentAndNavContainer">
+        <!-- lefet Nav -->
+        <div class="applyLeftNavContainer">
+            <h2 class="applyHeading"> <em> Apply</em></h2>
+            <a href="" class="applyLeftNavContainerBtn">Entry requirements</a>
+            <a href="" class="applyLeftNavContainerBtn">Application process</a>
+            <a href="" class="applyLeftNavContainerBtn">Offer holders</a>
+        </div>
+
+        <!-- Right Content -->
+        <div class="applyRightContent"> 
+
+            <div class="applyRightContentContainer">
+                <div class="applyRightContentContainerHeading">Personal statement</div>
+                <img src="{% static 'images/apply10.jpg' %}" alt="" class="applyRightContentContainerImage">
+                <div class="applyRightContentContainerSub">
+                    <div class="applyRightContentContainerSubText">
+                        <p class="applyRightContentContainerSubText">Your personal statement is a really important part of your Imperial College application. </p>
+                        <p class="applyRightContentContainerSubText">It helps our admissions tutors get an insight into who you are and whether you'd be a good fit for the course you're applying to. </p>
+                        <p class="applyRightContentContainerSubText">You can only submit one personal statement for the five courses and universities you apply for. </p>
+                        <p class="applyRightContentContainerSubText">You're also limited to 4,000 characters (including spaces) or 47 lines, whichever comes first, so it's useful to make a plan of what you want to say before you start.</p>
+
+                    </div>
+                    <div class="applyRightContentContainerSubDownload">
+                        <a href="{% url 'personal_statement_download'%}" class="applyRightContentContainerSubDownloadLink">
+                            {{file_name}} &#8681; ({{ file_size|filesizeformat }})
+                         </a>
+                        <a href="{% url 'undergraduate_application_form'%}" class="applyRightContentContainerSubDownloadLink">Apply Undergraduate </a>
+                        <a href="{% url 'undergraduate_application_form'%}" class="applyRightContentContainerSubDownloadLink">Apply Postgraduate </a>
+                       
+                    </div>
+
+
+                </div>
+                <div class="applyRightContentContainerSubTwo">
+                    <h1 class="applyRightContentContainerSubTwoHeading">Tell us why you want to study the course you're applying for</h1>
+                    <p class="applyRightContentContainerSubText">We're looking for people with a genuine enthusiasm for the subject they're applying for – and that they understand what it involves – so it's useful to highlight things that inspired your interest, including:</p>
+                    <ul>
+                        <li class="applyRightContentContainerSubTwoTextList">books you have read</li>
+                        <li class="applyRightContentContainerSubTwoTextList" >work or voluntary experience you have undertaken</li>
+                        <li class="applyRightContentContainerSubTwoTextList" >lectures or courses you have attended</li>
+                        <li class="applyRightContentContainerSubTwoTextList">any relevant extracurricular activities you’ve taken part in</li>
+                    </ul> 
+                    <p class="applyRightContentContainerSubText">This a really important part of your personal statement so make sure your passion really shines through.</p>
+                    <p class="applyRightContentContainerSubText">This means avoid saying you want to study something just because it is interesting.</p>
+                    <p class="applyRightContentContainerSubText">Instead, explain what you find interesting about it, for example, a particular topic you know you’ll be able to carry on studying at university or something related to it.</p>
+                    <p class="applyRightContentContainerSubText">Don’t be afraid to use language which shows your enthusiasm for the course or life in general. Be positive and focus on things you thoroughly enjoy.</p>
+                    <h1 class="applyRightContentContainerSubTwoHeading">Skills and experiences</h1>
+                    
+                    <p class="applyRightContentContainerSubText">At Imperial, you'll have the freedom to take control of your learning, with options within many courses to customise what you learn and the experiences you have. </p>
+                    <p class="applyRightContentContainerSubText">As a research-led university, we'll encourage you to get hands-on in the process of discovery, innovation and learning through and from your own mistakes.</p>
+                    <p class="applyRightContentContainerSubText">You will also learn to communicate your research findings and have the opportunity to work in teams, as well as on your own.</p>
+                    <p class="applyRightContentContainerSubText">Think about the sort of skills that you have gained that are relevant to your chosen subject – you'll be able to find more detail about the style of learning for your chosen subject on our course pages.</p>
+                    <p class="applyRightContentContainerSubText">Don't forget to provide evidence for the skills and knowledge you have. And remember to choose quality over quantity – we'd rather read about a smaller number of skills with evidence than a long list which doesn't explain how you've acquired each skill/quality and how it will help you be successful in your chosen course of study.  </p>
+                    <h1 class="applyRightContentContainerSubTwoHeading">Work experience</h1>
+                    
+                    <p class="applyRightContentContainerSubText">Work experience isn’t essential for most Imperial courses, but if it is a course requirement, make sure you get some and then tell us how it's helped to confirm your choice of subject.</p>
+                    <p class="applyRightContentContainerSubText">You may also wish to use your personal statement to outline your career aspirations and motivation for the future.</p>
+                   
+
+                    <h1 class="applyRightContentContainerSubTwoHeading">Get the right balance</h1>
+                    <p class="applyRightContentContainerSubText">Imperial is not all work and no play. Our students have a huge range of interests – evidenced in our 350+ student-run clubs and societies.</p>
+                    <p class="applyRightContentContainerSubText">Tell us about your passions and your hobbies, particularly how they have helped you develop skills and qualities that make you a strong candidate. Made you a better leader, for example. Made you more resilient. Or improved your teamwork and communication skills. </p>
+                    <p class="applyRightContentContainerSubText">Also tell us about something you do simply for the fun of it. You don't need to go into too much detail as you don’t have the space, but it helps us to get to know you and may be something we ask you more about if you're invited for an interview at a later stage.</p>
+
+                    <h1 class="applyRightContentContainerSubTwoHeading">Make it personal</h1>
+                    <p class="applyRightContentContainerSubText">Your personal statement should be about you so don't focus on what your friends are writing. Be clear about your own motivations and what you can bring to Imperial. </p>
+                    <p class="applyRightContentContainerSubText">Use it to create a unique picture for our admissions tutors of who you are and why you'll be successful in your chosen course of study. </p>
+                    <p class="applyRightContentContainerSubText">Also avoid the temptation to copy anyone else's. UCAS runs all personal statements through its similarity detection system, Copycatch, to compare them with previous statements.</p>
+
+
+
+
+
+                </div>
+                
+            </div>
+            
+           
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock content%}

@@ -1,0 +1,94 @@
+.footer{
+    background-color: #002147;
+    display: flex;
+    flex-direction: column;
+
+}
+.footerGrid1{
+    display: flex;
+    flex-direction: row;
+    padding: 25px;
+    
+}
+.footerGrid1Row{
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+}
+
+.footerGrid1RowHeader{
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.footerGrid2{
+    margin-top: 2rem;
+    border: 0.5px solid rgba(255, 255, 255, 0.394);
+    display: flex;
+    flex-direction: row;
+    color: white;
+    padding: 25px;
+    padding-top: 0;
+    padding-bottom: 0;
+
+
+    &Row1{
+        padding: 10px;
+        padding-top: 25px;
+        padding-left: 0;
+        font-size: 13px;
+        border-right: 0.5px solid rgba(245, 245, 245, 0.439);
+        padding-bottom: 1.5rem;
+
+    }
+    &Row2{
+        padding: 20px;
+        padding-top: 25px;
+        padding-bottom: 1.5rem;
+
+    }
+}
+
+
+.flexGrowfooterGrid2Row2{
+    flex-grow: 4;
+}
+.SchoolNameFooter{
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.btnCampusMapFotter{
+    font-weight: bold;
+    font-size: 15px;
+}
+.footerClosingContainer1{
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+
+}
+.footerClosingContainer2{
+    font-size: 13px;
+
+}
+.linksfooterGrid2Row2{
+    margin-right: 2rem;
+  
+
+}
+.linksfooterGrid2Row2:not(:first-child){
+    margin-left: 0.7rem;
+
+        
+}
+.socialIconsContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.fa{
+    padding: 22px;
+    padding-left: 0;
+}
+
+

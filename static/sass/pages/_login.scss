@@ -1,0 +1,75 @@
+
+.loginCardContainer{
+    width: 29rem;
+    height: 85vh;
+    background-color: rgba(255, 255, 255, 0.425);
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;    
+    margin: auto;
+
+}
+
+.loginBackground{
+    background-image: linear-gradient(
+        105deg, 
+        rgba(black, 0.700) 0%,
+        rgba(black, 0.700) 50%,
+        rgba(#002147, 0.600) 50%),
+        url("../images/login1.jpg");
+    background-size: cover;
+    height: 100vh;
+}
+.loginSchoolName{
+    color: #002147;
+    font-size: 20px;
+    margin: 3rem;
+    margin-bottom: -1rem;
+
+    
+
+
+}
+.loginSchoolNameSub{
+    display: block;
+    color: #002147;
+    font-size: 20px;
+    margin: 3rem;
+    margin-bottom: 0;
+    margin-top: 0;
+
+}
+.emailField{
+    padding: 14px;
+    background-color: rgba(255, 255, 255, 0.239);
+    border: 2px solid rgba(0, 0, 0, 0.36);
+    margin-bottom: 2rem;
+}
+.passwordField{
+    padding: 14px;
+    background-color: rgba(255, 255, 255, 0.239);
+    border: 2px solid rgba(0, 0, 0, 0.36);
+
+
+
+}
+.loginForm{
+    text-align: center;
+}
+.loginInfo{
+    color: white;
+    padding: 1rem;
+    font-size: 15px;
+    text-align: justify;
+    line-height: -5;
+    background-color: #ffffff42;
+    border: 2px solid rgba(0, 0, 0, 0.36);
+    margin: 1rem;
+
+}
+.loginFormMessageContainer{
+    font-size: 14px;
+    color: rgba(255, 0, 0, 0.463);
+}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+<!-- Excluding header  -->
+{% block content %}
+{% block header %} 
+{% endblock header %}
+
+<div class="studentList">
+
+
+    <a class="" href="{% url 'management_home'%}">Dashboard</a>
+
+    
+    <div class="tableContainer">
+      <div class="tableHeading">
+          <span class="tableHeading1">SN</span>
+          <span class="tableHeading2">Full Name</span>
+          <span class="tableHeading3">Email</span>
+          <span class="tableHeading4">Gender</span>
+          <span class="tableHeading5">Edit</span>
+      </div>
+      {% if aspirantstudents %}
+            {% for aspirantstudent in aspirantstudents %}
+      <div class="tableData">
+          <span class="tableHeading1">{{ forloop.counter }}</span>
+          <span class="tableHeading2">{{aspirantstudent.first_name}} {{aspirantstudent.last_name}}</span>
+          <span class="tableHeading3">{{aspirantstudent.email}}</span>
+          <span class="tableHeading4">{{aspirantstudent.gender}}</span>
+      </div>
+
+      {% endfor %}
+      {% else %}
+              <h2>No Student available</h2>
+      {% endif %}
+    </div>
+
+</div>
+    <!-- Exluding footer -->
+    {% block footer %} 
+    {% endblock footer %}
+    
+    {% endblock content%}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+<!-- Excluding header  -->
+{% block content %}
+{% block header %} 
+{% endblock header %}
+
+<div class="nonacademicstaffList">
+
+    <a class="" href="{% url 'management_home'%}">Dashboard</a>
+
+    
+    <div class="tableContainer">
+      <div class="tableHeading">
+          <span class="tableHeading1">SN</span>
+          <span class="tableHeading2">Full Name</span>
+          <span class="tableHeading3">Email</span>
+          <span class="tableHeading4">Gender</span>
+          <span class="tableHeading5">Edit</span>
+      </div>
+      {% if nonacademicstaffs %}
+            {% for nonacademicstaff in nonacademicstaffs %}
+      <div class="tableData">
+          <span class="tableHeading1">{{ forloop.counter }}</span>
+          <span class="tableHeading2">{{nonacademicstaff.first_name}} {{nonacademicstaff.last_name}}</span>
+          <span class="tableHeading3">{{nonacademicstaff.email}}</span>
+          <span class="tableHeading4">{{nonacademicstaff.gender}}</span>
+          <span class="tableHeading5"> <a href="{% url 'edit_nonacademicstaff' nonacademicstaff.nonacademicstaff.id %}">Edit</a> - <a href="{% url 'delete_nonacademicstaff' nonacademicstaff.nonacademicstaff.id %}" onclick="return confirm('Confirm Delete')">Delete</a></span>
+          
+      </div>
+
+      {% endfor %}
+      {% else %}
+              <h2>No Nonacademicstaff available</h2>
+      {% endif %}
+    </div>
+
+</div>
+    <!-- Exluding footer -->
+    {% block footer %} 
+    {% endblock footer %}
+    
+    {% endblock content%}

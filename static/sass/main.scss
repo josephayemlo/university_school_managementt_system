@@ -1,0 +1,36 @@
+
+@use "abstracts/variables";
+@use "base/base";
+
+@use "abstracts/mixins";
+
+
+
+
+@use "components/images";
+@use "components/button";
+@use "components/typography";
+@use "components/utilities";
+@use "components/forms";
+
+
+
+
+
+@use "layouts/header";
+@use "layouts/footer";
+@use "layouts/grid";
+@use "layouts/nav";
+
+
+
+@use "pages/login";
+@use "pages/student";
+@use "pages/admin";
+@use "pages/staff";
+@use "pages/apply";
+
+
+
+
+

@@ -1,0 +1,106 @@
+.undergraduateApplicationFormContainer{
+    padding: 40px;
+
+    &MainHeading{
+        font-size: 19px;
+        text-align: center;
+    }
+
+    &Heading{
+        text-align: left;
+        font-size: 19px;
+        color: black;
+        margin-left: 59px;
+        
+    }
+}
+
+.applicationForm{
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    padding-left: 16rem;
+    padding-right: 16rem;
+    background-color: #ebeeee7b;
+
+
+    &Container{
+        border: 2px solid rgba(0, 0, 0, 0.088);
+        margin: 20px;
+        padding: 15px;
+        background-color: white;
+    }
+    &Heading{
+        font-size: 22px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    &SubHeading{
+        font-size: 19px;
+    }
+
+    &InputContainer{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        overflow: hidden;
+    }
+    &InputLabelWideContainer{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        overflow: hidden;
+    }
+    &InputLabelWideContainer{
+        font-size: 13px;
+        color: rgba(0, 0, 0, 0.756);
+    }
+    &TextFieldContainer{
+        font-size: 13px;
+        color: black;
+
+    }
+    &TextInformation{
+        font-size: 13px;
+        color: black;
+    }
+    &InputContainerSub{
+        flex: 1;
+    }
+    &LabelContainer{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        overflow: hidden;
+        font-size: 13px;
+        margin-bottom: 20px;
+        color: rgba(0, 0, 0, 0.756);
+
+    }
+    &LabelContainerSub{
+        flex: 1;
+    }
+}
+// Input Field 
+.Input{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    width: 100%;
+}
+
+.InputWide{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    width: 100%;
+
+}
+
+// margin for first child of Input
+.marginFixRight{
+    margin-right: 20px;
+}
+
+
+// Scholarship Form
+.Textarea{
+    width: 100%;
+
+}

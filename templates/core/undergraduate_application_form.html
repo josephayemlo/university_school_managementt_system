@@ -1,0 +1,283 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+
+
+<section class="undergraduateApplicationFormContainer">
+
+    <div class="undergraduateApplicationFormContainerMainHeading">
+        <h1>Undergraduate Application Form</h1>
+        <p>your journey towards becoming an Imperial College Student begins here...</p>
+    </div>
+    <form method="post" enctype="multipart/form-data" class="applicationForm">
+        {% csrf_token %}
+
+        <!-- Bio Data Start -->
+        <div class="applicationFormContainer" > 
+            <h1 class="applicationFormHeading">Personal Information</h1>
+            <div>
+                <div class="applicationFormSubHeading">Full Name</div>
+                <div class="applicationFormInputContainer">
+                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.first_name}}</div>
+                    <div class="applicationFormInputContainerSub">{{form.last_name}}</div>
+                </div>
+                <div class="applicationFormLabelContainer">
+                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.first_name.label}}</div>
+                    <div class="applicationFormLabelContainerSub">{{form.last_name.label}}</div>
+                </div>
+            </div>
+            <div>
+                <div class="applicationFormInputContainer">
+                    <div class="applicationFormInputContainerSub"> {{form.gender}}</div> 
+                    <div class="applicationFormInputContainerSub">{{form.day_of_birth}}</div>
+                    <div class="applicationFormInputContainerSub">{{form.month_of_birth}}</div>
+                    <div class="applicationFormInputContainerSub">{{form.year_of_birth}}</div>
+                </div>
+                <div class="applicationFormLabelContainer">
+                    <div class="applicationFormLabelContainerSub"> {{form.gender.label}}</div>
+                    <div class="applicationFormLabelContainerSub">{{form.day_of_birth.label}}</div>
+                    <div class="applicationFormLabelContainerSub">{{form.month_of_birth.label}}</div>
+                    <div class="applicationFormLabelContainerSub">{{form.year_of_birth.label}}</div>
+                </div>
+            </div>
+            <div>
+                <div class="applicationFormSubHeading">Email/Phone Number</div>
+                <div class="applicationFormInputContainer">
+                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.email}}</div>
+                    <div class="applicationFormInputContainerSub">{{form.phone_number}}</div>
+                </div>
+                <div class="applicationFormLabelContainer">
+                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.email.label}}</div>
+                    <div class="applicationFormLabelContainerSub">{{form.phone_number.label}}</div>
+                </div>
+            </div>
+            <div>
+                <div class="applicationFormSubHeading">Address</div>
+                <div class="applicationFormInputLabelWideContainer">
+                    <div class="applicationFormInputLabelWideContainerSub  ">{{form.address_1}}</div>
+                    <div class="applicationFormInputLabelWideContainerSub">{{form.address_1.label}}</div>
+                </div>
+                <div class="applicationFormInputLabelWideContainer">
+                    <div class="applicationFormInputLabelWideContainerSub">{{form.address_2}}</div>
+                    <div class="applicationFormInputLabelWideContainerSub">{{form.address_2.label}}</div>
+                </div>
+            </div> 
+            
+            <div>
+                <div class="applicationFormInputContainer">
+                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.city}}</div>
+                    <div class="applicationFormInputContainerSub">{{form.state_province}}</div>
+                </div>
+                <div class="applicationFormLabelContainer">
+                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.city.label}}</div>
+                    <div class="applicationFormLabelContainerSub">{{form.state_province.label}}</div>
+                </div>
+            </div>
+            <div>
+                <div class="applicationFormInputContainer">
+                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.postal_code}}</div>
+                    <div class="applicationFormInputContainerSub">{{form.country}}</div>
+                </div>
+                <div class="applicationFormLabelContainer">
+                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.postal_code.label}}</div>
+                    <div class="applicationFormLabelContainerSub">{{form.country.label}}</div>
+                </div>
+            </div>
+        </div>
+        <!-- Bio Data End -->
+         <!-- Education start -->
+         <div class="applicationFormContainer" > 
+            <h1 class="applicationFormHeading">Educational Background</h1>    
+            <div>
+                <div class="applicationFormSubHeading">Secondary/High School</div>
+                <div class="applicationFormInputLabelWideContainer">
+                    <div class="applicationFormInputLabelWideContainerSub  ">{{form.school_name}}</div>
+                    <div class="applicationFormInputLabelWideContainerSub">{{form.school_name.label}}</div>
+                </div>
+            </div> 
+            <div>
+                <div class="applicationFormSubHeading">School Address</div>
+                <div class="applicationFormInputLabelWideContainer">
+                    <div class="applicationFormInputLabelWideContainerSub  ">{{form.school_address_1}}</div>
+                    <div class="applicationFormInputLabelWideContainerSub">{{form.school_address_1.label}}</div>
+                </div>
+                <div class="applicationFormInputLabelWideContainer">
+                    <div class="applicationFormInputLabelWideContainerSub">{{form.school_address_2}}</div>
+                    <div class="applicationFormInputLabelWideContainerSub">{{form.school_address_2.label}}</div>
+                </div>
+            </div> 
+            <div>
+                <div class="applicationFormInputContainer">
+                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.school_city}}</div>
+                    <div class="applicationFormInputContainerSub">{{form.school_state_province}}</div>
+                </div>
+                <div class="applicationFormLabelContainer">
+                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.school_city.label}}</div>
+                    <div class="applicationFormLabelContainerSub">{{form.school_state_province.label}}</div>
+                </div>
+            </div>
+            <div>
+                <div class="applicationFormInputContainer">
+                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.school_postal_code}}</div>
+                    <div class="applicationFormInputContainerSub">{{form.school_year_graduated}}</div>
+                </div>
+                <div class="applicationFormLabelContainer">
+                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.school_postal_code.label}}</div>
+                    <div class="applicationFormLabelContainerSub">{{form.school_year_graduated.label}}</div>
+                </div>
+            </div>
+        </div>
+        <!-- Education end -->
+         <!-- emergency information start -->
+        <div class="applicationFormContainer" > 
+            <h1 class="applicationFormHeading">Emergency Contact Information</h1>   
+            <div>
+                <div class="applicationFormSubHeading">Full Name</div>
+                <div class="applicationFormInputContainer">
+                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.emergency_first_name}}</div>
+                    <div class="applicationFormInputContainerSub">{{form.emergency_last_name}}</div>
+                </div>
+                <div class="applicationFormLabelContainer">
+                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.emergency_first_name.label}}</div>
+                    <div class="applicationFormLabelContainerSub">{{form.emergency_last_name.label}}</div>
+                </div>
+            </div>
+            <div>
+                <div class="applicationFormSubHeading">Email/Phone Number</div>
+                <div class="applicationFormInputContainer">
+                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.emergency_email}}</div>
+                    <div class="applicationFormInputContainerSub">{{form.emergency_phone_number}}</div>
+                </div>
+                <div class="applicationFormLabelContainer">
+                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.emergency_email.label}}</div>
+                    <div class="applicationFormLabelContainerSub">{{form.emergency_phone_number.label}}</div>
+                </div>
+            </div>
+            <div>
+                <div class="applicationFormSubHeading">Address</div>
+                <div class="applicationFormInputLabelWideContainer">
+                    <div class="applicationFormInputLabelWideContainerSub  ">{{form.emergency_address_1}}</div>
+                    <div class="applicationFormInputLabelWideContainerSub">{{form.emergency_address_1.label}}</div>
+                </div>
+                <div class="applicationFormInputLabelWideContainer">
+                    <div class="applicationFormInputLabelWideContainerSub">{{form.emergency_address_2}}</div>
+                    <div class="applicationFormInputLabelWideContainerSub">{{form.emergency_address_2.label}}</div>
+                </div>
+            </div> 
+            <div>
+                <div class="applicationFormInputContainer">
+                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.emergency_city}}</div>
+                    <div class="applicationFormInputContainerSub">{{form.emergency_postal_code}}</div>
+                </div>
+                <div class="applicationFormLabelContainer">
+                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.emergency_city.label}}</div>
+                    <div class="applicationFormLabelContainerSub">{{form.emergency_postal_code.label}}</div>
+                </div>
+            </div>
+            <div>
+                <div class="applicationFormInputContainer">
+                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.emergency_country}}</div>
+                    <div class="applicationFormInputContainerSub">{{form.emergency_relationship}}</div>
+                </div>
+                <div class="applicationFormLabelContainer">
+                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.emergency_country.label}}</div>
+                    <div class="applicationFormLabelContainerSub">{{form.emergency_relationship.label}}</div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="applicationFormContainer" > 
+            <h1 class="applicationFormHeading">Referee Information</h1>   
+            <div>
+                <div class="applicationFormSubHeading">Full Name</div>
+                <div class="applicationFormInputContainer">
+                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.referee_first_name}}</div>
+                    <div class="applicationFormInputContainerSub">{{form.referee_last_name}}</div>
+                </div>
+                <div class="applicationFormLabelContainer">
+                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.referee_first_name.label}}</div>
+                    <div class="applicationFormLabelContainerSub">{{form.referee_last_name.label}}</div>
+                </div>
+            </div>
+            <div>
+                <div class="applicationFormSubHeading">Email/Phone Number</div>
+                <div class="applicationFormInputContainer">
+                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.referee_email}}</div>
+                    
+                    <div class="applicationFormInputContainerSub">{{form.referee_phone_number}}</div>
+                </div>
+                <div class="applicationFormLabelContainer">
+                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.referee_email.label}}</div>
+                    <div class="applicationFormLabelContainerSub">{{form.referee_phone_number.label}}</div>
+                </div>
+            </div>
+            <div>
+                <div class="applicationFormSubHeading">Address</div>
+                <div class="applicationFormInputLabelWideContainer">
+                    <div class="applicationFormInputLabelWideContainerSub  ">{{form.referee_address_1}}</div>
+                    <div class="applicationFormInputLabelWideContainerSub">{{form.referee_address_1.label}}</div>
+                </div>
+                <div class="applicationFormInputLabelWideContainer">
+                    <div class="applicationFormInputLabelWideContainerSub">{{form.referee_address_2}}</div>
+                    <div class="applicationFormInputLabelWideContainerSub">{{form.referee_address_2.label}}</div>
+                </div>
+            </div> 
+            
+            <div>
+                <div class="applicationFormInputContainer">
+                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.referee_city}}</div>
+                    <div class="applicationFormInputContainerSub">{{form.referee_postal_code}}</div>
+                </div>
+                <div class="applicationFormLabelContainer">
+                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.referee_city.label}}</div>
+                    <div class="applicationFormLabelContainerSub">{{form.referee_postal_code.label}}</div>
+                </div>
+            </div>
+            <div>
+                <div class="applicationFormInputContainer">
+                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.referee_state_province}}</div>
+                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.referee_country}}</div>
+
+                </div>
+                <div class="applicationFormLabelContainer">
+                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.referee_state_province.label}}</div>
+                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.referee_country.label}}</div>
+
+                </div>
+            </div>
+        </div>
+        <div class="applicationFormContainer" > 
+            <h1 class="applicationFormHeading">Course Applying</h1>  
+           <div class="applicationFormInputLabelWideContainer">
+            <p class="applicationFormTextInformation">Kindly ensure that you select the right course as this action can not be undone later on. </p>
+                    <div class="applicationFormInputLabelWideContainerSub  ">{{form.course}}</div>
+                    <div class="applicationFormInputLabelWideContainerSub">{{form.course.label}}</div>
+            </div>
+
+        </div>
+        <div class="applicationFormContainer" > 
+            <h1 class="applicationFormHeading">Documents Uploads</h1>  
+            <p class="applicationFormTextInformation">All necessary documents must be uploaded before you can be considered for admission</p>
+           <div>
+                <div class="applicationFormInputContainer">
+                    <div class="applicationFormInputContainerSub  ">{{form.personal_statement}}</div>
+                    <div class="applicationFormInputContainerSub">{{form.image}}</div>
+
+                </div>
+                <div class="applicationFormLabelContainer">
+                    <div class="applicationFormLabelContainerSub ">{{form.personal_statement.label}}</div>
+                    <div class="applicationFormLabelContainerSub ">{{form.image.label}}</div>
+                </div>
+            </div>
+        </div>
+        
+        <button type="submit">submit application</button>
+        <button type="reset">Clear Form</button>
+    </form>
+</section>
+
+
+
+
+{% endblock content%}

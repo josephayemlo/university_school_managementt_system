@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+
+
+<form method="post" enctype="multipart/form-data" class="applicationForm">
+    {% csrf_token %}
+
+    <!-- Bio Data Start -->
+    <div class="applicationFormContainer" > 
+        <h1 class="applicationFormHeading">Personal Information</h1>
+        <div>
+            <div class="applicationFormSubHeading">Full Name</div>
+            <div class="applicationFormInputContainer">
+                <div class="applicationFormInputContainerSub marginFixRight ">{{form.first_name}}</div>
+                <div class="applicationFormInputContainerSub">{{form.last_name}}</div>
+            </div>
+            <div class="applicationFormLabelContainer">
+                <div class="applicationFormLabelContainerSub marginFixRight">{{form.first_name.label}}</div>
+                <div class="applicationFormLabelContainerSub">{{form.last_name.label}}</div>
+            </div>
+        </div>
+        <div>
+            <div class="applicationFormInputContainer">
+                <div class="applicationFormInputContainerSub"> {{form.gender}}</div> 
+                <div class="applicationFormInputContainerSub">{{form.day_of_birth}}</div>
+                <div class="applicationFormInputContainerSub">{{form.month_of_birth}}</div>
+                <div class="applicationFormInputContainerSub">{{form.year_of_birth}}</div>
+            </div>
+            <div class="applicationFormLabelContainer">
+                <div class="applicationFormLabelContainerSub"> {{form.gender.label}}</div>
+                <div class="applicationFormLabelContainerSub">{{form.day_of_birth.label}}</div>
+                <div class="applicationFormLabelContainerSub">{{form.month_of_birth.label}}</div>
+                <div class="applicationFormLabelContainerSub">{{form.year_of_birth.label}}</div>
+            </div>
+        </div>
+        <div>
+            <div class="applicationFormSubHeading">Email/Phone Number</div>
+            <div class="applicationFormInputContainer">
+                <div class="applicationFormInputContainerSub marginFixRight ">{{form.email}}</div>
+                <div class="applicationFormInputContainerSub">{{form.phone_number}}</div>
+            </div>
+            <div class="applicationFormLabelContainer">
+                <div class="applicationFormLabelContainerSub marginFixRight">{{form.email.label}}</div>
+                <div class="applicationFormLabelContainerSub">{{form.phone_number.label}}</div>
+            </div>
+        </div>
+        <div>
+            <div class="applicationFormSubHeading">Address</div>
+            <div class="applicationFormInputLabelWideContainer">
+                <div class="applicationFormInputLabelWideContainerSub  ">{{form.address_1}}</div>
+                <div class="applicationFormInputLabelWideContainerSub">{{form.address_1.label}}</div>
+            </div>
+            <div class="applicationFormInputLabelWideContainer">
+                <div class="applicationFormInputLabelWideContainerSub">{{form.address_2}}</div>
+                <div class="applicationFormInputLabelWideContainerSub">{{form.address_2.label}}</div>
+            </div>
+        </div> 
+        
+        <div>
+            <div class="applicationFormInputContainer">
+                <div class="applicationFormInputContainerSub marginFixRight ">{{form.city}}</div>
+                <div class="applicationFormInputContainerSub">{{form.state_province}}</div>
+            </div>
+            <div class="applicationFormLabelContainer">
+                <div class="applicationFormLabelContainerSub marginFixRight">{{form.city.label}}</div>
+                <div class="applicationFormLabelContainerSub">{{form.state_province.label}}</div>
+            </div>
+        </div>
+        <div>
+            <div class="applicationFormInputContainer">
+                <div class="applicationFormInputContainerSub marginFixRight ">{{form.postal_code}}</div>
+                <div class="applicationFormInputContainerSub">{{form.country}}</div>
+            </div>
+            <div class="applicationFormLabelContainer">
+                <div class="applicationFormLabelContainerSub marginFixRight">{{form.postal_code.label}}</div>
+                <div class="applicationFormLabelContainerSub">{{form.country.label}}</div>
+            </div>
+        </div>
+    </div>
+    <!-- Bio Data End -->
+    <div class="applicationFormContainer" > 
+        <h1 class="applicationFormHeading">Course Applied At Imperial University</h1>  
+       <div class="applicationFormInputLabelWideContainer">
+        <p class="applicationFormTextInformation">It is very important to select the exact course you have applied at Imperial University. </p>
+                <div class="applicationFormInputLabelWideContainerSub  ">{{form.course_applied}}</div>
+                <div class="applicationFormInputLabelWideContainerSub">{{form.course_applied.label}}</div>
+        </div>
+    </div>
+
+    <div class="applicationFormContainer" >
+        <h1 class="applicationFormHeading">Tell us about yourself</h1>  
+        <p class="applicationFormTextInformation">In brief,describe who you are as a person</p>
+            <div class="applicationFormTextFieldContainer">
+                <div class="applicationFormTextFieldContainerSub  ">{{form.about_yourself}}</div>
+            </div>
+    </div>
+    <div class="applicationFormContainer" >
+        <h1 class="applicationFormHeading">What do you want to do with your career?</h1>  
+        <p class="applicationFormTextInformation">Here, you should tell us about your future plans</p>
+            <div class="applicationFormTextFieldContainer">
+                <div class="applicationFormTextFieldContainerSub  ">{{form.career_plans}}</div>
+            </div>
+    </div>
+    <div class="applicationFormContainer" >
+        <h1 class="applicationFormHeading">Who is your role model?</h1>  
+        <p class="applicationFormTextInformation">In brief,describe who your role model is and why</p>
+            <div class="applicationFormTextFieldContainer">
+                <div class="applicationFormTextFieldContainerSub  ">{{form.role_model}}</div>
+            </div>
+    </div>
+    <div class="applicationFormContainer" >
+        <h1 class="applicationFormHeading">Why did you choose this school or program?</h1>  
+        <p class="applicationFormTextInformation">Explain why you intend to study at Imperial University and the reason for course selected</p>
+            <div class="applicationFormTextFieldContainer">
+                <div class="applicationFormTextFieldContainerSub  ">{{form.reasons_for_course_school_choice}}</div>
+            </div>
+    </div>
+    <div class="applicationFormContainer" >
+        <h1 class="applicationFormHeading">Why do you deserve this scholarship?</h1>  
+        <p class="applicationFormTextInformation">Explain why you should be considered for a scholarship, what makes you in need?</p>
+            <div class="applicationFormTextFieldContainer">
+                <div class="applicationFormTextFieldContainerSub  ">{{form.why_you_deserve_scholarship}}</div>
+            </div>
+    </div>
+    <div class="applicationFormContainer" >
+        <h1 class="applicationFormHeading">What has been one of your greatest achievements?</h1>  
+        <p class="applicationFormTextInformation">Highlight the achievements you have so far, this could be..</p>
+            <div class="applicationFormTextFieldContainer">
+                <div class="applicationFormTextFieldContainerSub  ">{{form.your_greatest_achievement}}</div>
+            </div>
+    </div>
+    <div class="applicationFormContainer" >
+        <h1 class="applicationFormHeading">What are your strenghts</h1>  
+        <p class="applicationFormTextInformation">Highlight your strenghts...</p>
+            <div class="applicationFormTextFieldContainer">
+                <div class="applicationFormTextFieldContainerSub  ">{{form.your_strenths}}</div>
+            </div>
+    </div>
+    <div class="applicationFormContainer" >
+        <h1 class="applicationFormHeading">What are your weaknesses</h1>  
+        <p class="applicationFormTextInformation">Highlight your weaknesses</p>
+            <div class="applicationFormTextFieldContainer">
+                <div class="applicationFormTextFieldContainerSub  ">{{form.your_weaknesses}}</div>
+            </div>
+    </div>
+    <div class="applicationFormContainer" >
+        <h1 class="applicationFormHeading">Describe a Challenge You Faced and How You Overcame It</h1>  
+        <p class="applicationFormTextInformation">Give an instance where you were faced with a particular problem and the way you solved it</p>
+            <div class="applicationFormTextFieldContainer">
+                <div class="applicationFormTextFieldContainerSub  ">{{form.challenge_faced_overcomed}}</div>
+            </div>
+    </div>
+    <div class="applicationFormContainer" >
+        <h1 class="applicationFormHeading">Tell us about your leadership experience</h1>  
+        <p class="applicationFormTextInformation">In brief, highlight the leadership roles you have occupied emphasizing on your leadership experience </p>
+            <div class="applicationFormTextFieldContainer">
+                <div class="applicationFormTextFieldContainerSub  ">{{form.your_leadership_experience}}</div>
+            </div>
+    </div>
+    <div class="applicationFormContainer" >
+        <h1 class="applicationFormHeading">What are the School/Community Acivities you have engaged in</h1>  
+        <p class="applicationFormTextInformation">Explain the activities engaged in outside of the classroom</p>
+            <div class="applicationFormTextFieldContainer">
+                <div class="applicationFormTextFieldContainerSub  ">{{form.activities_involved_in_school_community}}</div>
+            </div>
+    </div>
+    <div class="applicationFormContainer" >
+        <h1 class="applicationFormHeading">Additional Statement</h1>  
+        <p class="applicationFormTextInformation">What else do you want to tell us?</p>
+            <div class="applicationFormTextFieldContainer">
+                <div class="applicationFormTextFieldContainerSub  ">{{form.additional_statement}}</div>
+            </div>
+    </div>
+        
+    <button type="submit">submit application</button>
+    <button type="reset">Clear Form</button>
+</form>
+
+
+
+{% endblock content%}

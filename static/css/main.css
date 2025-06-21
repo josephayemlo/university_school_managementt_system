@@ -1,0 +1,1393 @@
+/* Creating sass variables*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato" sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.7;
+}
+
+.img1 {
+  object-fit: cover;
+  width: 82px;
+  height: 65px;
+  padding-right: 5px;
+}
+
+.homebg {
+  height: 95vh;
+  width: 100%;
+}
+
+.imageInStudyWithUs {
+  width: 100%;
+}
+
+.btnCourses {
+  color: whitesmoke;
+  background-color: #F04A00;
+}
+
+.btnInStudyWithUs {
+  flex-grow: 1;
+  text-decoration: none;
+  border: 2px solid rgba(0, 0, 0, 0.1019607843);
+}
+
+.eventHeadingBtn {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btnNewsHomeMakeAGift {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.loginBackBtn {
+  text-decoration: none;
+  padding: 10px;
+  background-color: #002147;
+  color: whitesmoke;
+  font-size: 14px;
+}
+
+.loginResetPassBtn {
+  text-decoration: none;
+  padding: 10px;
+  background-color: white;
+  color: #002147;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.loginSignInBtn {
+  text-decoration: none;
+  padding: 10px;
+  background-color: #003e74;
+  color: whitesmoke;
+  font-size: 14px;
+  margin-bottom: 4rem;
+}
+
+.researchHeading {
+  font-size: 25px;
+}
+
+.researchHeadingSub {
+  font-size: 18px;
+}
+
+.researchTextTitle {
+  font-size: 18px;
+  padding-top: 14px;
+}
+
+.miniResearchTextHeading {
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.eventsHeading {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.eventGrid3Text {
+  padding-bottom: 2rem;
+}
+
+.alumniTextContainer {
+  padding: 2rem;
+  padding-top: 1rem;
+}
+.alumniTextContainerTitle {
+  font-weight: bold;
+  font-size: 18px;
+}
+.alumniTextContainerText1 {
+  margin-bottom: 2rem;
+}
+.alumniTextContainerText2 {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.btnWhite {
+  color: white;
+  text-decoration: none;
+}
+
+.btnBlack {
+  color: black;
+  text-decoration: none;
+}
+
+.TextWhite {
+  color: white;
+}
+
+.TextBlack {
+  color: black;
+}
+
+.flexGrow1 {
+  flex-grow: 1;
+}
+
+.bold {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.colorWhite {
+  color: white;
+}
+
+.undergraduateApplicationFormContainer {
+  padding: 40px;
+}
+.undergraduateApplicationFormContainerMainHeading {
+  font-size: 19px;
+  text-align: center;
+}
+.undergraduateApplicationFormContainerHeading {
+  text-align: left;
+  font-size: 19px;
+  color: black;
+  margin-left: 59px;
+}
+
+.applicationForm {
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  padding-left: 16rem;
+  padding-right: 16rem;
+  background-color: rgba(235, 238, 238, 0.4823529412);
+}
+.applicationFormContainer {
+  border: 2px solid rgba(0, 0, 0, 0.088);
+  margin: 20px;
+  padding: 15px;
+  background-color: white;
+}
+.applicationFormHeading {
+  font-size: 22px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.applicationFormSubHeading {
+  font-size: 19px;
+}
+.applicationFormInputContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.applicationFormInputLabelWideContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.applicationFormInputLabelWideContainer {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.756);
+}
+.applicationFormTextFieldContainer {
+  font-size: 13px;
+  color: black;
+}
+.applicationFormTextInformation {
+  font-size: 13px;
+  color: black;
+}
+.applicationFormInputContainerSub {
+  flex: 1;
+}
+.applicationFormLabelContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: hidden;
+  font-size: 13px;
+  margin-bottom: 20px;
+  color: rgba(0, 0, 0, 0.756);
+}
+.applicationFormLabelContainerSub {
+  flex: 1;
+}
+
+.Input {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  width: 100%;
+}
+
+.InputWide {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  width: 100%;
+}
+
+.marginFixRight {
+  margin-right: 20px;
+}
+
+.Textarea {
+  width: 100%;
+}
+
+.navigationFirst {
+  margin-top: 45px;
+  border-bottom: 5px solid whitesmoke;
+  padding-bottom: 20px;
+  z-index: 1;
+}
+
+.column1of4:link,
+.column1of4:visited {
+  text-decoration: none;
+}
+
+.column1of4One {
+  position: relative;
+  font-weight: 800;
+  width: 22rem;
+  height: 6rem;
+  display: block;
+  background-color: #003e74;
+  color: white;
+  margin-right: 50px;
+}
+.column1of4One :hover {
+  background-color: #fff;
+  color: #003e74;
+}
+
+.column1of4Two {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  background-color: #f5f5f5;
+  color: black;
+}
+.column1of4Two :hover {
+  background-color: #f5f5f5;
+  color: #002147;
+}
+
+.column1of4Three {
+  color: black;
+  margin-top: 10px;
+  display: flex;
+  background-color: #f5f5f5;
+  margin-right: 2rem;
+}
+.column1of4Three :hover {
+  background-color: #f5f5f5;
+  color: #002147;
+}
+
+.column1of4Four {
+  margin-left: 2rem;
+  font-weight: 800;
+  width: 7rem;
+  height: 6rem;
+  display: flex;
+  background-color: #003e74;
+  color: white;
+  margin-right: 50px;
+}
+.column1of4Four :hover {
+  background-color: #fff;
+  color: #003e74;
+}
+
+.title1 {
+  height: 100%;
+  position: absolute;
+  color: #f5f5f5;
+  display: block;
+  padding-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 25px;
+}
+
+.title1Main {
+  color: #f5f5f5;
+}
+
+.title2 {
+  font-size: 15px;
+}
+
+.title3 {
+  font-size: 15px;
+}
+
+.title4 {
+  height: 100%;
+  color: #f5f5f5;
+  display: block;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 25px;
+  font-size: 15px;
+  padding-bottom: -2rem;
+}
+
+.footer {
+  background-color: #002147;
+  display: flex;
+  flex-direction: column;
+}
+
+.footerGrid1 {
+  display: flex;
+  flex-direction: row;
+  padding: 25px;
+}
+
+.footerGrid1Row {
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+}
+
+.footerGrid1RowHeader {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.footerGrid2 {
+  margin-top: 2rem;
+  border: 0.5px solid rgba(255, 255, 255, 0.394);
+  display: flex;
+  flex-direction: row;
+  color: white;
+  padding: 25px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.footerGrid2Row1 {
+  padding: 10px;
+  padding-top: 25px;
+  padding-left: 0;
+  font-size: 13px;
+  border-right: 0.5px solid rgba(245, 245, 245, 0.439);
+  padding-bottom: 1.5rem;
+}
+.footerGrid2Row2 {
+  padding: 20px;
+  padding-top: 25px;
+  padding-bottom: 1.5rem;
+}
+
+.flexGrowfooterGrid2Row2 {
+  flex-grow: 4;
+}
+
+.SchoolNameFooter {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.btnCampusMapFotter {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.footerClosingContainer1 {
+  display: flex;
+  flex-direction: row;
+  font-size: 13px;
+}
+
+.footerClosingContainer2 {
+  font-size: 13px;
+}
+
+.linksfooterGrid2Row2 {
+  margin-right: 2rem;
+}
+
+.linksfooterGrid2Row2:not(:first-child) {
+  margin-left: 0.7rem;
+}
+
+.socialIconsContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.fa {
+  padding: 22px;
+  padding-left: 0;
+}
+
+.row {
+  display: flex;
+}
+
+.research {
+  border: 1px solid rgba(0, 0, 0, 0.1019607843);
+  padding: 2rem;
+}
+
+.researchContainerGridOne {
+  display: flex;
+  color: whitesmoke;
+}
+
+.researchContainerGridTwo {
+  margin-top: 1.5rem;
+  display: flex;
+  color: whitesmoke;
+}
+
+.researchContainerTwo {
+  background-color: #276db2;
+  display: flex;
+  margin-left: 1rem;
+}
+
+.grid2of1 {
+  background-color: #3b89c8;
+}
+
+.grid2of2 {
+  background-color: #00853E;
+}
+
+.linksContainerInStudyWithUS {
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid rgba(0, 0, 0, 0.3215686275);
+  text-align: center;
+}
+
+.eventsAndAlumni {
+  display: flex;
+  flex-wrap: wrap;
+  border: 0.5px solid rgba(0, 0, 0, 0.156);
+  border-bottom: none;
+  padding: 2rem;
+}
+
+.eventsContainer {
+  flex: 1;
+}
+
+.AlumniContainer {
+  flex: 0 0 25%;
+}
+
+.eventsSubContainer {
+  display: flex;
+}
+
+.CardContainer {
+  border: 2px solid rgba(0, 0, 0, 0.123);
+  margin-bottom: 2rem;
+}
+.CardContainerGrid {
+  display: flex;
+  flex-direction: column;
+}
+.CardContainerImage {
+  object-fit: cover;
+  width: 100%;
+  height: 12rem;
+}
+.CardContainerGrid1 {
+  font-size: 14px;
+  flex: 1;
+}
+.CardContainerGrid2 {
+  margin-left: 7px;
+  margin-right: 7px;
+  font-size: 14px;
+  flex: 1;
+}
+.CardContainerGrid3 {
+  font-size: 11px;
+  margin-right: 0.8rem;
+  flex: 1;
+}
+.CardContainerGrid4 {
+  font-size: 14px;
+  background-color: #a51900;
+  color: white;
+}
+.CardContainerText1 {
+  border: 2px solid rgba(0, 0, 0, 0.279);
+  border-top: none;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-right: -2rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: whitesmoke;
+  color: black;
+  font-weight: bold;
+}
+.CardContainerText2 {
+  background-color: #dd2501;
+  padding-left: 2rem;
+  padding-right: 1.5rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-right: 4.2rem;
+  height: 80%;
+  clip-path: polygon(20% 0, 100% 0, 85% 100%, 0 100%);
+  font-weight: bold;
+  font-family: "Lato", serif;
+  border: 2px solid rgba(0, 0, 0, 0.279);
+  border-top: none;
+  color: white;
+}
+.CardContainerText2Sub {
+  background-color: #006eaf;
+}
+.CardContainerText3 {
+  padding: 1rem;
+  font-size: 13px;
+  display: block;
+  margin-bottom: 4rem;
+}
+.CardContainerText4 {
+  padding: 1rem;
+  font-size: 13px;
+  display: block;
+}
+
+.CardContainerGrid1AddMargin {
+  margin-right: 2.5rem;
+}
+
+.slimCardContainer {
+  display: flex;
+  background-color: #00853E;
+}
+.slimCardContainerImage {
+  object-fit: cover;
+  width: 15rem;
+  height: 10rem;
+  padding-right: 20px;
+}
+.slimCardContainerTextHeading {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.slimCardContainerText {
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+.slimCardContainerBtn {
+  text-decoration: none;
+  color: black;
+  color: whitesmoke;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.slimCardContainerAdjust1 {
+  background-color: whitesmoke;
+  border: 1px solid rgba(0, 0, 0, 0.1254901961);
+  margin-bottom: 2rem;
+  margin-left: 3rem;
+  padding-right: 9rem;
+}
+
+.slimCardContainerAdjust2 {
+  background-color: #002147;
+  margin-bottom: 2rem;
+  margin-left: 3rem;
+  padding-right: 9rem;
+  color: white;
+}
+
+.eventExhibitionTextContainer {
+  border: 2px solid black;
+}
+
+.eventGrid3Text {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.newsHome {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+.newsHomeGrid1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.newsHomeGrid2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.homeNewsGreen {
+  background-color: #00853E;
+}
+
+.homeNewsCardTextContainer {
+  width: 14.5rem;
+  height: 10rem;
+  font-size: 15px;
+  margin: 15px;
+  margin-left: 0;
+  border-right: 1px solid white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.slimCardContainerImageNewsSection {
+  margin-right: 15px;
+}
+
+.slimCardContainerTextNewsSection {
+  margin-top: 15px;
+}
+
+.applyHeading {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.applyContentAndNavContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.applyLeftNavContainer {
+  flex: 0 0 20%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ebeeee;
+}
+.applyLeftNavContainerBtn {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.142);
+  border-bottom: none;
+  font-size: 14px;
+  background-color: white;
+}
+.applyLeftNavContainerBtn:last-child {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.142);
+}
+
+.applyRightContentContainer {
+  flex: 1;
+  border: 1.5px solid rgba(0, 0, 0, 0.213);
+  padding: 25px;
+}
+
+.navigationFixed {
+  background-color: #002147;
+  float: left;
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  top: 0;
+}
+.navigationFixedBtn {
+  text-decoration: none;
+  color: #003e74;
+  background-color: white;
+  padding: 5px;
+  border-radius: 2px;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.applyNavAspirant {
+  background-color: #003e74;
+  float: left;
+  width: 100%;
+  overflow: hidden;
+}
+.applyNavAspirantBtn {
+  text-decoration: none;
+  color: #003e74;
+  background-color: white;
+  padding: 5px;
+  border-radius: 2px;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.loginCardContainer {
+  width: 29rem;
+  height: 85vh;
+  background-color: rgba(255, 255, 255, 0.425);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.loginBackground {
+  background-image: linear-gradient(105deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 33, 71, 0.6) 50%), url("../images/login1.jpg");
+  background-size: cover;
+  height: 100vh;
+}
+
+.loginSchoolName {
+  color: #002147;
+  font-size: 20px;
+  margin: 3rem;
+  margin-bottom: -1rem;
+}
+
+.loginSchoolNameSub {
+  display: block;
+  color: #002147;
+  font-size: 20px;
+  margin: 3rem;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.emailField {
+  padding: 14px;
+  background-color: rgba(255, 255, 255, 0.239);
+  border: 2px solid rgba(0, 0, 0, 0.36);
+  margin-bottom: 2rem;
+}
+
+.passwordField {
+  padding: 14px;
+  background-color: rgba(255, 255, 255, 0.239);
+  border: 2px solid rgba(0, 0, 0, 0.36);
+}
+
+.loginForm {
+  text-align: center;
+}
+
+.loginInfo {
+  color: white;
+  padding: 1rem;
+  font-size: 15px;
+  text-align: justify;
+  line-height: -5;
+  background-color: rgba(255, 255, 255, 0.2588235294);
+  border: 2px solid rgba(0, 0, 0, 0.36);
+  margin: 1rem;
+}
+
+.loginFormMessageContainer {
+  font-size: 14px;
+  color: rgba(255, 0, 0, 0.463);
+}
+
+.studentHome {
+  border: 2px solid rgba(0, 0, 0, 0.158);
+}
+
+.studentHomeBg {
+  background-image: url("../images/student3.jpg");
+  background-size: cover;
+  height: 75vh;
+}
+
+.studentCardSection {
+  display: flex;
+  padding: 2rem;
+}
+.studentCardSectionContainer {
+  flex: 1;
+  border: 2px solid rgba(0, 0, 0, 0.158);
+}
+.studentCardSectionContainer:not(:last-child) {
+  margin-right: 20px;
+}
+.studentCardSectionLink {
+  text-decoration: none;
+  color: black;
+}
+.studentCardSectionImage {
+  object-fit: cover;
+  width: 100%;
+  height: 15rem;
+}
+.studentCardSectionHeading {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  padding: 7px;
+}
+.studentCardSectionText1 {
+  color: black;
+  font-size: 14px;
+  padding: 7px;
+}
+.studentCardSectionText2 {
+  color: #003e74;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 7px;
+}
+
+.studentListContainer {
+  border: 2px solid rgba(255, 255, 255, 0.229);
+  display: flex;
+  flex-direction: column;
+}
+
+.tableContainer {
+  padding: 50px;
+}
+
+.tableHeading {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid rgba(255, 255, 255, 0.193);
+  border-bottom: none;
+  padding: 8px;
+  font-weight: bold;
+}
+.tableHeading1 {
+  flex: 0 0 10%;
+  padding: 8px;
+}
+.tableHeading2 {
+  flex: 1;
+  padding: 8px;
+}
+.tableHeading3 {
+  flex: 1;
+  padding: 8px;
+}
+.tableHeading4 {
+  flex: 0 0 10%;
+  padding: 8px;
+}
+.tableHeading5 {
+  flex: 1;
+  padding: 8px;
+}
+.tableHeading5Btn1 {
+  background-color: #3498db;
+  color: black;
+  padding: 6px;
+  text-decoration: none;
+  border-radius: 2px;
+}
+.tableHeading5Btn1:hover {
+  background-color: white;
+  color: black;
+}
+.tableHeading5Btn2 {
+  background-color: #e74c3c;
+  color: black;
+  padding: 6px;
+  text-decoration: none;
+  border-radius: 2px;
+}
+.tableHeading5Btn2:hover {
+  background-color: red;
+}
+
+.tableData {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid rgba(255, 255, 255, 0.199);
+  border-bottom: none;
+  padding: 8px;
+  font-size: 20px;
+}
+
+.tableData:last-child {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.203);
+}
+
+.studentList {
+  background-image: linear-gradient(90deg, black 0%, black 25%, rgba(0, 0, 0, 0.728) 70%, black 99%), url("../images/student2.jpg");
+  background-size: cover;
+  height: 100vh;
+  color: whitesmoke;
+}
+.studentListBack {
+  padding-top: 7rem;
+  margin-left: 3rem;
+}
+.studentListBackBtn {
+  background-color: #3498db;
+  color: black;
+  padding: 6px;
+  text-decoration: none;
+  border-radius: 2px;
+}
+.studentListBackBtn:hover {
+  background-color: white;
+  color: black;
+}
+
+.user_name_aspirant {
+  color: white;
+  font-size: 15px;
+  float: right;
+  margin-right: 20px;
+}
+
+.admin {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-image: linear-gradient(90deg, black 0%, black 25%, rgba(0, 0, 0, 0.728) 70%, black 99%), url("../images/student2.jpg");
+  background-size: cover;
+  height: 100vh;
+  color: whitesmoke;
+}
+.admin .topAdminContainerNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: #3498db;
+  flex-shrink: 0;
+}
+.admin .adminContainer {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+}
+.admin .adminContainer .leftNavContainer {
+  color: #333;
+  padding: 1rem;
+  flex: 0 0 20%;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-right: 1px solid #ddd;
+}
+.admin .adminContainer .leftNavContainer .leftNavContainerBtn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: whitesmoke;
+  font-size: 14px;
+  font-weight: 500;
+  border-left: 4px solid transparent;
+  transition: 0.2s ease-in-out;
+  border-radius: 4px;
+}
+.admin .adminContainer .leftNavContainer .leftNavContainerBtn i {
+  font-size: 16px;
+}
+.admin .adminContainer .leftNavContainer .leftNavContainerBtn:hover {
+  background-color: #e0f7fa;
+  border-left: 4px solid #00acc1;
+  color: #004d40;
+}
+.admin .adminContainer .leftNavContainer .leftNavContainerBtn.active {
+  background-color: #b2ebf2;
+  border-left: 4px solid #00acc1;
+  color: #004d40;
+}
+.admin .adminContainer .rightNavContainer {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  height: 100%;
+}
+.admin .adminContainer .rightNavContainer .adminRightNavRow1Container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.admin .adminContainer .rightNavContainer .adminRightNavRow1Container .rightNavRow1Col1,
+.admin .adminContainer .rightNavContainer .adminRightNavRow1Container .rightNavRow1Col2,
+.admin .adminContainer .rightNavContainer .adminRightNavRow1Container .rightNavRow1Col3 {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.admin .adminContainer .rightNavContainer .adminRightNavRow1Container .rightNavRow1Col1 {
+  background-color: #e74c3c;
+  color: white;
+}
+.admin .adminContainer .rightNavContainer .adminRightNavRow1Container .rightNavRow1Col2 {
+  background-color: #3498db;
+  color: white;
+}
+.admin .adminContainer .rightNavContainer .adminRightNavRow1Container .rightNavRow1Col3 {
+  background-color: #e74c3c;
+  color: white;
+}
+.admin .adminContainer .rightNavContainer .adminRightNavRow1Container .rightNavRow1Col1Text1 {
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0.281);
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  color: whitesmoke;
+  border: 0.5px solid rgba(11, 116, 173, 0.546);
+}
+.admin .adminContainer .rightNavContainer .adminRightNavRow1Container .rightNavRow1Col1Text3 {
+  background-color: whitesmoke;
+  padding: 8px;
+  color: black;
+  border-radius: 9px;
+  font-size: 15px;
+}
+.admin .adminContainer .rightNavContainer .adminRightNavRow1Container .rightNavRow1Col1Text3:hover {
+  background-color: black;
+  color: white;
+}
+.admin .adminContainer .rightNavContainer .adminRightNavRow2Container {
+  display: flex;
+  flex-direction: row;
+}
+.admin .adminContainer .rightNavContainer .adminRightNavRow2Container .adminRightNavRow2Container1 {
+  flex: 1;
+}
+.admin .adminContainer .rightNavContainer .adminRightNavRow2Container .adminRightNavRow2Container1 h1 {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+}
+.admin .adminContainer .rightNavContainer .adminRightNavRow2Container .adminRightNavRow2Container1Card {
+  flex: 1;
+  display: flex;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 50px;
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+}
+.admin .adminContainer .rightNavContainer .adminRightNavRow2Container .adminRightNavRow2Container1CardMale, .admin .adminContainer .rightNavContainer .adminRightNavRow2Container .adminRightNavRow2Container1CardFemale {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.admin .adminContainer .rightNavContainer .adminRightNavRow2Container .adminRightNavRow2Container1CardMale {
+  background-color: #3498db;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+.admin .adminContainer .rightNavContainer .adminRightNavRow2Container .adminRightNavRow2Container1CardFemale {
+  background-color: #e74c3c;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+.admin .adminContainer .rightNavContainer .adminRightNavRow2Container .adminRightNavRow2Container2 {
+  flex: 1;
+}
+
+.nonacademicstaffList {
+  background-image: linear-gradient(90deg, black 0%, black 25%, rgba(0, 0, 0, 0.728) 70%, black 99%), url("../images/student2.jpg");
+  background-size: cover;
+  height: 100vh;
+  color: whitesmoke;
+}
+
+.academicstaffList {
+  background-image: linear-gradient(90deg, black 0%, black 25%, rgba(0, 0, 0, 0.728) 70%, black 99%), url("../images/student2.jpg");
+  background-size: cover;
+  height: 100vh;
+  color: whitesmoke;
+}
+
+.apply {
+  margin-bottom: 4rem;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.applyNav {
+  background-color: #003e74;
+  padding: 40px;
+}
+
+.applyFrontPageBg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.073) 0%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.113) 70%, rgba(0, 0, 0, 0.108) 99%), url("../images/student1.jpg");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+}
+.applyFrontPageBgCard {
+  display: inline-block;
+  background-color: whitesmoke;
+  flex: 0 0 23%;
+  height: 45vh;
+  padding: 15px;
+  margin-top: 20%;
+  margin-left: 4rem;
+}
+.applyFrontPageBgText1 {
+  color: #002147;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: -10px;
+}
+.applyFrontPageBgText2 {
+  color: #002147;
+  font-size: 15px;
+}
+
+.studyLinksContainer {
+  display: flex;
+  background-color: #002147;
+  padding: 30px;
+  margin-top: 2px;
+  text-align: center;
+}
+.studyLinksContainerBtn {
+  flex: 1;
+  background-color: whitesmoke;
+  color: #003e74;
+  text-decoration: none;
+  padding: 9px;
+  font-size: 14px;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+.studyLinksContainerBtn:not(:last-child) {
+  margin-right: 14px;
+}
+
+.applyFindCourseContainer {
+  display: flex;
+  margin-top: 3rem;
+  padding: 40px;
+  color: #002147;
+}
+.applyFindCourseContainerTextContainer {
+  flex: 0 0 30%;
+  padding: 14px;
+  margin-right: 2rem;
+}
+.applyFindCourseContainerImageContainer {
+  flex: 1;
+}
+.applyFindCourseContainerText1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+.applyFindCourseContainerText2 {
+  margin-top: 2rem;
+  font-size: 18px;
+}
+.applyFindCourseContainerBtn {
+  text-decoration: none;
+  color: #003e74;
+  font-weight: bold;
+  font-size: 14px;
+}
+.applyFindCourseContainerImage {
+  object-fit: cover;
+  width: 100%;
+}
+
+.meetSomeoneAtImperial {
+  padding-top: 4rem;
+  padding-right: 15rem;
+  padding-left: 10rem;
+}
+.meetSomeoneAtImperialText1 {
+  color: #002147;
+  font-size: 55px;
+}
+.meetSomeoneAtImperialText2 {
+  color: #0f8291;
+}
+.meetSomeoneAtImperialText3 {
+  color: #003e74;
+  font-size: 14px;
+  margin-left: 20rem;
+}
+
+.applyCard {
+  display: flex;
+  margin-top: 9rem;
+}
+
+.applyCardContainer {
+  flex: 1;
+  color: #002147;
+}
+.applyCardContainerHeading {
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: 25px;
+}
+.applyCardContainerImage {
+  width: 100%;
+  height: 14rem;
+}
+.applyCardContainerText {
+  font-size: 13px;
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+.applyCardContainerBtn {
+  display: block;
+  text-decoration: underline;
+  color: #002147;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.applyCardContainer:not(:last-child) {
+  margin-right: 30px;
+}
+
+.applyUdergraduateFrontPageBg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.073) 0%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.113) 70%, rgba(0, 0, 0, 0.108) 99%), url("../images/apply6.jpg");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+}
+.applyUdergraduateFrontPageBgCard {
+  display: inline-block;
+  background-color: whitesmoke;
+  flex: 0 0 23%;
+  height: 55vh;
+  padding: 15px;
+  margin-top: 20%;
+  margin-left: 4rem;
+}
+.applyUdergraduateFrontPageBgText1 {
+  color: #002147;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: -10px;
+}
+.applyUdergraduateFrontPageBgText2 {
+  color: #002147;
+  font-size: 15px;
+}
+.applyUdergraduateFrontPageBgBtn1 {
+  display: inline-block;
+  padding: 9px;
+  background-color: #002147;
+  text-decoration: none;
+  border-radius: 6px;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 17px;
+}
+.applyUdergraduateFrontPageBgBtn {
+  display: block;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 9px;
+  color: #002147;
+}
+
+.applyUG {
+  padding: 40px;
+}
+
+.applyUndergraduateAddedCard {
+  flex: 1;
+  background-color: #002147;
+  padding: 10px;
+}
+.applyUndergraduateAddedCardText {
+  color: white;
+  font-size: 26px;
+  margin: 3rem;
+}
+.applyUndergraduateAddedCardBtn {
+  text-decoration: underline;
+  color: white;
+  font-size: 14px;
+  display: inline-block;
+  line-height: -2px;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.applyRightContent {
+  width: 100%;
+}
+.applyRightContentContainer {
+  padding: 40px;
+}
+.applyRightContentContainerHeading {
+  font-weight: bold;
+  color: black;
+  text-align: center;
+}
+.applyRightContentContainerImage {
+  object-fit: cover;
+  width: 100%;
+  height: 15rem;
+}
+.applyRightContentContainerSub {
+  display: flex;
+  flex-direction: row;
+}
+.applyRightContentContainerSubText {
+  flex: 1;
+  font-size: 14px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.applyRightContentContainerSubTwoTextList {
+  font-size: 14px;
+  margin-right: 20px;
+  margin-left: 7px;
+  margin-bottom: 20px;
+  margin-top: -15px;
+}
+.applyRightContentContainerSubTwoHeading {
+  font-size: 23px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+.applyRightContentContainerSubDownload {
+  flex: 0 0 35%;
+  display: flex;
+  flex-direction: column;
+}
+.applyRightContentContainerSubDownloadLink {
+  text-decoration: none;
+  background-color: #002147;
+  padding: 5px;
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 4px;
+  color: white;
+  font-size: 18px;
+}
+
+/*# sourceMappingURL=main.css.map */

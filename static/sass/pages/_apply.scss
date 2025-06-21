@@ -1,0 +1,315 @@
+.apply{
+    margin-bottom: 4rem;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.applyNav{
+    background-color: #003e74;
+    padding: 40px;
+}
+
+.applyFrontPageBg{
+    background-image:linear-gradient(
+        
+        rgba(0, 0, 0, 0.073) 0%, 
+        rgba(0, 0, 0, 0) 25%,
+        rgba(0, 0, 0, 0.113) 70%,
+        rgba(0, 0, 0, 0.108) 99%), url("../images/student1.jpg");
+        background-size: cover;
+        height: 100vh;
+        display: flex;
+
+        &Card{
+            display: inline-block;
+            background-color: whitesmoke;
+            flex: 0 0 23%;
+            height: 45vh;
+            padding: 15px;
+            margin-top: 20%;
+            margin-left: 4rem ;
+        }
+        &Text1{
+            color: #002147;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: -10px;
+        }
+        &Text2{
+            color: #002147;
+            font-size: 15px;
+        }
+
+}
+.studyLinksContainer{
+    display: flex;
+    background-color: #002147;
+    padding: 30px;
+    margin-top: 2px;
+    text-align: center;
+
+
+    &Btn{
+        flex: 1;
+        background-color: whitesmoke;
+        color: #003e74;
+        text-decoration: none;
+        padding: 9px;
+        font-size: 14px;
+        border: 2px solid white;
+        border-radius: 10px;
+    }
+    &Btn:not(:last-child){
+        margin-right: 14px;
+    }
+}
+
+.applyFindCourseContainer{
+    display: flex;
+    margin-top: 3rem;
+    padding: 40px;
+    color: #002147;
+
+
+
+    &TextContainer{
+        flex: 0 0 30%;
+        padding: 14px;
+        margin-right: 2rem;
+    }
+    &ImageContainer{
+        flex: 1;
+    }
+    &Text1{
+        font-size: 30px;
+        font-weight: bold;
+    
+
+    }
+    &Text2{
+        margin-top: 2rem;
+        font-size: 18px;
+
+
+    }
+    &Btn{
+        text-decoration: none;
+        color: #003e74;
+        font-weight: bold;
+        font-size: 14px;
+
+    }
+    &Image{
+        object-fit:cover;
+        width: 100%;
+    }
+
+}
+
+.meetSomeoneAtImperial{
+    padding-top: 4rem;
+    padding-right: 15rem;
+    padding-left: 10rem;
+
+
+    &Text1{
+        color: #002147;
+        font-size: 55px;
+    }
+    &Text2{
+        color:#0f8291;
+    }
+    &Text3{
+        color: #003e74;
+        font-size: 14px;
+        margin-left: 20rem;
+    }
+    
+}
+
+.applyCard{
+    display: flex;
+    margin-top: 9rem;
+}
+.applyCardContainer{
+    flex: 1;
+    color: #002147;
+
+
+
+    &Heading{
+        font-weight: bold;
+        font-size: 22px;
+        margin-bottom: 25px;
+
+    }
+    &Image{
+        width: 100%;
+        height: 14rem;
+
+    }
+    &Text{
+        font-size: 13px;
+        margin-top: 13px;
+        margin-bottom: 13px;
+
+
+
+    }
+    &Btn{
+        display: block;
+        text-decoration: underline;
+        color: #002147;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    
+}
+
+.applyCardContainer:not(:last-child){
+
+    margin-right: 30px;
+}
+
+
+.applyUdergraduateFrontPageBg{
+    background-image:linear-gradient(
+        
+        rgba(0, 0, 0, 0.073) 0%, 
+        rgba(0, 0, 0, 0) 25%,
+        rgba(0, 0, 0, 0.113) 70%,
+        rgba(0, 0, 0, 0.108) 99%), url("../images/apply6.jpg");
+        background-size: cover;
+        height: 100vh;
+        display: flex;
+
+        &Card{
+            display: inline-block;
+            background-color: whitesmoke;
+            flex: 0 0 23%;
+            height: 55vh;
+            padding: 15px;
+            margin-top: 20%;
+            margin-left: 4rem ;
+        }
+        &Text1{
+            color: #002147;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: -10px;
+        }
+        &Text2{
+            color: #002147;
+            font-size: 15px;
+        }
+        &Btn1{
+            display: inline-block;
+            padding: 9px;
+            background-color: #002147;
+            text-decoration: none;
+            border-radius: 6px;
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 17px;
+
+        }
+        &Btn{
+            display: block;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 9px;
+            color: #002147
+
+
+        }
+
+}
+.applyUG{
+    padding: 40px;
+}
+
+.applyUndergraduateAddedCard{
+    flex:1;
+    background-color: #002147;
+    padding: 10px;
+
+
+    &Text{
+        color: white;
+        font-size: 26px;
+        margin: 3rem;
+
+    }
+
+    &Btn{
+        text-decoration: underline;
+        color: white;
+        font-size: 14px;
+        display: inline-block;
+        line-height: -2px;
+
+        margin-left: 3rem;
+        margin-right: 3rem;
+
+
+
+    }
+}
+.applyRightContent{
+    width: 100%;
+
+    &Container{
+        padding: 40px;
+
+    }
+    &ContainerHeading{
+        font-weight: bold;
+        color: black;
+        text-align: center;
+    }
+    &ContainerImage{
+        object-fit: cover;
+        width: 100%;
+        height: 15rem;
+    }
+    &ContainerSub{
+        display: flex;
+        flex-direction: row;
+    }
+    &ContainerSubText{
+        flex: 1;
+        font-size: 14px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+    &ContainerSubTwoTextList{
+        font-size: 14px;
+        margin-right: 20px;
+        margin-left: 7px;
+        margin-bottom: 20px;
+        margin-top: -15px;
+    }
+    &ContainerSubTwoHeading{
+        font-size: 23px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+    &ContainerSubDownload{
+        flex: 0 0 35%;
+        display: flex;
+        flex-direction: column;
+    }
+    &ContainerSubDownloadLink{
+        text-decoration: none;
+        background-color: #002147;
+        padding: 5px;
+        text-align: center;
+        margin-top: 10px;
+        border-radius: 4px;
+        color: white;
+        font-size: 18px;
+    }
+
+}
