@@ -1,5 +1,10 @@
 from django.db import models
 from django_countries.fields import CountryField
+from datetime import date
+
+
+
+
 
 class Faculty(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -31,14 +36,6 @@ class CourseOfStudy(models.Model):
     def __str__(self):
         return f"{self.name} ({self.department.name})"
 
-class Course(models.Model):
-    code = models.CharField(max_length=10, unique=True)
-    title = models.CharField(max_length=200)
-    department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='courses')
-
-    def __str__(self):
-        return f"{self.code} - {self.title}"
-
 
 class PersonalStatement(models.Model):
     personal_statement = models.FileField(upload_to='personal_statement/')
@@ -53,26 +50,13 @@ class PersonalStatement(models.Model):
 
 class UndergraduateApplication(models.Model):
     GENDER = [("M", "Male"), ("F", "Female")]
-    DAY_OF_BIRTH = [
-        ("1", "1"), ("2", "2"), ("3", "3"),("4", "4"),("5", "5"),("6", "6"),("7", "7"),("8", "8"),("9", "9"),("10", "10"),
-        ("11", "11"),("12", "12"),("13", "13"),("14", "14"),("15", "15"),("16", "16"),("17", "17"),("18", "18"),("19", "19"),("20", "20"),
-        ("21", "21"),("22", "22"),("23", "23"),("24", "24"),("25", "25"),("26", "26"),("27", "27"),("28", "28"),("29", "29"),("30", "30"),("31", "31"),]
-    MONTH_OF_BIRTH = [
-        ("Ja", "January"), ("Fe", "Febraury"),("Ma", "March"),("Ap", "April"),("My", "May"),("Jn", "June"),
-        ("Jy", "July"),("Ag", "August"),("Sp", "September"),("Oc", "October"),("Nv", "November"),("Dc", "December"),]
-    YEAR_OF_BIRTH = [
-        ("23", "2023"), ("22", "2022"),("21", "2021"),("20", "2020"),("19", "2019"),("18", "2018"),("17", "2017"),
-        ("16", "2016"),("15", "2015"),("14", "2014"),("13", "2013"),("12", "2012"),("11", "2011"),("10", "2010"),]
-    EMERGENCY_RELATIONSHIP = [("B", "Brother"), ("S", "Sister"),("F", "Father"),("M", "Mother"), ("O", "Other"),]
-  
+   
     # Bio Data
      # Bio Data
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     gender = models.CharField(max_length=15, choices=GENDER)
-    day_of_birth = models.CharField(max_length=15, choices=DAY_OF_BIRTH)
-    month_of_birth = models.CharField(max_length=15, choices=MONTH_OF_BIRTH)
-    year_of_birth = models.CharField(max_length=15, choices=YEAR_OF_BIRTH)
+    dob = models.DateField(null=True, blank=True)
     email = models.EmailField(max_length=255)
     phone_number = models.CharField(max_length=255)
     address_1 = models.CharField(max_length=255)
@@ -82,49 +66,8 @@ class UndergraduateApplication(models.Model):
     postal_code = models.CharField(max_length=255)
     country = CountryField()
     
-        # Educational Information
-    school_name = models.CharField(max_length=255)
-    school_address_1 = models.CharField(max_length=255)
-    school_address_2 = models.CharField(max_length=255)
-    school_city = models.CharField(max_length=255)
-    school_state_province = models.CharField(max_length=255)
-    school_postal_code = models.CharField(max_length=255)
-    school_year_graduated = models.CharField(max_length=255)
-
-    # Emergency contact details
-    emergency_first_name = models.CharField(max_length=255)
-    emergency_last_name = models.CharField(max_length=255)
-    emergency_email = models.EmailField(max_length=255)
-    emergency_phone_number = models.CharField(max_length=255)
-    emergency_address_1 = models.CharField(max_length=255)
-    emergency_address_2 = models.CharField(max_length=255)
-    emergency_city = models.CharField(max_length=255)
-    emergency_postal_code = models.CharField(max_length=255)
-    emergency_country = CountryField( )
-    emergency_relationship = models.CharField(max_length=15, choices=EMERGENCY_RELATIONSHIP)
-
-    # Refreee
-    referee_first_name = models.CharField(max_length=255)
-    referee_last_name = models.CharField(max_length=255)
-    referee_email = models.EmailField(max_length=255)
-    referee_phone_number = models.CharField(max_length=255)
-    referee_address_1 = models.CharField(max_length=255)
-    referee_address_2 = models.CharField(max_length=255)
-    referee_city = models.CharField(max_length=255)
-    referee_postal_code = models.CharField(max_length=255)
-    referee_state_province = models.CharField(max_length=255)
-    referee_country = CountryField()
-
-
         # course details
-    course = models.ForeignKey(Course, on_delete=models.DO_NOTHING)
-
-    # uploads
-    personal_statement = models.FileField(upload_to='documents/')
-    # high_secondary_school_result = models.FileField(upload_to='documents/')
-
-    image = models.ImageField(upload_to='Images/')
-
+    course_of_study = models.ForeignKey(CourseOfStudy, on_delete=models.DO_NOTHING)
 
 
 
@@ -158,7 +101,7 @@ class ScholarshipApplication(models.Model):
     state_province = models.CharField(max_length=255)
     postal_code = models.CharField(max_length=255)
     country = CountryField( )
-    course_applied = models.ForeignKey(Course, on_delete=models.DO_NOTHING)
+    course_applied = models.ForeignKey(CourseOfStudy, on_delete=models.DO_NOTHING)
     # scholarship 
     about_yourself = models.CharField(max_length=255)
     career_plans = models.CharField(max_length=255)

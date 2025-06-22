@@ -71,13 +71,6 @@ class NonAcademicStaff(models.Model):
 
 
 
-# aspirant students
-class AspirantStudent(models.Model):
-    admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    def __str__(self):
-        return str(self.admin.email)
-
-
 """
 from studentportal.models import Student
 @receiver(post_save, sender=CustomUser)

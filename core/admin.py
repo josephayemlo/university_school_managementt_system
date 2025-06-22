@@ -1,8 +1,10 @@
 from django.contrib import admin
-from accounts.models import AcademicStaff, NonAcademicStaff, Admin, AspirantStudent
+from accounts.models import AcademicStaff, NonAcademicStaff, Admin
 from .models import UndergraduateApplication,  ScholarshipApplication, PersonalStatement
 from django.contrib.auth import get_user_model
-from studentportal.models import Student
+from studentportal.models import Student, AspirantStudent
+
+
 
 User = get_user_model()
 

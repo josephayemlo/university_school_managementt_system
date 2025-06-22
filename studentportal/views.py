@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,  get_object_or_404
 from accounts.forms import AspirantStudentForm 
-from accounts.models import AspirantStudent
+from studentportal.models import AspirantStudent
 from django.contrib import messages
 from django.urls import reverse
 
