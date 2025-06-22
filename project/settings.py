@@ -46,6 +46,10 @@ MIDDLEWARE = [
     # cutom login middleware
     # 'accounts.middleware.LoginCheckMiddleWare',
 
+    'core.middleware.ForceProfileCompletionMiddleware',
+
+
+
 ]
 
 ROOT_URLCONF = 'project.urls'

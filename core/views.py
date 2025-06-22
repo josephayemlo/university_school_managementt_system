@@ -187,7 +187,7 @@ Course Applied: {course_of_study}
                         """,
                         from_email='no-reply@imperialCollege.edu',
                         to=['josephayemlojay@gmail.com'],
-                        no_reply=[email]
+                        reply_to=[email]
                     ).send()
 
                     EmailMessage(
