@@ -17,11 +17,8 @@ def aspirant_student_home (request):
 
 def edit_aspirant_student(request):
   
-    print("🚀 View loaded")
     aspirantstudent = get_object_or_404(AspirantStudent, admin=request.user)
-    print('user gotten sucess')
     form = AspirantStudentForm(request.POST or None, instance=aspirantstudent)
-    print("form loaded")
     context = {
         'form': form,
         'page_title': 'Edit Aspirant Student',
@@ -29,10 +26,8 @@ def edit_aspirant_student(request):
     print('context is valid')
 
     if request.method == 'POST':
-        print('requst is post')
         try:
             if form.is_valid():
-                print('form is valid')
                 # Save CustomUser info
                 admin = aspirantstudent.admin
                 admin.first_name = form.cleaned_data.get('first_name')
@@ -49,12 +44,10 @@ def edit_aspirant_student(request):
 
                 # Save AspirantStudent info
                 form.save()
-                print('form saved sucess')
 
                 messages.success(request, "Profile Updated!")
                 return redirect(reverse('edit_aspirant_student'))
             else:
-                print("❌ Form is invalid")
                 print("Errors:", form.errors.as_json())
                 messages.error(request, "Invalid data provided.")
         except Exception as e:

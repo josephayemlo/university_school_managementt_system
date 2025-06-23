@@ -5,12 +5,11 @@ from django.shortcuts import redirect
 from django.urls import reverse
 
 
-class ForceProfileCompletionMiddleware:
+class ForceAspirantProfileCompletionMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
 
     def __call__(self, request):
-        print("🌐 Middleware triggered")
 
         allowed_paths = [
             "/student/edit/aspirant_student",
@@ -29,6 +28,8 @@ class ForceProfileCompletionMiddleware:
 
         # Only check for logged-in users
         ASPIRANT_USER_TYPE = 5
+        # this is because in the custom user model, usertype is in char not int and
+        # here we use it as int so we must force it
         # if you dont force the user type to be int, this logic will not work
         if request.user.is_authenticated and int(request.user.user_type) == ASPIRANT_USER_TYPE:
             try:

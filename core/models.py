@@ -6,6 +6,7 @@ from datetime import date
 
 
 
+
 class Faculty(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
@@ -44,6 +45,102 @@ class PersonalStatement(models.Model):
 
     def __str__(self):
         return self.title
+
+
+
+class Course(models.Model):
+    COURSE_CATEGORIES = (
+        ('core', 'Core'),
+        ('elective', 'Elective'),
+        ('general', 'General'),  # Optional
+    )
+
+    code = models.CharField(max_length=10)
+    title = models.CharField(max_length=100)
+    unit = models.PositiveIntegerField()
+    semester = models.CharField(max_length=10, choices=[('first', 'First'), ('second', 'Second')])
+    level = models.PositiveIntegerField()
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    category = models.CharField(max_length=10, choices=COURSE_CATEGORIES)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+class RegisteredCourse(models.Model):
+    student = models.ForeignKey('studentportal.Student', on_delete=models.CASCADE)
+    course = models.ForeignKey('core.Course', on_delete=models.CASCADE)
+    session = models.CharField(max_length=20)
+    semester = models.CharField(max_length=10)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=False)
+    approved_by = models.ForeignKey('accounts.CustomUser', on_delete=models.SET_NULL, null=True, blank=True)
+    approved_at = models.DateTimeField(null=True, blank=True)
+    is_repeat_course = models.BooleanField(default=False)
+    is_locked = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.student} - {self.course.code}"
+
+class StudentResult(models.Model):
+    student = models.ForeignKey('studentportal.Student', on_delete=models.CASCADE)
+    registered_course = models.OneToOneField('RegisteredCourse', on_delete=models.CASCADE)
+
+    session = models.CharField(max_length=20)
+    semester = models.CharField(max_length=10)
+
+    ca1 = models.DecimalField(max_digits=5, decimal_places=2, default=0)  # e.g. 10.0
+    ca2 = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    exam = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+
+    grade_point = models.DecimalField(max_digits=4, decimal_places=2, default=0)
+    remark = models.TextField(null=True, blank=True)
+    is_released = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    updated_by = models.ForeignKey('accounts.CustomUser', on_delete=models.SET_NULL, null=True, blank=True)
+
+    @property
+    def total(self):
+        return self.ca1 + self.ca2 + self.exam
+
+    def grade_letter(self):
+        total = self.total
+        if total >= 70:
+            return 'A'
+        elif total >= 60:
+            return 'B'
+        elif total >= 50:
+            return 'C'
+        elif total >= 45:
+            return 'D'
+        elif total >= 40:
+            return 'E'
+        else:
+            return 'F'
+
+
+
+class SemesterResult(models.Model):
+    student = models.ForeignKey('studentportal.Student', on_delete=models.CASCADE)
+    session = models.CharField(max_length=20)
+    semester = models.CharField(max_length=10)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

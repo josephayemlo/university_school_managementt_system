@@ -10,11 +10,27 @@ import os
 from django.http.response import HttpResponse
 from django.conf import settings
 # Create your views here.
-from .forms import FacultyForm, DepartmentForm, CourseOfStudyForm
+from .forms import FacultyForm, DepartmentForm, CourseOfStudyForm, CourseForm
 from django.contrib import messages
 from studentportal.models import AspirantStudent
 import random
 from django.db import transaction
+
+
+
+
+
+
+def add_course(request):
+    form = CourseForm(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        messages.success(request, 'Course added sucessfully')
+        return redirect('management_home')
+    return render(request, 'core/add_course.html', {'form': form})
+
+
+
 
 
 

@@ -46,7 +46,7 @@ MIDDLEWARE = [
     # cutom login middleware
     # 'accounts.middleware.LoginCheckMiddleWare',
 
-    'core.middleware.ForceProfileCompletionMiddleware',
+    'core.middleware.ForceAspirantProfileCompletionMiddleware',
 
 
 

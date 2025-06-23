@@ -1,7 +1,6 @@
 from django.db import models
 
 from django.conf import settings
-from core.models import CourseOfStudy
 from django_countries.fields import CountryField
 
 # Create your models here.
@@ -15,7 +14,7 @@ class AspirantStudent(models.Model):
         ('rejected', 'Rejected'),
     ]
     admin = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    course_applied = models.ForeignKey(CourseOfStudy, on_delete=models.SET_NULL, null=True, blank=True)
+    course_applied = models.ForeignKey('core.CourseOfStudy', on_delete=models.SET_NULL, null=True, blank=True)
     phone_number = models.CharField(max_length=255)
     address_1 = models.CharField(max_length=255)
     address_2 = models.CharField(max_length=255)

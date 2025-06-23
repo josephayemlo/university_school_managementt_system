@@ -2,7 +2,7 @@ from django import forms
 from django.forms import TextInput,DateInput, EmailInput, Textarea
 from .models import UndergraduateApplication, ScholarshipApplication
 from django.core.exceptions import ValidationError
-from .models import Faculty, Department, CourseOfStudy
+from .models import *
 
 class FacultyForm(forms.ModelForm):
     class Meta:
@@ -19,6 +19,11 @@ class CourseOfStudyForm(forms.ModelForm):
     class Meta:
         model = CourseOfStudy
         fields = ['name', 'department', 'duration_years']
+
+class CourseForm(forms.ModelForm):
+    class Meta:
+        model = Course
+        fields = ['code', 'title', 'unit','semester', 'level', 'department','category']
 
 
 # Scholarship Form

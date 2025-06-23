@@ -1,9 +1,8 @@
 from django.contrib import admin
 from accounts.models import AcademicStaff, NonAcademicStaff, Admin
-from .models import UndergraduateApplication,  ScholarshipApplication, PersonalStatement
+from .models import *
 from django.contrib.auth import get_user_model
 from studentportal.models import Student, AspirantStudent
-
 
 
 User = get_user_model()
@@ -19,6 +18,12 @@ admin.site.register(UndergraduateApplication)
 admin.site.register(ScholarshipApplication)
 admin.site.register(PersonalStatement)
 admin.site.register(AspirantStudent)
+admin.site.register(Course)
+admin.site.register(StudentResult)
+admin.site.register(SemesterResult)
+admin.site.register(RegisteredCourse)
+
+
 
 
 
