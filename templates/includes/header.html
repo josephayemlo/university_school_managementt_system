@@ -3,6 +3,8 @@
     <div class="navigationFixed">
         <a href="{% url 'home' %}"class="navigationFixedBtn">Home</a>
         <a href="{% url 'apply' %}"class="navigationFixedBtn">Apply here</a>
+        <a href="{% url 'student_home' %}"class="navigationFixedBtn">View Student Page</a>
+
 
 
 
@@ -11,6 +13,8 @@
             <a href="{% url 'logout_user' %}"class="navigationFixedBtn">Logout</a>
             <a href="{% url 'scholarship_application_form' %}"class="navigationFixedBtn">Apply Scholarship</a>
             <a href="{% url 'management_home' %}"class="navigationFixedBtn">Admin</a>
+            <a href="{% url 'student_portal' %}"class="navigationFixedBtn">Student Portal</a>
+
 
 
        {% else %}

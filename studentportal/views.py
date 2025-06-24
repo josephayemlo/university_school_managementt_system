@@ -9,8 +9,16 @@ from .models import *
 from .forms import *
 # Create your views here.
 
+
+
+def student_portal (request):
+    return render(request, 'student/student_portal.html')
+
+
+
+
 def course_registration(request):
-    return render (request, 'student/course_registration.html')
+    return render (request, 'student/partials/course_registration.html')
 
 def student_available_course(request):
     student = get_object_or_404(Student, admin=request.user)
@@ -23,7 +31,7 @@ def student_available_course(request):
         course_of_study=student.course_of_study
     ).select_related('course')
 
-    return render(request, 'student/student_available_course.html', {
+    return render(request, 'student/partials/student_available_course.html', {
         'student': student,
         'courses': courses,
         'semester': current_calendar.semester,
@@ -71,14 +79,14 @@ def register_courses(request):
         previously_registered_courses = RegisteredCourse.objects.filter(
         student=student,
         academic_calendar=current_calendar
-        ).values_list('course_id', flat=True)
+        ).values_list('course_id', flat=True) #this just allows us to get all id's of already registered course instead of returning the model
 
         form = CourseRegistrationForm(
             available_courses=available_courses,
             initial={'courses': previously_registered_courses}
         )
 
-    return render(request, 'student/register_courses.html', {
+    return render(request, 'student/partials/register_courses.html', {
         'form': form,
         'student': student,
         'semester': current_calendar.semester,

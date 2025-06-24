@@ -953,6 +953,76 @@ body {
   margin-right: 20px;
 }
 
+.studentadmin {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-size: cover;
+  height: 100vh;
+  color: whitesmoke;
+}
+.studentadmin .topstudentadminContainerNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: whitesmoke;
+  flex-shrink: 0;
+  background-color: #0a2b42;
+}
+.studentadmin .studentadminContainer {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+}
+.studentadmin .studentadminContainer .leftNavContainer {
+  background-color: #0a2b42;
+  color: whitesmoke;
+  padding: 1rem;
+  flex: 0 0 20%;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-right: 1px solid #ddd;
+}
+.studentadmin .studentadminContainer .leftNavContainer .leftNavContainerBtn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: whitesmoke;
+  font-size: 14px;
+  font-weight: 500;
+  border-left: 4px solid transparent;
+  transition: 0.2s ease-in-out;
+  border-radius: 4px;
+}
+.studentadmin .studentadminContainer .leftNavContainer .leftNavContainerBtn i {
+  font-size: 16px;
+}
+.studentadmin .studentadminContainer .leftNavContainer .leftNavContainerBtn:hover {
+  background-color: #e0f7fa;
+  border-left: 4px solid #00acc1;
+  color: #004d40;
+}
+.studentadmin .studentadminContainer .leftNavContainer .leftNavContainerBtn.active {
+  background-color: #b2ebf2;
+  border-left: 4px solid #00acc1;
+  color: #004d40;
+}
+.studentadmin .studentadminContainer .rightNavContainer {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  height: 100%;
+  color: black;
+}
+
 .admin {
   height: 100vh;
   display: flex;
