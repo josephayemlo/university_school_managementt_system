@@ -4,6 +4,7 @@ from studentportal.models import AspirantStudent, Student
 from accounts.models import CustomUser
 from django.core.mail import send_mail
 from django.conf import settings
+import random
 
 # Step 1: Capture the previous status before saving
 @receiver(pre_save, sender=AspirantStudent)
@@ -37,8 +38,19 @@ def handle_admission_status_change(sender, instance, created, **kwargs):
         print("✅ user_type updated to student")
 
         # Create student profile if it doesn't exist yet
+        """
+        leaving the matric number field empty will result it unique contraint issue
+        because from the student model the field is unique thus we cant have two 
+        empty matric number field
+
+        what we will do later here, create a course addmitted field in the aspirant model
+        get the course from here then dynamically assign matric number from here based on course and department
+        """
+
+        custom_matric = "CSA/2025/"+ str(random.randint(2001, 2002))
+
         if not hasattr(user, 'student'):
-            Student.objects.create(admin=user)
+            Student.objects.create(admin=user, matric_no =custom_matric)
             print("✅ student profile created")
 
         # Send confirmation email
