@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<h2>Course Registration — {{ student.level }}L ({{ semester }} Semester)</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register Courses</button>
+</form>
+
+
+{% endblock content%}

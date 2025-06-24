@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<h1>Course Registeration</h1>
+{% if messages %}
+<div class="message-container">
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+      {{ message }}
+    </div>
+  {% endfor %}
+</div>
+{% endif %}
+<h2>Courses for {{ student.course_of_study.name }} - {{ student.level }}L ({{ semester }} Semester)</h2>
+
+{% if courses %}
+    <ul>
+        {% for lc in courses %}
+            <li>{{ lc.course.code }} - {{ lc.course.title }}{% if not lc.is_compulsory %} (Elective){% endif %}</li>
+        {% endfor %}
+<a href="{% url 'register_courses' %}">Register Course</a>
+
+    </ul>
+{% else %}
+    <p>No courses found for your level and semester.</p>
+{% endif %}
+
+
+
+
+{% endblock content%}

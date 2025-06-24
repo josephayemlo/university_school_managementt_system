@@ -22,6 +22,10 @@ admin.site.register(Course)
 admin.site.register(StudentResult)
 admin.site.register(SemesterResult)
 admin.site.register(RegisteredCourse)
+admin.site.register(LevelCourse)
+admin.site.register(AcademicCalendar)
+
+
 
 
 
