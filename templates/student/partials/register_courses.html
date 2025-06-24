@@ -1,15 +1,14 @@
 {% load static %}
 
-{% block content %}
 
 
 <h2>Course Registration — {{ student.level }}L ({{ semester }} Semester)</h2>
 
-<form method="post">
+<form class="ajax_form" method="post" action="{% url 'register_courses' %}">
+
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Register Courses</button>
 </form>
 
-
-{% endblock content%}
+<div id="ajax_form_response"></div>

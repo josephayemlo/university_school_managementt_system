@@ -8,89 +8,104 @@
 {% endblock header %}
 
 
-
-
-
 <section class="studentadmin">
     <div class="topstudentadminContainerNav">
         <div class="topstudentadminContainerNavLeft"> 
-<h1>Student portal </h1>
-
+            <h1>Student portal</h1>
         </div>
         <div class="topstudentadminContainerNavRight">
             <h1>Student Dashboard</h1>
-            <!-- <a href="{% url 'home'%}" class="btnWhite">Home</a> -->
-            {% if messages %}
-            <div class="message-container">
-              {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">
-                  {{ message }}
-                </div>
-              {% endfor %}
-            </div>
-          {% endif %}
+            
         </div>
-
     </div>
     
     <div class="studentadminContainer">
         <div class="leftNavContainer">
             <a class="leftNavContainerBtn" href="{% url 'student_portal' %}">
-              <i class="fas fa-tachometer-alt"></i> Dashboard
+                <i class="fas fa-tachometer-alt"></i> Dashboard
             </a>
-            <a class="leftNavContainerBtn ajax-link" href="{% url 'course_registration' %}">
-              <i class="fas fa-user-plus"></i> Course Registration
+            <a class="leftNavContainerBtn ajax_link" href="{% url 'course_registration' %}">
+                <i class="fas fa-user-plus"></i> Course Registration
             </a>
-            <a class="leftNavContainerBtn ajax-link" href="{% url 'student_available_course' %}">
-              <i class="fas fa-user-plus"></i> Available Courses
+            <a class="leftNavContainerBtn ajax_link" href="{% url 'student_available_course' %}">
+                <i class="fas fa-user-plus"></i> Available Courses
             </a>
-            <a class="leftNavContainerBtn ajax-link" href="{% url 'register_courses' %}">
-              <i class="fas fa-user-plus"></i> Register Semester Course
+            <a class="leftNavContainerBtn ajax_link" href="{% url 'register_courses' %}">
+                <i class="fas fa-user-plus"></i> Register Semester Course
             </a>
-          
-           
             <a class="leftNavContainerBtn" href="{% url 'logout_user' %}">
-              <i class="fas fa-briefcase"></i> Logout
+                <i class="fas fa-briefcase"></i> Logout
             </a>
         </div>
-          
-        <div class="rightNavContainer" id="rightNavContainer">    
+        
+        <div class="rightNavContainer" id="ajaxContainer">
 
-           
-          
+          <h1>Main content</h1>
+            <!-- AJAX content will load here -->
         </div>
-    
-       
     </div>
-
-
 </section>
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function() {
-      $(".ajax-link").click(function(e) {
-        e.preventDefault();  // Stop full page reload
-    
-        const url = $(this).attr("href");
-    
-        // Optional: show loading spinner or message
-        $("#rightNavContainer").html("<p>Loading...</p>");
-    
-        // AJAX request
-        $.ajax({
-          url: url,
-          type: "GET",
-          success: function(response) {
-            $("#rightNavContainer").html(response);
-          },
-          error: function(xhr) {
-            $("#rightNavContainer").html("<p>Error loading content</p>");
-          }
-        });
-      });
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+      const cookies = document.cookie.split(";");
+      for (let cookie of cookies) {
+        cookie = cookie.trim();
+        if (cookie.startsWith(name + "=")) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  // ✅ Handle AJAX link clicks
+  $(document).on("click", ".ajax_link", function(e) {
+    e.preventDefault();
+    const url = $(this).attr("href");
+    $("#ajaxContainer").html("<p>Loading...</p>");
+
+    $.ajax({
+      url: url,
+      type: "GET",
+      success: function(response) {
+        $("#ajaxContainer").html(response);
+      },
+      error: function(xhr) {
+        $("#ajaxContainer").html("<p style='color:red;'>Error loading page.</p>");
+      }
     });
-    </script>
+  });
+
+  // ✅ Handle AJAX form submission
+  $(document).on("submit", "form.ajax_form", function(e) {
+
+    e.preventDefault();
+
+    const form = $(this);
+    const url = form.attr("action");
+    const formData = form.serialize();
+
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: formData,
+      headers: {
+        "X-CSRFToken": getCookie("csrftoken")
+      },
+      success: function(response) {
+        $("#ajaxContainer").html(response);
+      },
+      error: function(xhr) {
+        $("#ajaxContainer").html("<p style='color:red;'>Submission failed.</p>");
+      }
+    });
+  });
+</script>
         <!-- Exluding footer -->
         {% block footer %} 
         {% endblock footer %}

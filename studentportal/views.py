@@ -73,7 +73,9 @@ def register_courses(request):
             ])
 
             messages.success(request, "Courses registered successfully.")
-            return redirect('student_available_course')
+            print('course registered')
+            # with redirect, django cannot redirct to a parital template so the best option is to return a rendered page
+            return render(request, 'student/partials/course_registration_success.html')
     else:
          # GET request – preselect previously registered courses
         previously_registered_courses = RegisteredCourse.objects.filter(
