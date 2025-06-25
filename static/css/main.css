@@ -244,6 +244,73 @@ body {
   width: 100%;
 }
 
+.tableContainer {
+  padding: 50px;
+}
+
+.tableHeading {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid rgba(255, 255, 255, 0.193);
+  border-bottom: none;
+  padding: 8px;
+  font-weight: bold;
+}
+.tableHeading1 {
+  flex: 0 0 10%;
+  padding: 8px;
+}
+.tableHeading2 {
+  flex: 1;
+  padding: 8px;
+}
+.tableHeading3 {
+  flex: 1;
+  padding: 8px;
+}
+.tableHeading4 {
+  flex: 0 0 10%;
+  padding: 8px;
+}
+.tableHeading5 {
+  flex: 1;
+  padding: 8px;
+}
+.tableHeading5Btn1 {
+  background-color: #3498db;
+  color: black;
+  padding: 6px;
+  text-decoration: none;
+  border-radius: 2px;
+}
+.tableHeading5Btn1:hover {
+  background-color: white;
+  color: black;
+}
+.tableHeading5Btn2 {
+  background-color: #e74c3c;
+  color: black;
+  padding: 6px;
+  text-decoration: none;
+  border-radius: 2px;
+}
+.tableHeading5Btn2:hover {
+  background-color: red;
+}
+
+.tableData {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid rgba(255, 255, 255, 0.199);
+  border-bottom: none;
+  padding: 8px;
+  font-size: 20px;
+}
+
+.tableData:last-child {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.203);
+}
+
 .navigationFirst {
   margin-top: 45px;
   border-bottom: 5px solid whitesmoke;
@@ -857,73 +924,6 @@ body {
   flex-direction: column;
 }
 
-.tableContainer {
-  padding: 50px;
-}
-
-.tableHeading {
-  display: flex;
-  flex-direction: row;
-  border: 2px solid rgba(255, 255, 255, 0.193);
-  border-bottom: none;
-  padding: 8px;
-  font-weight: bold;
-}
-.tableHeading1 {
-  flex: 0 0 10%;
-  padding: 8px;
-}
-.tableHeading2 {
-  flex: 1;
-  padding: 8px;
-}
-.tableHeading3 {
-  flex: 1;
-  padding: 8px;
-}
-.tableHeading4 {
-  flex: 0 0 10%;
-  padding: 8px;
-}
-.tableHeading5 {
-  flex: 1;
-  padding: 8px;
-}
-.tableHeading5Btn1 {
-  background-color: #3498db;
-  color: black;
-  padding: 6px;
-  text-decoration: none;
-  border-radius: 2px;
-}
-.tableHeading5Btn1:hover {
-  background-color: white;
-  color: black;
-}
-.tableHeading5Btn2 {
-  background-color: #e74c3c;
-  color: black;
-  padding: 6px;
-  text-decoration: none;
-  border-radius: 2px;
-}
-.tableHeading5Btn2:hover {
-  background-color: red;
-}
-
-.tableData {
-  display: flex;
-  flex-direction: row;
-  border: 2px solid rgba(255, 255, 255, 0.199);
-  border-bottom: none;
-  padding: 8px;
-  font-size: 20px;
-}
-
-.tableData:last-child {
-  border-bottom: 2px solid rgba(255, 255, 255, 0.203);
-}
-
 .studentList {
   background-image: linear-gradient(90deg, black 0%, black 25%, rgba(0, 0, 0, 0.728) 70%, black 99%), url("../images/student2.jpg");
   background-size: cover;
@@ -1017,10 +1017,13 @@ body {
 }
 .studentadmin .studentadminContainer .rightNavContainer {
   flex: 1;
-  padding: 2rem;
+  padding: 2px;
   overflow-y: auto;
   height: 100%;
-  color: black;
+  background-image: linear-gradient(90deg, #0a2b42 0%, #0a2b42 25%, rgba(0, 0, 0, 0.728) 70%, #0a2b42 99%), url("../images/student2.jpg");
+  background-size: cover;
+  height: 100vh;
+  color: whitesmoke;
 }
 
 .admin {

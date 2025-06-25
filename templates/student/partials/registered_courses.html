@@ -1,0 +1,30 @@
+
+
+<div class="registeredCourseList">
+   
+    
+    <div class="tableContainer ">
+      <div class="tableHeading ">
+          <span class="tableHeading1 ">SN</span>
+          <span class="tableHeading2">Title</span>
+          <span class="tableHeading3">Code</span>
+          <span class="tableHeading4">Category</span>
+          <span class="tableHeading5">Level</span>
+      </div>
+      {% if registered_courses  %}
+            {% for item in registered_courses %}
+      <div class="tableData  ">
+          <span class="tableHeading1">{{ forloop.counter }}</span>
+          <span class="tableHeading2">{{item.course.title}} </span>
+          <span class="tableHeading3">{{item.course.code}}</span>
+          <span class="tableHeading4">{{item.course.category}}</span>
+          <span class="tableHeading5"> {{item.course.level}} </span>
+      </div>
+
+      {% endfor %}
+      {% else %}
+              <h2>No course available</h2>
+      {% endif %}
+    </div>
+
+</div>

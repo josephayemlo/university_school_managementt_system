@@ -48,9 +48,15 @@ MIDDLEWARE = [
 
     'core.middleware.ForceAspirantProfileCompletionMiddleware',
 
-
+    # remove this, its meant for development only
+    # 'project.temporaryMiddleware.DisableStaticCacheMiddleware'
 
 ]
+# Temporary middleware settings for staticfiles. Remember to remove this
+# if DEBUG:
+#     MIDDLEWARE.insert(0, 'project.temporaryMiddleware.DisableStaticCacheMiddleware')
+
+
 
 ROOT_URLCONF = 'project.urls'
 

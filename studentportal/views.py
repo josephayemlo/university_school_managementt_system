@@ -7,12 +7,86 @@ from django.contrib.auth import update_session_auth_hash
 from core.models import *
 from .models import *
 from .forms import *
+from itertools import groupby
+from operator import attrgetter
 # Create your views here.
+
+def previous_registered_courses(request):
+    student = get_object_or_404(Student, admin=request.user)
+    academic_calendar = AcademicCalendar.objects.get(is_current=False)
+
+    # Get all previously registered courses
+    registered_courses = RegisteredCourse.objects.filter(
+        student=student,
+        academic_calendar=academic_calendar
+    ).select_related('course', 'academic_calendar')
+
+    # Sort by level, semester, session for grouping
+    registered_courses = sorted(
+        registered_courses,
+        key=lambda x: (x.course.level, x.academic_calendar.semester)
+    )
+
+    # Group by (level, semester, session)
+    grouped = []
+    for key, group in groupby(registered_courses, key=lambda x: (x.course.level, x.academic_calendar.semester)):
+        level, semester = key
+        group_list = list(group)
+        grouped.append({
+            'level': level,
+            'semester': semester,
+            'timestamp': group_list[0].timestamp if group_list else None,
+            'courses': group_list,
+        })
+
+    return render(request, 'student/partials/previous_registered_courses.html', {
+        'grouped_registrations': grouped
+    })
+
+def previous_course_registration_details(request, level, semester):
+    student = get_object_or_404(Student, admin=request.user)
+
+    # Find the matching academic calendar with that session and semester
+    academic_calendar = get_object_or_404(
+        AcademicCalendar,
+        semester=semester,
+        is_current=False
+    )
+
+    # Get all registered courses that match level + semester + session
+    courses = RegisteredCourse.objects.filter(
+        student=student,
+        academic_calendar=academic_calendar,
+        course__level=level
+    ).select_related('course')
+
+    return render(request, 'student/partials/previous_registration_details.html', {
+        'courses': courses,
+        'level': level,
+        'semester': semester,
+    })
+
+
+def registered_courses(request):
+    student = get_object_or_404(Student, admin=request.user)
+
+    academic_calendar = AcademicCalendar.objects.get(is_current=True)
+
+    registered_courses = RegisteredCourse.objects.filter(
+        student=student,
+        academic_calendar = academic_calendar
+
+                                                         )
+    return render (request, 'student/partials/registered_courses.html', { 'registered_courses':registered_courses })
+
+
 
 
 
 def student_portal (request):
+  
     return render(request, 'student/student_portal.html')
+
 
 
 

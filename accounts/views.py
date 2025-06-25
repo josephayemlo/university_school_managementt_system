@@ -15,7 +15,7 @@ def login_page (request):
         elif request.user.user_type == '3':
             return redirect(reverse("nonacademicstaff_home"))
         elif request.user.user_type == '4':
-            return redirect(reverse("student_home"))
+            return redirect(reverse("student_portal"))
         else:
             return redirect(reverse("aspirant_student_home"))
     return render(request, 'login.html')
@@ -34,7 +34,7 @@ def login_user(request, **kwargs):
             elif request.user.user_type == '3':
                 return redirect(reverse("nonacademicstaff_home"))
             elif request.user.user_type == '4':
-                return redirect(reverse("student_home"))
+                return redirect(reverse("student_portal"))
             else:
                 return redirect(reverse("aspirant_student_home"))
         else:

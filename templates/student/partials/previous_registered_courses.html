@@ -1,0 +1,35 @@
+<h2>Previous Registered Courses</h2>
+
+<div class="registeredCourseList">
+  <div class="tableContainer">
+    <div class="tableHeading">
+      <span class="tableHeading1">SN</span>
+      <span class="tableHeading2">Session</span>
+      <span class="tableHeading3">Semester</span>
+      <span class="tableHeading4">Level</span>
+      <span class="tableHeading5">Submitted</span>
+      <span class="tableHeading5"></span>
+    </div>
+
+    {% if grouped_registrations %}
+      {% for item in grouped_registrations %}
+      <div class="tableData">
+        <span class="tableHeading1">{{ forloop.counter }}</span>
+        <span class="tableHeading2">{{ item.session }}</span>
+        <span class="tableHeading3">{{ item.semester }}</span>
+        <span class="tableHeading4">{{ item.level }}</span>
+        <span class="tableHeading5">{{ item.timestamp }}</span>
+        <span class="tableHeading5">
+            <a href="{% url 'previous_course_registration_details' item.level item.semester %}"
+            class="tableHeading5Btn1 ajax_link">
+            Details
+         </a>
+         
+        </span>
+      </div>
+      {% endfor %}
+    {% else %}
+      <h2>No course available</h2>
+    {% endif %}
+  </div>
+</div>

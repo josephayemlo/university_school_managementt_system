@@ -75,7 +75,7 @@ class Course(models.Model):
     def __str__(self):
         return self.title
 
-
+# this is used to activate a session only one calalender can take is_current=True
 class AcademicCalendar(models.Model):
     session = models.CharField(max_length=20)  # e.g., '2024/2025'
     semester = models.CharField(max_length=10, choices=[('First', 'First'), ('Second', 'Second')])

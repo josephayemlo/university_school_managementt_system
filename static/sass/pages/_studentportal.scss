@@ -72,11 +72,20 @@
   
       .rightNavContainer {
         flex: 1;
-        padding: 2rem;
+        padding: 2px;
         overflow-y: auto;
         height: 100%;
-        color: black;
-      }
+        background-image:linear-gradient(
+          90deg, 
+          #0a2b42 0%, 
+          #0a2b42 25%,
+          rgba(0, 0, 0, 0.728) 70%,
+          #0a2b42 99%), url("../images/student2.jpg");
+          background-size: cover;
+          height: 100vh;
+          color: whitesmoke;
+        }
     }
   }
   
+
