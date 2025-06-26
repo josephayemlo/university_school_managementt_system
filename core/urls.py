@@ -27,7 +27,7 @@ urlpatterns = [
     path('manage_course/', views.manage_course, name='manage_course'),
     path('edit_course/<int:course_id>', views.edit_course, name='edit_course'),
     path('delete_course/<int:course_id>/', views.delete_course, name='delete_course'),
-
+    path('assign_course_to_level/', views.assign_course_to_level, name='assign_course_to_level'),
 
 
 ]

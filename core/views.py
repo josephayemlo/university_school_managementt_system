@@ -16,13 +16,25 @@ from studentportal.models import AspirantStudent
 import random
 from django.db import transaction
 from .models import *
+from django.http import JsonResponse
+
+
+
+def assign_course_to_level(request):
+    return render(request, 'management/partials/assign_course_to_level.html')
+
+
 
 
 def delete_course(request, course_id):
-    course = get_object_or_404(Course, id=course_id)
-    course.delete()
-    messages.success(request, 'Course deleted successfully.')
-    return render(request,'management/partials/success.html')
+    if request.method == 'POST':
+        course = get_object_or_404(Course, id=course_id)
+        course.delete()
+        print("course deleted")
+        messages.success(request, 'Course Deleted Sucessfully')
+        return render(request,'management/partials/success.html')
+    return render(request, 'management/partials/manage_course.html')
+    
 
 
 

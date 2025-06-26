@@ -23,7 +23,10 @@
           <span class="tableHeading3"> 
 
             <a href="{% url  'edit_course' course.id %}" class="tableHeading5Btn1 ajax_link">Edit</a> - 
-            <a href="{% url 'delete_course' course.id %}" onclick="return confirm('Confirm Delete')" class="tableHeading5Btn2 ajax_link">Delete</a>
+            <form method="post" class="ajax_form  ajax_delete_form" action="{% url 'delete_course' course.id %}">
+              {% csrf_token %}
+              <button type="submit" class="tableHeading5Btn2">Delete</button>
+          </form>
           </span>
       </div>
 

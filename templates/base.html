@@ -31,7 +31,7 @@
           {% include 'includes/footer.html' %} 
       {% endblock footer %}
 
-<!-- Javascript File -->
+<!-- Jquery File -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   function getCookie(name) {
@@ -49,9 +49,11 @@
     return cookieValue;
   }
 
-  // ✅ Handle AJAX link clicks
+  // Handle AJAX link clicks
   $(document).on("click", ".ajax_link", function(e) {
     e.preventDefault();
+
+   
     const url = $(this).attr("href");
     $("#ajaxContainer").html("<p>Loading...</p>");
 
