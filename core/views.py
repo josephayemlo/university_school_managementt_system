@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import UndergraduateApplicationForm, ScholarshipApplicationForm
 from accounts.forms import CustomUser
 from accounts.models import CustomUser
@@ -15,19 +15,68 @@ from django.contrib import messages
 from studentportal.models import AspirantStudent
 import random
 from django.db import transaction
+from .models import *
+
+
+def delete_course(request, course_id):
+    course = get_object_or_404(Course, id=course_id)
+    course.delete()
+    messages.success(request, 'Course deleted successfully.')
+    return render(request,'management/partials/success.html')
 
 
 
+def edit_course(request, course_id):
+    course = get_object_or_404(Course, id=course_id)
+
+    if request.method == 'POST':
+        form = CourseForm(request.POST, instance=course)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Course Updated Sucessfully')
+            return render(request,'management/partials/success.html')
+    else:
+        form = CourseForm(instance=course)
+
+    context = {
+        "form": form,
+        "course": course
+    }
+
+    return render(request, 'management/partials/edit_course.html', context)
 
 
+def manage_course(request):
+    course = Course.objects.all()
+    context= {"course":course}
+
+    return render(request, 'management/partials/manage_course.html', context)
+
+def result_and_assessment(request):
+    return render (request, 'management/partials/result_and_assessment_links.html')
+
+
+def department_and_faculty(request):
+    return render (request, 'management/partials/department_and_faculty_links.html')
+
+def session_and_calender(request):
+    return render (request, 'management/partials/session_and_calender_links.html')
+
+
+
+def course_and_academic(request):
+    return render (request, 'management/partials/course_and_academic_links.html')
+
+def student_management(request):
+    return render (request, 'management/partials/student_links.html')
 
 def add_course(request):
     form = CourseForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
         form.save()
         messages.success(request, 'Course added sucessfully')
-        return redirect('management_home')
-    return render(request, 'core/add_course.html', {'form': form})
+        return render(request, 'management/partials/success.html')
+    return render(request, 'management/partials/add_course.html', {'form': form})
 
 
 

@@ -43,3 +43,24 @@
     font-size: 14px;
     margin-bottom: 4rem;
 }
+
+.generalAdminBtn{
+    background-color: #2a5c80;
+    text-decoration: none;
+    color: whitesmoke;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 30px;
+    font-family: Times;
+    text-align: center;
+    display: block;
+
+    &:hover {
+        background-color: #e0f7fa;
+        border-left: 4px solid #00acc1;
+        color: #004d40;
+      }
+
+
+
+}

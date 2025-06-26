@@ -36,6 +36,21 @@
                 <a class="leftNavContainerBtn" href="{% url 'management_home' %}">
                   <i class="fas fa-tachometer-alt"></i> Dashboard
                 </a>
+                <a class="leftNavContainerBtn ajax_link"  href="{% url 'course_and_academic' %}">
+                  <i class="fas fa-tachometer-alt"></i> Course & Academic
+                </a>
+                <a class="leftNavContainerBtn ajax_link"  href="{% url 'session_and_calender' %}">
+                  <i class="fas fa-tachometer-alt"></i> Session & Calender
+                </a>
+                <a class="leftNavContainerBtn ajax_link"  href="{% url 'department_and_faculty' %}">
+                  <i class="fas fa-tachometer-alt"></i> Department & Faculty
+                </a>
+                <a class="leftNavContainerBtn ajax_link"  href="{% url 'result_and_assessment' %}">
+                  <i class="fas fa-tachometer-alt"></i> Result & Assessment
+                </a>
+                <a class="leftNavContainerBtn ajax_link"  href="{% url 'student_management' %}">
+                  <i class="fas fa-tachometer-alt"></i> Student Management
+                </a>
                 <a class="leftNavContainerBtn" href="{% url 'add_faculty' %}">
                   <i class="fas fa-user-plus"></i> Add Faculty
                 </a>
@@ -78,7 +93,7 @@
                 </a>
             </div>
               
-            <div class="rightNavContainer">      
+            <div class="rightNavContainer" id="ajaxContainer">      
                 <div class="adminRightNavRow1Container">
                     <a href="{% url 'student_list'%}" class="rightNavRow1Col1 btnWhite">                       
                         <h2 class="rightNavRow1Col1Text1">Total Students</h2>

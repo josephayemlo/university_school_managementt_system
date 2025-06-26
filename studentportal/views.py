@@ -13,27 +13,38 @@ from operator import attrgetter
 
 def previous_registered_courses(request):
     student = get_object_or_404(Student, admin=request.user)
-    academic_calendar = AcademicCalendar.objects.get(is_current=False)
 
-    # Get all previously registered courses
+    # Get all non-current academic calendars
+    previous_calendars = AcademicCalendar.objects.filter(is_current=False)
+
+    # Fetch all courses registered in those sessions
     registered_courses = RegisteredCourse.objects.filter(
         student=student,
-        academic_calendar=academic_calendar
+        academic_calendar__in=previous_calendars
     ).select_related('course', 'academic_calendar')
 
-    # Sort by level, semester, session for grouping
+    # Sort for grouping: by level, then semester, then session
     registered_courses = sorted(
         registered_courses,
-        key=lambda x: (x.course.level, x.academic_calendar.semester)
+        key=lambda x: (
+            x.course.level,
+            x.academic_calendar.session,
+            x.academic_calendar.semester
+        )
     )
 
-    # Group by (level, semester, session)
+    # Group by (level, session, semester)
     grouped = []
-    for key, group in groupby(registered_courses, key=lambda x: (x.course.level, x.academic_calendar.semester)):
-        level, semester = key
+    for key, group in groupby(registered_courses, key=lambda x: (
+        x.course.level,
+        x.academic_calendar.session,
+        x.academic_calendar.semester
+    )):
+        level, session, semester = key
         group_list = list(group)
         grouped.append({
             'level': level,
+            'session': session,
             'semester': semester,
             'timestamp': group_list[0].timestamp if group_list else None,
             'courses': group_list,
@@ -149,7 +160,7 @@ def register_courses(request):
             messages.success(request, "Courses registered successfully.")
             print('course registered')
             # with redirect, django cannot redirct to a parital template so the best option is to return a rendered page
-            return render(request, 'student/partials/course_registration_success.html')
+            return render(request, 'student/partials/success.html')
     else:
          # GET request – preselect previously registered courses
         previously_registered_courses = RegisteredCourse.objects.filter(
