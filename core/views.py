@@ -10,7 +10,7 @@ import os
 from django.http.response import HttpResponse
 from django.conf import settings
 # Create your views here.
-from .forms import FacultyForm, DepartmentForm, CourseOfStudyForm, CourseForm
+from .forms import *
 from django.contrib import messages
 from studentportal.models import AspirantStudent
 import random
@@ -20,8 +20,52 @@ from django.http import JsonResponse
 
 
 
-def assign_course_to_level(request):
-    return render(request, 'management/partials/assign_course_to_level.html')
+
+def edit_level_course(request, course_id):
+    levelcourse = get_object_or_404(LevelCourse, id=course_id)
+
+    if request.method == 'POST':
+        form = LevelCourseForm(request.POST, instance=levelcourse)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Level Course Updated Sucessfully')
+            return render(request,'management/partials/success.html')
+    else:
+        form = LevelCourseForm(instance=levelcourse)
+
+    context = {
+        "form": form,
+        "levelcourse": levelcourse
+    }
+
+    return render(request, 'management/partials/edit_level_course.html', context)
+
+
+def delete_level_course(request, course_id):
+    if request.method == 'POST':
+        levelcourse = get_object_or_404(LevelCourse, id=course_id)
+        levelcourse.delete()
+        messages.success(request, 'Level Course Deleted Sucessfully')
+        return render(request,'management/partials/success.html')
+    return render(request, 'management/partials/manage_level_course.html')
+    
+def manage_level_course(request):
+    levelcourse = LevelCourse.objects.all()
+    context= {"levelcourse":levelcourse}
+
+    return render(request, 'management/partials/manage_level_course.html', context)
+
+
+def assign_level_course(request):
+    if request.method == 'POST':
+        form = LevelCourseForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Course Assigned to Level Sucessfully')
+            return render(request,'management/partials/success.html')
+    else:
+        form = LevelCourseForm()
+    return render(request, 'management/partials/assign_course_to_level.html', {'form':form})
 
 
 
@@ -56,6 +100,46 @@ def edit_course(request, course_id):
     }
 
     return render(request, 'management/partials/edit_course.html', context)
+
+
+def manage_course_of_study(request):
+    course_of_study = CourseOfStudy.objects.all()
+    context= {"course_of_study":course_of_study}
+
+    return render(request, 'management/partials/manage_course_of_study.html', context)
+
+
+
+
+def delete_course_of_study(request, course_id):
+    if request.method == 'POST':
+        course_of_study = get_object_or_404(CourseOfStudy, id=course_id)
+        course_of_study.delete()
+        messages.success(request, 'Course of Study Deleted Sucessfully')
+        return render(request,'management/partials/success.html')
+    return render(request, 'management/partials/manage_course_of_study.html')
+    
+
+
+
+def edit_course_of_study(request, course_id):
+    course_of_study = get_object_or_404(CourseOfStudy, id=course_id)
+
+    if request.method == 'POST':
+        form = CourseOfStudyForm(request.POST, instance=course_of_study)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Course of Study Updated Sucessfully')
+            return render(request,'management/partials/success.html')
+    else:
+        form = CourseOfStudyForm(instance=course_of_study)
+
+    context = {
+        "form": form,
+        "course_of_study": course_of_study
+    }
+
+    return render(request, 'management/partials/edit_course_of_study.html', context)
 
 
 def manage_course(request):
@@ -116,8 +200,8 @@ def add_course_of_study(request):
     if request.method == 'POST' and form.is_valid():
         form.save()
         messages.success(request, "Course of Study added successfully.")
-        return redirect('management_home')
-    return render(request, 'core/add_course_of_study.html', {'form': form})
+        return render(request, 'management/partials/success.html')
+    return render(request, 'management/partials/add_course_of_study.html', {'form': form})
 
 def personal_statement_download(request):
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

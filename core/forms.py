@@ -4,6 +4,26 @@ from .models import UndergraduateApplication, ScholarshipApplication
 from django.core.exceptions import ValidationError
 from .models import *
 
+
+
+class LevelCourseForm(forms.ModelForm):
+    class Meta:
+        model = LevelCourse
+        fields = ['level', 'semester', 'course', 'course_of_study', 'is_compulsory']
+        widgets = {
+            'level': forms.Select(attrs={'class': 'form-control'}),
+            'semester': forms.Select(attrs={'class': 'form-control'}),
+            'course': forms.Select(attrs={'class': 'form-control'}),
+            'course_of_study': forms.Select(attrs={'class': 'form-control'}),
+            'is_compulsory': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+        }
+
+
+
+
+
+
+
 class FacultyForm(forms.ModelForm):
     class Meta:
         model = Faculty

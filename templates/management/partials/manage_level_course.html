@@ -1,0 +1,36 @@
+
+   <h1>Level Courses</h1>
+   
+   <div class="tableContainer">
+      <div class="tableHeading">
+          <span class="tableHeading1">SN</span>
+          <span class="tableHeading2">Course of Study</span>
+          <span class="tableHeading3">Course</span>
+          <span class="tableHeading3">Level</span>
+
+          <span class="tableHeading3">Semester</span>
+          <span class="tableHeading3">Edit/Delete</span>
+      </div>
+      {% if levelcourse  %}
+            {% for levelcourse in levelcourse %}
+      <div class="tableData">
+          <span class="tableHeading1">{{ forloop.counter }}</span>
+          <span class="tableHeading2">{{levelcourse.course_of_study}}</span>
+          <span class="tableHeading3">{{levelcourse.course.code}}-{{levelcourse.course.title}}</span>
+          <span class="tableHeading3">{{levelcourse.level}}</span>
+
+          <span class="tableHeading3">{{levelcourse.semester}}</span>
+          <span class="tableHeading3"> 
+
+            <a href="{% url  'edit_level_course' levelcourse.id %}" class="tableHeading5Btn1 ajax_link">Edit</a> - 
+            <form method="post" class="ajax_form" action="{% url 'delete_level_course' levelcourse.id %}">
+              {% csrf_token %}
+              <button type="submit" class="tableHeading5Btn2">Delete</button>
+          </form>
+          </span>
+      </div>
+
+      {% endfor %}
+      {% else %}
+              <h2>No Course available</h2>
+      {% endif %}

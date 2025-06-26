@@ -27,7 +27,13 @@ urlpatterns = [
     path('manage_course/', views.manage_course, name='manage_course'),
     path('edit_course/<int:course_id>', views.edit_course, name='edit_course'),
     path('delete_course/<int:course_id>/', views.delete_course, name='delete_course'),
-    path('assign_course_to_level/', views.assign_course_to_level, name='assign_course_to_level'),
-
+    path('assign_level_course/', views.assign_level_course, name='assign_level_course'),
+    path('manage_level_course/', views.manage_level_course, name='manage_level_course'),
+    path('edit_level_course/<int:course_id>', views.edit_level_course, name='edit_level_course'),
+    path('delete_level_course/<int:course_id>/', views.delete_level_course, name='delete_level_course'),
+    path('manage_course_of_study/', views.manage_course_of_study, name='manage_course_of_study'),
+    path('edit_course_of_study/<int:course_id>', views.edit_course_of_study, name='edit_course_of_study'),
+    path('delete_course_of_study/<int:course_id>/', views.delete_course_of_study, name='delete_course_of_study'),
+   
 
 ]
