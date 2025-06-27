@@ -20,6 +20,19 @@ from django.http import JsonResponse
 
 
 
+
+def add_faculty(request):
+    form = FacultyForm(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        messages.success(request, "Faculty added successfully.")
+        return redirect('management_home')
+    return render(request, 'core/add_faculty.html', {'form': form})
+
+
+
+
+
 def add_academic_calender(request):
     form = AcademicCalenderForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
@@ -36,8 +49,11 @@ def manage_academic_calender(request):
 
 def edit_academic_calender(request, academic_calender_id):
     academic_calender = get_object_or_404(AcademicCalendar, id=academic_calender_id)
+    print("single academic calender loaded")
 
     if request.method == 'POST':
+        print("request is post")
+
         form = AcademicCalenderForm(request.POST, instance=academic_calender)
         if form.is_valid():
             form.save()
@@ -210,16 +226,6 @@ def add_course(request):
 
 
 
-
-
-
-def add_faculty(request):
-    form = FacultyForm(request.POST or None)
-    if request.method == 'POST' and form.is_valid():
-        form.save()
-        messages.success(request, "Faculty added successfully.")
-        return redirect('management_home')
-    return render(request, 'core/add_faculty.html', {'form': form})
 
 def add_department(request):
     form = DepartmentForm(request.POST or None)
