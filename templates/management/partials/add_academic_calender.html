@@ -1,0 +1,10 @@
+
+<h1>Add Academic Calender</h1>
+<form class="ajax_form" method="post" action="{% url 'add_academic_calender' %}">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Academic Calender</button>
+</form>
+
+<div id="ajax_form_response"></div>

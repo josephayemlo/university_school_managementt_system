@@ -20,6 +20,18 @@ class LevelCourseForm(forms.ModelForm):
 
 
 
+class AcademicCalenderForm(forms.ModelForm):
+    class Meta:
+        model = AcademicCalendar
+        fields = ['session', 'semester', 'is_current']
+        widgets = {
+            'sesssion': forms.CharField,
+            'semester': forms.Select(attrs={'class': 'form-control'}),
+            'is_current': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+        }
+
+
+
 
 
 

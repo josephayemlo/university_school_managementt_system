@@ -1,0 +1,8 @@
+<h1>Edit Course</h1>
+<form class="ajax_form" method="post" action="{% url 'edit_academic_calender' edit_academic_calender.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update Academic Calender</button>
+</form>
+
+<div id="ajax_form_response"></div>

@@ -1,0 +1,30 @@
+
+   
+   
+   <div class="tableContainer">
+      <div class="tableHeading">
+          <span class="tableHeading1">SN</span>
+          <span class="tableHeading2">Session</span>
+          <span class="tableHeading3">Semester</span>
+          <span class="tableHeading3">Edit/Delete</span>
+
+
+      </div>
+      {% if academic_calender  %}
+            {% for academic_calender in academic_calender %}
+      <div class="tableData">
+          <span class="tableHeading1">{{ forloop.counter }}</span>
+          <span class="tableHeading2">{{academic_calender.session}}</span>
+          <span class="tableHeading3">{{academic_calender.semester}}</span>
+
+          <span class="tableHeading3"> 
+
+            <a href="{% url  'edit_academic_calender' academic_calender.id %}" class="tableHeading5Btn1 ajax_link">Edit</a> - 
+
+          </span>
+      </div>
+
+      {% endfor %}
+      {% else %}
+              <h2>No Academic Calender available</h2>
+      {% endif %}
