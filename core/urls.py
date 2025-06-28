@@ -1,7 +1,7 @@
 from . import views
-from django.urls import path, re_path
-from django.views.static import serve 
-from django.conf import settings
+from django.urls import path
+
+# URLs
 urlpatterns = [
     path("", views.home, name='home'),
     path("study/apply/", views.apply, name='apply'),
@@ -9,33 +9,16 @@ urlpatterns = [
     path("study/apply/undergradute/process", views.apply_Undergraduate_Process, name='apply_undergraduate_process'),
     path("study/apply/postgraduate", views.apply_Postgraduate, name='apply_postgraduate'),
     path("study/apply/undergraduate/application/form", views.undergraduate_Application_Form_View, name='undergraduate_application_form'),
-    path('success/', views.success, name='success'),
     path('apply/scholarship/', views.scholarship_Application_Form_View, name='scholarship_application_form'),
-
-
-    # download link test
+    path('success/', views.success, name='success'),
     path('personal_statement/download/', views.personal_statement_download, name='personal_statement_download'),
-    path('add-faculty/', views.add_faculty, name='add_faculty'),
-    path('add-department/', views.add_department, name='add_department'),
-    path('add-course-of-study/', views.add_course_of_study, name='add_course_of_study'),
-    path('add_course/', views.add_course, name='add_course'),
-    path('student_management/', views.student_management, name='student_management'),
-    path('course_and_academic/', views.course_and_academic, name='course_and_academic'),
-    path('session_and_calender/', views.session_and_calender, name='session_and_calender'),
-    path('department_and_faculty/', views.department_and_faculty, name='department_and_faculty'),
-    path('result_and_assessment/', views.result_and_assessment, name='result_and_assessment'),
-    path('manage_course/', views.manage_course, name='manage_course'),
-    path('edit_course/<int:course_id>', views.edit_course, name='edit_course'),
-    path('delete_course/<int:course_id>/', views.delete_course, name='delete_course'),
-    path('assign_level_course/', views.assign_level_course, name='assign_level_course'),
-    path('manage_level_course/', views.manage_level_course, name='manage_level_course'),
-    path('edit_level_course/<int:course_id>/', views.edit_level_course, name='edit_level_course'),
-    path('delete_level_course/<int:course_id>/', views.delete_level_course, name='delete_level_course'),
-    path('manage_course_of_study/', views.manage_course_of_study, name='manage_course_of_study'),
-    path('edit_course_of_study/<int:course_id>', views.edit_course_of_study, name='edit_course_of_study'),
-    path('delete_course_of_study/<int:course_id>/', views.delete_course_of_study, name='delete_course_of_study'),
-    path('add_academic_calender/', views.add_academic_calender, name='add_academic_calender'),
-    path('manage_academic_calender/', views.manage_academic_calender, name='manage_academic_calender'),
-    path('edit_academic_calender/<int:academic_calender_id>/', views.edit_academic_calender, name='edit_academic_calender'),
-    
+
+    # Student URLs
+    path("student/home", views.student_home, name='student_home'),
+
+    #Aspirant URL
+    path("aspirant_student/home", views.aspirant_student_home, name='aspirant_student_home'),
+    path("aspirant_student/edit/aspirant_student/",views.edit_aspirant_student, name='edit_aspirant_student'),
+
+
 ]

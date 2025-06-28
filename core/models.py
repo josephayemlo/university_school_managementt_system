@@ -1,42 +1,68 @@
 from django.db import models
 from django_countries.fields import CountryField
-from datetime import date
+from django.conf import settings
 
 
+# Create your models here.
+
+# aspirant students
+class AspirantStudent(models.Model):
+    EMERGENCY_RELATIONSHIP = [("B", "Brother"), ("S", "Sister"),("F", "Father"),("M", "Mother"), ("O", "Other"),]
+    ADMISSION_STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('admitted', 'Admitted'),
+        ('rejected', 'Rejected'),
+    ]
+    admin = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    course_applied = models.ForeignKey('core.CourseOfStudy', on_delete=models.SET_NULL, null=True, blank=True)
+    phone_number = models.CharField(max_length=255)
+    address_1 = models.CharField(max_length=255)
+    address_2 = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    state_province = models.CharField(max_length=255)
+    postal_code = models.CharField(max_length=255)
+    country = CountryField()
+    admission_status = models.CharField(max_length=10, choices=ADMISSION_STATUS_CHOICES, default='pending')
+   
 
 
+        # Educational Information
+    school_name = models.CharField(max_length=255)
+    school_address_1 = models.CharField(max_length=255)
+    school_address_2 = models.CharField(max_length=255)
+    school_city = models.CharField(max_length=255)
+    school_state_province = models.CharField(max_length=255)
+    school_postal_code = models.CharField(max_length=255)
+    school_year_graduated = models.CharField(max_length=255)
 
+    # Emergency contact details
+    emergency_first_name = models.CharField(max_length=255)
+    emergency_last_name = models.CharField(max_length=255)
+    emergency_email = models.EmailField(max_length=255)
+    emergency_phone_number = models.CharField(max_length=255)
+    emergency_address_1 = models.CharField(max_length=255)
+    emergency_address_2 = models.CharField(max_length=255)
+    emergency_city = models.CharField(max_length=255)
+    emergency_postal_code = models.CharField(max_length=255)
+    emergency_country = CountryField( )
+    emergency_relationship = models.CharField(max_length=15, choices=EMERGENCY_RELATIONSHIP)
 
-class Faculty(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+    # Refreee
+    referee_first_name = models.CharField(max_length=255)
+    referee_last_name = models.CharField(max_length=255)
+    referee_email = models.EmailField(max_length=255)
+    referee_phone_number = models.CharField(max_length=255)
+    referee_address_1 = models.CharField(max_length=255)
+    referee_address_2 = models.CharField(max_length=255)
+    referee_city = models.CharField(max_length=255)
+    referee_postal_code = models.CharField(max_length=255)
+    referee_state_province = models.CharField(max_length=255)
+    referee_country = CountryField()
 
     def __str__(self):
-        return self.name
+        return str(self.admin.email)
 
-class Department(models.Model):
-    name = models.CharField(max_length=100)
-    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE, related_name='departments')
-
-    class Meta:
-        unique_together = ('name', 'faculty')  # name must be unique within a faculty
-
-    def __str__(self):
-        return f"{self.name} ({self.faculty.name})"
-
-        
-class CourseOfStudy(models.Model):
-    name = models.CharField(max_length=100)
-    department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='courses_of_study')
-    
-    duration_years = models.PositiveIntegerField(default=4)
-    # this unique together just allows us to have same department name under different faculty bu
-    # same dptm mame cannot exist in same faculty
-    class Meta:
-        unique_together = ('name', 'department')
-
-    def __str__(self):
-        return f"{self.name} ({self.department.name})"
-
+  
 
 class PersonalStatement(models.Model):
     personal_statement = models.FileField(upload_to='personal_statement/')
@@ -45,154 +71,6 @@ class PersonalStatement(models.Model):
 
     def __str__(self):
         return self.title
-
-
-
-class Course(models.Model):
-    COURSE_CATEGORIES = (
-        ('core', 'Core'),
-        ('elective', 'Elective'),
-        ('general', 'General'),  # Optional
-    )
-    LEVEL_CHOICES = [
-        (100, '100 Level'),
-        (200, '200 Level'),
-        (300, '300 Level'),
-        (400, '400 Level'),
-        (500, '500 Level'),
-    ]
-
-    code = models.CharField(max_length=10)
-    title = models.CharField(max_length=100)
-    unit = models.PositiveIntegerField()
-    semester = models.CharField(max_length=10, choices=[('first', 'First'), ('second', 'Second')])
-    level = models.PositiveIntegerField(choices=LEVEL_CHOICES)
-    department = models.ForeignKey(Department, on_delete=models.CASCADE)
-    category = models.CharField(max_length=10, choices=COURSE_CATEGORIES)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.title
-
-# this is used to activate a session only one calalender can take is_current=True
-class AcademicCalendar(models.Model):
-    session = models.CharField(max_length=20)  # e.g., '2024/2025'
-    semester = models.CharField(max_length=10, choices=[('First', 'First'), ('Second', 'Second')])
-    is_current = models.BooleanField(default=False)
-
-    def __str__(self):
-        return f"{self.session} - {self.semester}"
-
-class RegisteredCourse(models.Model):
-    student = models.ForeignKey('studentportal.Student', on_delete=models.CASCADE)
-    course = models.ForeignKey('core.Course', on_delete=models.CASCADE)
-    academic_calendar = models.ForeignKey('AcademicCalendar', on_delete=models.PROTECT, null=False)
-    timestamp = models.DateTimeField(auto_now_add=True)
-    approved = models.BooleanField(default=False)
-    approved_by = models.ForeignKey('accounts.CustomUser', on_delete=models.SET_NULL, null=True, blank=True)
-    approved_at = models.DateTimeField(null=True, blank=True)
-    is_repeat_course = models.BooleanField(default=False)
-    is_locked = models.BooleanField(default=False)
-
-    def __str__(self):
-        return f"{self.student} - {self.course.code}"
-
-
-class LevelCourse(models.Model):
-    LEVEL_CHOICES = [
-    (100, "100 Level"),
-    (200, "200 Level"),
-    (300, "300 Level"),
-    (400, "400 Level"),
-    (500, "500 Level"),
-    (600, "600 Level"),
-    ]
-    SEMESTER_CHOICES = [
-    ("First", "First Semester"),
-    ("Second", "Second Semester"),
-    ]   
-    level = models.PositiveIntegerField(choices=LEVEL_CHOICES)
-    semester = models.CharField(max_length=10, choices=SEMESTER_CHOICES)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    course_of_study = models.ForeignKey(CourseOfStudy, on_delete=models.CASCADE)
-    is_compulsory = models.BooleanField(default=True)
-
-    class Meta:
-        unique_together = ('level', 'semester', 'course', 'course_of_study',)
-    
-    def __str__(self):
-        return f"{self.level}L - ({self.semester} Semester) - {self.course_of_study}"
-
-
-
-
-
-
-
-
-
-class StudentResult(models.Model):
-    student = models.ForeignKey('studentportal.Student', on_delete=models.CASCADE)
-    registered_course = models.OneToOneField('RegisteredCourse', on_delete=models.CASCADE)
-
-    session = models.CharField(max_length=20)
-    semester = models.CharField(max_length=10)
-
-    ca1 = models.DecimalField(max_digits=5, decimal_places=2, default=0)  # e.g. 10.0
-    ca2 = models.DecimalField(max_digits=5, decimal_places=2, default=0)
-    ca3 = models.DecimalField(max_digits=5, decimal_places=2, default=0)
-
-    exam = models.DecimalField(max_digits=5, decimal_places=2, default=0)
-
-    grade_point = models.DecimalField(max_digits=4, decimal_places=2, default=0)
-    remark = models.TextField(null=True, blank=True)
-    is_released = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    updated_by = models.ForeignKey('accounts.CustomUser', on_delete=models.SET_NULL, null=True, blank=True)
-
-    @property
-    def total(self):
-        return self.ca1 + self.ca2 + self.exam
-
-    def grade_letter(self):
-        total = self.total
-        if total >= 70:
-            return 'A'
-        elif total >= 60:
-            return 'B'
-        elif total >= 50:
-            return 'C'
-        elif total >= 45:
-            return 'D'
-        elif total >= 40:
-            return 'E'
-        else:
-            return 'F'
-
-
-
-class SemesterResult(models.Model):
-    student = models.ForeignKey('studentportal.Student', on_delete=models.CASCADE)
-    session = models.CharField(max_length=20)
-    semester = models.CharField(max_length=10)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -215,7 +93,7 @@ class UndergraduateApplication(models.Model):
     country = CountryField()
     
         # course details
-    course_of_study = models.ForeignKey(CourseOfStudy, on_delete=models.DO_NOTHING)
+    course_of_study = models.ForeignKey('managementportal.CourseOfStudy', on_delete=models.DO_NOTHING)
 
 
 
@@ -249,7 +127,7 @@ class ScholarshipApplication(models.Model):
     state_province = models.CharField(max_length=255)
     postal_code = models.CharField(max_length=255)
     country = CountryField( )
-    course_applied = models.ForeignKey(CourseOfStudy, on_delete=models.DO_NOTHING)
+    course_applied = models.ForeignKey('managementportal.CourseOfStudy', on_delete=models.DO_NOTHING)
     # scholarship 
     about_yourself = models.CharField(max_length=255)
     career_plans = models.CharField(max_length=255)

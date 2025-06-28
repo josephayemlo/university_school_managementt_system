@@ -1,14 +1,13 @@
 from django import forms
 from django.forms.widgets import DateInput, TextInput
-
-from .models import *
-from studentportal.models import *
-from core.models import Department
 from django_countries.fields import CountryField
 from django import forms
-from .models import *
-from core.models import CourseOfStudy
+from studentportal.models import Student
+from .models import CustomUser, NonAcademicStaff, AcademicStaff
+from core.models import AspirantStudent
+from managementportal.models import CourseOfStudy
 
+# Forms
 class FormSettings(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(FormSettings, self).__init__(*args, **kwargs)

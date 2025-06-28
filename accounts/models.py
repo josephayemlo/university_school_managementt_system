@@ -50,12 +50,6 @@ class CustomUser(AbstractUser):
         return self.last_name + ", " + self.first_name
 
 
-# The management
-class Admin(models.Model):
-    admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return str(self.admin.email)
 
 # Lecturers
 class AcademicStaff(models.Model):
