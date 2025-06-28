@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
-from ..models import CourseOfStudy
+from core.models import CourseOfStudy
 from ..forms import CourseOfStudyForm
 
 # add
@@ -10,13 +10,13 @@ def add_course_of_study(request):
         form.save()
         messages.success(request, "Course of Study added successfully.")
         return render(request, 'management/partials/success.html')
-    return render(request, 'management/partials/add_course_of_study.html', {'form': form})
+    return render(request, 'management/partials/courseofstudy/add_course_of_study.html', {'form': form})
 
 # manage/view
 def manage_course_of_study(request):
     course_of_study = CourseOfStudy.objects.all()
     context= {"course_of_study":course_of_study}
-    return render(request, 'management/partials/manage_course_of_study.html', context)
+    return render(request, 'management/partials/courseofstudy/manage_course_of_study.html', context)
 
 # edit
 def edit_course_of_study(request, course_id):
@@ -33,7 +33,7 @@ def edit_course_of_study(request, course_id):
         "form": form,
         "course_of_study": course_of_study
     }
-    return render(request, 'management/partials/edit_course_of_study.html', context)
+    return render(request, 'management/partials/courseofstudy/edit_course_of_study.html', context)
 
 # delete
 def delete_course_of_study(request, course_id):
@@ -42,6 +42,6 @@ def delete_course_of_study(request, course_id):
         course_of_study.delete()
         messages.success(request, 'Course of Study Deleted Sucessfully')
         return render(request,'management/partials/success.html')
-    return render(request, 'management/partials/manage_course_of_study.html')
+    return render(request, 'management/partials/courseofstudy/manage_course_of_study.html')
     
 

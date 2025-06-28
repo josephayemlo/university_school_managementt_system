@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from accounts.models import AcademicStaff, NonAcademicStaff
-from studentportal.models import Student
+from core.models import AcademicStaff, NonAcademicStaff, Student
 
 # Create your views here.
 

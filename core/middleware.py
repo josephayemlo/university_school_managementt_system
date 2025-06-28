@@ -1,8 +1,4 @@
 from django.shortcuts import redirect
-from django.urls import reverse
-from studentportal.models import AspirantStudent
-from django.shortcuts import redirect
-from django.urls import reverse
 
 
 class ForceAspirantProfileCompletionMiddleware:

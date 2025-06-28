@@ -17,7 +17,7 @@ from .customviews.level_course_views import (
     assign_level_course, edit_level_course,
     delete_level_course, manage_level_course
 )
-from .customviews.calendar_views import (
+from .customviews.academic_calendar_views import (
     add_academic_calender, manage_academic_calender,
     edit_academic_calender
 )
@@ -80,7 +80,7 @@ urlpatterns = [
     path('level_course/edit/<int:course_id>/', edit_level_course, name='edit_level_course'),
     path('level_course/delete/<int:course_id>/', delete_level_course, name='delete_level_course'),
 
-    # calendar URL
+    # academic calendar URL
     path('academic_calendar/add/', add_academic_calender, name='add_academic_calender'),
     path('academic_calendar/manage/', manage_academic_calender, name='manage_academic_calender'),
     path('academic_calendar/edit/<int:academic_calender_id>/', edit_academic_calender, name='edit_academic_calender'),

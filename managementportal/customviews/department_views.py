@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from ..forms import DepartmentForm
 
@@ -9,4 +9,4 @@ def add_department(request):
         form.save()
         messages.success(request, "Department added successfully.")
         return redirect('management_home')
-    return render(request, 'core/add_department.html', {'form': form})
+    return render(request, 'management/partials/department/add_department.html', {'form': form})

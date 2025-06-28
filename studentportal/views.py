@@ -2,10 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from itertools import groupby
 # Forms
-from studentportal.forms import CourseRegistrationForm  
-from managementportal.models import AcademicCalendar, RegisteredCourse, Course, LevelCourse
+from .forms import CourseRegistrationForm
+
+from core.models import AcademicCalendar, RegisteredCourse, Course, LevelCourse, Student
 # Models
-from studentportal.models import Student
     
 # Create your views here.
 

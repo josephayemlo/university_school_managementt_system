@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect,  get_object_or_404
-from accounts.forms import NonAcademicStaffForm, CustomUser 
+from core.forms import NonAcademicStaffForm 
 from django.contrib import messages
-from accounts.models import CustomUser, NonAcademicStaff
+from core.models import NonAcademicStaff
 from django.urls import reverse
-
+from django.contrib.auth import get_user_model
+User = get_user_model()
 # Create your views here.
 
 def add_nonacademicstaff(request):
@@ -19,7 +20,7 @@ def add_nonacademicstaff(request):
             password = form.cleaned_data.get('password')
         
             try:
-                user = CustomUser.objects.create_user(
+                user = User.objects.create_user(
                     email=email, password=password, user_type=3, first_name=first_name, last_name=last_name)
                 user.gender = gender
                 user.address = address
@@ -32,12 +33,12 @@ def add_nonacademicstaff(request):
         else:
             messages.error(request, "Please fulfil all requirements")
 
-    return render(request, 'add_nonacademicstaff_template.html', context)
+    return render(request, 'management/partials/nonacademicstaff/add_nonacademicstaff_template.html', context)
 
 
 def nonacademicstaff_list(request):
-    nonacademicstaffs = CustomUser.objects.filter(user_type=3)
-    return render(request, 'staff/nonacademicstaff_list.html', {'nonacademicstaffs': nonacademicstaffs})
+    nonacademicstaffs = User.objects.filter(user_type=3)
+    return render(request, 'management/partials/nonacademicstaff/nonacademicstaff_list.html', {'nonacademicstaffs': nonacademicstaffs})
 
 def edit_nonacademicstaff(request, nonacademicstaff_id):
     nonacademicstaff = get_object_or_404(NonAcademicStaff, id=nonacademicstaff_id)
@@ -56,7 +57,7 @@ def edit_nonacademicstaff(request, nonacademicstaff_id):
             gender = form.cleaned_data.get('gender')
             password = form.cleaned_data.get('password') or None
             try:
-                user = CustomUser.objects.get(id=nonacademicstaff.admin.id)                
+                user = User.objects.get(id=nonacademicstaff.admin.id)                
                 user.email = email
                 if password != None:
                     user.set_password(password)
@@ -73,11 +74,11 @@ def edit_nonacademicstaff(request, nonacademicstaff_id):
         else:
             messages.error(request, "Please Fill Form Properly!")
     else:
-        return render(request, "management/edit_nonacademicstaff_template.html", context)
+        return render(request, "management/partials/nonacademicstaff/edit_nonacademicstaff_template.html", context)
 
 
 def delete_nonacademicstaff(request, nonacademicstaff_id):
-    nonacademicstaff = get_object_or_404(CustomUser, nonacademicstaff__id=nonacademicstaff_id)
+    nonacademicstaff = get_object_or_404(User, nonacademicstaff__id=nonacademicstaff_id)
     nonacademicstaff.delete()
     messages.success(request, "nonacademicstaff deleted successfully!")
     return redirect(reverse('nonacademicstaff_list'))

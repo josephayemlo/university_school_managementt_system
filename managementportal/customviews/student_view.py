@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect,  get_object_or_404
-from accounts.forms import StudentForm, CustomUser
+from core.forms import StudentForm
 from django.contrib import messages
-from accounts.models import CustomUser
 from django.urls import reverse
-from studentportal.models import Student
+from core.models import Student
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 # Create your views here.
 
@@ -13,7 +14,7 @@ def add_student(request):
 
     if request.method == 'POST':
         if form.is_valid():
-            # CustomUser fields
+            # User fields
             first_name = form.cleaned_data.get('first_name')
             last_name = form.cleaned_data.get('last_name')
             address = form.cleaned_data.get('address')
@@ -28,7 +29,7 @@ def add_student(request):
 
             try:
                 # Create user with all fields at once
-                user = CustomUser.objects.create_user(
+                user = User.objects.create_user(
                     email=email,
                     password=password,
                     user_type=4,
@@ -57,12 +58,12 @@ def add_student(request):
         else:
             messages.error(request, "Please fill all required fields correctly.")
 
-    return render(request, 'add_student_template.html', context)
+    return render(request, 'management/partials/student/add_student_template.html', context)
 
 
 def student_list(request):
-    students = CustomUser.objects.filter(user_type=4)
-    return render(request, 'student/student_list.html', {'students': students})
+    students = User.objects.filter(user_type=4)
+    return render(request, 'management/partials/student/student_list.html', {'students': students})
 
 
 def edit_student(request, student_id):
@@ -88,7 +89,7 @@ def edit_student(request, student_id):
 
 
             try:
-                user = CustomUser.objects.get(id=student.admin.id)                
+                user = User.objects.get(id=student.admin.id)                
                 user.email = email
                 if password != None:
                     user.set_password(password)
@@ -109,11 +110,11 @@ def edit_student(request, student_id):
         else:
             messages.error(request, "Please Fill Form Properly!")
     else:
-        return render(request, "management/edit_student_template.html", context)
+        return render(request, "management/partials/student/edit_student_template.html", context)
 
 
 def delete_student(request, student_id):
-    student = get_object_or_404(CustomUser, student__id=student_id)
+    student = get_object_or_404(User, student__id=student_id)
     student.delete()
     messages.success(request, "Student deleted successfully!")
     return redirect(reverse('student_list'))

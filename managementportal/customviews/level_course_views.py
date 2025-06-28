@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
-from ..models import LevelCourse
+from core.models import LevelCourse
 from ..forms import LevelCourseForm
 
 # assign
@@ -13,13 +13,13 @@ def assign_level_course(request):
             return render(request,'management/partials/success.html')
     else:
         form = LevelCourseForm()
-    return render(request, 'management/partials/assign_course_to_level.html', {'form':form})
+    return render(request, 'management/partials/levelcourse/assign_course_to_level.html', {'form':form})
 
 # manage/view
 def manage_level_course(request):
     levelcourse = LevelCourse.objects.all()
     context= {"levelcourse":levelcourse}
-    return render(request, 'management/partials/manage_level_course.html', context)
+    return render(request, 'management/partials/levelcourse/manage_level_course.html', context)
 
 # edit
 def edit_level_course(request, course_id):
@@ -36,7 +36,7 @@ def edit_level_course(request, course_id):
         "form": form,
         "levelcourse": levelcourse
     }
-    return render(request, 'management/partials/edit_level_course.html', context)
+    return render(request, 'management/partials/levelcourse/edit_level_course.html', context)
 
 
 # delete
@@ -46,6 +46,6 @@ def delete_level_course(request, course_id):
         levelcourse.delete()
         messages.success(request, 'Level Course Deleted Sucessfully')
         return render(request,'management/partials/success.html')
-    return render(request, 'management/partials/manage_level_course.html')
+    return render(request, 'management/partials/levelcourse/manage_level_course.html')
     
 

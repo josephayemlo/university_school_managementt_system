@@ -11,6 +11,6 @@ def add_faculty(request):
         form.save()
         messages.success(request, "Faculty added successfully.")
         return redirect('management_home')
-    return render(request, 'core/add_faculty.html', {'form': form})
+    return render(request, 'management/partials/faculty/add_faculty.html', {'form': form})
 
 

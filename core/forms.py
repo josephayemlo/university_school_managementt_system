@@ -1,201 +1,175 @@
 from django import forms
-from django.forms import TextInput,DateInput, EmailInput, Textarea
-from .models import UndergraduateApplication, ScholarshipApplication
+from django_countries.fields import CountryField
+from django import forms
+from .models import (
+    Student, 
+    AspirantStudent, 
+    AcademicStaff, 
+    NonAcademicStaff, 
+    CustomUser, 
+    CourseOfStudy,
+)
 
-# Scholarship Form
-class ScholarshipApplicationForm(forms.ModelForm):
-    class Meta:
-        model = ScholarshipApplication
-        fields = '__all__'
-        widgets = {
-            'first_name': TextInput( attrs={
-                'class':'Input',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Enter First name'
-            }),
-             'last_name': TextInput( attrs={
-                'class':'Input',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Enter Last name'
-            }),
-             
-               'email': EmailInput( attrs={
-                'class':'Input',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Enter Email'
-            }),
-               'phone_number': TextInput( attrs={
-                'class':'Input',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Enter Phone Number'
-            }),
-              'address_1': TextInput( attrs={
-                'class':'InputWide',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Enter  Street Address '
-            }),
-              'address_2': TextInput( attrs={
-                'class':'InputWide',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Enter Address 2'
-            }),
-               'city': TextInput( attrs={
-                'class':'Input',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Enter City'
-            }),
-               'state_province': TextInput( attrs={
-                'class':'Input',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Enter State/Province'
-            }),
-               'postal_code': TextInput( attrs={
-                'class':'Input',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Enter Postal/Zip Code'
-            }),     
-               'about_yourself': Textarea( attrs={
-                'class':'Textarea',
-                'style': 'max-width: 1000px;',
-            }),   
-                'career_plans': Textarea( attrs={
-                'class':'Textarea',
-                'style': 'max-width: 1000px;',
-            }),   
-                'role_model': Textarea( attrs={
-                'class':'Textarea',
-                'style': 'max-width: 1000px;',
-            }),   
-                'reasons_for_course_school_choice': Textarea( attrs={
-                'class':'Textarea',
-                'style': 'max-width: 1000px;',
-            }),   
-                'why_you_deserve_scholarship': Textarea( attrs={
-                'class':'Textarea',
-                'style': 'max-width: 1000px;',
-            }),   
-                'your_greatest_achievement': Textarea( attrs={
-                'class':'Textarea',
-                'style': 'max-width: 1000px;',
-            }),   
-                'your_strenths': Textarea( attrs={
-                'class':'Textarea',
-                'style': 'max-width: 1000px;',
-            }),   
-                'your_weaknesses': Textarea( attrs={
-                'class':'Textarea',
-                'style': 'max-width: 1000px;',
-            }),   
-                'challenge_faced_overcomed': Textarea( attrs={
-                'class':'Textarea',
-                'style': 'max-width: 1000px;',
-            }),   
-                'your_leadership_experience': Textarea( attrs={
-                'class':'Textarea',
-                'style': 'max-width: 1000px;',
-            }),   
-                'activities_involved_in_school_community': Textarea( attrs={
-                'class':'Textarea',
-                'style': 'max-width: 1000px;',
-            }),   
-                'additional_statement': Textarea( attrs={
-                'class':'Textarea',
-                'style': 'max-width: 1000px;',
-            }), 
 
-        # label
-        }
-        labels = {
-            'first_name': ('First Name'),
-            'last_name': ('Last Name'),         
-            'gender': ('Gender'),
-            'day_of_birth': ('Day'),
-            'month_of_birth': ('Month'),
-            'year_of_birth': ('Year'),
-            'address_1': ('Street Address'),
-            'address_2': ('Street Address Line 2'),
-            'city': ('City'),
-            'state_province': ('State/Province'),
-            'postal_code': ('Postal/Zip code'),
-            'country': ('Country'),
-         }
+# Forms
+class FormSettings(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(FormSettings, self).__init__(*args, **kwargs)
+        # Here make some changes such as:
+        for field in self.visible_fields():
+            field.field.widget.attrs['class'] = 'form-control'
 
-         
-# UG Form
-class UndergraduateApplicationForm(forms.ModelForm):
-    email=forms.EmailField( )
+
+class CustomUserForm(FormSettings):
+    email = forms.EmailField(required=True)
+    gender = forms.ChoiceField(choices=[('M', 'Male'), ('F', 'Female')])
+    first_name = forms.CharField(required=True)
+    last_name = forms.CharField(required=True)
+    address = forms.CharField(widget=forms.Textarea)
+    password = forms.CharField(widget=forms.PasswordInput)
+    widget = {
+        'password': forms.PasswordInput(),
+    }
+
+    def __init__(self, *args, **kwargs):
+        super(CustomUserForm, self).__init__(*args, **kwargs)
+
+        if kwargs.get('instance'):
+            instance = kwargs.get('instance').admin.__dict__
+            self.fields['password'].required = False
+            for field in CustomUserForm.Meta.fields:
+                self.fields[field].initial = instance.get(field)
+            if self.instance.pk is not None:
+                self.fields['password'].widget.attrs['placeholder'] = "Fill this only if you wish to update password"
+
+    def clean_email(self, *args, **kwargs):
+        formEmail = self.cleaned_data['email'].lower()
+        if self.instance.pk is None:  # Insert
+            if CustomUser.objects.filter(email=formEmail).exists():
+                raise forms.ValidationError(
+                    "The given email is already registered")
+        else:  # Update
+            dbEmail = self.Meta.model.objects.get(
+                id=self.instance.pk).admin.email.lower()
+            if dbEmail != formEmail:  # There has been changes
+                if CustomUser.objects.filter(email=formEmail).exists():
+                    raise forms.ValidationError("The given email is already registered")
+
+        return formEmail
 
     class Meta:
-        model = UndergraduateApplication
-        fields = '__all__'
-        widgets = {
-            'first_name': TextInput( attrs={
-                'class':'Input',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Enter First name'
-            }),
-             'last_name': TextInput( attrs={
-                'class':'Input',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Enter Last name'
-            }),
-             
-               'email': EmailInput( attrs={
-                'class':'Input',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Enter Email'
-            }),
-               'phone_number': TextInput( attrs={
-                'class':'Input',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Enter Phone Number'
-            }),
-              'address_1': TextInput( attrs={
-                'class':'InputWide',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Enter  Street Address '
-            }),
-              'address_2': TextInput( attrs={
-                'class':'InputWide',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Enter Address 2'
-            }),
-               'city': TextInput( attrs={
-                'class':'Input',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Enter City'
-            }),
-               'state_province': TextInput( attrs={
-                'class':'Input',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Enter State/Province'
-            }),
-               'postal_code': TextInput( attrs={
-                'class':'Input',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Enter Postal/Zip Code'
-            }),     
-            'dob': DateInput(attrs={  
-                'type': 'date',
-                'class': 'Input',
-                'style': 'max-width: 1000px;',
-                'placeholder': 'Select Date of Birth'
-            }),
-           
-        }
-        labels = {
-            'first_name': ('First Name'),
-            'last_name': ('Last Name'),         
-            'gender': ('Gender'),
-            'dob': 'Date of Birth', 
-            'address_1': ('Street Address'),
-            'address_2': ('Street Address Line 2'),
-            'city': ('City'),
-            'state_province': ('State/Province'),
-            'postal_code': ('Postal/Zip code'),
-            'country': ('Country'),
-             'course_of_study': ('Course Applying'),
+        model = CustomUser
+        fields = ['first_name', 'last_name', 'email', 'gender',  'password', 'address' ]
+
+
+
+
+class NonAcademicStaffForm(CustomUserForm):
+    def __init__(self, *args, **kwargs):
+        super(NonAcademicStaffForm, self).__init__(*args, **kwargs)
+
+    class Meta(CustomUserForm.Meta):
+        model = NonAcademicStaff
+        fields = CustomUserForm.Meta.fields 
             
-        }
 
+class AcademicStaffForm(CustomUserForm):
+    def __init__(self, *args, **kwargs):
+        super(AcademicStaffForm, self).__init__(*args, **kwargs)
+
+    class Meta(CustomUserForm.Meta):
+        model = AcademicStaff
+        fields = CustomUserForm.Meta.fields 
+            
+
+
+
+class StudentForm(CustomUserForm):
+    matric_no = forms.CharField(max_length=20)
+    course_of_study = forms.ModelChoiceField(queryset=CourseOfStudy.objects.all(), label="Course of Study")
+    level = forms.ChoiceField(choices=[
+        ('100', '100 Level'),
+        ('200', '200 Level'),
+        ('300', '300 Level'),
+        ('400', '400 Level'),
+        ('500', '500 Level'),
+        ('600', '600 Level'),
+    ])
+
+    class Meta(CustomUserForm.Meta):
+        model = Student
+        fields = CustomUserForm.Meta.fields + [
+            'matric_no',
+            'course_of_study',
+            'level',
+        ]
+     
+
+class AspirantStudentForm(CustomUserForm):
+    course_applied = forms.ModelChoiceField(queryset=CourseOfStudy.objects.all(), label="Course of Study")
+    
+    # Educational Info
+    school_name = forms.CharField(max_length=255)
+    school_address_1 = forms.CharField(max_length=255)
+    school_address_2 = forms.CharField(max_length=255)
+    school_city = forms.CharField(max_length=255)
+    school_state_province = forms.CharField(max_length=255)
+    school_postal_code = forms.CharField(max_length=255)
+    school_year_graduated = forms.CharField(max_length=255)
+
+    # Emergency Info
+    emergency_first_name = forms.CharField(max_length=255)
+    emergency_last_name = forms.CharField(max_length=255)
+    emergency_email = forms.EmailField(max_length=255)
+    emergency_phone_number = forms.CharField(max_length=255)
+    emergency_address_1 = forms.CharField(max_length=255)
+    emergency_address_2 = forms.CharField(max_length=255)
+    emergency_city = forms.CharField(max_length=255)
+    emergency_postal_code = forms.CharField(max_length=255)
+    emergency_country = forms.ChoiceField(
+        choices=CountryField().choices,
+        widget=forms.Select,
+        required=True,
+        label="Emergency Contact Country"
+    )
+    emergency_relationship = forms.ChoiceField(choices=AspirantStudent.EMERGENCY_RELATIONSHIP)
+
+    # Referee Info
+    referee_first_name = forms.CharField(max_length=255)
+    referee_last_name = forms.CharField(max_length=255)
+    referee_email = forms.EmailField(max_length=255)
+    referee_phone_number = forms.CharField(max_length=255)
+    referee_address_1 = forms.CharField(max_length=255)
+    referee_address_2 = forms.CharField(max_length=255)
+    referee_city = forms.CharField(max_length=255)
+    referee_postal_code = forms.CharField(max_length=255)
+    referee_state_province = forms.CharField(max_length=255)
+    referee_country = forms.ChoiceField(
+        choices=CountryField().choices,
+        widget=forms.Select,
+        required=True,
+        label="Emergency Contact Country"
+    )
+
+    class Meta(CustomUserForm.Meta):
+        model = AspirantStudent
+        fields = CustomUserForm.Meta.fields + [
+            'course_applied',
+            'phone_number',
+            'address_1', 'address_2', 'city', 'state_province', 'postal_code', 'country',
+            
+            # Educational
+            'school_name', 'school_address_1', 'school_address_2', 'school_city',
+            'school_state_province', 'school_postal_code', 'school_year_graduated',
+
+            # Emergency
+            'emergency_first_name', 'emergency_last_name', 'emergency_email',
+            'emergency_phone_number', 'emergency_address_1', 'emergency_address_2',
+            'emergency_city', 'emergency_postal_code', 'emergency_country', 'emergency_relationship',
+
+            # Referee
+            'referee_first_name', 'referee_last_name', 'referee_email',
+            'referee_phone_number', 'referee_address_1', 'referee_address_2',
+            'referee_city', 'referee_postal_code', 'referee_state_province', 'referee_country',
+        ]
 

@@ -30,10 +30,13 @@ INSTALLED_APPS = [
     'managementportal.apps.ManagementportalConfig',
     'staffportal.apps.StaffportalConfig',
     'studentportal.apps.StudentportalConfig',
+    'applications.apps.ApplicationsConfig',
+
+    
 
 ]
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTH_USER_MODEL = 'core.CustomUser'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

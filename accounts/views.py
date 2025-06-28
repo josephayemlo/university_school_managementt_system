@@ -1,10 +1,21 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .EmailBackend import EmailBackend
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import login, logout
+from django.urls import reverse
+from django.http.response import HttpResponse
+from django.conf import settings
+from django.contrib import messages
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 # Create your views here.
+
+
+# success
+def success(request):
+    return render(request, 'core/success.html')
 
 def login_page (request):
     if request.user.is_authenticated:
@@ -18,7 +29,7 @@ def login_page (request):
             return redirect(reverse("student_portal"))
         else:
             return redirect(reverse("aspirant_student_home"))
-    return render(request, 'login.html')
+    return render(request, 'accounts/login.html')
 
 def login_user(request, **kwargs):
     if request.method != 'POST':
