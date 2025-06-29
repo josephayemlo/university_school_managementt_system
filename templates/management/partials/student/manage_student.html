@@ -1,16 +1,3 @@
-{% extends 'base.html' %}
-
-<!-- Excluding header  -->
-{% block content %}
-{% block header %} 
-{% endblock header %}
-
-<div class="studentList">
-    <div class="studentListBack">
-        <a class="studentListBackBtn" href="{% url 'management_home'%}">Back</a>
-    </div>
-
-
     
     <div class="tableContainer">
       <div class="tableHeading">
@@ -29,8 +16,11 @@
           <span class="tableHeading4">{{student.gender}}</span>
           <span class="tableHeading5"> 
 
-            <a href="{% url 'edit_student' student.student.id %}" class="tableHeading5Btn1">Edit</a> - 
-            <a href="{% url 'delete_student' student.student.id %}" onclick="return confirm('Confirm Delete')" class="tableHeading5Btn2">Delete</a>
+            <a href="{% url 'edit_student' student.student.id %}" class="tableHeading5Btn1 ajax_link">Edit</a> - 
+            <form method="post" class="ajax_form " action="{% url 'delete_student' student.id %}">
+                {% csrf_token %}
+                <button type="submit" class="tableHeading5Btn2">Delete</button>
+              </form>
           </span>
       </div>
 
@@ -40,9 +30,4 @@
       {% endif %}
     </div>
 
-</div>
-    <!-- Exluding footer -->
-    {% block footer %} 
-    {% endblock footer %}
     
-    {% endblock content%}

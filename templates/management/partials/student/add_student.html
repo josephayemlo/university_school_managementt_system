@@ -1,0 +1,10 @@
+
+<h1>Add student</h1>
+<form class="ajax_form" method="post" action="{% url 'add_student' %}">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add student</button>
+</form>
+
+<div id="ajax_form_response"></div>

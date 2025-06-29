@@ -1,11 +1,11 @@
 from . import views
 from django.urls import path
 from .customviews.aspirant_views import add_aspirant_student, aspirant_student_list
-from .customviews.student_view import add_student, student_list, edit_student, delete_student
+from .customviews.student_view import add_student, manage_student, edit_student, delete_student
 from .customviews.academic_staff_views import add_academicstaff, academicstaff_list, edit_academicstaff, delete_academicstaff
 from .customviews.nonacademic_staff_views import add_nonacademicstaff, nonacademicstaff_list, edit_nonacademicstaff, delete_nonacademicstaff
-from .customviews.faculty_views import add_faculty
-from .customviews.department_views import add_department
+from .customviews.faculty_views import add_faculty, manage_faculty, edit_faculty, delete_faculty
+from .customviews.department_views import add_department, manage_department, edit_department, delete_department
 from .customviews.course_views import (
     add_course, edit_course, delete_course, manage_course
 )
@@ -40,7 +40,7 @@ urlpatterns = [
 
     # student URL
     path("student/add", add_student, name='add_student'),
-    path("student/list", student_list, name='student_list'),
+    path("student/list", manage_student, name='manage_student'),
     path("student/edit/<int:student_id>", edit_student, name='edit_student'),
     path("student/delete/<int:student_id>", delete_student, name='delete_student'),
 
@@ -58,9 +58,16 @@ urlpatterns = [
 
     # faculty URL
     path('faculty/add/', add_faculty, name='add_faculty'),
+    path('faculty/manage/', manage_faculty, name='manage_faculty'),
+    path('faculty/edit/<int:course_id>/', edit_faculty, name='edit_faculty'),
+    path('faculty/delete/<int:faculty_id>/', delete_faculty, name='delete_faculty'),
+
 
     # department URL
     path('department/add/', add_department, name='add_department'),
+    path('department/manage/', manage_department, name='manage_department'),
+    path('department/edit/<int:course_id>/', edit_department, name='edit_department'),
+    path('department/delete/<int:department_id>/', delete_department, name='delete_department'),
 
     # course_of_study URL
     path('course_of_study/add/', add_course_of_study, name='add_course_of_study'),

@@ -7,7 +7,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 # Create your views here.
-
+# add
 def add_student(request):
     form = StudentForm(request.POST or None, request.FILES or None)
     context = {'form': form, 'page_title': 'Add Student'}
@@ -47,25 +47,20 @@ def add_student(request):
                     course_of_study=course_of_study,
                     level=level
                 )
-                print('Student  Created ')
-
-
                 messages.success(request, "Student successfully added.")
                 return redirect('management_home')
-
             except Exception as e:
                 messages.error(request, "Could not add student: " + str(e))
         else:
             messages.error(request, "Please fill all required fields correctly.")
+    return render(request, 'management/partials/student/add_student.html', context)
 
-    return render(request, 'management/partials/student/add_student_template.html', context)
-
-
-def student_list(request):
+# manage/view
+def manage_student(request):
     students = User.objects.filter(user_type=4)
-    return render(request, 'management/partials/student/student_list.html', {'students': students})
+    return render(request, 'management/partials/student/manage_student.html', {'students': students})
 
-
+# edit
 def edit_student(request, student_id):
     student = get_object_or_404(Student, id=student_id)
     form = StudentForm(request.POST or None, instance=student)
@@ -110,12 +105,16 @@ def edit_student(request, student_id):
         else:
             messages.error(request, "Please Fill Form Properly!")
     else:
-        return render(request, "management/partials/student/edit_student_template.html", context)
+        return render(request, "management/partials/student/edit_student.html", context)
 
-
+# delete
 def delete_student(request, student_id):
-    student = get_object_or_404(User, student__id=student_id)
-    student.delete()
-    messages.success(request, "Student deleted successfully!")
-    return redirect(reverse('student_list'))
+    if request.method == 'POST':
+        student = get_object_or_404(Student, id=student_id)
+        student.delete()
+        print("student deleted")
+        messages.success(request, 'student Deleted Sucessfully')
+        return render(request,'management/partials/success.html')
+    return render(request, 'management/partials/student/manage_student.html')
+    
 

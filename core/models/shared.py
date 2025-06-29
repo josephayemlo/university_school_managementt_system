@@ -60,8 +60,8 @@ class AcademicCalendar(models.Model):
         return f"{self.session} - {self.semester}"
 
 class RegisteredCourse(models.Model):
-    student = models.ForeignKey('core.Student', on_delete=models.CASCADE)
-    course = models.ForeignKey('core.Course', on_delete=models.CASCADE)
+    student = models.ForeignKey('Student', on_delete=models.CASCADE)
+    course = models.ForeignKey('Course', on_delete=models.CASCADE)
     academic_calendar = models.ForeignKey('AcademicCalendar', on_delete=models.PROTECT, null=False)
     timestamp = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)

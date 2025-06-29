@@ -1,0 +1,8 @@
+<h1>Edit faculty</h1>
+<form class="ajax_form" method="post" action="{% url 'edit_faculty' faculty.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update faculty</button>
+</form>
+
+<div id="ajax_form_response"></div>

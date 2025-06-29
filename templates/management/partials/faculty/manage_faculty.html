@@ -1,0 +1,27 @@
+
+   
+   
+   <div class="tableContainer">
+      <div class="tableHeading">
+          <span class="tableHeading1">SN</span>
+          <span class="tableHeading3">Faculty</span>
+          <span class="tableHeading3">Edit/Delete</span>
+      </div>
+      {% if faculty  %}
+            {% for faculty in faculty %}
+      <div class="tableData">
+          <span class="tableHeading1">{{ forloop.counter }}</span>
+          <span class="tableHeading2">{{faculty.name}}</span>
+          <span class="tableHeading3"> 
+            <a href="{% url  'edit_faculty' faculty.id %}" class="tableHeading5Btn1 ajax_link">Edit</a> - 
+            <form method="post" class="ajax_form  ajax_delete_form" action="{% url 'delete_faculty' faculty.id %}">
+              {% csrf_token %}
+              <button type="submit" class="tableHeading5Btn2">Delete</button>
+            </form>
+          </span>
+      </div>
+
+      {% endfor %}
+      {% else %}
+              <h2>No faculty available</h2>
+      {% endif %}

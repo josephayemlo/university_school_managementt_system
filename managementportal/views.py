@@ -27,4 +27,4 @@ def management_home (request):
         'male_count': male_count,
         'female_count': female_count       
     }
-    return render(request, 'management_home.html', context)
+    return render(request, 'management/management_home.html', context)

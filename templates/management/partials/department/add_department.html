@@ -1,7 +1,10 @@
-{% extends 'base.html' %}
 
-{% block content %}
+<h1>Add department</h1>
+<form class="ajax_form" method="post" action="{% url 'add_department' %}">
 
-{% include "includes/form_template.html" with messages=messages  form=form button_text="Add Department"%}
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add department</button>
+</form>
 
-{% endblock content%}
+<div id="ajax_form_response"></div>

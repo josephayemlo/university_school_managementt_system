@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from core.forms import *
 from django.contrib import messages
 from ..forms import FacultyForm
-
+from core.models import Faculty
 # Create your views here.
 
 def add_faculty(request):
@@ -13,4 +13,41 @@ def add_faculty(request):
         return redirect('management_home')
     return render(request, 'management/partials/faculty/add_faculty.html', {'form': form})
 
+
+
+# manage/view
+def manage_faculty(request):
+    faculty = Faculty.objects.all()
+    context= {"faculty":faculty}
+    return render(request, 'management/partials/faculty/manage_faculty.html', context)
+
+
+# edit
+def edit_faculty(request, faculty_id):
+    faculty = get_object_or_404(Faculty, id=faculty_id)
+    if request.method == 'POST':
+        form = FacultyForm(request.POST, instance=faculty)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'faculty Updated Sucessfully')
+            return render(request,'management/partials/success.html')
+    else:
+        form = FacultyForm(instance=faculty)
+    context = {
+        "form": form,
+        "faculty": faculty
+    }
+
+    return render(request, 'management/partials/faculty/edit_faculty.html', context)
+
+# delete
+def delete_faculty(request, faculty_id):
+    if request.method == 'POST':
+        faculty = get_object_or_404(Faculty, id=faculty_id)
+        faculty.delete()
+        print("faculty deleted")
+        messages.success(request, 'faculty Deleted Sucessfully')
+        return render(request,'management/partials/success.html')
+    return render(request, 'management/partials/faculty/manage_faculty.html')
+    
 
