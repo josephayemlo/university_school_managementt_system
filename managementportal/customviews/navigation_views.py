@@ -19,3 +19,8 @@ def student_management(request):
 # Result and assessment
 def result_and_assessment(request):
     return render (request, 'management/partials/navigation/result_and_assessment_links.html')
+
+
+# Student School Fees Payment
+def student_school_fees_management(request):
+    return render (request, 'management/partials/navigation/student_school_fees_links.html')

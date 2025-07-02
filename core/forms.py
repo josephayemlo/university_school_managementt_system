@@ -9,9 +9,23 @@ from .models import (
     CustomUser, 
     CourseOfStudy,
     StudentResult,
+    DepartmentSchoolFee,
+    DepartmentFeeItem
 )
 
 
+
+
+class DepartmentSchoolFeeForm(forms.ModelForm):
+    class Meta:
+        model = DepartmentSchoolFee
+        fields = '__all__'
+    
+
+class DepartmentFeeItemForm(forms.ModelForm):
+    class Meta:
+        model = DepartmentFeeItem
+        fields = '__all__'
 # Forms
 class FormSettings(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -19,6 +33,8 @@ class FormSettings(forms.ModelForm):
         # Here make some changes such as:
         for field in self.visible_fields():
             field.field.widget.attrs['class'] = 'form-control'
+
+
 
 
 class CustomUserForm(FormSettings):

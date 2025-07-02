@@ -25,15 +25,19 @@ from .customviews.academic_calendar_views import (
 from .customviews.navigation_views import (
     department_and_faculty, academic_course,
     session_and_academic_calender, result_and_assessment,
-    student_management
+    student_management, student_school_fees_management
 )
-
+from .customviews.student_school_fees_views import add_department_school_fees, add_item_to_department_school_fee
 
 # URLs
 urlpatterns = [
     
     # ManagementPortal Home URL
     path("management/home", views.management_home, name='management_home'),
+
+    # Student School Fees
+    path("add_department_school_fees/", add_department_school_fees, name='add_department_school_fees'),
+    path("add_item_to_department_school_fee/", add_item_to_department_school_fee, name='add_item_to_department_school_fee'),
 
     # Result
     path("result_select_department", result_select_department, name='result_select_department'),
@@ -104,4 +108,6 @@ urlpatterns = [
     path('session_and_academic_calender/', session_and_academic_calender, name='session_and_academic_calender'),
     path('academic_course/', academic_course, name='academic_course'),
     path('department_and_faculty/', department_and_faculty, name='department_and_faculty'),
+    path("student_school_fees_management/", student_school_fees_management, name='student_school_fees_management'),
+
 ]
