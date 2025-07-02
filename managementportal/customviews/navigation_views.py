@@ -5,12 +5,12 @@ def department_and_faculty(request):
     return render (request, 'management/partials/navigation/department_and_faculty_links.html')
 
 # Academic Calender 
-def session_and_calender(request):
-    return render (request, 'management/partials/navigation/session_and_calender_links.html')
+def session_and_academic_calender(request):
+    return render (request, 'management/partials/navigation/session_and_academic_calender_links.html')
 
 # Course and Academics
-def course_and_academic(request):
-    return render (request, 'management/partials/navigation/course_and_academic_links.html')
+def academic_course(request):
+    return render (request, 'management/partials/navigation/academic_course_links.html')
 
 # student Management
 def student_management(request):

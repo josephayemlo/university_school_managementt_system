@@ -1,0 +1,84 @@
+{% load static %}
+
+<div class="result_form">
+  <div> 
+    {% if messages %}
+         {% for message in messages %}
+            <div class="form_messages"> 
+               {{ message }}
+            </div>
+          {% endfor %}
+    {% endif %}
+  </div>
+  <h2 class="result_form_title">
+    Enter Results for {{ course.code }} - {{ course.title }}
+  </h2>
+  <h4 class="result_form_subtitle">
+    Session: {{ calendar.session }} | Semester: {{ calendar.semester }}
+  </h4>
+
+  <form class="ajax_form" method="post" action="{% url 'result_registeredcourse_students' course.id %}">
+    {% csrf_token %}
+    <table class="result_table">
+      <thead class="result_table_head">
+        <tr>
+          <th>SN</th>
+          <th>Student</th>
+          <th>CA1</th>
+          <th>CA2</th>
+          <th>CA3</th>
+          <th>Exam</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody class="result_table_body">
+        {% for reg in registrations %}
+        <tr class="result_table_row">
+          <td class="result_table_cell">{{ forloop.counter }}</td>
+          <td class="result_table_cell">
+            {{ reg.student.admin.first_name }} {{ reg.student.admin.last_name }}
+            ({{ reg.student.matric_no }})
+          </td>
+
+          {% if reg.studentresult %}
+            {% with result=reg.studentresult %}
+              <td class="result_table_cell">
+                <input type="number" name="reg_{{ reg.id }}_ca1" value="{{ result.ca1 }}" step="0.01">
+              </td>
+              <td class="result_table_cell">
+                <input type="number" name="reg_{{ reg.id }}_ca2" value="{{ result.ca2 }}" step="0.01">
+              </td>
+              <td class="result_table_cell">
+                <input type="number" name="reg_{{ reg.id }}_ca3" value="{{ result.ca3 }}" step="0.01">
+              </td>
+              <td class="result_table_cell">
+                <input type="number" name="reg_{{ reg.id }}_exam" value="{{ result.exam }}" step="0.01">
+              </td>
+              <td class="result_table_cell result_total_cell">
+                {{ result.ca1|add:result.ca2|add:result.ca3|add:result.exam }}
+              </td>
+            {% endwith %}
+          {% else %}
+              <td class="result_table_cell">
+                <input type="number" name="reg_{{ reg.id }}_ca1" value="0" step="0.01">
+              </td>
+              <td class="result_table_cell">
+                <input type="number" name="reg_{{ reg.id }}_ca2" value="0" step="0.01">
+              </td>
+              <td class="result_table_cell">
+                <input type="number" name="reg_{{ reg.id }}_ca3" value="0" step="0.01">
+              </td>
+              <td class="result_table_cell">
+                <input type="number" name="reg_{{ reg.id }}_exam" value="0" step="0.01">
+              </td>
+              <td class="result_table_cell result_total_cell">0</td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <button type="submit" class="result_submit_button">Save Results</button>
+  </form>
+  <div id="ajax_form_response" class="result_form_response"></div>
+</div>

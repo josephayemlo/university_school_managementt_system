@@ -42,6 +42,8 @@
             padding: 6px;
             text-decoration: none;
             border-radius: 2px;
+            font-size: 19px;
+            margin-right: 0.5rem;
 
             &:hover{
                 background-color: white;
@@ -49,11 +51,14 @@
             }
         }
         &Btn2{
-            background-color: #e74c3c;
-            color: black;
+            background-color: #7c2217;
+            color: whitesmoke;
             padding: 6px;
             text-decoration: none;
             border-radius: 2px;
+            display: inline-block;
+            font-size: 19px;
+
 
             &:hover{
                 background-color: red;
@@ -73,3 +78,5 @@
 .tableData:last-child{
     border-bottom: 2px solid rgba(255, 255, 255, 0.203);
 }
+
+

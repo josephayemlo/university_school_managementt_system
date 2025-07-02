@@ -1,7 +1,8 @@
 from . import views
 from django.urls import path
+from .customviews.student_result_views import result_registeredcourse_students, result_select_department, result_department_course
 from .customviews.aspirant_views import add_aspirant_student, aspirant_student_list
-from .customviews.student_view import add_student, manage_student, edit_student, delete_student
+from .customviews.student_views import add_student, manage_student, edit_student, delete_student
 from .customviews.academic_staff_views import add_academicstaff, academicstaff_list, edit_academicstaff, delete_academicstaff
 from .customviews.nonacademic_staff_views import add_nonacademicstaff, nonacademicstaff_list, edit_nonacademicstaff, delete_nonacademicstaff
 from .customviews.faculty_views import add_faculty, manage_faculty, edit_faculty, delete_faculty
@@ -22,8 +23,8 @@ from .customviews.academic_calendar_views import (
     edit_academic_calender
 )
 from .customviews.navigation_views import (
-    department_and_faculty, course_and_academic,
-    session_and_calender, result_and_assessment,
+    department_and_faculty, academic_course,
+    session_and_academic_calender, result_and_assessment,
     student_management
 )
 
@@ -34,6 +35,11 @@ urlpatterns = [
     # ManagementPortal Home URL
     path("management/home", views.management_home, name='management_home'),
 
+    # Result
+    path("result_select_department", result_select_department, name='result_select_department'),
+    path('department/<int:department_id>/courses/', result_department_course, name='result_department_course'),
+    path('course/<int:course_id>/students/', result_registeredcourse_students, name='result_registeredcourse_students'),
+
     # aspirant URL
     path("aspirant_student/add", add_aspirant_student, name='add_aspirant_student'),
     path("aspirant_student/list", aspirant_student_list, name='aspirant_student_list'),
@@ -41,7 +47,7 @@ urlpatterns = [
     # student URL
     path("student/add", add_student, name='add_student'),
     path("student/list", manage_student, name='manage_student'),
-    path("student/edit/<int:student_id>", edit_student, name='edit_student'),
+    path("student/edit/<int:student_id>/", edit_student, name='edit_student'),
     path("student/delete/<int:student_id>", delete_student, name='delete_student'),
 
     # academic staff URL
@@ -59,14 +65,14 @@ urlpatterns = [
     # faculty URL
     path('faculty/add/', add_faculty, name='add_faculty'),
     path('faculty/manage/', manage_faculty, name='manage_faculty'),
-    path('faculty/edit/<int:course_id>/', edit_faculty, name='edit_faculty'),
+    path('faculty/edit/<int:faculty_id>/', edit_faculty, name='edit_faculty'),
     path('faculty/delete/<int:faculty_id>/', delete_faculty, name='delete_faculty'),
 
 
     # department URL
     path('department/add/', add_department, name='add_department'),
     path('department/manage/', manage_department, name='manage_department'),
-    path('department/edit/<int:course_id>/', edit_department, name='edit_department'),
+    path('department/edit/<int:department_id>/', edit_department, name='edit_department'),
     path('department/delete/<int:department_id>/', delete_department, name='delete_department'),
 
     # course_of_study URL
@@ -95,7 +101,7 @@ urlpatterns = [
     # navigation URL
     path('student_management/', student_management, name='student_management'),
     path('result_and_assessment/', result_and_assessment, name='result_and_assessment'),
-    path('session_and_calendar/', session_and_calender, name='session_and_calender'),
-    path('course_and_academic/', course_and_academic, name='course_and_academic'),
+    path('session_and_academic_calender/', session_and_academic_calender, name='session_and_academic_calender'),
+    path('academic_course/', academic_course, name='academic_course'),
     path('department_and_faculty/', department_and_faculty, name='department_and_faculty'),
 ]

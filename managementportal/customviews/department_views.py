@@ -9,7 +9,7 @@ def add_department(request):
     if request.method == 'POST' and form.is_valid():
         form.save()
         messages.success(request, "Department added successfully.")
-        return redirect('management_home')
+        return render(request,'management/partials/success.html')
     return render(request, 'management/partials/department/add_department.html', {'form': form})
 
 # manage/view
@@ -27,7 +27,8 @@ def edit_department(request, department_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'department Updated Sucessfully')
-            return render(request,'management/partials/success.html')
+            return redirect(request.path)
+        
     else:
         form = DepartmentForm(instance=department)
     context = {

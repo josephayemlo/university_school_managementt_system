@@ -88,12 +88,10 @@ class LevelCourse(models.Model):
     def __str__(self):
         return f"{self.level}L - ({self.semester} Semester) - {self.course_of_study}"
 
+
 class StudentResult(models.Model):
-    student = models.ForeignKey('core.Student', on_delete=models.CASCADE)
     registered_course = models.OneToOneField('RegisteredCourse', on_delete=models.CASCADE)
-    session = models.CharField(max_length=20)
-    semester = models.CharField(max_length=10)
-    ca1 = models.DecimalField(max_digits=5, decimal_places=2, default=0)  # e.g. 10.0
+    ca1 = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     ca2 = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     ca3 = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     exam = models.DecimalField(max_digits=5, decimal_places=2, default=0)
@@ -104,24 +102,10 @@ class StudentResult(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     updated_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
-    @property
-    def total(self):
-        return self.ca1 + self.ca2 + self.exam
+    def __str__(self):
+        rc = self.registered_course
+        return f"{rc.student} - {rc.course} ({rc.academic_calendar})"
 
-    def grade_letter(self):
-        total = self.total
-        if total >= 70:
-            return 'A'
-        elif total >= 60:
-            return 'B'
-        elif total >= 50:
-            return 'C'
-        elif total >= 45:
-            return 'D'
-        elif total >= 40:
-            return 'E'
-        else:
-            return 'F'
 
 class SemesterResult(models.Model):
     student = models.ForeignKey('core.Student', on_delete=models.CASCADE)

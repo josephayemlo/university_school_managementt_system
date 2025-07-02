@@ -10,7 +10,7 @@ def add_faculty(request):
     if request.method == 'POST' and form.is_valid():
         form.save()
         messages.success(request, "Faculty added successfully.")
-        return redirect('management_home')
+        return render(request,'management/partials/success.html')
     return render(request, 'management/partials/faculty/add_faculty.html', {'form': form})
 
 
@@ -30,7 +30,7 @@ def edit_faculty(request, faculty_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'faculty Updated Sucessfully')
-            return render(request,'management/partials/success.html')
+            return redirect(request.path)
     else:
         form = FacultyForm(instance=faculty)
     context = {

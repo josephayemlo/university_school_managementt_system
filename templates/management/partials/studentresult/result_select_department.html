@@ -1,0 +1,27 @@
+
+   
+<h3 class="form_title">select department to proceed</h3>
+
+   
+   <div class="tableContainer">
+    <div class="tableHeading">
+        <span class="tableHeading1">SN</span>
+        <span class="tableHeading2">Department Name</span>
+        <span class="tableHeading3">Faculty</span>
+        <span class="tableHeading3">Link</span>
+
+    </div>
+    {% if department  %}
+          {% for department in department %}
+    <div class="tableData">
+        <span class="tableHeading1">{{ forloop.counter }}</span>
+        <span class="tableHeading2">{{department.name}}</span>
+        <span class="tableHeading3">{{department.faculty}}</span>
+        <span class="tableHeading5"><a href="{% url 'result_department_course' department.id %}" class=" generalAdminBtn ajax_link">Proceed</a></span>
+       
+    </div>
+
+    {% endfor %}
+    {% else %}
+            <h2>No department available</h2>
+    {% endif %}

@@ -12,7 +12,7 @@ from core.models import AcademicCalendar, RegisteredCourse, Course, LevelCourse,
 
 # Student Portal home
 def student_portal (request):
-    return render(request, 'student/student_portal.html')
+    return render(request, 'studentportal/student_portal.html')
 
 # Previous Registered Courses
 def previous_registered_courses(request):
@@ -53,7 +53,7 @@ def previous_registered_courses(request):
             'courses': group_list,
         })
 
-    return render(request, 'student/partials/previous_registered_courses.html', {
+    return render(request, 'studentportal/partials/previous_registered_courses.html', {
         'grouped_registrations': grouped
     })
 
@@ -74,7 +74,7 @@ def previous_course_registration_details(request, level, semester):
         course__level=level
     ).select_related('course')
 
-    return render(request, 'student/partials/previous_registration_details.html', {
+    return render(request, 'studentportal/partials/previous_registration_details.html', {
         'courses': courses,
         'level': level,
         'semester': semester,
@@ -89,11 +89,11 @@ def registered_courses(request):
         student=student,
         academic_calendar = academic_calendar
     )
-    return render (request, 'student/partials/registered_courses.html', { 'registered_courses':registered_courses })
+    return render (request, 'studentportal/partials/registered_courses.html', { 'registered_courses':registered_courses })
 
 # course registration
 def course_registration(request):
-    return render (request, 'student/partials/course_registration.html')
+    return render (request, 'studentportal/partials/course_registration.html')
 
 # Current Semester Available courses
 def student_available_course(request):
@@ -104,7 +104,7 @@ def student_available_course(request):
         semester=current_calendar.semester,
         course_of_study=student.course_of_study
     ).select_related('course')
-    return render(request, 'student/partials/student_available_course.html', {
+    return render(request, 'studentportal/partials/student_available_course.html', {
         'student': student,
         'courses': courses,
         'semester': current_calendar.semester,
@@ -146,7 +146,7 @@ def register_courses(request):
             messages.success(request, "Courses registered successfully.")
             print('course registered')
             # with redirect, django cannot redirct to a parital template so the best option is to return a rendered page
-            return render(request, 'student/partials/success.html')
+            return render(request, 'studentportal/partials/success.html')
     else:
          # GET request – preselect previously registered courses
         previously_registered_courses = RegisteredCourse.objects.filter(
@@ -159,7 +159,7 @@ def register_courses(request):
             initial={'courses': previously_registered_courses}
         )
 
-    return render(request, 'student/partials/register_courses.html', {
+    return render(request, 'studentportal/partials/register_courses.html', {
         'form': form,
         'student': student,
         'semester': current_calendar.semester,

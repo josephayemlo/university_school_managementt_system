@@ -1,33 +1,31 @@
-    
-    <div class="tableContainer">
-      <div class="tableHeading">
-          <span class="tableHeading1">SN</span>
-          <span class="tableHeading2">Full Name</span>
-          <span class="tableHeading3">Email</span>
-          <span class="tableHeading4">Gender</span>
-          <span class="tableHeading5">Edit/Delete</span>
-      </div>
-      {% if students  %}
-            {% for student in students %}
+<h3 class="form_title">Manage Student | Student List</h3>
+
+<div class="tableContainer">
+  <div class="tableHeading">
+      <span class="tableHeading1">SN</span>
+      <span class="tableHeading2">Full Name</span>
+      <span class="tableHeading3">Email</span>
+      <span class="tableHeading4">Gender</span>
+      <span class="tableHeading5">Edit/Delete</span>
+  </div>
+
+  {% if students %}
+    {% for student in students %}
       <div class="tableData">
           <span class="tableHeading1">{{ forloop.counter }}</span>
-          <span class="tableHeading2">{{student.first_name}} {{student.last_name}}</span>
-          <span class="tableHeading3">{{student.email}}</span>
-          <span class="tableHeading4">{{student.gender}}</span>
+          <span class="tableHeading2">{{ student.admin.first_name }} {{ student.admin.last_name }}</span>
+          <span class="tableHeading3">{{ student.admin.email }}</span>
+          <span class="tableHeading4">{{ student.admin.gender }}</span>
           <span class="tableHeading5"> 
-
-            <a href="{% url 'edit_student' student.student.id %}" class="tableHeading5Btn1 ajax_link">Edit</a> - 
-            <form method="post" class="ajax_form " action="{% url 'delete_student' student.id %}">
-                {% csrf_token %}
-                <button type="submit" class="tableHeading5Btn2">Delete</button>
+              <a href="{% url 'edit_student' student.id %}" class="tableHeading5Btn1 ajax_link">Edit</a> - 
+              <form method="post" class="ajax_form ajax_delete_form" action="{% url 'delete_student' student.id %}">
+                  {% csrf_token %}
+                  <button type="submit" class="tableHeading5Btn2">Delete</button>
               </form>
           </span>
       </div>
-
-      {% endfor %}
-      {% else %}
-              <h2>No Student available</h2>
-      {% endif %}
-    </div>
-
-    
+    {% endfor %}
+  {% else %}
+      <h2>No Student available</h2>
+  {% endif %}
+</div>

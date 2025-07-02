@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from ..forms import AcademicCalenderForm
 from core.models import AcademicCalendar
@@ -29,7 +29,7 @@ def edit_academic_calender(request, academic_calender_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Academic Calender Updated Sucessfully')
-            return render(request,'management/partials/success.html')
+            return redirect(request.path)
     else:
         form = AcademicCalenderForm(instance=academic_calender)
     context = {

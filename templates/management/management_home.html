@@ -18,15 +18,7 @@
             <div class="topAdminContainerNavRight">
                 <h1>Administrative Dashboard</h1>
                 <!-- <a href="{% url 'home'%}" class="btnWhite">Home</a> -->
-                {% if messages %}
-                <div class="message-container">
-                  {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}">
-                      {{ message }}
-                    </div>
-                  {% endfor %}
-                </div>
-              {% endif %}
+               
             </div>
 
         </div>
@@ -36,14 +28,17 @@
                 <a class="leftNavContainerBtn" href="{% url 'management_home' %}">
                   <i class="fas fa-tachometer-alt"></i> Dashboard
                 </a>
-                <a class="leftNavContainerBtn ajax_link"  href="{% url 'course_and_academic' %}">
-                  <i class="fas fa-tachometer-alt"></i> Course & Academic
+                <a class="leftNavContainerBtn ajax_link"  href="{% url 'academic_course' %}">
+                  <i class="fas fa-tachometer-alt"></i> Academic Course
                 </a>
-                <a class="leftNavContainerBtn ajax_link"  href="{% url 'session_and_calender' %}">
-                  <i class="fas fa-tachometer-alt"></i> Session & Calender
+                <a class="leftNavContainerBtn ajax_link"  href="{% url 'session_and_academic_calender' %}">
+                  <i class="fas fa-tachometer-alt"></i> Session & Academic Calender
                 </a>
                 <a class="leftNavContainerBtn ajax_link"  href="{% url 'department_and_faculty' %}">
                   <i class="fas fa-tachometer-alt"></i> Department & Faculty
+                </a>
+                <a class="leftNavContainerBtn ajax_link"  href="{% url 'student_management' %}">
+                  <i class="fas fa-tachometer-alt"></i> Student Management
                 </a>
                 <a class="leftNavContainerBtn ajax_link"  href="{% url 'result_and_assessment' %}">
                   <i class="fas fa-tachometer-alt"></i> Result & Assessment
@@ -51,12 +46,11 @@
                 <a class="leftNavContainerBtn" href="{% url 'logout_user' %}">
                   <i class="fas fa-briefcase"></i> Logout
                 </a>
-                <a class="leftNavContainerBtn ajax_link"  href="{% url 'student_management' %}">
-                  <i class="fas fa-tachometer-alt"></i> Student Management
-                </a>
+                
             </div>
               
             <div class="rightNavContainer" id="ajaxContainer">      
+             
                 <div class="adminRightNavRow1Container">
                     <a href="{% url 'manage_student'%}" class="rightNavRow1Col1 btnWhite">                       
                         <h2 class="rightNavRow1Col1Text1">Total Students</h2>

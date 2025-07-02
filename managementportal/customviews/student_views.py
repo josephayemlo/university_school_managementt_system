@@ -38,8 +38,6 @@ def add_student(request):
                     gender=gender,
                     address=address
                 )
-                print('User  Created ')
-
                 # Manually create Student object
                 student = Student.objects.create(
                     admin=user,
@@ -48,65 +46,61 @@ def add_student(request):
                     level=level
                 )
                 messages.success(request, "Student successfully added.")
-                return redirect('management_home')
+                return render(request,'management/partials/success.html')
             except Exception as e:
                 messages.error(request, "Could not add student: " + str(e))
         else:
             messages.error(request, "Please fill all required fields correctly.")
     return render(request, 'management/partials/student/add_student.html', context)
 
-# manage/view
+
+
 def manage_student(request):
-    students = User.objects.filter(user_type=4)
+    students = Student.objects.select_related('admin').order_by('admin__last_name')
     return render(request, 'management/partials/student/manage_student.html', {'students': students})
 
-# edit
+
+
 def edit_student(request, student_id):
     student = get_object_or_404(Student, id=student_id)
+    user = student.admin  # linked User object
     form = StudentForm(request.POST or None, instance=student)
-    context = {
-        'form': form,
-        'student_id': student_id,
-        'page_title': 'Edit Student'
-    }
+
     if request.method == 'POST':
         if form.is_valid():
-            first_name = form.cleaned_data.get('first_name')
-            last_name = form.cleaned_data.get('last_name')
-            address = form.cleaned_data.get('address')
-            email = form.cleaned_data.get('email')
-            gender = form.cleaned_data.get('gender')
-            password = form.cleaned_data.get('password') or None
-             # Student fields
-            matric_no = form.cleaned_data.get('matric_no')
-            course_of_study = form.cleaned_data.get('course_of_study')
-            level = form.cleaned_data.get('level')
-
-
             try:
-                user = User.objects.get(id=student.admin.id)                
-                user.email = email
-                if password != None:
+                # Update User fields
+                user.first_name = form.cleaned_data['first_name']
+                user.last_name = form.cleaned_data['last_name']
+                user.email = form.cleaned_data['email']
+                user.address = form.cleaned_data['address']
+                user.gender = form.cleaned_data['gender']
+                
+                password = form.cleaned_data.get('password')
+                if password:
                     user.set_password(password)
-                user.first_name = first_name
-                user.last_name = last_name
-                user.gender = gender
-                user.address = address
                 user.save()
-                student.matric_no = matric_no
-                student.course_of_study = course_of_study
-                student.level = level
 
+                # Update Student fields
+                student.matric_no = form.cleaned_data['matric_no']
+                student.course_of_study = form.cleaned_data['course_of_study']
+                student.level = form.cleaned_data['level']
                 student.save()
-                messages.success(request, "Successfully Updated")
-                return redirect(reverse('edit_student', args=[student_id]))
-            except Exception as e:
-                messages.error(request, "Could Not Update " + str(e))
-        else:
-            messages.error(request, "Please Fill Form Properly!")
-    else:
-        return render(request, "management/partials/student/edit_student.html", context)
 
+                messages.success(request, "Successfully updated student.")
+                return redirect(request.path)
+            
+            except Exception as e:
+                messages.error(request, f"Could not update student: {e}")
+        else:
+            messages.error(request, "Please fill out the form correctly.")
+
+    context = {
+        'form': form,
+        'student': student,
+        'page_title': 'Edit Student'
+    }
+    return render(request, "management/partials/student/edit_student.html", context)
 # delete
 def delete_student(request, student_id):
     if request.method == 'POST':
@@ -117,4 +111,3 @@ def delete_student(request, student_id):
         return render(request,'management/partials/success.html')
     return render(request, 'management/partials/student/manage_student.html')
     
-

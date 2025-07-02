@@ -1,5 +1,5 @@
+<h3 class="form_title">Manage Course of Study | Academic Calender List</h3>
 
-   
    
    <div class="tableContainer">
       <div class="tableHeading">
@@ -20,7 +20,7 @@
           <span class="tableHeading3"> 
 
             <a href="{% url  'edit_course_of_study' course_of_study.id %}" class="tableHeading5Btn1 ajax_link">Edit</a> - 
-            <form method="post" class="ajax_form" action="{% url 'delete_course_of_study' course_of_study.id %}">
+            <form method="post" class="ajax_form ajax_delete_form" action="{% url 'delete_course_of_study' course_of_study.id %}">
               {% csrf_token %}
               <button type="submit" class="tableHeading5Btn2">Delete</button>
           </form>

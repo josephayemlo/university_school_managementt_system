@@ -1,21 +1,21 @@
-{% extends 'base.html' %}
-{% load static %}
+ <!-- MESSAGES -->
+ <div>
+  {% if messages %}
+    {% for message in messages %}
+      <div class="form_messages">
+        {{ message }}
+      </div>
+    {% endfor %}
+{% endif %}
+</div>
+<!-- MESSAGES -->
+<h3 class="form_title">Edit student</h3>
 
-{% block content %}
+<form method="post" class="ajax_form custom_form" action="{% url 'edit_student' student.id %}">
+    
+  {% csrf_token %}
+  {% include 'management/partials/form_fields_template.html' with form=form %}
 
-<section class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">{{page_title}}</h3>
-                    </div>
-                    {% include "includes/form_template.html" with messages=messages  form=form button_text="Update Student"%}
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
-{% endblock content %}
+  <button type="submit" class="btn">Update Student</button>
+</form>
+<div id="ajax_form_response"></div>

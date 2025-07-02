@@ -8,6 +8,7 @@ from .models import (
     NonAcademicStaff, 
     CustomUser, 
     CourseOfStudy,
+    StudentResult,
 )
 
 
@@ -173,3 +174,7 @@ class AspirantStudentForm(CustomUserForm):
             'referee_city', 'referee_postal_code', 'referee_state_province', 'referee_country',
         ]
 
+class StudentResultForm(forms.ModelForm):
+    class Meta:
+        model = StudentResult
+        fields = ['registered_course', 'ca1', 'ca2', 'ca3', 'exam', 'grade_point', 'remark', 'is_released']

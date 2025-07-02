@@ -1,10 +1,10 @@
 
-<h1>Add student</h1>
-<form class="ajax_form" method="post" action="{% url 'add_student' %}">
+<h3 class="form_title">Add student</h3>
 
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Add student</button>
+<form method="post" class="ajax_form custom_form" action="{% url 'add_student' %}" >
+  {% csrf_token %}
+  {% include 'management/partials/form_fields_template.html' with form=form %}
+
+  <button type="submit" class="btn">Add student</button>
 </form>
-
 <div id="ajax_form_response"></div>

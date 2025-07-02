@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from core.models import CourseOfStudy
 from ..forms import CourseOfStudyForm
@@ -26,7 +26,8 @@ def edit_course_of_study(request, course_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Course of Study Updated Sucessfully')
-            return render(request,'management/partials/success.html')
+            return redirect(request.path)
+        
     else:
         form = CourseOfStudyForm(instance=course_of_study)
     context = {

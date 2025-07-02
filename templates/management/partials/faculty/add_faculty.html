@@ -1,10 +1,11 @@
 
-<h1>Add faculty</h1>
-<form class="ajax_form" method="post" action="{% url 'add_faculty' %}">
+<h3 class="form_title">Add faculty</h3>
 
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Add faculty</button>
+<form method="post" class="ajax_form custom_form" action="{% url 'add_faculty' %}">
+  {% csrf_token %}
+  {% include 'management/partials/form_fields_template.html' with form=form %}
+
+  <button type="submit" class="btn">Add Faculty</button>
 </form>
-
 <div id="ajax_form_response"></div>
+

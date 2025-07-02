@@ -1,9 +1,11 @@
-<h3>Assign Course to Level</h3>
 
-<form method="post" class="ajax_form" action="{% url 'assign_level_course' %}">
+<h3 class="form_title">Assign Course to Level</h3>
+
+<form method="post" class="ajax_form custom_form" action="{% url 'assign_level_course' %}">
   {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" class="btn btn-primary">Assign Course</button>
-</form>
+  {% include 'management/partials/form_fields_template.html' with form=form %}
 
+  <button type="submit" class="btn">Assign  Level Course</button>
+</form>
 <div id="ajax_form_response"></div>
+
