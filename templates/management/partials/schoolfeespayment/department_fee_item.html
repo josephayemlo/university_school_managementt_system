@@ -1,0 +1,33 @@
+
+<h2 class="result_form_title"> List of {{department_fee.department}} School Fees List  </h2>
+  <div class="tableContainer">
+     <div class="tableHeading">
+         <span class="tableHeading1">SN</span>
+         <span class="tableHeading2">Title</span>
+         <span class="tableHeading3">Amount</span>
+         <span class="tableHeading3">Link</span>
+     </div>
+     {% if fee_item  %}
+           {% for item in fee_item %}
+     <div class="tableData">
+         <span class="tableHeading1">{{ forloop.counter }}</span>
+         <span class="tableHeading2">{{item.title}}</span>
+         <span class="tableHeading3">{{item.amount}}</span>
+         <span class="tableHeading3"> 
+         </span>
+     </div>
+  
+     {% endfor %}
+     <!-- ✅ Total Row -->
+    <div class="tableData" style="font-weight: bold; border-top: 1px solid #ccc; margin-top: 10px;">
+        <span class="tableHeading1"></span>
+        <span class="tableHeading2">Total</span>
+        <span class="tableHeading3">₦{{ department_fee.total_amount }}</span>
+        <span class="tableHeading3"></span>
+      </div>
+     {% else %}
+          <p>No Item has been added to list.</p>
+  
+     {% endif %}
+  
+  

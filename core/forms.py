@@ -19,7 +19,7 @@ from .models import (
 class DepartmentSchoolFeeForm(forms.ModelForm):
     class Meta:
         model = DepartmentSchoolFee
-        fields = '__all__'
+        fields = {'department', 'academic_calendar','level'}
     
 
 class DepartmentFeeItemForm(forms.ModelForm):

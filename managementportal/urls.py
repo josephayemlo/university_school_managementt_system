@@ -27,7 +27,12 @@ from .customviews.navigation_views import (
     session_and_academic_calender, result_and_assessment,
     student_management, student_school_fees_management
 )
-from .customviews.student_school_fees_views import add_department_school_fees, add_item_to_department_school_fee
+from .customviews.student_school_fees_views import (
+    add_department_school_fees, 
+    add_item_to_department_school_fee,
+    manage_department_school_fees,
+    department_fee_item
+)
 
 # URLs
 urlpatterns = [
@@ -38,6 +43,9 @@ urlpatterns = [
     # Student School Fees
     path("add_department_school_fees/", add_department_school_fees, name='add_department_school_fees'),
     path("add_item_to_department_school_fee/", add_item_to_department_school_fee, name='add_item_to_department_school_fee'),
+    path("manage_department_school_fees/", manage_department_school_fees, name='manage_department_school_fees'),
+    path('department_fee_item/<int:department_fee_id>/', department_fee_item, name='department_fee_item'),
+
 
     # Result
     path("result_select_department", result_select_department, name='result_select_department'),

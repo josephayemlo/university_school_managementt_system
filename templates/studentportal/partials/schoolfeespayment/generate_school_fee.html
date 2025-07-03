@@ -1,0 +1,31 @@
+<h1 class="form_title">List of {{academic_calender.session}} School fees for {{student.course_of_study.department}} {{academic_calender.semester}} semester</h1>
+
+<h3 class="form_title">{{student.admin.first_name}} {{student.admin.last_name}} {{student.matric_no}} {{student.level}} Level</h3>
+
+
+<div class="registeredCourseList">
+  <div class="tableContainer ">
+    <div class="tableHeading ">
+        <span class="tableHeading1 ">SN</span>
+        <span class="tableHeading2">Session</span>
+        <span class="tableHeading3">department</span>
+        <span class="tableHeading4">Level</span>
+        <span class="tableHeading5"></span>
+    </div>
+    {% if school_fees  %}
+          {% for fee in school_fees %}
+    <div class="tableData  ">
+        <span class="tableHeading1">{{ forloop.counter }}</span>
+        <span class="tableHeading2">{{fee.academic_calender.session}} </span>
+        <span class="tableHeading3">{{fee.department}}</span>
+        <span class="tableHeading4">{{fee.level}}</span>
+        <span class="tableHeading5">  </span>
+    </div>
+
+    {% endfor %}
+    {% else %}
+            <h2>No School Fees available</h2>
+    {% endif %}
+  </div>
+
+</div>

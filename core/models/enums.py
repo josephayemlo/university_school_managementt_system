@@ -3,13 +3,13 @@ from django.db import models
 
 
 # Level Choices (IntegerChoices)
-class LevelChoices(models.IntegerChoices):
-    LEVEL_100 = 100, '100 Level'
-    LEVEL_200 = 200, '200 Level'
-    LEVEL_300 = 300, '300 Level'
-    LEVEL_400 = 400, '400 Level'
-    LEVEL_500 = 500, '500 Level'
 
+class LevelChoices(models.TextChoices):
+    LEVEL_100 = '100', '100 Level'
+    LEVEL_200 = '200', '200 Level'
+    LEVEL_300 = '300', '300 Level'
+    LEVEL_400 = '400', '400 Level'
+    LEVEL_500 = '500', '500 Level'
 
 # Course Category (TextChoices)
 class CourseCategoryChoices(models.TextChoices):

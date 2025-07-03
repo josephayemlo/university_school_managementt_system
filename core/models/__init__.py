@@ -10,4 +10,9 @@ from .shared import (
     StudentResult,
     SemesterResult,
 )
-from .school_fees_payment import DepartmentSchoolFee, DepartmentFeeItem
+from .school_fees_payment import (
+    DepartmentSchoolFee, 
+    DepartmentFeeItem,
+    StudentSchoolFee,
+    SchoolFeeItem
+    )

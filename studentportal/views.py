@@ -20,6 +20,12 @@ def previous_registered_courses(request):
 
     # Get all non-current academic calendars
     previous_calendars = AcademicCalendar.objects.filter(is_current=False)
+    """
+    We did not use .first() here because when it is false we expect a queryset(list) of 
+    previous calender which in template we loop through. However when is_current=True
+    we cant loop in template because we expect one object but since we knw filter always
+    returns a queryset(list) we just use first() to select the first object 
+    """
 
     # Fetch all courses registered in those sessions
     registered_courses = RegisteredCourse.objects.filter(

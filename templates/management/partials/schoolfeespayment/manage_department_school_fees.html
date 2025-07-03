@@ -1,0 +1,25 @@
+
+   
+<h3 class="form_title">Manage department_fee | department_fee List</h3>
+   
+<div class="tableContainer">
+   <div class="tableHeading">
+       <span class="tableHeading1">SN</span>
+       <span class="tableHeading3">department_fee</span>
+       <span class="tableHeading3">Edit/Delete</span>
+   </div>
+   {% if department_fee  %}
+         {% for department_fee in department_fee %}
+   <div class="tableData">
+       <span class="tableHeading1">{{ forloop.counter }}</span>
+       <span class="tableHeading2">{{department_fee.department}}</span>
+       <span class="tableHeading3"> 
+        <a href="{% url 'department_fee_item' department_fee.id %}" class=" generalAdminBtn ajax_link">Proceed</a>
+
+       </span>
+   </div>
+
+   {% endfor %}
+   {% else %}
+           <h2>No Department fee available</h2>
+   {% endif %}

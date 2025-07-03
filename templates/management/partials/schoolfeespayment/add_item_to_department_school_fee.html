@@ -1,5 +1,17 @@
-
+ 
 <h3 class="form_title">Add Item to Department School Fees</h3>
+
+ <!-- MESSAGES -->
+ <div>
+  {% if messages %}
+    {% for message in messages %}
+      <div class="form_messages">
+        {{ message }}
+      </div>
+    {% endfor %}
+{% endif %}
+</div>
+<!-- MESSAGES -->
 
 <form method="post" class="ajax_form custom_form" action="{% url 'add_item_to_department_school_fee' %}">
   {% csrf_token %}

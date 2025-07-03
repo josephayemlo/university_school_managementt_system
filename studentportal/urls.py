@@ -1,6 +1,6 @@
 from . import views
 from django.urls import path
-from .customviews.school_fees_payment_views import school_fees_dashboard
+from .customviews.school_fees_payment_views import school_fees_dashboard, generate_school_fee
 
 urlpatterns = [
     
@@ -17,6 +17,7 @@ urlpatterns = [
 
     # School Fees Payment
     path("student/school_fees_dashboard", school_fees_dashboard, name='school_fees_dashboard'),
+    path("student/generate_school_fee", generate_school_fee, name='generate_school_fee'),
     
 
 ]
