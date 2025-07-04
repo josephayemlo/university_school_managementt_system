@@ -1,0 +1,49 @@
+<h2 class="form_title">
+    {{ student.admin.first_name }} {{ student.admin.last_name }} - {{ student.level }} Level
+</h2>
+<h3 class="form_title">
+    School Fees for {{ current_session }} Session
+</h3>
+
+<div class="tableContainer">
+   <div class="tableHeading">
+       <span class="tableHeading1">SN</span>
+       <span class="tableHeading2">Semester</span>
+       <span class="tableHeading3">Level</span>
+       <span class="tableHeading4">Reference</span>
+       <span class="tableHeading5">Total</span>
+       <span class="tableHeading6">Status</span>
+       <span class="tableHeading7">Pay</span>
+   </div>
+
+   {% if invoices %}
+       {% for invoice in invoices %}
+       <div class="tableData">
+           <span class="tableHeading1">{{ forloop.counter }}</span>
+           <span class="tableHeading2">{{ invoice.academic_calendar.semester }}</span>
+           <span class="tableHeading3">{{ invoice.level }}</span>
+           <span class="tableHeading4">{{ invoice.reference }}</span>
+           <span class="tableHeading5">₦{{ invoice.total_amount }}</span>
+           <span class="tableHeading6">
+               {% if invoice.is_paid %}
+                   ✅ Paid
+               {% else %}
+                   ❌ Not Paid
+               {% endif %}
+           </span>
+           <span class="tableHeading7">
+               {% if not invoice.is_paid %}
+                   <form method="post" action="{% url 'student_invoice_details' invoice.id %}">
+                       {% csrf_token %}
+                       <button type="submit">Pay Now</button>
+                   </form>
+               {% else %}
+                   <span>✓</span>
+               {% endif %}
+           </span>
+       </div>
+       {% endfor %}
+   {% else %}
+       <h3>No invoices found for the current session.</h3>
+   {% endif %}
+</div>

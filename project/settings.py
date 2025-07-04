@@ -140,3 +140,7 @@ DEFAULT_FROM_EMAIL = 'codingWithJosephAyemlo Team <noreply@codingwithjosephayeml
 
 # Paystack
 PAYSTACK_SECRET_KEY = os.environ.get('PAYSTACK_SECRET_KEY')
+PAYSTACK_PUBLIC_KEY = os.environ.get('PAYSTACK_PUBLIC_KEY')
+PAYSTACK_INITIALIZE_URL = os.environ.get('PAYSTACK_INITIALIZE_URL')
+PAYSTACK_VERIFY_URL = os.environ.get('PAYSTACK_VERIFY_URL')
+        

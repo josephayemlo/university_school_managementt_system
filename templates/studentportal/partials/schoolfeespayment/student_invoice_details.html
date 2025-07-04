@@ -1,0 +1,52 @@
+<div id="print-area" class="invoice-container">
+    <h2 class="invoice-title">University School Fees Invoice</h2>
+  
+    <div class="invoice-meta">
+      <p><strong>Name:</strong> {{ student.admin.first_name }} {{ student.admin.last_name }}</p>
+      <p><strong>Matric No:</strong> {{ student.matric_no }}</p>
+      <p><strong>Level:</strong> {{ invoice.level }}</p>
+      <p><strong>Department:</strong> {{ student.course_of_study.department }}</p>
+      <p><strong>Semester:</strong> {{ invoice.academic_calendar.semester }}</p>
+      <p><strong>Session:</strong> {{ invoice.academic_calendar.session }}</p>
+      <p><strong>Invoice Reference:</strong> {{ invoice.reference }}</p>
+      <p><strong>Date:</strong> {{ invoice.generated_at|date:"F j, Y" }}</p>
+    </div>
+  
+    <table class="invoice-table">
+      <thead>
+        <tr>
+          <th>SN</th>
+          <th>Fee Item</th>
+          <th>Amount (₦)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.amount }}</td>
+        </tr>
+        {% endfor %}
+        <tr class="invoice-total">
+          <td colspan="2"><strong>Total</strong></td>
+          <td><strong>₦{{ invoice.total_amount }}</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  
+    {% if not invoice.is_paid %}
+    <form method="post" action="{% url 'pay_school_fee' invoice.id %}">
+      {% csrf_token %}
+      <button type="submit" class="pay-button">Confirm and Pay</button>
+    </form>
+    {% else %}
+    <p class="paid-label">✅ Payed</p>
+    {% endif %}
+  
+    <button onclick="window.print()" class="print-button">🖨️ Print Invoice</button>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>

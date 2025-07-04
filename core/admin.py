@@ -21,3 +21,9 @@ admin.site.register(SemesterResult)
 admin.site.register(RegisteredCourse)
 admin.site.register(LevelCourse)
 admin.site.register(AcademicCalendar)
+admin.site.register(StudentSchoolFee)
+admin.site.register(SchoolFeeItem)
+admin.site.register(DepartmentSchoolFee)
+
+
+

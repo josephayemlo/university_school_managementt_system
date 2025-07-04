@@ -1,5 +1,16 @@
 <h1 class="form_title">List of {{academic_calender.session}} School fees for {{student.course_of_study.department}} {{academic_calender.semester}} semester</h1>
 
+ <!-- MESSAGES -->
+ <div>
+  {% if messages %}
+    {% for message in messages %}
+      <div class="form_messages">
+        {{ message }}
+      </div>
+    {% endfor %}
+{% endif %}
+</div>
+<!-- MESSAGES -->
 <h3 class="form_title">{{student.admin.first_name}} {{student.admin.last_name}} {{student.matric_no}} {{student.level}} Level</h3>
 
 
@@ -19,7 +30,13 @@
         <span class="tableHeading2">{{fee.academic_calender.session}} </span>
         <span class="tableHeading3">{{fee.department}}</span>
         <span class="tableHeading4">{{fee.level}}</span>
-        <span class="tableHeading5">  </span>
+        <span class="tableHeading5"> 
+          <form method="post" class="ajax_form" action="{% url 'generate_student_invoice' %}">
+            {% csrf_token %}
+            <input type="hidden" name="department_fee_id" value="{{ fee.id }}">
+            <button type="submit">Generate Fee</button>
+          </form>
+        </span>
     </div>
 
     {% endfor %}
