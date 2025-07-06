@@ -1,36 +1,46 @@
 ## ✅ MVP Features – What Has Been Built
 
+---
+
+### 🌐 Public Pages / General Features (Non-Authenticated Users)
+
+- University homepage with introductory content
+- Undergraduate application process (initial flow)
+
+---
+
 ### 🧑‍🎓 Aspirants
 
-- Email-based registration and role assignment
-- Online application form submission
-- Dashboard with application status
-- Editable profile (prior to admission approval)
+- Email-based registration and automatic role assignment
+- Partial implementation of the online application form
+- Send login credentials to newly registered aspirants via Gmail SMTP backend
+- Application completion enforced using custom middleware
+- Admission decision logic: Send congratulatory email to aspriant via Gmail SMTP backend upon admission
+
+---
 
 ### 🎓 Students
 
-- Role-specific dashboard
-- Course Registration
-- Result viewing by session and semester
-- School Fees Payment using Paystack Payment System
-- Editable student profile
+- Personalized student dashboard
+- Course registration system:
+  - Register for current semester
+  - View previously registered courses
+- School fee management with Paystack integration:
+  - Generate personalized school fee invoice
+  - Make payment and get automatic confirmation
+  - Track fee payment history
 
-### 👨‍🏫 Academic Staff
-
-_Add detailed features here when implemented_
-
-### 🧑‍💼 Non-Academic Staff
-
-_Add detailed features here when implemented_
+---
 
 ### 👩‍💼 Admin / Management
 
-- Create/manage sessions, departments, faculties, and courses
-- Approve or reject aspirant applications
-- Promote aspirants to student users
-- Assign levels and departments
-- Create academic calendars
-- Full user account and permission management
-- Review and approve results
+- Full CRUD for academic structure:
+  - Manage faculties, departments, courses, and courses of study
+  - Assign courses to specific levels
+- Create and manage department-specific school fee structures
+- Create and activate academic calendars
+- Full user and permission management (across all roles)
+- Aspirant-to-student promotion via signal logic
+- Upload and manage student results (per department and course)
 
 ---

@@ -10,23 +10,15 @@ class ForceAspirantProfileCompletionMiddleware:
         allowed_paths = [
             "/student/edit/aspirant_student",
             "/student/edit/aspirant_student/",
-            # you need to get each allowed url with two links like this else it will loop
-
-            # "/aspirant_student/home",
-            
-
-
-            "/accounts/logout/",  # Optional: allow logout path too
-            "accounts/logout",  # Optional: allow logout path too
+            # you need to get each allowed url with two links using starting slash and trailing slash this else it will loop
+            "/accounts/logout/",  
+            "accounts/logout",  
 
         ]
         current_path = request.path
 
         # Only check for logged-in users
         ASPIRANT_USER_TYPE = 5
-        # this is because in the custom user model, usertype is in char not int and
-        # here we use it as int so we must force it
-        # if you dont force the user type to be int, this logic will not work
         if request.user.is_authenticated and int(request.user.user_type) == ASPIRANT_USER_TYPE:
             try:
                 aspirant = request.user.aspirantstudent
