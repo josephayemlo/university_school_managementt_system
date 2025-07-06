@@ -5,7 +5,7 @@
 ### 🌐 Public Pages / General Features (Non-Authenticated Users)
 
 - University homepage with introductory content
-- Undergraduate application process (initial flow)
+- Undergraduate application process
 
 ---
 

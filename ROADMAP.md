@@ -13,13 +13,6 @@
 
 ## 🧠 Planned / Future Features (for MVP Completion)
 
-### 🌐 Public / General (Non-Authenticated Users)
-
-- [ ] Public-facing homepage with university introduction (basic landing page)
-- [ ] Accessible undergraduate application instructions
-
----
-
 ### 🧑‍🎓 Aspirants
 
 - [ ] Aspirant dashboard with admission status
