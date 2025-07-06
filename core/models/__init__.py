@@ -14,5 +14,6 @@ from .school_fees_payment import (
     DepartmentSchoolFee, 
     DepartmentFeeItem,
     StudentSchoolFee,
-    SchoolFeeItem
+    SchoolFeeItem, 
+    FailedPayment
     )

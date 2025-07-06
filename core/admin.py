@@ -24,6 +24,8 @@ admin.site.register(AcademicCalendar)
 admin.site.register(StudentSchoolFee)
 admin.site.register(SchoolFeeItem)
 admin.site.register(DepartmentSchoolFee)
+admin.site.register(FailedPayment)
+
 
 
 

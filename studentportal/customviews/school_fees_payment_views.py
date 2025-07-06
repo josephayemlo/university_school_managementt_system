@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from core.models import (
     AcademicCalendar,DepartmentSchoolFee, 
-    StudentSchoolFee, SchoolFeeItem
+    StudentSchoolFee, SchoolFeeItem, FailedPayment
 )
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
@@ -22,22 +22,18 @@ def pay_school_fee(request, invoice_id):
     invoice = get_object_or_404(StudentSchoolFee, id=invoice_id, student=student)
 
     if invoice.is_paid:
-        print('Already Paid')
-
         messages.info(request, "This invoice has already been paid.")
         return redirect('student_invoice_details', invoice_id=invoice.id)
     
 
-    # ✅ Regenerate reference ONLY if last one failed
+    #Regenerate reference ONLY if last one failed
     if invoice.status == 'failed':
-        print('another invoice Reference generating...')
-
         invoice.reference = generate_reference()
         invoice.status = 'pending'
         invoice.last_payment_attempt = timezone.now()
         invoice.save()
-        print('another invoice Reference generated')
 
+    # prepares paystack payment request
     headers = {
         "Authorization": f"Bearer {settings.PAYSTACK_SECRET_KEY}",
         "Content-Type": "application/json",
@@ -47,19 +43,30 @@ def pay_school_fee(request, invoice_id):
 
     payment_data = {
         "email": student.admin.email,
-        "amount": int(invoice.total_amount * 100),
+        "amount": int(invoice.total_amount * 100), #paystack uses kobo
         "reference": invoice.reference,
         "callback_url": callback_url,
     }
-
+    # sending the data to paystack
     response = requests.post(settings.PAYSTACK_INITIALIZE_URL, json=payment_data, headers=headers)
     res_data = response.json()
 
     if res_data.get('status') is True:
         return HttpResponseRedirect(res_data['data']['authorization_url'])
     else:
-        invoice.status = 'failed'
+        invoice.status = 'failed'     
         invoice.save()
+         # save failed payment reference for audit
+        failedpayment = FailedPayment.objects.create(
+            student = invoice.student,
+            department = invoice.department,
+            level = invoice.level,
+            academic_calendar  = invoice.academic_calendar,
+            total_amount  = invoice.total_amount,
+            reference  = invoice.reference
+        )
+        failedpayment.save()
+        print('Payment failed, saved copy')
         messages.error(request, "Payment initialization failed.")
         return redirect('student_invoice_details', invoice_id=invoice.id)
 
@@ -78,19 +85,15 @@ def payment_callback(request):
     verify_url = f"{settings.PAYSTACK_VERIFY_URL}{reference}"
     response = requests.get(verify_url, headers=headers)
     res_data = response.json()
-    print("🔍 Paystack callback raw response:")
-    print(res_data)
+    # print(res_data) use for debug
 
     if res_data['status'] and res_data['data']['status'] == 'success':
         invoice = StudentSchoolFee.objects.filter(reference=reference).first()
         if invoice and not invoice.is_paid:
-            print('paid')
             invoice.is_paid = True
             invoice.status = 'success'
             invoice.save()
-            messages.success(request, "✅ Payment successful.")
-            print('paid end')
-
+            messages.success(request, " Payment successful.")
         else:
             messages.info(request, "Invoice already marked as paid.")
     else:
@@ -98,8 +101,7 @@ def payment_callback(request):
         if invoice:
             invoice.status = 'failed'
             invoice.save()
-            print('❌ Invoice marked as failed (not verified)')
-        messages.error(request, "❌ Payment verification failed.")
+        messages.error(request, " Payment verification failed.")
 
     return redirect('manage_student_invoice')
 
