@@ -1,30 +1,36 @@
+<div class="form_title">{{academic_calendar.semester}} Semester {{academic_calendar.session}} Session </div>
+{% if registered_courses %}
 
-
-<div class="registeredCourseList">
-   
-    
-    <div class="tableContainer ">
-      <div class="tableHeading ">
-          <span class="tableHeading1 ">SN</span>
-          <span class="tableHeading2">Title</span>
-          <span class="tableHeading3">Code</span>
-          <span class="tableHeading4">Category</span>
-          <span class="tableHeading5">Level</span>
-      </div>
-      {% if registered_courses  %}
-            {% for item in registered_courses %}
-      <div class="tableData  ">
-          <span class="tableHeading1">{{ forloop.counter }}</span>
-          <span class="tableHeading2">{{item.course.title}} </span>
-          <span class="tableHeading3">{{item.course.code}}</span>
-          <span class="tableHeading4">{{item.course.category}}</span>
-          <span class="tableHeading5"> {{item.course.level}} </span>
-      </div>
-
-      {% endfor %}
-      {% else %}
-              <h2>No course available</h2>
-      {% endif %}
-    </div>
-
-</div>
+<table class="course_table">
+    <thead class="course_table_head">
+        <tr class="course_table_row course_table_head_row">
+            <th class="course_table_header">SN</th>
+            <th class="course_table_header">Course</th>
+            <th class="course_table_header">Unit</th>
+            <th class="course_table_header">CA1</th>
+            <th class="course_table_header">CA2</th>
+            <th class="course_table_header">CA3</th>
+            <th class="course_table_header">Exam</th>
+            <th class="course_table_header">Category</th>
+            <th class="course_table_header">Approval</th>
+        </tr>
+    </thead>
+    <tbody class="course_table_body">
+        {% for item in registered_courses %}
+        <tr class="course_table_row">
+            <td class="course_table_cell">{{ forloop.counter }}</td>
+            <td class="course_table_cell">{{ item.course.title }}</td>
+            <td class="course_table_cell">{{ item.course.unit }}</td>
+            <td class="course_table_cell">{{ item.studentresult.ca1 }}</td>
+            <td class="course_table_cell">{{ item.studentresult.ca2 }}</td>
+            <td class="course_table_cell">{{ item.studentresult.ca3 }}</td>
+            <td class="course_table_cell">{{ item.studentresult.exam }}</td>
+            <td class="course_table_cell">{{ item.course.category }}</td>
+            <td class="course_table_cell">Approved</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No registered courses found.</p>
+{% endif %}

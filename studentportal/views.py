@@ -1,13 +1,47 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from itertools import groupby
-# Forms
 from .forms import CourseRegistrationForm
-
 from core.models import AcademicCalendar, RegisteredCourse, Course, LevelCourse, Student
+from django.contrib.auth import update_session_auth_hash
+from core.forms import StudentForm
+from django.urls import reverse
+
 # Models
     
 # Create your views here.
+
+def edit_student(request):
+    student = get_object_or_404(Student, admin=request.user)
+    form = StudentForm(request.POST or None, instance=student)
+    context = {
+        'form': form,
+        'page_title': 'Edit  Student',
+    }
+    if request.method == 'POST':
+        try:
+            if form.is_valid():
+                # Save User info
+                admin = student.admin
+                admin.first_name = form.cleaned_data.get('first_name')
+                admin.last_name = form.cleaned_data.get('last_name')
+                admin.address = form.cleaned_data.get('address')
+                admin.gender = form.cleaned_data.get('gender')
+                password = form.cleaned_data.get('password')
+                if password:
+                    admin.set_password(password)
+                    update_session_auth_hash(request, admin)   #Re-authenticate the session 
+                admin.save()
+                form.save()
+                messages.success(request, "Profile Updated!")
+                return redirect(reverse('edit_student'))
+            else:
+                print("Errors:", form.errors.as_json())
+                messages.error(request, "Invalid data provided.")
+        except Exception as e:
+            messages.error(request, "Error occurred while updating profile: " + str(e))
+
+    return render(request, "studentportal/partials/edit_student.html", context)
 
 
 # Student Portal home
@@ -95,7 +129,13 @@ def registered_courses(request):
         student=student,
         academic_calendar = academic_calendar
     )
-    return render (request, 'studentportal/partials/registered_courses.html', { 'registered_courses':registered_courses })
+    context = {
+        'registered_courses':registered_courses,
+        'academic_calendar':academic_calendar
+
+
+    }
+    return render (request, 'studentportal/partials/registered_courses.html',context)
 
 # course registration
 def course_registration(request):

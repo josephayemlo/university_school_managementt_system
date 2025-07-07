@@ -10,6 +10,3 @@ def home (request):
 def student_home (request):
     return render(request, 'core/student_home.html')
 
-# Aspirant Public Home
-def aspirant_student_home (request):
-    return render(request, 'core/aspirant_student_home.html')

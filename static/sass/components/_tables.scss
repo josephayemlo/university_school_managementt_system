@@ -80,3 +80,152 @@
 }
 
 
+// Student Registered Course and scores table start
+
+.course_table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: sans-serif;
+    margin-top: 1rem;
+  
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      text-align: center;
+    }
+  
+    &_head {
+      background-color: #f2f2f2;
+  
+      &_row {
+        background-color: #e6e6e6;
+      }
+    }
+  
+    &_header {
+      font-weight: bold;
+      color: #333;
+    }
+  
+    &_row:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  
+    &_row:hover {
+      background-color: #eef;
+    }
+  
+    &_cell {
+      font-size: 0.95rem;
+      color: #444;
+    }
+  
+    &_body {
+      background-color: #fff;
+    }
+  }
+  
+// Student Registered Course and scores table end
+
+.invoice_container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+  border-radius: 8px;
+  color: #333;
+}
+
+.invoice_title {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.invoice_meta {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+
+  p {
+    margin: 0.3rem 0;
+  }
+}
+
+.invoice_table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+
+  &_head_row {
+    background-color: #f2f2f2;
+  }
+
+  &_header {
+    font-weight: bold;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+
+  &_cell {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+
+  &_row:nth-child(even) {
+    background-color: #fafafa;
+  }
+
+  .invoice_total {
+    background-color: #e8f5e9;
+    font-weight: bold;
+
+    td {
+      border-top: 2px solid #4caf50;
+    }
+  }
+}
+
+.pay_button {
+  display: block;
+  margin: 1.5rem auto;
+  padding: 0.7rem 1.5rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #45a049;
+  }
+}
+
+.paid_label {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #2e7d32;
+  font-weight: bold;
+  margin-top: 1.5rem;
+}
+
+.print_button {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem 1.2rem;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #1976d2;
+  }
+}

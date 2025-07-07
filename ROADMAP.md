@@ -9,14 +9,16 @@
 - [x] Admin analytics dashboard
 - [x] Create/Manage items in department school fees
 
+### 🧑‍🎓 Aspirants
+
+- [x] Aspirant dashboard with admission status
+- [x] Move all aspirant logic to dedicated `AspirantPortal`
+
 ---
 
 ## 🧠 Planned / Future Features (for MVP Completion)
 
 ### 🧑‍🎓 Aspirants
-
-- [ ] Aspirant dashboard with admission status
-- [ ] Move all aspirant logic to dedicated `AspirantPortal`
 
 ---
 
@@ -56,4 +58,5 @@
 - [ ] Assign HOD to departments
 - [ ] Review and approve uploaded results
 - [ ] User activity logs
-- [ ] Upload student results based on department/course (HOD/department-wide logic)
+- [ ] Upload and manage semester-level result summaries for students
+- [ ] Implement Celery+Redis for messaging

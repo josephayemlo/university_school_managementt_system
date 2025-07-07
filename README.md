@@ -58,3 +58,33 @@ The system is designed around five primary user roles, each with distinct permis
 - Have full access to configure academic structure, manage users, and oversee operations
 
 ---
+
+## 🔧 Server Setup Instructions
+
+---
+
+1. Install Redis:
+   ```bash
+   sudo apt update
+   sudo apt install redis -y
+   sudo systemctl enable redis
+   sudo systemctl start redis
+   ```
+2. Install Python dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Start Celery:
+
+   ```bash
+   celery -A yourproject worker --loglevel=info
+   ```
+
+4. Start Django:
+   ```bash
+   python manage.py runserver
+   ```
+
+---

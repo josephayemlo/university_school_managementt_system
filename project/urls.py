@@ -12,6 +12,8 @@ urlpatterns = [
     path('', include('studentportal.urls')),
     path('', include('core.urls')),
     path('', include('applications.urls')),
+    path('', include('aspirantportal.urls')),
+
 
 ]
 if settings.DEBUG:

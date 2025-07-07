@@ -1,0 +1,25 @@
+ <!-- MESSAGES -->
+ <div>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="form_messages">
+          {{ message }}
+        </div>
+      {% endfor %}
+  {% endif %}
+  </div>
+  <!-- MESSAGES -->
+  <h3 class="form_title">Edit Profile</h3>
+  
+  <form method="post" class="ajax_form custom_form" action="{% url 'edit_student' %}">
+      
+    {% csrf_token %}
+    {% include 'management/partials/form_fields_template.html' with form=form %}
+  
+    <button type="submit" class="btn">Update Profile</button>
+  </form>
+  <div id="ajax_form_response"></div>
+  <br>
+  <br>
+
+

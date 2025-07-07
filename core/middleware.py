@@ -1,15 +1,28 @@
 from django.shortcuts import redirect
 
 
+class ForceAspirantToAspirantPortal:
+    def __init__(self, get_response):
+        self.get_response = get_response
+    def __call__(self, request):
+        ASPIRANT_USER_TYPE = 5
+        if request.user.is_authenticated and int(request.user.user_type) == ASPIRANT_USER_TYPE:
+            if request.path == '/':
+                return redirect('aspirant_student_home')
+        return self.get_response(request)
+
+
+
 class ForceAspirantProfileCompletionMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
 
+
     def __call__(self, request):
 
         allowed_paths = [
-            "/student/edit/aspirant_student",
-            "/student/edit/aspirant_student/",
+            "/edit_aspirant_student",
+            "/edit_aspirant_student/",
             # you need to get each allowed url with two links using starting slash and trailing slash this else it will loop
             "/accounts/logout/",  
             "accounts/logout",  
@@ -61,7 +74,7 @@ class ForceAspirantProfileCompletionMiddleware:
 
                 if incomplete and current_path not in allowed_paths:
                     print("⚠️ Incomplete profile detected. Redirecting...")
-                    return redirect("/student/edit/aspirant_student")
+                    return redirect("edit_aspirant_student")
             except AttributeError:
                 pass  # User doesn't have an AspirantStudent profile
 

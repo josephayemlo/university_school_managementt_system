@@ -19,6 +19,7 @@ urlpatterns = [
     "student/previous_course_registration_details/<int:level>/<str:semester>/",
     views.previous_course_registration_details,
     name="previous_course_registration_details"),
+    path("edit_student", views.edit_student, name='edit_student'),
 
     # School Fees Payment
     path("student/school_fees_dashboard", school_fees_dashboard, name='school_fees_dashboard'),

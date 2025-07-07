@@ -17,11 +17,11 @@ from .forms import UndergraduateApplicationForm, ScholarshipApplicationForm
 
 # apply home view
 def apply (request):
-    return render(request, 'core/apply.html')
+    return render(request, 'applications/apply.html')
 
 # UG apply view
 def apply_Undergraduate (request):
-    return render(request, 'core/apply_undergraduate.html')
+    return render(request, 'applications/apply_undergraduate.html')
 
 # UG apply process
 def apply_Undergraduate_Process (request):
@@ -32,11 +32,11 @@ def apply_Undergraduate_Process (request):
         'file_size': file_size,
         'file_name': file_name
     }
-    return render(request, 'core/apply_undergraduate_process.html', context)
+    return render(request, 'applications/apply_undergraduate_process.html', context)
 
 # PG apply view
 def apply_Postgraduate (request):
-    return render(request, 'core/apply_postgraduate.html')
+    return render(request, 'applications/apply_postgraduate.html')
 
 # personal statement download
 def personal_statement_download(request):
@@ -59,7 +59,7 @@ def undergraduate_Application_Form_View(request):
             if User.objects.filter(email=email).exists():
                 form.add_error('email', 'This email is already registered.')
                 messages.error(request, "This email is already registered.")
-                return render(request, 'core/undergraduate_application_form.html', {'form': form})
+                return render(request, 'applications/undergraduate_application_form.html', {'form': form})
             try:
                 with transaction.atomic():
                     # Extract cleaned data
@@ -141,19 +141,18 @@ Imperial College Admissions
                         from_email='no-reply@imperialCollege.edu',
                         to=[email]
                     ).send()
-
-                print("All operations succeeded")
+                messages.success(request, "Registeration Successful, check your email for further instructions.")
                 return redirect('success')
 
             except Exception as e:
                 messages.error(request, "An unexpected error occurred: " + str(e))
                 # At this point, all DB changes are rolled back
-                return render(request, 'core/undergraduate_application_form.html', {'form': form})
+                return render(request, 'applications/undergraduate_application_form.html', {'form': form})
 
     else:
         form = UndergraduateApplicationForm()
 
-    return render(request, 'core/undergraduate_application_form.html', {'form': form})
+    return render(request, 'applications/undergraduate_application_form.html', {'form': form})
 
 
 # scholarship form view
@@ -187,4 +186,8 @@ def scholarship_Application_Form_View(request):
             return redirect('success')
     else:
         form = ScholarshipApplicationForm()
-    return render(request, 'core/apply_scholarship.html', {'form': form })
+    return render(request, 'applications/apply_scholarship.html', {'form': form })
+
+
+def success(request):
+    return render(request, 'applications/success.html')

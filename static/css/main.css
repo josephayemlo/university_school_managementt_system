@@ -507,6 +507,135 @@ body {
   border-bottom: 2px solid rgba(255, 255, 255, 0.203);
 }
 
+.course_table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: sans-serif;
+  margin-top: 1rem;
+}
+.course_table th,
+.course_table td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: center;
+}
+.course_table_head {
+  background-color: #f2f2f2;
+}
+.course_table_head_row {
+  background-color: #e6e6e6;
+}
+.course_table_header {
+  font-weight: bold;
+  color: #333;
+}
+.course_table_row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.course_table_row:hover {
+  background-color: #eef;
+}
+.course_table_cell {
+  font-size: 0.95rem;
+  color: #444;
+}
+.course_table_body {
+  background-color: #fff;
+}
+
+.invoice_container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+  border-radius: 8px;
+  color: #333;
+}
+
+.invoice_title {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.invoice_meta {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+.invoice_meta p {
+  margin: 0.3rem 0;
+}
+
+.invoice_table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+.invoice_table_head_row {
+  background-color: #f2f2f2;
+}
+.invoice_table_header {
+  font-weight: bold;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+.invoice_table_cell {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+.invoice_table_row:nth-child(even) {
+  background-color: #fafafa;
+}
+.invoice_table .invoice_total {
+  background-color: #e8f5e9;
+  font-weight: bold;
+}
+.invoice_table .invoice_total td {
+  border-top: 2px solid #4caf50;
+}
+
+.pay_button {
+  display: block;
+  margin: 1.5rem auto;
+  padding: 0.7rem 1.5rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.pay_button:hover {
+  background-color: #45a049;
+}
+
+.paid_label {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #2e7d32;
+  font-weight: bold;
+  margin-top: 1.5rem;
+}
+
+.print_button {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem 1.2rem;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.print_button:hover {
+  background-color: #1976d2;
+}
+
 .form_messages {
   padding: 1rem 1.25rem;
   border-radius: 6px;

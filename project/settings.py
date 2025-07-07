@@ -23,7 +23,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # other apps
     'django_countries',
-    # "phonenumber_field",
     # installed apps
     'accounts.apps.AccountsConfig',
     'core.apps.CoreConfig',
@@ -37,6 +36,7 @@ INSTALLED_APPS = [
 ]
 
 AUTH_USER_MODEL = 'core.CustomUser'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -50,15 +50,8 @@ MIDDLEWARE = [
     # 'accounts.middleware.LoginCheckMiddleWare',
 
     'core.middleware.ForceAspirantProfileCompletionMiddleware',
-
-    # remove this, its meant for development only
-    # 'project.temporaryMiddleware.DisableStaticCacheMiddleware'
-
+    'core.middleware.ForceAspirantToAspirantPortal',
 ]
-# Temporary middleware settings for staticfiles. Remember to remove this
-# if DEBUG:
-#     MIDDLEWARE.insert(0, 'project.temporaryMiddleware.DisableStaticCacheMiddleware')
-
 
 
 ROOT_URLCONF = 'project.urls'
@@ -143,4 +136,8 @@ PAYSTACK_SECRET_KEY = os.environ.get('PAYSTACK_SECRET_KEY')
 PAYSTACK_PUBLIC_KEY = os.environ.get('PAYSTACK_PUBLIC_KEY')
 PAYSTACK_INITIALIZE_URL = os.environ.get('PAYSTACK_INITIALIZE_URL')
 PAYSTACK_VERIFY_URL = os.environ.get('PAYSTACK_VERIFY_URL')
-        
+    
+# Celery Configuaration | we are telling Celery to use Redis
+CELERY_BROKER_URL = 'redis://localhost:6379/0' #communication port between them
+CELERY_ACCEPT_CONTENT = ['json'] #method of sending the task will be json
+CELERY_TASK_SERIALIZER = 'json'

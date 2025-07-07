@@ -35,8 +35,6 @@ class FormSettings(forms.ModelForm):
             field.field.widget.attrs['class'] = 'form-control'
 
 
-
-
 class CustomUserForm(FormSettings):
     email = forms.EmailField(required=True)
     gender = forms.ChoiceField(choices=[('M', 'Male'), ('F', 'Female')])
@@ -102,24 +100,20 @@ class AcademicStaffForm(CustomUserForm):
 
 
 class StudentForm(CustomUserForm):
-    matric_no = forms.CharField(max_length=20)
-    course_of_study = forms.ModelChoiceField(queryset=CourseOfStudy.objects.all(), label="Course of Study")
-    level = forms.ChoiceField(choices=[
-        ('100', '100 Level'),
-        ('200', '200 Level'),
-        ('300', '300 Level'),
-        ('400', '400 Level'),
-        ('500', '500 Level'),
-        ('600', '600 Level'),
-    ])
-
     class Meta(CustomUserForm.Meta):
         model = Student
-        fields = CustomUserForm.Meta.fields + [
-            'matric_no',
-            'course_of_study',
-            'level',
-        ]
+        def __init__(self, *args, **kwargs):
+            self.user = kwargs.pop('user', None)
+            super().__init__(*args, **kwargs)
+            if self.user and self.user.user_type =="4": #excluding sesitive data in student edit view for student
+                fields = CustomUserForm.Meta.fields + [ ]
+            else:
+                fields = CustomUserForm.Meta.fields + [
+                    'matric_no',
+                    'course_of_study',
+                    'level',
+                ]
+     
      
 
 class AspirantStudentForm(CustomUserForm):

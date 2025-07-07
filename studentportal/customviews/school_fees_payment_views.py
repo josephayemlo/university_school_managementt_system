@@ -14,9 +14,6 @@ from django.utils import timezone
 from core.models.utils import generate_reference
 
 
-
-
-
 def pay_school_fee(request, invoice_id):
     student = request.user.student
     invoice = get_object_or_404(StudentSchoolFee, id=invoice_id, student=student)

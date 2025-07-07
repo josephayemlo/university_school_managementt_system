@@ -61,7 +61,7 @@ class AspirantStudent(models.Model):
         ('admitted', 'Admitted'),
         ('rejected', 'Rejected'),
     ]
-    admin = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    admin = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='aspirant')
     course_applied = models.ForeignKey('core.CourseOfStudy', on_delete=models.SET_NULL, null=True, blank=True)
     phone_number = models.CharField(max_length=255)
     address_1 = models.CharField(max_length=255)

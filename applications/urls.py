@@ -10,5 +10,7 @@ urlpatterns = [
     path("study/apply/undergraduate/application/form", views.undergraduate_Application_Form_View, name='undergraduate_application_form'),
     path('apply/scholarship/', views.scholarship_Application_Form_View, name='scholarship_application_form'),
     path('personal_statement/download/', views.personal_statement_download, name='personal_statement_download'),
+    path("success/", views.success, name='success'),
+
 
 ]
