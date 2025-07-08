@@ -1,0 +1,33 @@
+
+<h3 class="form_title">List of  assigned courses | Select Course to Upload Result </h3> 
+<h3 class="form_title">{{academic_calendar.semester}} Semester | {{academic_calendar.session}} Session </h3> 
+
+   
+   <div class="tableContainer">
+      <div class="tableHeading">
+          <span class="tableHeading1">SN</span>
+          <span class="tableHeading2">Course Title</span>
+          <span class="tableHeading3">Course Code</span>
+          <span class="tableHeading3">Level</span>
+          <span class="tableHeading3">Semester</span>
+          <span class="tableHeading3">Link</span>
+      </div>
+      {% if assigned_course  %}
+            {% for assigned_course in assigned_course %}
+      <div class="tableData">
+          <span class="tableHeading1">{{ forloop.counter }}</span>
+          <span class="tableHeading2">{{assigned_course.course.title}}</span>
+          <span class="tableHeading3">{{assigned_course.course.code}}</span>
+          <span class="tableHeading3">{{assigned_course.course.level}}</span>
+          <span class="tableHeading3">{{assigned_course.course.semester}}</span>
+          <span class="tableHeading3"> 
+         <a href="{% url  'result_upload' assigned_course.course.id %}" class="tableHeading5Btn1 ajax_link">Upload Result</a>  
+
+          </span>
+
+      </div>
+
+      {% endfor %}
+      {% else %}
+              <h2>No Course available</h2>
+      {% endif %}

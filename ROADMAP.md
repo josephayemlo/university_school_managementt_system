@@ -60,3 +60,10 @@
 - [ ] User activity logs
 - [ ] Upload and manage semester-level result summaries for students
 - [ ] Implement Celery+Redis for messaging
+
+## Later version
+
+- [ ] Error handling in all forms like dupicate exitsts etc
+- [ ] Messaging
+- [ ] Real time chat using Websocket
+- [ ] Aspirant Examination

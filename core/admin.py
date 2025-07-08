@@ -9,7 +9,7 @@ User = get_user_model()
 admin.site.register(User)
 
 admin.site.register(Student)
-# admin.site.register(AcademicStaff)
+admin.site.register(AcademicStaff)
 # admin.site.register(NonAcademicStaff)
 # admin.site.register(UndergraduateApplication)
 # admin.site.register(ScholarshipApplication)
@@ -25,6 +25,8 @@ admin.site.register(StudentSchoolFee)
 admin.site.register(SchoolFeeItem)
 admin.site.register(DepartmentSchoolFee)
 admin.site.register(FailedPayment)
+admin.site.register(AssignCourse)
+
 
 
 

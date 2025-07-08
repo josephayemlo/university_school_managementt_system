@@ -24,3 +24,7 @@ def result_and_assessment(request):
 # Student School Fees Payment
 def student_school_fees_management(request):
     return render (request, 'management/partials/navigation/student_school_fees_links.html')
+
+# Academic Staff
+def academic_staff(request):
+    return render (request, 'management/partials/navigation/academic_staff_links.html')

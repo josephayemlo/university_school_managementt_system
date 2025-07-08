@@ -9,6 +9,7 @@ from .shared import (
     LevelCourse,
     StudentResult,
     SemesterResult,
+    AssignCourse,
 )
 from .school_fees_payment import (
     DepartmentSchoolFee, 

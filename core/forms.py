@@ -10,10 +10,17 @@ from .models import (
     CourseOfStudy,
     StudentResult,
     DepartmentSchoolFee,
-    DepartmentFeeItem
+    DepartmentFeeItem,
+    AssignCourse
+
 )
 
 
+
+class AssignCourseForm(forms.ModelForm):
+    class Meta:
+        model = AssignCourse
+        fields = {'course', 'academic_staff', 'academic_calendar'}
 
 
 class DepartmentSchoolFeeForm(forms.ModelForm):
@@ -107,13 +114,15 @@ class StudentForm(CustomUserForm):
             super().__init__(*args, **kwargs)
             if self.user and self.user.user_type =="4": #excluding sesitive data in student edit view for student
                 fields = CustomUserForm.Meta.fields + [ ]
-            else:
+            elif self.user and self.user.user_type =="1":
                 fields = CustomUserForm.Meta.fields + [
                     'matric_no',
                     'course_of_study',
                     'level',
                 ]
-     
+            else:
+                fields = CustomUserForm.Meta.fields + [ ]
+
      
 
 class AspirantStudentForm(CustomUserForm):

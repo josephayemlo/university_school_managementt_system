@@ -5,6 +5,8 @@ from django.db import models
 from django.contrib.auth.hashers import make_password
 from django_countries.fields import CountryField
 from core.models.enums import LevelChoices
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 # models
@@ -139,33 +141,21 @@ class NonAcademicStaff(models.Model):
 
 
 
-"""
-from studentportal.models import Student
+
 @receiver(post_save, sender=CustomUser)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        if instance.user_type == 1:
-            Admin.objects.create(admin=instance)
         if instance.user_type == 2:
             AcademicStaff.objects.create(admin=instance)
         if instance.user_type == 3:
             NonAcademicStaff.objects.create(admin=instance)
-        if instance.user_type == 4:
-            Student.objects.create(admin=instance)
-        if instance.user_type == 5:
-            AspirantStudent.objects.create(admin=instance)
 
 
 @receiver(post_save, sender=CustomUser)
 def save_user_profile(sender, instance, **kwargs):
-    if instance.user_type == 1:
-        instance.admin.save()
     if instance.user_type == 2:
         instance.academicstaff.save()
     if instance.user_type == 3:
         instance.nonacademicstaff.save()
-    if instance.user_type == 4:
-        instance.student.save()
-    if instance.user_type == 5:
-        instance.aspirantstudent.save()
-"""
+   
+

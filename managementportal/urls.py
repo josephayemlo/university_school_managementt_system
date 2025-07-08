@@ -3,7 +3,11 @@ from django.urls import path
 from .customviews.student_result_views import result_registeredcourse_students, result_select_department, result_department_course
 from .customviews.aspirant_views import add_aspirant_student, aspirant_student_list
 from .customviews.student_views import add_student, manage_student, edit_student, delete_student
-from .customviews.academic_staff_views import add_academicstaff, academicstaff_list, edit_academicstaff, delete_academicstaff
+from .customviews.academic_staff_views import (
+    add_academicstaff, academicstaff_list, 
+    edit_academicstaff, delete_academicstaff,assign_course, 
+    manage_assigned_course, edit_assigned_course, delete_assigned_course
+    )
 from .customviews.nonacademic_staff_views import add_nonacademicstaff, nonacademicstaff_list, edit_nonacademicstaff, delete_nonacademicstaff
 from .customviews.faculty_views import add_faculty, manage_faculty, edit_faculty, delete_faculty
 from .customviews.department_views import add_department, manage_department, edit_department, delete_department
@@ -25,7 +29,7 @@ from .customviews.academic_calendar_views import (
 from .customviews.navigation_views import (
     department_and_faculty, academic_course,
     session_and_academic_calender, result_and_assessment,
-    student_management, student_school_fees_management
+    student_management, student_school_fees_management, academic_staff
 )
 from .customviews.student_school_fees_views import (
     add_department_school_fees, 
@@ -67,6 +71,10 @@ urlpatterns = [
     path("academicstaff/list", academicstaff_list, name='academicstaff_list'),
     path("academicstaff/edit/<int:academicstaff_id>",edit_academicstaff, name='edit_academicstaff'),
     path("academicstaff/delete/<int:academicstaff_id>", delete_academicstaff, name='delete_academicstaff'),
+    path("assign_course", assign_course, name='assign_course'),
+    path('manage_assigned_course/', manage_assigned_course, name='manage_assigned_course'),
+    path('assigned_course/edit/<int:assigned_course_id>/', edit_assigned_course, name='edit_assigned_course'),
+    path('assigned_course/delete/<int:assigned_course_id>/', delete_assigned_course, name='delete_assigned_course'),
 
     # nonacademic staff URL
     path("nonacademicstaff/add", add_nonacademicstaff, name='add_nonacademicstaff'),
@@ -117,5 +125,7 @@ urlpatterns = [
     path('academic_course/', academic_course, name='academic_course'),
     path('department_and_faculty/', department_and_faculty, name='department_and_faculty'),
     path("student_school_fees_management/", student_school_fees_management, name='student_school_fees_management'),
+    path('academic_staff/', academic_staff, name='academic_staff'),
+
 
 ]

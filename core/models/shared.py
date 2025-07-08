@@ -40,7 +40,7 @@ class Course(models.Model):
     code = models.CharField(max_length=10)
     title = models.CharField(max_length=100)
     unit = models.PositiveIntegerField()
-    level = models.PositiveSmallIntegerField(choices=LevelChoices.choices)
+    level = models.CharField(max_length=3, choices=LevelChoices.choices)
     semester = models.CharField(max_length=10, choices=SemesterChoices.choices)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
     category = models.CharField(max_length=20, choices=CourseCategoryChoices.choices)
@@ -75,8 +75,7 @@ class RegisteredCourse(models.Model):
 
 
 class LevelCourse(models.Model):
-   
-    level = models.PositiveSmallIntegerField(choices=LevelChoices.choices)
+    level = models.CharField(max_length=3, choices=LevelChoices.choices)
     semester = models.CharField(max_length=10, choices=SemesterChoices.choices)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     course_of_study = models.ForeignKey(CourseOfStudy, on_delete=models.CASCADE)
@@ -113,5 +112,14 @@ class SemesterResult(models.Model):
     semester = models.CharField(max_length=10)
 
 
+class AssignCourse(models.Model):
+    course = models.ForeignKey('Course',on_delete=models.CASCADE)
+    academic_staff = models.ForeignKey('core.AcademicStaff',on_delete=models.CASCADE)
+    academic_calendar = models.ForeignKey('AcademicCalendar', on_delete=models.PROTECT, null=False)
+    created_at = models.DateTimeField(auto_now=True)
+    class Meta:
+        unique_together = ('course', 'academic_staff') #A course should not be assigned twice to one staff t avoid duplicates
+    def __str__(self):
+        return f"{self.course.title} - {self.academic_staff.admin.first_name}"
 
 

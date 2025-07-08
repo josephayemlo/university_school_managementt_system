@@ -1,7 +1,22 @@
-{% extends 'base.html' %}
 
-{% block content %}
-
-{% include "includes/form_template.html" with messages=messages  form=form button_text="Add Academic Staff"%}
-
-{% endblock content%}
+  <h3 class="form_title">Add Academic Staff</h3>
+  
+  <form method="post" class="ajax_form custom_form" action="{% url 'add_academicstaff' %}">
+    {% csrf_token %}
+    {% include 'management/partials/form_fields_template.html' with form=form %}
+     <!-- MESSAGES -->
+ <div>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="form_messages">
+          {{ message }}
+        </div>
+      {% endfor %}
+  {% endif %}
+  </div>
+  <!-- MESSAGES -->
+  
+    <button type="submit" class="btn">Add</button>
+  </form>
+  <div id="ajax_form_response"></div>
+  
