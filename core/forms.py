@@ -92,7 +92,8 @@ class NonAcademicStaffForm(CustomUserForm):
 
     class Meta(CustomUserForm.Meta):
         model = NonAcademicStaff
-        fields = CustomUserForm.Meta.fields 
+        fields = CustomUserForm.Meta.fields + ['role']
+
             
 
 class AcademicStaffForm(CustomUserForm):

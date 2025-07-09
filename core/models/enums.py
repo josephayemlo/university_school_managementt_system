@@ -38,3 +38,13 @@ class AcademicStaffRole(models.TextChoices):
     DEAN = 'DEAN', 'Dean'
     EXAM_OFFICER = 'EXAM_OFFICER', 'Examination Officer'
     STAFF = 'STAFF', 'Regular Staff'
+
+class NonAcademicStaffRole(models.TextChoices):
+    REGISTRAR = 'REGISTRAR', 'Registrar'
+    BURSAR = 'BURSAR', 'Bursar'
+    LIBRARIAN = 'LIBRARIAN', 'Librarian'
+    ICT_OFFICER = 'ICT_OFFICER', 'ICT Officer'
+    SECURITY = 'SECURITY', 'Security Staff'
+    CLEANER = 'CLEANER', 'Cleaner'
+    CLERK = 'CLERK', 'Clerical Staff'
+    STAFF = 'STAFF', 'Regular Staff'

@@ -46,6 +46,9 @@
                 <a class="leftNavContainerBtn ajax_link"  href="{% url 'academic_staff' %}">
                   <i class="fas fa-tachometer-alt"></i> Academic Staff
                 </a>
+                <a class="leftNavContainerBtn ajax_link"  href="{% url 'nonacademic_staff' %}">
+                  <i class="fas fa-tachometer-alt"></i> NonAcademic Staff
+                </a>
                 <a class="leftNavContainerBtn ajax_link"  href="{% url 'result_and_assessment' %}">
                   <i class="fas fa-tachometer-alt"></i> Result & Assessment
                 </a>
@@ -68,7 +71,7 @@
                         <h1 class="rightNavRow1Col1Text2">{{total_academicstaff}}</h1>
                         <span class="rightNavRow1Col1Text3">Click for More... &raquo;</span>
                     </a>
-                    <a href="{% url 'nonacademicstaff_list'%}" class="rightNavRow1Col3 btnWhite"> 
+                    <a href="{% url 'manage_nonacademicstaff'%}" class="rightNavRow1Col3 btnWhite"> 
                         <h2 class="rightNavRow1Col1Text1">Total NonAcademic Staff</h2>
                         <h1 class="rightNavRow1Col1Text2">{{total_nonacademicstaff}}</h1>
                         <span class="rightNavRow1Col1Text3">Click for More... &raquo;</span>

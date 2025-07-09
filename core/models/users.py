@@ -4,7 +4,7 @@ from django.contrib.auth.models import UserManager, AbstractUser
 from django.db import models
 from django.contrib.auth.hashers import make_password
 from django_countries.fields import CountryField
-from core.models.enums import LevelChoices, AcademicStaffPosition, AcademicStaffRole
+from core.models.enums import LevelChoices, AcademicStaffPosition, AcademicStaffRole, NonAcademicStaffRole
 
 
 # models
@@ -138,7 +138,7 @@ class AcademicStaff(models.Model):
 # Secretary, security.. etc
 class NonAcademicStaff(models.Model):
     admin = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='nonacademicstaff')
-
+    role = models.CharField(max_length=20, choices=NonAcademicStaffRole.choices, default=NonAcademicStaffRole.STAFF)
 
     def __str__(self):
         return str(self.admin.email)

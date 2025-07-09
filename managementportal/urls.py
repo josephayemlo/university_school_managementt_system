@@ -8,7 +8,7 @@ from .customviews.academic_staff_views import (
     edit_academicstaff, delete_academicstaff,assign_course, 
     manage_assigned_course, edit_assigned_course, delete_assigned_course
     )
-from .customviews.nonacademic_staff_views import add_nonacademicstaff, nonacademicstaff_list, edit_nonacademicstaff, delete_nonacademicstaff
+from .customviews.nonacademic_staff_views import add_nonacademicstaff, manage_nonacademicstaff, edit_nonacademicstaff, delete_nonacademicstaff
 from .customviews.faculty_views import add_faculty, manage_faculty, edit_faculty, delete_faculty
 from .customviews.department_views import add_department, manage_department, edit_department, delete_department
 from .customviews.course_views import (
@@ -29,7 +29,7 @@ from .customviews.academic_calendar_views import (
 from .customviews.navigation_views import (
     department_and_faculty, academic_course,
     session_and_academic_calender, result_and_assessment,
-    student_management, student_school_fees_management, academic_staff
+    student_management, student_school_fees_management, academic_staff, nonacademic_staff
 )
 from .customviews.student_school_fees_views import (
     add_department_school_fees, 
@@ -79,7 +79,7 @@ urlpatterns = [
 
     # nonacademic staff URL
     path("nonacademicstaff/add", add_nonacademicstaff, name='add_nonacademicstaff'),
-    path("nonacademicstaff/list", nonacademicstaff_list, name='nonacademicstaff_list'),
+    path("nonacademicstaff/list", manage_nonacademicstaff, name='manage_nonacademicstaff'),
     path("nonacademicstaff/edit/<int:nonacademicstaff_id>",edit_nonacademicstaff, name='edit_nonacademicstaff'),
     path("nonacademicstaff/delete/<int:nonacademicstaff_id>", delete_nonacademicstaff, name='delete_nonacademicstaff'),
 
@@ -127,6 +127,8 @@ urlpatterns = [
     path('department_and_faculty/', department_and_faculty, name='department_and_faculty'),
     path("student_school_fees_management/", student_school_fees_management, name='student_school_fees_management'),
     path('academic_staff/', academic_staff, name='academic_staff'),
+    path('nonacademic_staff/', nonacademic_staff, name='nonacademic_staff'),
+
 
 
 ]

@@ -28,3 +28,7 @@ def student_school_fees_management(request):
 # Academic Staff
 def academic_staff(request):
     return render (request, 'management/partials/navigation/academic_staff_links.html')
+
+# NonAcademic Staff
+def nonacademic_staff(request):
+    return render (request, 'management/partials/navigation/nonacademic_staff_links.html')

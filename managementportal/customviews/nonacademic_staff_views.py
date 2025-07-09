@@ -7,79 +7,105 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 # Create your views here.
 
+
+# add academic staff
 def add_nonacademicstaff(request):
     form = NonAcademicStaffForm(request.POST or None, request.FILES or None)
-    context = {'form': form, 'page_title': 'Add NonAcademic Staff'}
+    context = {'form': form, 'page_title': 'Add NonAcademicStaff'}
+
     if request.method == 'POST':
         if form.is_valid():
+            # User fields
             first_name = form.cleaned_data.get('first_name')
             last_name = form.cleaned_data.get('last_name')
             address = form.cleaned_data.get('address')
             email = form.cleaned_data.get('email')
             gender = form.cleaned_data.get('gender')
             password = form.cleaned_data.get('password')
-        
+
+            # Extra fields
+            role = form.cleaned_data.get('role')
+
+
             try:
+                # Create user with all fields at once
                 user = User.objects.create_user(
-                    email=email, password=password, user_type=3, first_name=first_name, last_name=last_name)
-                user.gender = gender
-                user.address = address
-                user.save()
-                messages.success(request, "NonAcademic Staff Successfully Added")
-                return redirect('management_home')
-
+                    email=email,
+                    password=password,
+                    user_type=3,
+                    first_name=first_name,
+                    last_name=last_name,
+                    gender=gender,
+                    address=address
+                )
+                # Manually create Academicstaff object
+                nonacademicstaff = NonAcademicStaff.objects.create(
+                    admin=user,
+                    role=role,
+                )
+                messages.success(request, "Staff successfully added.")
+                return render(request,'management/partials/success.html')
             except Exception as e:
-                messages.error(request, "Could Not Add " + str(e))
+                messages.error(request, "Could not add Staff: " + str(e))
         else:
-            messages.error(request, "Please fulfil all requirements")
+            messages.error(request, "Please fill all required fields correctly.")
+    return render(request, 'management/partials/nonacademicstaff/add_nonacademicstaff.html', context)
 
-    return render(request, 'management/partials/nonacademicstaff/add_nonacademicstaff_template.html', context)
 
 
-def nonacademicstaff_list(request):
-    nonacademicstaffs = User.objects.filter(user_type=3)
-    return render(request, 'management/partials/nonacademicstaff/nonacademicstaff_list.html', {'nonacademicstaffs': nonacademicstaffs})
+# list
+
+def manage_nonacademicstaff(request):
+    nonacademicstaff = NonAcademicStaff.objects.select_related('admin').order_by('admin__last_name')
+    return render(request, 'management/partials/nonacademicstaff/manage_nonacademicstaff.html', {'nonacademicstaff': nonacademicstaff})
+
+# edit
+
 
 def edit_nonacademicstaff(request, nonacademicstaff_id):
     nonacademicstaff = get_object_or_404(NonAcademicStaff, id=nonacademicstaff_id)
+    user = nonacademicstaff.admin  # linked User object
     form = NonAcademicStaffForm(request.POST or None, instance=nonacademicstaff)
-    context = {
-        'form': form,
-        'nonacademicstaff_id': nonacademicstaff_id,
-        'page_title': 'Edit Academic Staff'
-    }
+
     if request.method == 'POST':
         if form.is_valid():
-            first_name = form.cleaned_data.get('first_name')
-            last_name = form.cleaned_data.get('last_name')
-            address = form.cleaned_data.get('address')
-            email = form.cleaned_data.get('email')
-            gender = form.cleaned_data.get('gender')
-            password = form.cleaned_data.get('password') or None
             try:
-                user = User.objects.get(id=nonacademicstaff.admin.id)                
-                user.email = email
-                if password != None:
+                # Update User fields
+                user.first_name = form.cleaned_data['first_name']
+                user.last_name = form.cleaned_data['last_name']
+                user.email = form.cleaned_data['email']
+                user.address = form.cleaned_data['address']
+                user.gender = form.cleaned_data['gender']
+                
+                password = form.cleaned_data.get('password')
+                if password:
                     user.set_password(password)
-                user.first_name = first_name
-                user.last_name = last_name
-                user.gender = gender
-                user.address = address
                 user.save()
+
+                # Update Student fields
+                nonacademicstaff.role = form.cleaned_data['role']
                 nonacademicstaff.save()
-                messages.success(request, "Successfully Updated")
-                return redirect(reverse('edit_nonacademicstaff', args=[nonacademicstaff_id]))
+
+                messages.success(request, "Successfully updated Staff.")
+                return redirect(request.path)
+            
             except Exception as e:
-                messages.error(request, "Could Not Update " + str(e))
+                messages.error(request, f"Could not update Staff: {e}")
         else:
-            messages.error(request, "Please Fill Form Properly!")
-    else:
-        return render(request, "management/partials/nonacademicstaff/edit_nonacademicstaff_template.html", context)
+            messages.error(request, "Please fill out the form correctly.")
 
-
+    context = {
+        'form': form,
+        'nonacademicstaff': nonacademicstaff,
+    }
+    return render(request, "management/partials/nonacademicstaff/edit_nonacademicstaff.html", context)
+# delete
 def delete_nonacademicstaff(request, nonacademicstaff_id):
-    nonacademicstaff = get_object_or_404(User, nonacademicstaff__id=nonacademicstaff_id)
-    nonacademicstaff.delete()
-    messages.success(request, "nonacademicstaff deleted successfully!")
-    return redirect(reverse('nonacademicstaff_list'))
-
+    if request.method == 'POST':
+        nonacademicstaff = get_object_or_404(NonAcademicStaff, id=nonacademicstaff_id)
+        nonacademicstaff.delete()
+        print("nonacademicstaff deleted")
+        messages.success(request, 'nonacademicstaff Deleted Sucessfully')
+        return render(request,'management/partials/success.html')
+    return render(request, 'management/partials/nonacademicstaff/manage_nonacademicstaff.html')
+    

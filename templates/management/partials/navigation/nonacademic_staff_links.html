@@ -1,0 +1,31 @@
+
+<div class="generalAdminLinkContainer">
+     <!-- MESSAGES -->
+  <div>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="form_messages">
+          {{ message }}
+        </div>
+      {% endfor %}
+  {% endif %}
+  </div>
+  <!-- MESSAGES -->
+    <div class="tableContainer">
+        <div class="tableHeading">
+            <span class="tableHeading1">SN</span>
+            <span class="tableHeading2">LINK NAME</span>
+            <span class="tableHeading5">NAVIGATION</span>
+        </div>
+        <div class="tableData">
+            <span class="tableHeading1">1</span>
+            <span class="tableHeading2">Add NonAcademic Staff</span>
+            <span class="tableHeading5"><a href="{% url 'add_nonacademicstaff' %}" class=" generalAdminBtn ajax_link">  Add</a></span>
+        </div>
+        <div class="tableData">
+          <span class="tableHeading1">1</span>
+          <span class="tableHeading2">Manage NonAcademic Staff</span>
+          <span class="tableHeading5"><a href="{% url 'manage_nonacademicstaff' %}" class=" generalAdminBtn ajax_link">  Manage</a></span>
+      </div>
+    </div>
+</div>

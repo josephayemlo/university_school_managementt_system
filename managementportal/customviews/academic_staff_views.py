@@ -174,7 +174,7 @@ def edit_academicstaff(request, academicstaff_id):
         'form': form,
         'academicstaff': academicstaff,
     }
-    return render(request, "management/partials/academicstaff/edit_academicstaff_template.html", context)
+    return render(request, "management/partials/academicstaff/edit_academicstaff.html", context)
 # delete
 def delete_academicstaff(request, academicstaff_id):
     if request.method == 'POST':
