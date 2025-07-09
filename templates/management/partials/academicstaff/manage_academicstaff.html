@@ -1,0 +1,31 @@
+<h3 class="form_title">Manage Academic Staff | Academic Staff List</h3>
+
+<div class="tableContainer">
+  <div class="tableHeading">
+      <span class="tableHeading1">SN</span>
+      <span class="tableHeading2">Full Name</span>
+      <span class="tableHeading3">Email</span>
+      <span class="tableHeading4">Gender</span>
+      <span class="tableHeading5">Edit/Delete</span>
+  </div>
+
+  {% if academicstaff %}
+    {% for academicstaff in academicstaff %}
+      <div class="tableData">
+          <span class="tableHeading1">{{ forloop.counter }}</span>
+          <span class="tableHeading2">{{ academicstaff.admin.first_name }} {{ academicstaff.admin.last_name }}</span>
+          <span class="tableHeading3">{{ academicstaff.admin.email }}</span>
+          <span class="tableHeading4">{{ academicstaff.admin.gender }}</span>
+          <span class="tableHeading5"> 
+              <a href="{% url 'edit_academicstaff' academicstaff.id %}" class="tableHeading5Btn1 ajax_link">Edit</a> - 
+              <form method="post" class="ajax_form ajax_delete_form" action="{% url 'delete_academicstaff' academicstaff.id %}">
+                  {% csrf_token %}
+                  <button type="submit" class="tableHeading5Btn2">Delete</button>
+              </form>
+          </span>
+      </div>
+    {% endfor %}
+  {% else %}
+      <h2>No Student available</h2>
+  {% endif %}
+</div>

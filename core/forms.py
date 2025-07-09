@@ -96,32 +96,40 @@ class NonAcademicStaffForm(CustomUserForm):
             
 
 class AcademicStaffForm(CustomUserForm):
-    def __init__(self, *args, **kwargs):
-        super(AcademicStaffForm, self).__init__(*args, **kwargs)
-
+    
     class Meta(CustomUserForm.Meta):
         model = AcademicStaff
-        fields = CustomUserForm.Meta.fields 
+        fields = CustomUserForm.Meta.fields + [ 'position', 'role','department']
             
-
 
 
 class StudentForm(CustomUserForm):
     class Meta(CustomUserForm.Meta):
         model = Student
-        def __init__(self, *args, **kwargs):
-            self.user = kwargs.pop('user', None)
-            super().__init__(*args, **kwargs)
-            if self.user and self.user.user_type =="4": #excluding sesitive data in student edit view for student
-                fields = CustomUserForm.Meta.fields + [ ]
-            elif self.user and self.user.user_type =="1":
-                fields = CustomUserForm.Meta.fields + [
-                    'matric_no',
-                    'course_of_study',
-                    'level',
-                ]
-            else:
-                fields = CustomUserForm.Meta.fields + [ ]
+        fields = CustomUserForm.Meta.fields + [
+            'matric_no',
+            'course_of_study',
+            'level',
+        ]
+          
+# class StudentForm(CustomUserForm):
+#     class Meta(CustomUserForm.Meta):
+#         model = Student
+#         def __init__(self, *args, **kwargs):
+#             self.user = kwargs.pop('user', None)
+#             super().__init__(*args, **kwargs)
+#             if self.user and self.user.user_type =="4": #excluding sesitive data in student edit view for student
+#                 fields = CustomUserForm.Meta.fields + [ ]
+#             elif self.user and self.user.user_type =="1":
+#                 fields = CustomUserForm.Meta.fields + [
+#                     'matric_no',
+#                     'course_of_study',
+#                     'level',
+#                 ]
+#             else:
+#                 fields = CustomUserForm.Meta.fields + [ ]
+
+     
 
      
 

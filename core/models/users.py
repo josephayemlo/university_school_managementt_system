@@ -4,9 +4,7 @@ from django.contrib.auth.models import UserManager, AbstractUser
 from django.db import models
 from django.contrib.auth.hashers import make_password
 from django_countries.fields import CountryField
-from core.models.enums import LevelChoices
-from django.db.models.signals import post_save
-from django.dispatch import receiver
+from core.models.enums import LevelChoices, AcademicStaffPosition, AcademicStaffRole
 
 
 # models
@@ -127,9 +125,15 @@ class Student(models.Model):
 # Lecturers
 class AcademicStaff(models.Model):
     admin = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='academicstaff')
+    position = models.CharField(max_length=20, choices=AcademicStaffPosition.choices, default=AcademicStaffPosition.GRADUATE_ASSISTANT)
+    role = models.CharField(max_length=20, choices=AcademicStaffRole.choices, default=AcademicStaffRole.STAFF)
+    department = models.ForeignKey('core.Department', on_delete=models.DO_NOTHING)
 
     def __str__(self):
-        return str(self.admin.email)
+        return f"{self.admin.first_name} ({self.get_position_display()}, {self.get_role_display()})"
+    # get is used because of enums we want to get the readable field rather than PROF we get Professor
+
+
 
 # Secretary, security.. etc
 class NonAcademicStaff(models.Model):
@@ -139,23 +143,4 @@ class NonAcademicStaff(models.Model):
     def __str__(self):
         return str(self.admin.email)
 
-
-
-
-@receiver(post_save, sender=CustomUser)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        if instance.user_type == 2:
-            AcademicStaff.objects.create(admin=instance)
-        if instance.user_type == 3:
-            NonAcademicStaff.objects.create(admin=instance)
-
-
-@receiver(post_save, sender=CustomUser)
-def save_user_profile(sender, instance, **kwargs):
-    if instance.user_type == 2:
-        instance.academicstaff.save()
-    if instance.user_type == 3:
-        instance.nonacademicstaff.save()
-   
 

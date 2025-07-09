@@ -4,7 +4,7 @@ from .customviews.student_result_views import result_registeredcourse_students, 
 from .customviews.aspirant_views import add_aspirant_student, aspirant_student_list
 from .customviews.student_views import add_student, manage_student, edit_student, delete_student
 from .customviews.academic_staff_views import (
-    add_academicstaff, academicstaff_list, 
+    add_academicstaff, manage_academicstaff, 
     edit_academicstaff, delete_academicstaff,assign_course, 
     manage_assigned_course, edit_assigned_course, delete_assigned_course
     )
@@ -68,8 +68,9 @@ urlpatterns = [
 
     # academic staff URL
     path("academicstaff/add", add_academicstaff, name='add_academicstaff'),
-    path("academicstaff/list", academicstaff_list, name='academicstaff_list'),
-    path("academicstaff/edit/<int:academicstaff_id>",edit_academicstaff, name='edit_academicstaff'),
+    path("academicstaff/list", manage_academicstaff, name='manage_academicstaff'),
+    path("academicstaff/edit/<int:academicstaff_id>/",edit_academicstaff, name='edit_academicstaff'),
+    
     path("academicstaff/delete/<int:academicstaff_id>", delete_academicstaff, name='delete_academicstaff'),
     path("assign_course", assign_course, name='assign_course'),
     path('manage_assigned_course/', manage_assigned_course, name='manage_assigned_course'),

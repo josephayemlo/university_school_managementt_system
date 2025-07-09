@@ -1,7 +1,7 @@
 
 <div class="generalAdminLinkContainer">
      <!-- MESSAGES -->
- <div>
+  <div>
     {% if messages %}
       {% for message in messages %}
         <div class="form_messages">
@@ -26,11 +26,16 @@
           <span class="tableHeading1">2</span>
           <span class="tableHeading2">Manage Assigned Courses</span>
           <span class="tableHeading5"><a href="{% url 'manage_assigned_course' %}" class=" generalAdminBtn ajax_link">  Manage</a></span>
-      </div>
+        </div>
         <div class="tableData">
             <span class="tableHeading1">3</span>
             <span class="tableHeading2">Add Academic Staff</span>
             <span class="tableHeading5"><a href="{% url 'add_academicstaff' %}" class=" generalAdminBtn ajax_link">  Add</a></span>
         </div>
+        <div class="tableData">
+          <span class="tableHeading1">4</span>
+          <span class="tableHeading2">Manage Academic Staff</span>
+          <span class="tableHeading5"><a href="{% url 'manage_academicstaff' %}" class=" generalAdminBtn ajax_link">  Manage</a></span>
+      </div>
     </div>
 </div>

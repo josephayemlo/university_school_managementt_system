@@ -22,3 +22,19 @@ class CourseCategoryChoices(models.TextChoices):
 class SemesterChoices(models.TextChoices):
     FIRST = 'First', 'First Semester'
     SECOND = 'Second', 'Second Semester'
+
+class AcademicStaffPosition(models.TextChoices):
+    PROFESSOR = 'PROF', 'Professor'
+    ASSOCIATE_PROFESSOR = 'ASSOC_PROF', 'Associate Professor'
+    SENIOR_LECTURER = 'SR_LECT', 'Senior Lecturer'
+    LECTURER_I = 'LECT_I', 'Lecturer I'
+    LECTURER_II = 'LECT_II', 'Lecturer II'
+    ASSISTANT_LECTURER = 'ASST_LECT', 'Assistant Lecturer'
+    GRADUATE_ASSISTANT = 'GRAD_AST', 'Graduate Assistant'
+
+    
+class AcademicStaffRole(models.TextChoices):
+    HOD = 'HOD', 'Head of Department'
+    DEAN = 'DEAN', 'Dean'
+    EXAM_OFFICER = 'EXAM_OFFICER', 'Examination Officer'
+    STAFF = 'STAFF', 'Regular Staff'
