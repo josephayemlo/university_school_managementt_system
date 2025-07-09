@@ -80,7 +80,3 @@ def academicstaff_home (request):
 
 
 
-
-
-def nonacademicstaff_home (request):
-    return render(request, 'nonacademicstaff_home.html')

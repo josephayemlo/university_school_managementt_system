@@ -1,7 +1,7 @@
 from . import views
 from django.urls import path
 from .customviews.student_result_views import result_registeredcourse_students, result_select_department, result_department_course
-from .customviews.aspirant_views import add_aspirant_student, aspirant_student_list
+from .customviews.aspirant_views import add_aspirant, manage_aspirant, edit_aspirant, delete_aspirant
 from .customviews.student_views import add_student, manage_student, edit_student, delete_student
 from .customviews.academic_staff_views import (
     add_academicstaff, manage_academicstaff, 
@@ -29,7 +29,8 @@ from .customviews.academic_calendar_views import (
 from .customviews.navigation_views import (
     department_and_faculty, academic_course,
     session_and_academic_calender, result_and_assessment,
-    student_management, student_school_fees_management, academic_staff, nonacademic_staff
+    student_management, student_school_fees_management, 
+    academic_staff, nonacademic_staff, aspirant_management
 )
 from .customviews.student_school_fees_views import (
     add_department_school_fees, 
@@ -57,8 +58,10 @@ urlpatterns = [
     path('course/<int:course_id>/students/', result_registeredcourse_students, name='result_registeredcourse_students'),
 
     # aspirant URL
-    path("aspirant_student/add", add_aspirant_student, name='add_aspirant_student'),
-    path("aspirant_student/list", aspirant_student_list, name='aspirant_student_list'),
+    path("aspirant/add", add_aspirant, name='add_aspirant'),
+    path("aspirant/list", manage_aspirant, name='manage_aspirant'),
+    path("aspirant/edit/<int:aspirant_id>/", edit_aspirant, name='edit_aspirant'),
+    path("aspirant/delete/<int:aspirant_id>", delete_aspirant, name='delete_aspirant'),
 
     # student URL
     path("student/add", add_student, name='add_student'),
@@ -128,6 +131,8 @@ urlpatterns = [
     path("student_school_fees_management/", student_school_fees_management, name='student_school_fees_management'),
     path('academic_staff/', academic_staff, name='academic_staff'),
     path('nonacademic_staff/', nonacademic_staff, name='nonacademic_staff'),
+    path('aspirant_management/', aspirant_management, name='aspirant_management'),
+
 
 
 

@@ -28,6 +28,12 @@
     <a href="{% url 'academicstaff_home' %}"class="navigationFixedBtn">Academic Staff Portal</a>
     <a href="{% url 'logout_user' %}"class="navigationFixedBtn">Logout</a>
     <!-- Academicstaff link end -->
+
+    <!-- Academicstaff link start -->
+    {% elif user.is_authenticated and user.user_type == "3" %}       
+    <a href="{% url 'nonacademicstaff_home' %}"class="navigationFixedBtn">NonAcademic Staff Portal</a>
+    <a href="{% url 'logout_user' %}"class="navigationFixedBtn">Logout</a>
+    <!-- Academicstaff link end -->
        {% else %}
             <a class="navigationFixedBtn" href="{% url 'login_page'%}">Login</a>
             <a href="{% url 'apply' %}"class="navigationFixedBtn">Apply here</a>

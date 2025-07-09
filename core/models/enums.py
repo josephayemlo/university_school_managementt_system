@@ -41,6 +41,7 @@ class AcademicStaffRole(models.TextChoices):
 
 class NonAcademicStaffRole(models.TextChoices):
     REGISTRAR = 'REGISTRAR', 'Registrar'
+    ADDMISSION_OFFICER = 'ADDMISSION_OFFICER', 'Addmission Officer'
     BURSAR = 'BURSAR', 'Bursar'
     LIBRARIAN = 'LIBRARIAN', 'Librarian'
     ICT_OFFICER = 'ICT_OFFICER', 'ICT Officer'

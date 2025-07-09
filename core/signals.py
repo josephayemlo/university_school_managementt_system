@@ -22,13 +22,11 @@ def cache_old_status(sender, instance, **kwargs):
 # Step 2: On save, check if status changed to 'admitted' and act
 @receiver(post_save, sender=AspirantStudent)
 def handle_admission_status_change(sender, instance, created, **kwargs):
-    print('✅ signal loaded')
 
     if created:
         return
 
     if getattr(instance, '_previous_admission_status', None) != instance.admission_status and instance.admission_status == 'admitted':
-        print("✅ admission status changed to 'admitted'")
 
         user = instance.admin
 

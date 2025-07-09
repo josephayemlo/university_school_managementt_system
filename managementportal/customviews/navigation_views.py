@@ -32,3 +32,6 @@ def academic_staff(request):
 # NonAcademic Staff
 def nonacademic_staff(request):
     return render (request, 'management/partials/navigation/nonacademic_staff_links.html')
+
+def aspirant_management(request):
+    return render (request, 'management/partials/navigation/aspirant_links.html')

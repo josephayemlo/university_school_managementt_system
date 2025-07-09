@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+{% block header %} 
+{% endblock header %}
+
+
+
+
+    <section class="admin">
+        <div class="topAdminContainerNav">
+            <div class="topAdminContainerNavLeft"> 
+                <h1>Admin Panel</h1>
+            </div>
+            <div class="topAdminContainerNavRight">
+                <h1>NonAcademic Staff Dashboard</h1>
+            </div>
+
+        </div>
+        
+        <div class="adminContainer">
+            <div class="leftNavContainer">
+                <a class="leftNavContainerBtn" href="{% url 'nonacademicstaff_home' %}">
+                  <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
+                <a class="leftNavContainerBtn ajax_link" href="{% url 'addmissions' %}">
+                    <i class="fas fa-tachometer-alt"></i> Addmissions
+                    </a>
+                <a class="leftNavContainerBtn" href="{% url 'logout_user' %}">
+                  <i class="fas fa-briefcase"></i> Logout
+                </a>
+                
+            </div>
+              
+            <div class="rightNavContainer" id="ajaxContainer">      
+             
+                
+            </div>
+        
+           
+        </div>
+
+
+    </section>
+        <!-- Exluding footer -->
+{% block footer %} 
+{% endblock footer %}
+
+{% endblock content%}
