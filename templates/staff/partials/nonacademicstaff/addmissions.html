@@ -1,0 +1,26 @@
+
+   
+<h3 class="form_title">Manage Aspirant Addmission | Aspirant Session List</h3>
+   
+<div class="tableContainer">
+   <div class="tableHeading">
+       <span class="tableHeading1">SN</span>
+       <span class="tableHeading2">Session</span>
+
+       <span class="tableHeading3">Addmission</span>
+   </div>
+   {% if session  %}
+         {% for session in session %}
+   <div class="tableData">
+       <span class="tableHeading1">{{ forloop.counter }}</span>
+       <span class="tableHeading2">{{session.session}}</span>
+       <span class="tableHeading3"> 
+        <a href="{% url  'admissions_courses' session.id %}" class="tableHeading5Btn1 ajax_link">Proceed</a> 
+
+       </span>
+   </div>
+
+   {% endfor %}
+   {% else %}
+           <h2>No session available</h2>
+   {% endif %}

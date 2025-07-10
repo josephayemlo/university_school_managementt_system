@@ -1,24 +1,23 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import update_session_auth_hash
-from core.forms import AspirantStudentForm
+from .forms import AspirantStudentProfileForm
 from core.models import AspirantStudent
 from django.contrib import messages
 from django.urls import reverse
-from core.models import AspirantStudent
 
 
 
 # AspirantPortal Home
-def aspirant_student_home (request):
+def aspirant_home (request):
     aspirant = request.user.aspirant
-    return render(request, 'aspirantportal/aspirant_student_home.html', {'aspirant': aspirant})
+    return render(request, 'aspirantportal/aspirant_home.html', {'aspirant': aspirant})
 
 # Aspirant Edit View 
-def edit_aspirant_student(request):
+def edit_aspirant(request):
   
     aspirantstudent = get_object_or_404(AspirantStudent, admin=request.user)
-    form = AspirantStudentForm(request.POST or None, instance=aspirantstudent)
+    form = AspirantStudentProfileForm(request.POST or None, instance=aspirantstudent)
     context = {
         'form': form,
         'page_title': 'Edit Aspirant Student',
@@ -46,11 +45,11 @@ def edit_aspirant_student(request):
                 form.save()
 
                 messages.success(request, "Profile Updated!")
-                return redirect(reverse('edit_aspirant_student'))
+                return redirect(reverse('edit_aspirant'))
             else:
                 print("Errors:", form.errors.as_json())
                 messages.error(request, "Invalid data provided.")
         except Exception as e:
             messages.error(request, "Error occurred while updating profile: " + str(e))
 
-    return render(request, "aspirantportal/edit_aspirant_student.html", context)
+    return render(request, "aspirantportal/edit_aspirant.html", context)

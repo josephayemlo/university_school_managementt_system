@@ -4,7 +4,7 @@ from itertools import groupby
 from .forms import CourseRegistrationForm
 from core.models import AcademicCalendar, RegisteredCourse, Course, LevelCourse, Student
 from django.contrib.auth import update_session_auth_hash
-from core.forms import StudentForm
+from .forms import StudentProfileForm
 from django.urls import reverse
 
 # Models
@@ -13,7 +13,7 @@ from django.urls import reverse
 
 def edit_student(request):
     student = get_object_or_404(Student, admin=request.user)
-    form = StudentForm(request.POST or None, instance=student)
+    form = StudentProfileForm(request.POST or None, instance=student)
     context = {
         'form': form,
         'page_title': 'Edit  Student',

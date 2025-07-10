@@ -52,7 +52,6 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.last_name + ", " + self.first_name
 
-
 # aspirant students
 class AspirantStudent(models.Model):
     EMERGENCY_RELATIONSHIP = [("B", "Brother"), ("S", "Sister"),("F", "Father"),("M", "Mother"), ("O", "Other"),]
@@ -63,6 +62,7 @@ class AspirantStudent(models.Model):
     ]
     admin = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='aspirant')
     course_applied = models.ForeignKey('core.CourseOfStudy', on_delete=models.SET_NULL, null=True, blank=True)
+    session = models.ForeignKey('core.AspirantAcademicCalendar', on_delete=models.PROTECT, null=True) #set null to False later
     phone_number = models.CharField(max_length=255)
     address_1 = models.CharField(max_length=255)
     address_2 = models.CharField(max_length=255)

@@ -24,7 +24,9 @@ from .customviews.level_course_views import (
 )
 from .customviews.academic_calendar_views import (
     add_academic_calender, manage_academic_calender,
-    edit_academic_calender
+    edit_academic_calender,
+    add_aspirant_academic_calender, manage_aspirant_academic_calender,
+    edit_aspirant_academic_calender
 )
 from .customviews.navigation_views import (
     department_and_faculty, academic_course,
@@ -38,6 +40,8 @@ from .customviews.student_school_fees_views import (
     manage_department_school_fees,
     department_fee_item
 )
+
+from .customviews.addmission_views import addmissions, admissions_courses, admissions_applicants, change_addmission_status
 
 # URLs
 urlpatterns = [
@@ -122,6 +126,11 @@ urlpatterns = [
     path('academic_calendar/manage/', manage_academic_calender, name='manage_academic_calender'),
     path('academic_calendar/edit/<int:academic_calender_id>/', edit_academic_calender, name='edit_academic_calender'),
 
+    # aspirant academic calendar URL
+    path('aspirant_academic_calendar/add/', add_aspirant_academic_calender, name='add_aspirant_academic_calender'),
+    path('aspirant_academic_calendar/manage/', manage_aspirant_academic_calender, name='manage_aspirant_academic_calender'),
+    path('aspirant_academic_calendar/edit/<int:aspirant_academic_calender_id>/', edit_aspirant_academic_calender, name='edit_aspirant_academic_calender'),
+
     # navigation URL
     path('student_management/', student_management, name='student_management'),
     path('result_and_assessment/', result_and_assessment, name='result_and_assessment'),
@@ -133,6 +142,11 @@ urlpatterns = [
     path('nonacademic_staff/', nonacademic_staff, name='nonacademic_staff'),
     path('aspirant_management/', aspirant_management, name='aspirant_management'),
 
+    # Addmission
+    path("addmissions/",addmissions, name='addmissions'),
+    path('admissions/<int:session_id>/courses/', admissions_courses, name='admissions_courses'),
+    path('admissions/<int:session_id>/courses/<int:course_id>/applicants/', admissions_applicants, name='admissions_applicants'),
+    path('admissions/<int:aspirant_id>/', change_addmission_status, name='change_addmission_status'),
 
 
 

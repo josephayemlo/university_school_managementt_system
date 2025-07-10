@@ -1,0 +1,21 @@
+
+ <!-- MESSAGES -->
+ <div>
+  {% if messages %}
+    {% for message in messages %}
+      <div class="form_messages">
+        {{ message }}
+      </div>
+    {% endfor %}
+{% endif %}
+</div>
+<!-- MESSAGES -->
+<h3 class="form_title">Edit Aspirant Academic Calender</h3>
+
+<form method="post" class="ajax_form custom_form" action="{% url 'edit_aspirant_academic_calender' aspirant_academic_calender.id %}">
+  {% csrf_token %}
+  {% include 'management/partials/form_fields_template.html' with form=form %}
+
+  <button type="submit" class="btn">Update Calender</button>
+</form>
+<div id="ajax_form_response"></div>

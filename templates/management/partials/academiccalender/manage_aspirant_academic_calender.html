@@ -1,0 +1,28 @@
+
+<h3 class="form_title">Manage Academic Calender | Academic Calender List</h3>
+   
+   <div class="tableContainer">
+      <div class="tableHeading">
+          <span class="tableHeading1">SN</span>
+          <span class="tableHeading2">Session</span>
+          <span class="tableHeading3">Edit/Delete</span>
+
+
+      </div>
+      {% if aspirant_academic_calender  %}
+            {% for aspirant_academic_calender in aspirant_academic_calender %}
+      <div class="tableData">
+          <span class="tableHeading1">{{ forloop.counter }}</span>
+          <span class="tableHeading2">{{aspirant_academic_calender.session}}</span>
+
+          <span class="tableHeading3"> 
+
+            <a href="{% url  'edit_aspirant_academic_calender' aspirant_academic_calender.id %}" class="tableHeading5Btn1 ajax_link">Edit</a> 
+
+          </span>
+      </div>
+
+      {% endfor %}
+      {% else %}
+              <h2>No Aspirant Academic Calender available</h2>
+      {% endif %}

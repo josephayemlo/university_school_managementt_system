@@ -1,5 +1,6 @@
 from django import forms
-from core.models import Course
+from core.models import Course, Student
+from core.forms import CustomUserForm
 
 class CourseRegistrationForm(forms.Form):
     courses = forms.ModelMultipleChoiceField(
@@ -13,3 +14,9 @@ class CourseRegistrationForm(forms.Form):
         super().__init__(*args, **kwargs)
         if available_courses is not None:
             self.fields['courses'].queryset = available_courses
+
+
+class StudentProfileForm(CustomUserForm):
+    class Meta(CustomUserForm.Meta):
+        model = Student
+        fields = CustomUserForm.Meta.fields

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+ <!-- MESSAGES -->
+ <div>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="form_messages">
+          {{ message }}
+        </div>
+      {% endfor %}
+  {% endif %}
+  </div>
+  <!-- MESSAGES -->
+  <h3 class="form_title">Edit Profile</h3>
+  <a href="{% url 'aspirant_home' %}"class="navigationFixedBtn">Back</a>
+  
+  <form method="post" class=" custom_form" action="{% url 'edit_aspirant'  %}">
+      
+    {% csrf_token %}
+    {% include 'management/partials/form_fields_template.html' with form=form %}
+  
+    <button type="submit" class="btn">Update</button>
+  </form>
+  
+
+
+{% endblock content %}

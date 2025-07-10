@@ -10,6 +10,7 @@ from .shared import (
     StudentResult,
     SemesterResult,
     AssignCourse,
+    AspirantAcademicCalendar
 )
 from .school_fees_payment import (
     DepartmentSchoolFee, 

@@ -107,33 +107,16 @@ class AcademicStaffForm(CustomUserForm):
 class StudentForm(CustomUserForm):
     class Meta(CustomUserForm.Meta):
         model = Student
-        fields = CustomUserForm.Meta.fields + [
+        fields = CustomUserForm.Meta.fields + [  # default fields
             'matric_no',
             'course_of_study',
             'level',
         ]
-          
-# class StudentForm(CustomUserForm):
-#     class Meta(CustomUserForm.Meta):
-#         model = Student
-#         def __init__(self, *args, **kwargs):
-#             self.user = kwargs.pop('user', None)
-#             super().__init__(*args, **kwargs)
-#             if self.user and self.user.user_type =="4": #excluding sesitive data in student edit view for student
-#                 fields = CustomUserForm.Meta.fields + [ ]
-#             elif self.user and self.user.user_type =="1":
-#                 fields = CustomUserForm.Meta.fields + [
-#                     'matric_no',
-#                     'course_of_study',
-#                     'level',
-#                 ]
-#             else:
-#                 fields = CustomUserForm.Meta.fields + [ ]
-
-     
-
-     
-
+    
+"""
+we are specifying fields 1by1 because when combining t
+Django doesnt support combining __all__ with specific field additions in Meta.fields
+"""
 class AspirantStudentForm(CustomUserForm):
     course_applied = forms.ModelChoiceField(queryset=CourseOfStudy.objects.all(), label="Course of Study")
     
@@ -200,7 +183,20 @@ class AspirantStudentForm(CustomUserForm):
             'referee_first_name', 'referee_last_name', 'referee_email',
             'referee_phone_number', 'referee_address_1', 'referee_address_2',
             'referee_city', 'referee_postal_code', 'referee_state_province', 'referee_country',
+
+            # admission
+            'admission_status',  
+            # session
+            'session'
         ]
+
+
+
+
+class AdmissionStatusForm(forms.ModelForm):
+    class Meta:
+        model = AspirantStudent
+        fields = ['admission_status']
 
 class StudentResultForm(forms.ModelForm):
     class Meta:

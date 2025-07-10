@@ -5,9 +5,9 @@ from core.models import (
     AcademicCalendar,
     Department,
     CourseOfStudy,
-    Course
+    Course,
+    AspirantAcademicCalendar
 )
-
 # Forms
 class FacultyForm(forms.ModelForm):
     class Meta:
@@ -34,6 +34,17 @@ class AcademicCalenderForm(forms.ModelForm):
         widgets = {
             'sesssion': forms.CharField,
             'semester': forms.Select(attrs={'class': 'form-control'}),
+            'is_current': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+        }
+
+
+
+class AspirantAcademicCalendarForm(forms.ModelForm):
+    class Meta:
+        model = AspirantAcademicCalendar
+        fields = ['session', 'is_current']
+        widgets = {
+            'sesssion': forms.CharField,
             'is_current': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
 

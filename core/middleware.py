@@ -8,7 +8,7 @@ class ForceAspirantToAspirantPortal:
         ASPIRANT_USER_TYPE = 5
         if request.user.is_authenticated and int(request.user.user_type) == ASPIRANT_USER_TYPE:
             if request.path == '/':
-                return redirect('aspirant_student_home')
+                return redirect('aspirant_home')
         return self.get_response(request)
 
 
@@ -21,8 +21,8 @@ class ForceAspirantProfileCompletionMiddleware:
     def __call__(self, request):
 
         allowed_paths = [
-            "/edit_aspirant_student",
-            "/edit_aspirant_student/",
+            "/edit_aspirant",
+            "/edit_aspirant/",
             # you need to get each allowed url with two links using starting slash and trailing slash this else it will loop
             "/accounts/logout/",  
             "accounts/logout",  
@@ -74,7 +74,7 @@ class ForceAspirantProfileCompletionMiddleware:
 
                 if incomplete and current_path not in allowed_paths:
                     print("⚠️ Incomplete profile detected. Redirecting...")
-                    return redirect("edit_aspirant_student")
+                    return redirect("edit_aspirant")
             except AttributeError:
                 pass  # User doesn't have an AspirantStudent profile
 

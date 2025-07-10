@@ -7,7 +7,7 @@
     <!-- Nav start -->
     <div class="applyNavAspirant">
         <h3 class="user_name_aspirant">Welcome, {{user.first_name}} {{user.last_name}}</h3>
-        <a href="{% url 'edit_aspirant_student'%}" class="applyNavAspirantBtn">Edit/View Profile</a>
+        <a href="{% url 'edit_aspirant'%}" class="applyNavAspirantBtn">Edit/View Profile</a>
 
         <a href="{% url 'logout_user' %}"class="applyNavAspirantBtn">Logout</a>
         <h2 class="user_name_aspirant">Application Status:{{aspirant.admission_status}} </h2>
