@@ -13,6 +13,8 @@ urlpatterns = [
     path('', include('core.urls')),
     path('', include('applications.urls')),
     path('', include('aspirantportal.urls')),
+    path('', include('studentchat.urls')),
+
 
 
 ]

@@ -1,0 +1,37 @@
+<h2>Group Chat: {{ room.name }}</h2>
+<div id="chat-log">
+  {% for msg in messages %}
+    <div><strong>{{ msg.sender.first_name }}:</strong> {{ msg.body }}</div>
+  {% endfor %}
+</div>
+
+<input type="text" id="chat-message-input">
+<button id="send-btn">Send</button>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+
+
+<script>
+  const roomId = "{{ room.id }}";
+  const socket = new WebSocket(`ws://${window.location.host}/ws/groupchat/${roomId}/`);
+
+  socket.onmessage = function(e) {
+    const data = JSON.parse(e.data);
+    document.getElementById("chat-log").innerHTML += `<div><strong>${data.sender}:</strong> ${data.message}</div>`;
+  }
+
+  document.getElementById("send-btn").onclick = function() {
+    const msg = document.getElementById("chat-message-input").value;
+    socket.send(JSON.stringify({ 'message': msg }));
+    document.getElementById("chat-message-input").value = '';
+  }
+</script>

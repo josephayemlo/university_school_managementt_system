@@ -1,0 +1,61 @@
+<title>Private Chat</title>
+  <style>
+    #chat-log {
+      height: 300px;
+      overflow-y: scroll;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    #chat-message-input {
+      width: 80%;
+    }
+  </style>
+</head>
+<body>
+  <h2>Private Chat</h2>
+
+  <!-- previous messages start -->
+  <div id="chat-log">
+    {% for message in messages %}
+      <div>
+        <strong>{{ message.sender.first_name }}:</strong> {{ message.body }}
+      </div>
+    {% endfor %}
+  </div>
+  <!-- previous messages end -->
+
+  <input id="chat-message-input" type="text" placeholder="Type your message...">
+  <button id="chat-message-submit">Send</button>
+
+  <script>
+    const userId = "{{ request.user.id }}";
+    const otherUserId = "{{ other_user.id }}";  // Pass this from your view
+
+    const chatSocket = new WebSocket(
+      'ws://' + window.location.host +
+      '/ws/privatechat/' + otherUserId + '/'
+    );
+
+    chatSocket.onmessage = function(e) {
+      const data = JSON.parse(e.data);
+      const chatLog = document.querySelector('#chat-log');
+      const message = `<p><strong>${data.sender}:</strong> ${data.message}</p>`;
+      chatLog.innerHTML += message;
+      chatLog.scrollTop = chatLog.scrollHeight;
+    };
+
+    chatSocket.onclose = function(e) {
+      console.error('Chat socket closed unexpectedly');
+    };
+
+    document.querySelector('#chat-message-submit').onclick = function(e) {
+      const input = document.querySelector('#chat-message-input');
+      const message = input.value;
+      if (message.trim() !== "") {
+        chatSocket.send(JSON.stringify({
+          'message': message
+        }));
+        input.value = '';
+      }
+    };
+  </script>

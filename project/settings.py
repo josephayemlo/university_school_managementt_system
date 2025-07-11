@@ -15,6 +15,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 INSTALLED_APPS = [
+    'daphne',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -30,6 +32,10 @@ INSTALLED_APPS = [
     'staffportal.apps.StaffportalConfig',
     'studentportal.apps.StudentportalConfig',
     'applications.apps.ApplicationsConfig',
+    'studentchat.apps.StudentchatConfig',
+
+
+
 
     
 
@@ -72,6 +78,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
@@ -118,6 +125,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Login Redirect
+LOGIN_REDIRECT_URL = '/accounts/'
+LOGIN_URL = '/accounts/'
+
+
 
 # EmailBackend
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -141,3 +153,18 @@ PAYSTACK_VERIFY_URL = os.environ.get('PAYSTACK_VERIFY_URL')
 CELERY_BROKER_URL = 'redis://localhost:6379/0' #communication port between them
 CELERY_ACCEPT_CONTENT = ['json'] #method of sending the task will be json
 CELERY_TASK_SERIALIZER = 'json'
+
+
+
+# ASGI setup
+ASGI_APPLICATION = 'project.asgi.application'
+
+# Django Channel layers Setup with Redis
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('127.0.0.1', 6379)],  # your Redis host and port
+        },
+    },
+}
