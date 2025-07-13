@@ -6,17 +6,18 @@ from core.models import AcademicCalendar, RegisteredCourse, Course, LevelCourse,
 from django.contrib.auth import update_session_auth_hash
 from .forms import StudentProfileForm
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 # Models
     
 # Create your views here.
 
+@login_required
 def edit_student(request):
     student = get_object_or_404(Student, admin=request.user)
     form = StudentProfileForm(request.POST or None, instance=student)
     context = {
         'form': form,
-        'page_title': 'Edit  Student',
     }
     if request.method == 'POST':
         try:
@@ -45,6 +46,7 @@ def edit_student(request):
 
 
 # Student Portal home
+@login_required
 def student_portal (request):
     return render(request, 'studentportal/student_portal.html')
 

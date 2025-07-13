@@ -117,7 +117,7 @@ def add_academicstaff(request):
                     department=department
                 )
                 messages.success(request, "Staff successfully added.")
-                return render(request,'management/partials/success.html')
+                return redirect(request.path)
             except Exception as e:
                 messages.error(request, "Could not add Staff: " + str(e))
         else:

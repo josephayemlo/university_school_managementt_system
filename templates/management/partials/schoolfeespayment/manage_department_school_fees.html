@@ -1,20 +1,25 @@
 
    
 <h3 class="form_title">Manage department_fee | department_fee List</h3>
-   
+   <!-- Back Btn start -->
+   <a class=" tableBtn1 ajax_link" href="{% url 'admin_student_school_fees_management' %}">
+    <i class="fas fa-arrow-left"></i> Back
+</a>
+<!-- Back Btn end -->
+
 <div class="tableContainer">
    <div class="tableHeading">
-       <span class="tableHeading1">SN</span>
-       <span class="tableHeading3">department_fee</span>
-       <span class="tableHeading3">Edit/Delete</span>
+       <span class="tableHeading10">SN</span>
+       <span class="tableHeading1">department_fee</span>
+       <span class="tableHeading1">Link</span>
    </div>
    {% if department_fee  %}
          {% for department_fee in department_fee %}
    <div class="tableData">
-       <span class="tableHeading1">{{ forloop.counter }}</span>
-       <span class="tableHeading2">{{department_fee.department}}</span>
-       <span class="tableHeading3"> 
-        <a href="{% url 'department_fee_item' department_fee.id %}" class=" generalAdminBtn ajax_link">Proceed</a>
+       <span class="tableHeading10">{{ forloop.counter }}</span>
+       <span class="tableHeading1">{{department_fee.department}}</span>
+       <span class="tableHeading1"> 
+        <a href="{% url 'admin_department_fee_item' department_fee.id %}" class=" generalAdminBtn ajax_link">Proceed</a>
 
        </span>
    </div>

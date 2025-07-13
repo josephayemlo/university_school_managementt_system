@@ -41,7 +41,7 @@ from .customviews.student_school_fees_views import (
     department_fee_item
 )
 
-from .customviews.addmission_views import addmissions, admissions_courses, admissions_applicants, change_addmission_status
+from .customviews.addmission_views import addmissions, addmissions_courses, addmissions_applicants, change_addmission_status
 
 # URLs
 urlpatterns = [
@@ -50,103 +50,102 @@ urlpatterns = [
     path("management/home", views.management_home, name='management_home'),
 
     # Student School Fees
-    path("add_department_school_fees/", add_department_school_fees, name='add_department_school_fees'),
-    path("add_item_to_department_school_fee/", add_item_to_department_school_fee, name='add_item_to_department_school_fee'),
-    path("manage_department_school_fees/", manage_department_school_fees, name='manage_department_school_fees'),
-    path('department_fee_item/<int:department_fee_id>/', department_fee_item, name='department_fee_item'),
+    path("add_department_school_fees/", add_department_school_fees, name='admin_add_department_school_fees'),
+    path("add_item_to_department_school_fee/", add_item_to_department_school_fee, name='admin_add_item_to_department_school_fee'),
+    path("manage_department_school_fees/", manage_department_school_fees, name='admin_manage_department_school_fees'),
+    path('department_fee_item/<int:department_fee_id>/', department_fee_item, name='admin_department_fee_item'),
 
 
     # Result
-    path("result_select_department", result_select_department, name='result_select_department'),
-    path('department/<int:department_id>/courses/', result_department_course, name='result_department_course'),
-    path('course/<int:course_id>/students/', result_registeredcourse_students, name='result_registeredcourse_students'),
+    path("result_select_department", result_select_department, name='admin_result_select_department'),
+    path('department/<int:department_id>/courses/', result_department_course, name='admin_result_department_course'),
+    path('course/<int:course_id>/students/', result_registeredcourse_students, name='admin_result_registeredcourse_students'),
 
     # aspirant URL
-    path("aspirant/add", add_aspirant, name='add_aspirant'),
-    path("aspirant/list", manage_aspirant, name='manage_aspirant'),
-    path("aspirant/edit/<int:aspirant_id>/", edit_aspirant, name='edit_aspirant'),
-    path("aspirant/delete/<int:aspirant_id>", delete_aspirant, name='delete_aspirant'),
+    path("aspirant/add", add_aspirant, name='admin_add_aspirant'),
+    path("aspirant/list", manage_aspirant, name='admin_manage_aspirant'),
+    path("aspirant/edit/<int:aspirant_id>/", edit_aspirant, name='admin_edit_aspirant'),
+    path("aspirant/delete/<int:aspirant_id>", delete_aspirant, name='admin_delete_aspirant'),
 
     # student URL
-    path("student/add", add_student, name='add_student'),
-    path("student/list", manage_student, name='manage_student'),
-    path("student/edit/<int:student_id>/", edit_student, name='edit_student'),
-    path("student/delete/<int:student_id>", delete_student, name='delete_student'),
+    path("student/add", add_student, name='admin_add_student'),
+    path("student/list", manage_student, name='admin_manage_student'),
+    path("student/edit/<int:student_id>/", edit_student, name='admin_edit_student'),
+    path("student/delete/<int:student_id>", delete_student, name='admin_delete_student'),
 
     # academic staff URL
-    path("academicstaff/add", add_academicstaff, name='add_academicstaff'),
-    path("academicstaff/list", manage_academicstaff, name='manage_academicstaff'),
-    path("academicstaff/edit/<int:academicstaff_id>/",edit_academicstaff, name='edit_academicstaff'),
+    path("academicstaff/add", add_academicstaff, name='admin_add_academicstaff'),
+    path("academicstaff/list", manage_academicstaff, name='admin_manage_academicstaff'),
+    path("academicstaff/edit/<int:academicstaff_id>/",edit_academicstaff, name='admin_edit_academicstaff'),
     
-    path("academicstaff/delete/<int:academicstaff_id>", delete_academicstaff, name='delete_academicstaff'),
-    path("assign_course", assign_course, name='assign_course'),
-    path('manage_assigned_course/', manage_assigned_course, name='manage_assigned_course'),
-    path('assigned_course/edit/<int:assigned_course_id>/', edit_assigned_course, name='edit_assigned_course'),
-    path('assigned_course/delete/<int:assigned_course_id>/', delete_assigned_course, name='delete_assigned_course'),
+    path("academicstaff/delete/<int:academicstaff_id>", delete_academicstaff, name='admin_delete_academicstaff'),
+    path("assign_course", assign_course, name='admin_assign_course'),
+    path('manage_assigned_course/', manage_assigned_course, name='admin_manage_assigned_course'),
+    path('assigned_course/edit/<int:assigned_course_id>/', edit_assigned_course, name='admin_edit_assigned_course'),
+    path('assigned_course/delete/<int:assigned_course_id>/', delete_assigned_course, name='admin_delete_assigned_course'),
 
     # nonacademic staff URL
-    path("nonacademicstaff/add", add_nonacademicstaff, name='add_nonacademicstaff'),
-    path("nonacademicstaff/list", manage_nonacademicstaff, name='manage_nonacademicstaff'),
-    path("nonacademicstaff/edit/<int:nonacademicstaff_id>",edit_nonacademicstaff, name='edit_nonacademicstaff'),
-    path("nonacademicstaff/delete/<int:nonacademicstaff_id>", delete_nonacademicstaff, name='delete_nonacademicstaff'),
+    path("nonacademicstaff/add", add_nonacademicstaff, name='admin_add_nonacademicstaff'),
+    path("nonacademicstaff/list", manage_nonacademicstaff, name='admin_manage_nonacademicstaff'),
+    path("nonacademicstaff/edit/<int:nonacademicstaff_id>",edit_nonacademicstaff, name='admin_edit_nonacademicstaff'),
+    path("nonacademicstaff/delete/<int:nonacademicstaff_id>", delete_nonacademicstaff, name='admin_delete_nonacademicstaff'),
 
     # faculty URL
-    path('faculty/add/', add_faculty, name='add_faculty'),
-    path('faculty/manage/', manage_faculty, name='manage_faculty'),
-    path('faculty/edit/<int:faculty_id>/', edit_faculty, name='edit_faculty'),
-    path('faculty/delete/<int:faculty_id>/', delete_faculty, name='delete_faculty'),
-
+    path('faculty/add/', add_faculty, name='admin_add_faculty'),
+    path('faculty/manage/', manage_faculty, name='admin_manage_faculty'),
+    path('faculty/edit/<int:faculty_id>/', edit_faculty, name='admin_edit_faculty'),
+    path('faculty/delete/<int:faculty_id>/', delete_faculty, name='admin_delete_faculty'),
 
     # department URL
-    path('department/add/', add_department, name='add_department'),
-    path('department/manage/', manage_department, name='manage_department'),
-    path('department/edit/<int:department_id>/', edit_department, name='edit_department'),
-    path('department/delete/<int:department_id>/', delete_department, name='delete_department'),
+    path('department/add/', add_department, name='admin_add_department'),
+    path('department/manage/', manage_department, name='admin_manage_department'),
+    path('department/edit/<int:department_id>/', edit_department, name='admin_edit_department'),
+    path('department/delete/<int:department_id>/', delete_department, name='admin_delete_department'),
 
     # course_of_study URL
-    path('course_of_study/add/', add_course_of_study, name='add_course_of_study'),
-    path('course_of_study/manage/', manage_course_of_study, name='manage_course_of_study'),
-    path('course_of_study/edit/<int:course_id>/', edit_course_of_study, name='edit_course_of_study'),
-    path('course_of_study/delete/<int:course_id>/', delete_course_of_study, name='delete_course_of_study'),
+    path('course_of_study/add/', add_course_of_study, name='admin_add_course_of_study'),
+    path('course_of_study/manage/', manage_course_of_study, name='admin_manage_course_of_study'),
+    path('course_of_study/edit/<int:course_id>/', edit_course_of_study, name='admin_edit_course_of_study'),
+    path('course_of_study/delete/<int:course_id>/', delete_course_of_study, name='admin_delete_course_of_study'),
 
     # course URL
-    path('course/add/', add_course, name='add_course'),
-    path('course/manage/', manage_course, name='manage_course'),
-    path('course/edit/<int:course_id>/', edit_course, name='edit_course'),
-    path('course/delete/<int:course_id>/', delete_course, name='delete_course'),
+    path('course/add/', add_course, name='admin_add_course'),
+    path('course/manage/', manage_course, name='admin_manage_course'),
+    path('course/edit/<int:course_id>/', edit_course, name='admin_edit_course'),
+    path('course/delete/<int:course_id>/', delete_course, name='admin_delete_course'),
 
     # level_course URL
-    path('level_course/assign/', assign_level_course, name='assign_level_course'),
-    path('level_course/manage/', manage_level_course, name='manage_level_course'),
-    path('level_course/edit/<int:course_id>/', edit_level_course, name='edit_level_course'),
-    path('level_course/delete/<int:course_id>/', delete_level_course, name='delete_level_course'),
+    path('level_course/assign/', assign_level_course, name='admin_assign_level_course'),
+    path('level_course/manage/', manage_level_course, name='admin_manage_level_course'),
+    path('level_course/edit/<int:course_id>/', edit_level_course, name='admin_edit_level_course'),
+    path('level_course/delete/<int:course_id>/', delete_level_course, name='admin_delete_level_course'),
 
     # academic calendar URL
-    path('academic_calendar/add/', add_academic_calender, name='add_academic_calender'),
-    path('academic_calendar/manage/', manage_academic_calender, name='manage_academic_calender'),
-    path('academic_calendar/edit/<int:academic_calender_id>/', edit_academic_calender, name='edit_academic_calender'),
+    path('academic_calendar/add/', add_academic_calender, name='admin_add_academic_calender'),
+    path('academic_calendar/manage/', manage_academic_calender, name='admin_manage_academic_calender'),
+    path('academic_calendar/edit/<int:academic_calender_id>/', edit_academic_calender, name='admin_edit_academic_calender'),
 
     # aspirant academic calendar URL
-    path('aspirant_academic_calendar/add/', add_aspirant_academic_calender, name='add_aspirant_academic_calender'),
-    path('aspirant_academic_calendar/manage/', manage_aspirant_academic_calender, name='manage_aspirant_academic_calender'),
-    path('aspirant_academic_calendar/edit/<int:aspirant_academic_calender_id>/', edit_aspirant_academic_calender, name='edit_aspirant_academic_calender'),
+    path('aspirant_academic_calendar/add/', add_aspirant_academic_calender, name='admin_add_aspirant_academic_calender'),
+    path('aspirant_academic_calendar/manage/', manage_aspirant_academic_calender, name='admin_manage_aspirant_academic_calender'),
+    path('aspirant_academic_calendar/edit/<int:aspirant_academic_calender_id>/', edit_aspirant_academic_calender, name='admin_edit_aspirant_academic_calender'),
 
     # navigation URL
-    path('student_management/', student_management, name='student_management'),
-    path('result_and_assessment/', result_and_assessment, name='result_and_assessment'),
-    path('session_and_academic_calender/', session_and_academic_calender, name='session_and_academic_calender'),
-    path('academic_course/', academic_course, name='academic_course'),
-    path('department_and_faculty/', department_and_faculty, name='department_and_faculty'),
-    path("student_school_fees_management/", student_school_fees_management, name='student_school_fees_management'),
-    path('academic_staff/', academic_staff, name='academic_staff'),
-    path('nonacademic_staff/', nonacademic_staff, name='nonacademic_staff'),
-    path('aspirant_management/', aspirant_management, name='aspirant_management'),
+    path('student_management/', student_management, name='admin_student_management'),
+    path('result_and_assessment/', result_and_assessment, name='admin_result_and_assessment'),
+    path('session_and_academic_calender/', session_and_academic_calender, name='admin_session_and_academic_calender'),
+    path('academic_course/', academic_course, name='admin_academic_course'),
+    path('department_and_faculty/', department_and_faculty, name='admin_department_and_faculty'),
+    path("student_school_fees_management/", student_school_fees_management, name='admin_student_school_fees_management'),
+    path('academic_staff/', academic_staff, name='admin_academic_staff'),
+    path('nonacademic_staff/', nonacademic_staff, name='admin_nonacademic_staff'),
+    path('aspirant_management/', aspirant_management, name='admin_aspirant_management'),
 
     # Addmission
-    path("addmissions/",addmissions, name='addmissions'),
-    path('admissions/<int:session_id>/courses/', admissions_courses, name='admissions_courses'),
-    path('admissions/<int:session_id>/courses/<int:course_id>/applicants/', admissions_applicants, name='admissions_applicants'),
-    path('admissions/<int:aspirant_id>/', change_addmission_status, name='change_addmission_status'),
+    path("addmissions/",addmissions, name='admin_addmissions'),
+    path('addmissions/<int:session_id>/courses/', addmissions_courses, name='admin_addmissions_courses'),
+    path('addmissions/<int:session_id>/courses/<int:course_id>/applicants/', addmissions_applicants, name='admin_addmissions_applicants'),
+    path('addmissions/<int:aspirant_id>/', change_addmission_status, name='admin_change_addmission_status'),
 
 
 

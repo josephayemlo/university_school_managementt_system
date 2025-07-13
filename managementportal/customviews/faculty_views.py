@@ -10,7 +10,7 @@ def add_faculty(request):
     if request.method == 'POST' and form.is_valid():
         form.save()
         messages.success(request, "Faculty added successfully.")
-        return render(request,'management/partials/success.html')
+        return redirect(request.path)
     return render(request, 'management/partials/faculty/add_faculty.html', {'form': form})
 
 

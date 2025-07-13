@@ -9,7 +9,7 @@ def add_course(request):
     if request.method == 'POST' and form.is_valid():
         form.save()
         messages.success(request, 'Course added sucessfully')
-        return render(request, 'management/partials/success.html')
+        return redirect(request.path)
     return render(request, 'management/partials/course/add_course.html', {'form': form})
 
 # manage/view

@@ -1,4 +1,16 @@
- <!-- MESSAGES -->
+
+<h3 class="form_title">Edit Course of Study</h3>
+      <!-- Back Btn start -->
+      <a class=" tableBtn1 ajax_link" href="{% url 'admin_manage_course_of_study' %}">
+        <i class="fas fa-arrow-left"></i> Back
+    </a>
+    <!-- Back Btn end -->
+    
+
+<form method="post" class="ajax_form custom_form" action="{% url 'admin_edit_course_of_study' course_of_study.id %}">
+  {% csrf_token %}
+  {% include 'management/partials/form_fields_template.html' with form=form %}
+   <!-- MESSAGES -->
  <div>
   {% if messages %}
     {% for message in messages %}
@@ -9,11 +21,6 @@
 {% endif %}
 </div>
 <!-- MESSAGES -->
-<h3 class="form_title">Edit Course of Study</h3>
-
-<form method="post" class="ajax_form custom_form" action="{% url 'edit_course_of_study' course_of_study.id %}">
-  {% csrf_token %}
-  {% include 'management/partials/form_fields_template.html' with form=form %}
 
   <button type="submit" class="btn">Update Course of Study</button>
 </form>

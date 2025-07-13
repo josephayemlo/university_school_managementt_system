@@ -10,7 +10,7 @@ def assign_level_course(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Course Assigned to Level Sucessfully')
-            return render(request,'management/partials/success.html')
+            return redirect(request.path)
     else:
         form = LevelCourseForm()
     return render(request, 'management/partials/levelcourse/assign_course_to_level.html', {'form':form})

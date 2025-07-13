@@ -1,5 +1,19 @@
- <!-- MESSAGES -->
- <div>
+
+<h3 class="form_title">Edit department</h3>
+    <!-- Back Btn start -->
+    <a class=" tableBtn1 ajax_link" href="{% url 'admin_manage_department' %}">
+      <i class="fas fa-arrow-left"></i> Back
+    </a>
+    <!-- Back Btn end -->
+<form method="post" class="ajax_form custom_form" 
+  onsubmit="this.querySelector('button[type=submit]').disabled = true;" 
+  action="{% url 'admin_edit_department' department.id %}"
+>
+  {% csrf_token %}
+  {% include 'management/partials/form_fields_template.html' with form=form %}
+
+<!-- MESSAGES -->
+<div>
   {% if messages %}
     {% for message in messages %}
       <div class="form_messages">
@@ -9,12 +23,6 @@
 {% endif %}
 </div>
 <!-- MESSAGES -->
-<h3 class="form_title">Edit department</h3>
-
-<form method="post" class="ajax_form custom_form" action="{% url 'edit_department' department.id %}">
-  {% csrf_token %}
-  {% include 'management/partials/form_fields_template.html' with form=form %}
-
   <button type="submit" class="btn">Update department</button>
 </form>
 <div id="ajax_form_response"></div>

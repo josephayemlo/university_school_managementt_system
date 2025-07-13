@@ -1,7 +1,14 @@
 
   <h3 class="form_title">Edit NonAcademic Staff</h3>
-  
-  <form method="post" class="ajax_form custom_form" action="{% url 'edit_nonacademicstaff' nonacademicstaff.id %}">
+    <!-- Back Btn start -->
+<a class=" tableBtn1 ajax_link" href="{% url 'admin_manage_nonacademicstaff' %}">
+  <i class="fas fa-arrow-left"></i> Back
+</a>
+<!-- Back Btn end -->
+  <form method="post" class="ajax_form custom_form" 
+    onsubmit="this.querySelector('button[type=submit]').disabled = true;"          
+    action="{% url 'admin_edit_nonacademicstaff' nonacademicstaff.id %}"
+  >
       
     {% csrf_token %}
     {% include 'management/partials/form_fields_template.html' with form=form %}

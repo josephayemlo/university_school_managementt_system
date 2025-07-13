@@ -4,18 +4,18 @@
    
 <div class="tableContainer">
    <div class="tableHeading">
-       <span class="tableHeading1">SN</span>
-       <span class="tableHeading2">Session</span>
+       <span class="tableHeading10">SN</span>
+       <span class="tableHeading1">Session</span>
 
-       <span class="tableHeading3">Addmission</span>
+       <span class="tableHeading1">Addmission</span>
    </div>
    {% if session  %}
          {% for session in session %}
    <div class="tableData">
-       <span class="tableHeading1">{{ forloop.counter }}</span>
-       <span class="tableHeading2">{{session.session}}</span>
-       <span class="tableHeading3"> 
-        <a href="{% url  'admissions_courses' session.id %}" class="tableHeading5Btn1 ajax_link">Proceed</a> 
+       <span class="tableHeading10">{{ forloop.counter }}</span>
+       <span class="tableHeading1">{{session.session}}</span>
+       <span class="tableHeading1"> 
+        <a href="{% url  'admin_addmissions_courses' session.id %}" class="tableBtn1 ajax_link">Proceed</a> 
 
        </span>
    </div>

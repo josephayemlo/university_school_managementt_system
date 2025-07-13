@@ -1,0 +1,30 @@
+ 
+  <h3 class="form_title">Edit Group Chat</h3>   
+  <!-- Back Btn start -->
+  <a class=" tableBtn1 ajax_link" href="{% url 'admin_manage_group_chat' %}">
+      <i class="fas fa-arrow-left"></i> Back
+  </a>
+<!-- Back Btn end -->
+  <form method="post" class="ajax_form custom_form" 
+  action="{% url 'admin_edit_group_chat' group_chat.id %}"
+  onsubmit="this.querySelector('button[type=submit]').disabled = true;"
+
+  >
+    {% csrf_token %}
+    {% include 'management/partials/form_fields_template.html' with form=form %}
+<!-- MESSAGES -->
+    <div>
+        {% if messages %}
+        {% for message in messages %}
+            <div class="form_messages">
+            {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+<!-- MESSAGES -->
+  
+    <button type="submit" class="btn">Update</button>
+  </form>
+  <div id="ajax_form_response"></div>
+  

@@ -1,10 +1,27 @@
 
 <h3 class="form_title">Add student</h3>
-
-<form method="post" class="ajax_form custom_form" action="{% url 'add_student' %}" >
+<!-- Back Btn start -->
+<a class=" tableBtn1 ajax_link" href="{% url 'admin_student_management' %}">
+  <i class="fas fa-arrow-left"></i> Back
+</a>
+<!-- Back Btn end -->
+<form method="post" class="ajax_form custom_form" 
+  onsubmit="this.querySelector('button[type=submit]').disabled = true;"          
+  action="{% url 'admin_add_student' %}" 
+>
   {% csrf_token %}
   {% include 'management/partials/form_fields_template.html' with form=form %}
-
+<!-- MESSAGES -->
+<div>
+  {% if messages %}
+    {% for message in messages %}
+      <div class="form_messages">
+        {{ message }}
+      </div>
+    {% endfor %}
+{% endif %}
+</div>
+<!-- MESSAGES -->
   <button type="submit" class="btn">Add student</button>
 </form>
 <div id="ajax_form_response"></div>

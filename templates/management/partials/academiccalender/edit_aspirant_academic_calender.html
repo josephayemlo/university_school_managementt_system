@@ -1,4 +1,18 @@
 
+<h3 class="form_title">Edit Aspirant Academic Calender</h3>
+ <!-- Back Btn start -->
+ <a class=" tableBtn1 ajax_link" href="{% url 'admin_manage_aspirant_academic_calender' %}">
+  <i class="fas fa-arrow-left"></i> Back
+</a>
+<!-- Back Btn end -->
+
+<form method="post" class="ajax_form custom_form" 
+  action="{% url 'admin_edit_aspirant_academic_calender' aspirant_academic_calender.id %}"
+  onsubmit="this.querySelector('button[type=submit]').disabled = true;"
+>
+  {% csrf_token %}
+  {% include 'management/partials/form_fields_template.html' with form=form %}
+
  <!-- MESSAGES -->
  <div>
   {% if messages %}
@@ -10,11 +24,6 @@
 {% endif %}
 </div>
 <!-- MESSAGES -->
-<h3 class="form_title">Edit Aspirant Academic Calender</h3>
-
-<form method="post" class="ajax_form custom_form" action="{% url 'edit_aspirant_academic_calender' aspirant_academic_calender.id %}">
-  {% csrf_token %}
-  {% include 'management/partials/form_fields_template.html' with form=form %}
 
   <button type="submit" class="btn">Update Calender</button>
 </form>

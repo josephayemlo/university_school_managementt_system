@@ -1,26 +1,33 @@
 <h3 class="form_title">Manage NonAcademic Staff | NonAcademic Staff List</h3>
-
+  <!-- Back Btn start -->
+  <a class=" tableBtn1 ajax_link" href="{% url 'admin_nonacademic_staff' %}">
+    <i class="fas fa-arrow-left"></i> Back
+  </a>
+  <!-- Back Btn end -->
 <div class="tableContainer">
   <div class="tableHeading">
-      <span class="tableHeading1">SN</span>
-      <span class="tableHeading2">Full Name</span>
-      <span class="tableHeading3">Email</span>
-      <span class="tableHeading4">Gender</span>
-      <span class="tableHeading5">Edit/Delete</span>
+      <span class="tableHeading10">SN</span>
+      <span class="tableHeading1">Full Name</span>
+      <span class="tableHeading1">Email</span>
+      <span class="tableHeading1">Gender</span>
+      <span class="tableHeading1">Edit/Delete</span>
   </div>
 
   {% if nonacademicstaff %}
     {% for nonacademicstaff in nonacademicstaff %}
       <div class="tableData">
-          <span class="tableHeading1">{{ forloop.counter }}</span>
-          <span class="tableHeading2">{{ nonacademicstaff.admin.first_name }} {{ nonacademicstaff.admin.last_name }}</span>
-          <span class="tableHeading3">{{ nonacademicstaff.admin.email }}</span>
-          <span class="tableHeading4">{{ nonacademicstaff.admin.gender }}</span>
-          <span class="tableHeading5"> 
-              <a href="{% url 'edit_nonacademicstaff' nonacademicstaff.id %}" class="tableHeading5Btn1 ajax_link">Edit</a> - 
-              <form method="post" class="ajax_form ajax_delete_form" action="{% url 'delete_nonacademicstaff' nonacademicstaff.id %}">
+          <span class="tableHeading10">{{ forloop.counter }}</span>
+          <span class="tableHeading1">{{ nonacademicstaff.admin.first_name }} {{ nonacademicstaff.admin.last_name }}</span>
+          <span class="tableHeading1">{{ nonacademicstaff.admin.email }}</span>
+          <span class="tableHeading1">{{ nonacademicstaff.admin.gender }}</span>
+          <span class="tableHeading1"> 
+              <a href="{% url 'admin_edit_nonacademicstaff' nonacademicstaff.id %}" class="tableBtn1 ajax_link">Edit</a> - 
+              <form method="post" class="ajax_form ajax_delete_form" 
+                onsubmit="this.querySelector('button[type=submit]').disabled = true;"          
+                action="{% url 'admin_delete_nonacademicstaff' nonacademicstaff.id %}"
+              >
                   {% csrf_token %}
-                  <button type="submit" class="tableHeading5Btn2">Delete</button>
+                  <button type="submit" class="tableBtn2">Delete</button>
               </form>
           </span>
       </div>

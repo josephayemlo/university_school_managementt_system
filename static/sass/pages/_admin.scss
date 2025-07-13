@@ -78,7 +78,6 @@
         flex: 1;
         padding: 2rem;
         overflow-y: auto;
-        // background-color: #f4f4f4;
         height: 100%;
   
         .adminRightNavRow1Container {
@@ -95,44 +94,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
           }
-          .rightNavRow1Col1 {
-            background-color: #e74c3c;
-
-            color: white;
-          }
-  
-          .rightNavRow1Col2 {
-            background-color: #3498db;
-            color: white;
-          }
-  
-          .rightNavRow1Col3 {
-            background-color: #e74c3c;
-            color: white;
-          }
-
-          .rightNavRow1Col1Text1{
-            font-size: 20px;
-            background-color: rgba(0, 0, 0, 0.281);
-            text-align: center;
-            font-family: 'Times New Roman', Times, serif;
-            color: whitesmoke;
-            border: 0.5px solid rgba(11, 116, 173, 0.546);
-
-          }
-        
-          .rightNavRow1Col1Text3{
-            background-color: whitesmoke;
-            padding: 8px;
-            color: black;
-            border-radius: 9px;
-            font-size: 15px;
-
-            &:hover{
-              background-color: black;
-              color: white;
-            }
-          }
+         
         }
         .adminRightNavRow2Container{
           display: flex;
@@ -140,55 +102,13 @@
 
           .adminRightNavRow2Container1 {
             flex: 1;
-
-          
-
-            h1 {
-              text-align: center;
-              font-size: 22px;
-              margin-bottom: 10px;
-              color: white;
-              font-family: "Times New Roman", Times, serif;
-            }
-          
-            &Card {
-              flex: 1;
-              display: flex;
-              border: 2px solid #ccc;
-              border-radius: 12px;
-              overflow: hidden;
-              height: 50px;
-              font-weight: bold;
-              font-family: "Times New Roman", Times, serif;
-          
-              &Male,
-              &Female {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: #fff;
-              }
-          
-              &Male {
-                background-color: #3498db; // blue
-                border-top-left-radius: 12px;
-                border-bottom-left-radius: 12px;
-              }
-          
-              &Female {
-                background-color: #e74c3c; // red
-                border-top-right-radius: 12px;
-                border-bottom-right-radius: 12px;
-              }
-            }
           }
-          
 
-            .adminRightNavRow2Container2{
-              flex: 1;
+          .adminRightNavRow2Container2{
+            flex: 1;
 
 
-            }
+          }
 
         }
       }
@@ -196,6 +116,19 @@
   }
   
 .generalAdminLinkContainer{
-  border: 2px solid whitesmoke;
+  border: 2px solid rgba(245, 245, 245, 0.274);
   padding: 5px;
 }
+
+
+// ApexChart 
+
+.kpi-chart-box {
+  background: rgb(255, 255, 255);
+  padding: 1rem;
+  border-radius: 8px;
+  flex: 1;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.07);
+  text-align: center;
+}
+

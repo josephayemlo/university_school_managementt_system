@@ -64,3 +64,31 @@
 
 
 }
+.tableBtn1 {
+    background-color: #3498db;
+    color: black;
+    padding: 6px;
+    text-decoration: none;
+    border-radius: 2px;
+    font-size: 19px;
+    margin-right: 0.5rem;
+
+    &:hover {
+      background-color: white;
+      color: black;
+    }
+  }
+
+.tableBtn2 {
+    background-color: #7c2217;
+    color: whitesmoke;
+    padding: 6px;
+    text-decoration: none;
+    border-radius: 2px;
+    display: inline-block;
+    font-size: 19px;
+
+    &:hover {
+      background-color: red;
+    }
+  }

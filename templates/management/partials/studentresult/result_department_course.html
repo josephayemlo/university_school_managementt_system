@@ -1,28 +1,30 @@
 
-<h2 class="result_form_title">
-  <h2>Registered Courses for {{ department.name }}</h2>
-</h2>
-<h4 class="result_form_subtitle">
-  <h4>Session: {{ current_calendar.session }} | Semester: {{ current_calendar.semester }}</h4>
-</h4>
+<h2 class="form_title">Registered Courses for {{ department.name }}</h2>
+<h4 class="form_title">Session: {{ current_calendar.session }} | Semester: {{ current_calendar.semester }}</h4>
+
+<!-- Back Btn start -->
+<a class=" tableBtn1 ajax_link" href="{% url 'admin_result_select_department' %}">
+  <i class="fas fa-arrow-left"></i> Back
+</a>
+<!-- Back Btn end -->
 
 <div class="tableContainer">
    <div class="tableHeading">
-       <span class="tableHeading1">SN</span>
-       <span class="tableHeading2">Title</span>
-       <span class="tableHeading3">Code</span>
-       <span class="tableHeading3">Level</span>
-       <span class="tableHeading3">Link</span>
+       <span class="tableHeading10">SN</span>
+       <span class="tableHeading1">Title</span>
+       <span class="tableHeading1">Code</span>
+       <span class="tableHeading1">Level</span>
+       <span class="tableHeading1">Link</span>
    </div>
    {% if courses  %}
          {% for course in courses %}
    <div class="tableData">
-       <span class="tableHeading1">{{ forloop.counter }}</span>
-       <span class="tableHeading2">{{course.title}}</span>
-       <span class="tableHeading3">{{course.code}}</span>
-       <span class="tableHeading3">{{course.level}}</span>
-       <span class="tableHeading3"> 
-         <a href="{% url 'result_registeredcourse_students' course.id %}" class="tableHeading5Btn1 ajax_link">Click here</a> 
+       <span class="tableHeading10">{{ forloop.counter }}</span>
+       <span class="tableHeading1">{{course.title}}</span>
+       <span class="tableHeading1">{{course.code}}</span>
+       <span class="tableHeading1">{{course.level}}</span>
+       <span class="tableHeading1"> 
+         <a href="{% url 'admin_result_registeredcourse_students' course.id %}" class="tableBtn1 ajax_link">Click here</a> 
        </span>
    </div>
 

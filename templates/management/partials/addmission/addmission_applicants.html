@@ -1,26 +1,31 @@
 
 <h3 class="form_title">Applicants for {{ course.name }} - Session {{ session.session }}</h3>
+<!-- Back Btn start -->
+<a class=" tableBtn1 ajax_link" href="{% url 'admin_addmissions_courses' session.id %}">
+  <i class="fas fa-arrow-left"></i> Back
+</a>
+<!-- Back Btn end -->
 
 <div class="tableContainer">
   <div class="tableHeading">
-      <span class="tableHeading1">SN</span>
-      <span class="tableHeading2">Full Name</span>
-      <span class="tableHeading2">Email</span>
+      <span class="tableHeading10">SN</span>
+      <span class="tableHeading15">Full Name</span>
+      <span class="tableHeading30">Email</span>
       <span class="tableHeading1">Gender</span>
-      <span class="tableHeading3">Addmission</span>
-      <span class="tableHeading3">Status</span>
+      <span class="tableHeading20">Addmission</span>
+      <span class="tableHeading1">Status</span>
   </div>
 
   {% if applicants %}
     {% for aspirant in applicants %}
       <div class="tableData">
-          <span class="tableHeading1">{{ forloop.counter }}</span>
-          <span class="tableHeading2">{{ aspirant.admin.first_name }} {{ aspirant.admin.last_name }}</span>
-          <span class="tableHeading2">{{ aspirant.admin.email }}</span>
+          <span class="tableHeading10">{{ forloop.counter }}</span>
+          <span class="tableHeading15">{{ aspirant.admin.first_name }} {{ aspirant.admin.last_name }}</span>
+          <span class="tableHeading30">{{ aspirant.admin.email }}</span>
           <span class="tableHeading1">{{ aspirant.admin.gender }}</span>
-          <span class="tableHeading3">{{ aspirant.admission_status }}</span>
-          <span class="tableHeading3"> 
-              <a href="{% url 'change_addmission_status' aspirant.id %}" class="tableHeading5Btn1 ajax_link">Change Status</a>  
+          <span class="tableHeading20">{{ aspirant.admission_status }}</span>
+          <span class="tableHeading1"> 
+              <a href="{% url 'admin_change_addmission_status' aspirant.id %}" class="tableBtn1 ajax_link">Change</a>  
           </span>
       </div>
     {% endfor %}

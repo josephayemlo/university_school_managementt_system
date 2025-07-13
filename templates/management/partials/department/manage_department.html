@@ -1,26 +1,33 @@
 
    
 <h3 class="form_title">Manage Department | Department List</h3>
-   
+    <!-- Back Btn start -->
+ <a class=" tableBtn1 ajax_link" href="{% url 'admin_department_and_faculty' %}">
+  <i class="fas fa-arrow-left"></i> Back
+</a>
+<!-- Back Btn end -->
    <div class="tableContainer">
       <div class="tableHeading">
-          <span class="tableHeading1">SN</span>
-          <span class="tableHeading2">Name</span>
-          <span class="tableHeading3">Faculty</span>
+          <span class="tableHeading10">SN</span>
+          <span class="tableHeading1">Name</span>
+          <span class="tableHeading1">Faculty</span>
 
-          <span class="tableHeading3">Edit/Delete</span>
+          <span class="tableHeading1">Edit/Delete</span>
       </div>
       {% if department  %}
             {% for department in department %}
       <div class="tableData">
-          <span class="tableHeading1">{{ forloop.counter }}</span>
-          <span class="tableHeading2">{{department.name}}</span>
-          <span class="tableHeading3">{{department.faculty}}</span>
-          <span class="tableHeading3"> 
-            <a href="{% url  'edit_department' department.id %}" class="tableHeading5Btn1 ajax_link">Edit</a> - 
-            <form method="post" class="ajax_form  ajax_delete_form" action="{% url 'delete_department' department.id %}">
+          <span class="tableHeading10">{{ forloop.counter }}</span>
+          <span class="tableHeading1">{{department.name}}</span>
+          <span class="tableHeading1">{{department.faculty}}</span>
+          <span class="tableHeading1"> 
+            <a href="{% url  'admin_edit_department' department.id %}" class="tableBtn1 ajax_link">Edit</a> - 
+            <form method="post" class="ajax_form  ajax_delete_form" 
+              onsubmit="this.querySelector('button[type=submit]').disabled = true;"
+              action="{% url 'admin_delete_department' department.id %}"
+            >
               {% csrf_token %}
-              <button type="submit" class="tableHeading5Btn2">Delete</button>
+              <button type="submit" class="tableBtn2">Delete</button>
             </form>
           </span>
       </div>

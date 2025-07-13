@@ -1,25 +1,29 @@
 
 <h3 class="form_title">Manage Academic Calender | Academic Calender List</h3>
-   
+    <!-- Back Btn start -->
+    <a class=" tableBtn1 ajax_link" href="{% url 'admin_session_and_academic_calender' %}">
+      <i class="fas fa-arrow-left"></i> Back
+  </a>
+  <!-- Back Btn end -->
    <div class="tableContainer">
       <div class="tableHeading">
-          <span class="tableHeading1">SN</span>
-          <span class="tableHeading2">Session</span>
-          <span class="tableHeading3">Semester</span>
-          <span class="tableHeading3">Edit/Delete</span>
+          <span class="tableHeading10">SN</span>
+          <span class="tableHeading1">Session</span>
+          <span class="tableHeading1">Semester</span>
+          <span class="tableHeading1">Edit</span>
 
 
       </div>
       {% if academic_calender  %}
             {% for academic_calender in academic_calender %}
       <div class="tableData">
-          <span class="tableHeading1">{{ forloop.counter }}</span>
-          <span class="tableHeading2">{{academic_calender.session}}</span>
-          <span class="tableHeading3">{{academic_calender.semester}}</span>
+          <span class="tableHeading10">{{ forloop.counter }}</span>
+          <span class="tableHeading1">{{academic_calender.session}}</span>
+          <span class="tableHeading1">{{academic_calender.semester}}</span>
 
-          <span class="tableHeading3"> 
+          <span class="tableHeading1"> 
 
-            <a href="{% url  'edit_academic_calender' academic_calender.id %}" class="tableHeading5Btn1 ajax_link">Edit</a> 
+            <a href="{% url  'admin_edit_academic_calender' academic_calender.id %}" class="tableBtn1 ajax_link">Edit</a> 
 
           </span>
       </div>

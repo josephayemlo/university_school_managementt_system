@@ -11,7 +11,7 @@ def add_academic_calender(request):
     if request.method == 'POST' and form.is_valid():
         form.save()
         messages.success(request, "Academic Calender added successfully.")
-        return render(request, 'management/partials/success.html')
+        return redirect(request.path)
     return render(request, 'management/partials/academiccalender/add_academic_calender.html', {'form': form})
 
 
@@ -46,7 +46,7 @@ def add_aspirant_academic_calender(request):
     if request.method == 'POST' and form.is_valid():
         form.save()
         messages.success(request, "Academic Calender added successfully.")
-        return render(request, 'management/partials/success.html')
+        return redirect(request.path)
     return render(request, 'management/partials/academiccalender/add_aspirant_academic_calender.html', {'form': form})
 
 

@@ -7,13 +7,13 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('admin/', admin.site.urls),
     path('', include('django.contrib.auth.urls')),#needed for django built in password reset etc
-    path('', include('managementportal.urls')),
-    path('', include('staffportal.urls')),
-    path('', include('studentportal.urls')),
+    path('management/', include('managementportal.urls')),
+    path('staff/', include('staffportal.urls')),
+    path('studentportal/', include('studentportal.urls')),
     path('', include('core.urls')),
-    path('', include('applications.urls')),
-    path('', include('aspirantportal.urls')),
-    path('', include('studentchat.urls')),
+    path('applications/', include('applications.urls')),
+    path('aspirantportal/', include('aspirantportal.urls')),
+    path('studentchat/', include('studentchat.urls')),
 
 
 

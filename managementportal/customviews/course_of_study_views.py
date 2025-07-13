@@ -9,7 +9,7 @@ def add_course_of_study(request):
     if request.method == 'POST' and form.is_valid():
         form.save()
         messages.success(request, "Course of Study added successfully.")
-        return render(request, 'management/partials/success.html')
+        return redirect(request.path)
     return render(request, 'management/partials/courseofstudy/add_course_of_study.html', {'form': form})
 
 # manage/view

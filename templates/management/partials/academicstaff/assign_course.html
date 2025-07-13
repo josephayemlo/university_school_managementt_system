@@ -1,20 +1,24 @@
- <!-- MESSAGES -->
- <div>
-    {% if messages %}
-      {% for message in messages %}
-        <div class="form_messages">
-          {{ message }}
-        </div>
-      {% endfor %}
-  {% endif %}
-  </div>
-  <!-- MESSAGES -->
+
   <h3 class="form_title">Assign Course to Academic Staff</h3>
-  
-  <form method="post" class="ajax_form custom_form" action="{% url 'assign_course' %}">
+     <!-- Back Btn start -->
+<a class=" tableBtn1 ajax_link" href="{% url 'admin_academic_staff' %}">
+  <i class="fas fa-arrow-left"></i> Back
+</a>
+<!-- Back Btn end -->
+  <form method="post" class="ajax_form custom_form" action="{% url 'admin_assign_course' %}">
     {% csrf_token %}
     {% include 'management/partials/form_fields_template.html' with form=form %}
-  
+   <!-- MESSAGES -->
+ <div>
+  {% if messages %}
+    {% for message in messages %}
+      <div class="form_messages">
+        {{ message }}
+      </div>
+    {% endfor %}
+{% endif %}
+</div>
+<!-- MESSAGES -->
     <button type="submit" class="btn">Assign Course</button>
   </form>
   <div id="ajax_form_response"></div>

@@ -11,7 +11,7 @@ def addmissions (request):
     return render(request, 'management/partials/addmission/addmissions.html', {'session':session})
 
 # list course applied
-def admissions_courses(request, session_id):
+def addmissions_courses(request, session_id):
     session = get_object_or_404(AspirantAcademicCalendar, id=session_id)
     
     # Get distinct courses that have applicants in this session
@@ -26,7 +26,7 @@ def admissions_courses(request, session_id):
 
 
 # list applicants
-def admissions_applicants(request, session_id, course_id):
+def addmissions_applicants(request, session_id, course_id):
     session = get_object_or_404(AspirantAcademicCalendar, id=session_id)
     course = get_object_or_404(CourseOfStudy, id=course_id)
 
@@ -44,6 +44,7 @@ def admissions_applicants(request, session_id, course_id):
 
 def change_addmission_status(request, aspirant_id):
     aspirant = get_object_or_404(AspirantStudent, id=aspirant_id)
+    
     form = AdmissionStatusForm(request.POST or None, instance=aspirant)
     if request.method == 'POST':
         if form.is_valid():

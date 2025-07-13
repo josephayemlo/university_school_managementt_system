@@ -1,31 +1,39 @@
 
 <h3 class="form_title">Manage Level Course | Level Course List</h3>
-   
+      <!-- Back Btn start -->
+      <a class=" tableBtn1 ajax_link" href="{% url 'admin_academic_course' %}">
+        <i class="fas fa-arrow-left"></i> Back
+    </a>
+    <!-- Back Btn end -->
+    
    <div class="tableContainer">
       <div class="tableHeading">
-          <span class="tableHeading1">SN</span>
-          <span class="tableHeading2">Course of Study</span>
-          <span class="tableHeading3">Course</span>
-          <span class="tableHeading3">Level</span>
+          <span class="tableHeading10">SN</span>
+          <span class="tableHeading20">Course of Study</span>
+          <span class="tableHeading20">Course</span>
+          <span class="tableHeading15">Level</span>
 
-          <span class="tableHeading3">Semester</span>
-          <span class="tableHeading3">Edit/Delete</span>
+          <span class="tableHeading15">Semester</span>
+          <span class="tableHeading20">Edit/Delete</span>
       </div>
       {% if levelcourse  %}
             {% for levelcourse in levelcourse %}
       <div class="tableData">
-          <span class="tableHeading1">{{ forloop.counter }}</span>
-          <span class="tableHeading2">{{levelcourse.course_of_study}}</span>
-          <span class="tableHeading3">{{levelcourse.course.code}}-{{levelcourse.course.title}}</span>
-          <span class="tableHeading3">{{levelcourse.level}}</span>
+          <span class="tableHeading10">{{ forloop.counter }}</span>
+          <span class="tableHeading20">{{levelcourse.course_of_study}}</span>
+          <span class="tableHeading20">{{levelcourse.course.code}}-{{levelcourse.course.title}}</span>
+          <span class="tableHeading15">{{levelcourse.level}}</span>
 
-          <span class="tableHeading3">{{levelcourse.semester}}</span>
-          <span class="tableHeading3"> 
+          <span class="tableHeading15">{{levelcourse.semester}}</span>
+          <span class="tableHeading20"> 
 
-            <a href="{% url  'edit_level_course' levelcourse.id %}" class="tableHeading5Btn1 ajax_link">Edit</a> - 
-            <form method="post" class="ajax_form ajax_delete_form" action="{% url 'delete_level_course' levelcourse.id %}">
+            <a href="{% url  'admin_edit_level_course' levelcourse.id %}" class="tableBtn1 ajax_link">Edit</a> - 
+            <form method="post" class="ajax_form ajax_delete_form" 
+                action="{% url 'admin_delete_level_course' levelcourse.id %}"
+                onsubmit="this.querySelector('button[type=submit]').disabled = true;"
+            >
               {% csrf_token %}
-              <button type="submit" class="tableHeading5Btn2">Delete</button>
+              <button type="submit" class="tableBtn2">Delete</button>
           </form>
           </span>
       </div>

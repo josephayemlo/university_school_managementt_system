@@ -1,2 +1,21 @@
-<h1 class="form_title">Student Chat Management</h1>
-<a class="leftNavContainerBtn ajax_link" href="{% url 'create_group_chat_room' %}"> Create Chat Group</a>
+<h1 class="form_title">Student Chat | Admin Management</h1>
+<div class="generalAdminLinkContainer">
+
+    <div class="tableContainer">
+        <div class="tableHeading">
+            <span class="tableHeading10">SN</span>
+            <span class="tableHeading1">LINK NAME</span>
+            <span class="tableHeading1">NAVIGATION</span>
+        </div>
+        <div class="tableData">
+            <span class="tableHeading10">1</span>
+            <span class="tableHeading1">Create Chat Group For Students</span>
+            <span class="tableHeading1"><a href="{% url 'admin_create_group_chat_room' %}" class=" generalAdminBtn ajax_link">Create Chat Group</a></span>
+        </div>
+        <div class="tableData">
+            <span class="tableHeading10">2</span>
+            <span class="tableHeading1">Manage Chat Group </span>
+            <span class="tableHeading1"><a href="{% url 'admin_manage_group_chat' %}" class=" generalAdminBtn ajax_link">Manage</a></span>
+        </div>
+      </div>
+    </div>

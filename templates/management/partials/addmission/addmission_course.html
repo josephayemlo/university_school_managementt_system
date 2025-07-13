@@ -1,23 +1,28 @@
 
 <h3 class="form_title">Courses with Applicants - Session {{ session.session }}</h3>
+<!-- Back Btn start -->
+<a class=" tableBtn1 ajax_link" href="{% url 'admin_addmissions' %}">
+    <i class="fas fa-arrow-left"></i> Back
+</a>
+<!-- Back Btn end -->
 
 <div class="tableContainer">
    <div class="tableHeading">
-       <span class="tableHeading1">SN</span>
-       <span class="tableHeading2">Course of Study</span>
-       <span class="tableHeading3">Department</span>
-       <span class="tableHeading3">Faculty</span>
-       <span class="tableHeading3">Link</span>
+       <span class="tableHeading10">SN</span>
+       <span class="tableHeading30">Course of Study</span>
+       <span class="tableHeading20">Department</span>
+       <span class="tableHeading20">Faculty</span>
+       <span class="tableHeading20">Link</span>
    </div>
    {% if courses  %}
          {% for course in courses %}
    <div class="tableData">
-       <span class="tableHeading1">{{ forloop.counter }}</span>
-       <span class="tableHeading2">{{course.name}}</span>
-       <span class="tableHeading3">{{course.department.name}}</span>
-       <span class="tableHeading3">{{course.department.faculty.name}}</span>
-       <span class="tableHeading3"> 
-            <a class=" tableHeading5Btn1 ajax_link" href="{% url 'admissions_applicants' session.id course.id %}">View Applicants</a>
+       <span class="tableHeading10">{{ forloop.counter }}</span>
+       <span class="tableHeading30">{{course.name}}</span>
+       <span class="tableHeading20">{{course.department.name}}</span>
+       <span class="tableHeading20">{{course.department.faculty.name}}</span>
+       <span class="tableHeading20"> 
+            <a class=" tableBtn1 ajax_link" href="{% url 'admin_addmissions_applicants' session.id course.id %}">View Applicants</a>
        </span>
    </div>
 

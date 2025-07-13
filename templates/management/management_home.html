@@ -24,104 +24,117 @@
         </div>
         
         <div class="adminContainer">
-            <div class="leftNavContainer">
-                <a class="leftNavContainerBtn" href="{% url 'management_home' %}">
-                  <i class="fas fa-tachometer-alt"></i> Dashboard
-                </a>
-                <a class="leftNavContainerBtn ajax_link"  href="{% url 'addmissions' %}">
-                  <i class="fas fa-tachometer-alt"></i> Addmissions
-                </a>
-                <a class="leftNavContainerBtn ajax_link"  href="{% url 'chat_management' %}">
-                  <i class="fas fa-tachometer-alt"></i> Student Chat Management
-                </a>
-                <a class="leftNavContainerBtn ajax_link"  href="{% url 'academic_course' %}">
-                  <i class="fas fa-tachometer-alt"></i> Academic Course
-                </a>
-                <a class="leftNavContainerBtn ajax_link"  href="{% url 'student_school_fees_management' %}">
-                  <i class="fas fa-tachometer-alt"></i> Student School Fees
-                </a>
-                <a class="leftNavContainerBtn ajax_link"  href="{% url 'session_and_academic_calender' %}">
-                  <i class="fas fa-tachometer-alt"></i> Session & Academic Calender
-                </a>
-                <a class="leftNavContainerBtn ajax_link"  href="{% url 'department_and_faculty' %}">
-                  <i class="fas fa-tachometer-alt"></i> Department & Faculty
-                </a>
-                <a class="leftNavContainerBtn ajax_link"  href="{% url 'aspirant_management' %}">
-                  <i class="fas fa-tachometer-alt"></i> Aspirant Management
-                </a>
-                <a class="leftNavContainerBtn ajax_link"  href="{% url 'student_management' %}">
-                  <i class="fas fa-tachometer-alt"></i> Student Management
-                </a>
-                <a class="leftNavContainerBtn ajax_link"  href="{% url 'academic_staff' %}">
-                  <i class="fas fa-tachometer-alt"></i> Academic Staff
-                </a>
-                <a class="leftNavContainerBtn ajax_link"  href="{% url 'nonacademic_staff' %}">
-                  <i class="fas fa-tachometer-alt"></i> NonAcademic Staff
-                </a>
-                <a class="leftNavContainerBtn ajax_link"  href="{% url 'result_and_assessment' %}">
-                  <i class="fas fa-tachometer-alt"></i> Result & Assessment
-                </a>
-                <a class="leftNavContainerBtn" href="{% url 'logout_user' %}">
-                  <i class="fas fa-briefcase"></i> Logout
-                </a>
-                
-            </div>
+          <div class="leftNavContainer">
+
+            <a class="leftNavContainerBtn" href="{% url 'management_home' %}">
+              <i class="fas fa-tachometer-alt icon-blue"></i> Dashboard
+            </a>
+          
+            <a class="leftNavContainerBtn ajax_link" href="{% url 'admin_addmissions' %}">
+              <i class="fas fa-user-plus icon-green"></i> Admissions
+            </a>
+          
+            <a class="leftNavContainerBtn ajax_link" href="{% url 'admin_chat_management' %}">
+              <i class="fas fa-comments icon-cyan"></i> Student Chat
+            </a>
+          
+            <a class="leftNavContainerBtn ajax_link" href="{% url 'admin_academic_course' %}">
+              <i class="fas fa-book-open icon-yellow"></i> Academic Course
+            </a>
+          
+            <a class="leftNavContainerBtn ajax_link" href="{% url 'admin_student_school_fees_management' %}">
+              <i class="fas fa-money-bill-wave icon-teal"></i> School Fees
+            </a>
+          
+            <a class="leftNavContainerBtn ajax_link" href="{% url 'admin_session_and_academic_calender' %}">
+              <i class="fas fa-calendar-alt icon-purple"></i> Session & Calendar
+            </a>
+          
+            <a class="leftNavContainerBtn ajax_link" href="{% url 'admin_department_and_faculty' %}">
+              <i class="fas fa-building icon-orange"></i> Department & Faculty
+            </a>
+          
+            <a class="leftNavContainerBtn ajax_link" href="{% url 'admin_aspirant_management' %}">
+              <i class="fas fa-user-graduate icon-red"></i> Aspirant Management
+            </a>
+          
+            <a class="leftNavContainerBtn ajax_link" href="{% url 'admin_student_management' %}">
+              <i class="fas fa-users icon-teal"></i> Student Management
+            </a>
+          
+            <a class="leftNavContainerBtn ajax_link" href="{% url 'admin_academic_staff' %}">
+              <i class="fas fa-chalkboard-teacher icon-indigo"></i> Academic Staff
+            </a>
+          
+            <a class="leftNavContainerBtn ajax_link" href="{% url 'admin_nonacademic_staff' %}">
+              <i class="fas fa-user-tie icon-pink"></i> NonAcademic Staff
+            </a>
+          
+            <a class="leftNavContainerBtn ajax_link" href="{% url 'admin_result_and_assessment' %}">
+              <i class="fas fa-clipboard-check icon-dark-green"></i> Results & Assessment
+            </a>
+          
+            <a class="leftNavContainerBtn" href="{% url 'logout_user' %}">
+              <i class="fas fa-sign-out-alt icon-danger"></i> Logout
+            </a>
+          
+          </div>
+          
+          
               
             <div class="rightNavContainer" id="ajaxContainer">      
-             
-                <div class="adminRightNavRow1Container">
-                    <a href="{% url 'manage_student'%}" class="rightNavRow1Col1 btnWhite">                       
-                        <h2 class="rightNavRow1Col1Text1">Total Students</h2>
-                        <h1 class="rightNavRow1Col1Text2">{{total_students}}</h1>
-                        <span class="rightNavRow1Col1Text3">Click for More... &raquo;</span>
-                    </a>
-                    <a href="{% url 'manage_academicstaff'%}" class="rightNavRow1Col2 btnWhite"> 
-                        <h2 class="rightNavRow1Col1Text1">Total Academic Staff</h2>
-                        <h1 class="rightNavRow1Col1Text2">{{total_academicstaff}}</h1>
-                        <span class="rightNavRow1Col1Text3">Click for More... &raquo;</span>
-                    </a>
-                    <a href="{% url 'manage_nonacademicstaff'%}" class="rightNavRow1Col3 btnWhite"> 
-                        <h2 class="rightNavRow1Col1Text1">Total NonAcademic Staff</h2>
-                        <h1 class="rightNavRow1Col1Text2">{{total_nonacademicstaff}}</h1>
-                        <span class="rightNavRow1Col1Text3">Click for More... &raquo;</span>
-                    </a>
-                </div>
-              <!-- end -->
-              <div class="adminRightNavRow2Container">
-                <div class="adminRightNavRow2Container1">
-                  <h1>Student's Gender</h1>
-                  <div class="adminRightNavRow2Container1Card">                    
-                        <div class="adminRightNavRow2Container1CardMale" style="width: {{ male_percent }}%;">
-                          Male {{ male_percent }}%
-                        </div>
-                        <div class="adminRightNavRow2Container1CardFemale" style="width: {{ female_percent }}%;">
-                          Female {{ female_percent }}%
-                        </div>
-                  </div>
-                   
-                </div>
-                <div class="adminRightNavRow2Container2">
-                  grid 2
-                 
 
+              <!-- R1: KPI Cards -->
+              <div class="adminRightNavRow1Container">
+                <div class="kpi-chart-box">
+                  <div id="academicStaffKPI"
+                       data-value="{{ total_academicstaff }}"
+                       data-label="Academic Staff"></div>
                 </div>
-
+                <div class="kpi-chart-box">
+                  <div id="totalStudentsKPI"
+                       data-value="{{ total_students }}"
+                       data-label="Students"></div>
+                </div>
+                <div class="kpi-chart-box">
+                  <div id="nonAcademicStaffKPI"
+                       data-value="{{ total_nonacademicstaff }}"
+                       data-label="Non-Academic Staff"></div>
+                </div>
+               
               </div>
               
-              
-                
-              <!-- End -->
-            
-                <!-- <div class="adminRightNavRow2Container">Row 2
+              <!-- R2: Charts -->
+              <div class="adminRightNavRow2Container">
+                <!-- Gender Donut Chart -->
+                <div class="adminRightNavRow2Container1">
+                  <div id="genderPieChart"
+                       data-male="{{ male_count }}"
+                       data-female="{{ female_count }}">
+                  </div>
                 </div>
-          
-                <div class="adminRightNavRow3Container"> Row 3
-                </div> -->
+            
+                <!-- Department Bar Chart -->
+                <div class="adminRightNavRow2Container2">
+                  <div id="departmentBarChart"
+                       data-labels="{{ department_name|join:',' }}"
+                       data-values="{{ student_count|join:',' }}">
+                  </div>
+                </div>
+              </div>
+            
+              <!-- R3: Reserved for later -->
+              <div class="adminRightNavRow3Container"> 
+                <!-- Optional: recent activity, chart logs, etc -->
+                <p>More stats coming soon...</p>
+              </div>
+            
             </div>
-        
+            
            
         </div>
-
+       
+        
 
     </section>
         <!-- Exluding footer -->

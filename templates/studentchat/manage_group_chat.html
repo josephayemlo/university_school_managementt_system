@@ -1,0 +1,34 @@
+
+   
+<h3 class="form_title">Manage Group Chat | Group Chat List</h3>
+   <!-- Back Btn start -->
+    <a class=" tableBtn1 ajax_link" href="{% url 'admin_chat_management' %}">
+        <i class="fas fa-arrow-left"></i> Back
+    </a>
+  <!-- Back Btn end -->
+  
+<div class="tableContainer">
+   <div class="tableHeading">
+       <span class="tableHeading1">SN</span>
+       <span class="tableHeading30">Group Name</span>
+       <span class="tableHeading30">Department</span>
+       <span class="tableHeading15">Level</span>
+       <span class="tableHeading15">Edit</span>
+   </div>
+   {% if groupchat  %}
+         {% for groupchat in groupchat %}
+   <div class="tableData">
+       <span class="tableHeading1">{{ forloop.counter }}</span>
+       <span class="tableHeading30">{{groupchat.name}}</span>
+       <span class="tableHeading30">{{groupchat.department.name}}</span>
+       <span class="tableHeading15">{{groupchat.level}}</span>
+
+       <span class="tableHeading15"> 
+         <a href="{% url  'admin_edit_group_chat' groupchat.id %}" class="tableBtn1 ajax_link">Edit</a>  
+       </span>
+   </div>
+
+   {% endfor %}
+   {% else %}
+           <h2>No faculty available</h2>
+   {% endif %}

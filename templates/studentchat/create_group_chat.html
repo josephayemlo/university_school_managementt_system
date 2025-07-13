@@ -1,7 +1,16 @@
 
 <h3 class="form_title">Create Group Chat</h3>
+<!-- Back Btn start -->
+<a class=" tableBtn1 ajax_link" href="{% url 'admin_chat_management' %}">
+  <i class="fas fa-arrow-left"></i> Back
+</a>
+<!-- Back Btn end -->
 
-<form method="post" class="ajax_form custom_form" action="{% url 'create_group_chat_room' %}" >
+<form 
+  method="post" class="ajax_form custom_form" 
+  action="{% url 'admin_create_group_chat_room' %}" 
+  onsubmit="this.querySelector('button[type=submit]').disabled = true;"
+>
   {% csrf_token %}
   {% include 'management/partials/form_fields_template.html' with form=form %}
   <!-- MESSAGES -->

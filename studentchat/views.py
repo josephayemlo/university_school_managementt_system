@@ -9,6 +9,57 @@ from .forms import ChatRoomForm
 from django.contrib import messages
 
 
+# Chat Dashboard
+def chat_dashboard(request):
+    return render(request, 'studentchat/chat_dashboard.html')
+
+# Chat Management
+def chat_management(request):
+    return render(request, 'studentchat/chat_management.html')
+
+# permmission
+def is_admin(user):
+    return user.is_authenticated and user.is_superuser
+
+@login_required
+@user_passes_test(is_admin)
+def create_group_chat_room(request):
+    if request.method == 'POST':
+        form = ChatRoomForm(request.POST)
+        if form.is_valid():
+            chat_room = form.save(commit=False)
+            chat_room.created_by = request.user
+            chat_room.save()
+            messages.success(request,'Group Created Successfully you can create another or exit')
+            return redirect(request.path)  # Change to your room listing view
+    else:
+        form = ChatRoomForm()
+
+    return render(request, 'studentchat/create_group_chat.html', { 'form': form })
+
+# Manage Group Chat
+def manage_group_chat(request):
+    groupchat = ChatRoom.objects.all()
+    return render(request, 'studentchat/manage_group_chat.html', { 'groupchat': groupchat })
+
+
+# edit
+def edit_group_chat(request, group_chat_id):
+    group_chat = get_object_or_404(ChatRoom, id=group_chat_id)
+    if request.method == 'POST':
+        form = ChatRoomForm(request.POST, instance=group_chat)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Group Chat Updated Sucessfully')
+            return redirect(request.path)
+    else:
+        form = ChatRoomForm(instance=group_chat)
+    context = {
+        "form": form,
+        "group_chat": group_chat
+    }
+    return render(request, 'studentchat/edit_group_chat.html', context)
+
 
 @login_required
 def private_chat_view(request, user_id):
@@ -28,8 +79,6 @@ def private_chat_view(request, user_id):
 
 
 
-def chat_dashboard(request):
-    return render(request, 'studentchat/chat_dashboard.html')
 
 
 def student_list(request):
@@ -57,29 +106,6 @@ def group_chat_view(request, room_id):
         "messages": messages,
     })
 
-
-def is_admin(user):
-    return user.is_authenticated and user.is_superuser
-
-@login_required
-@user_passes_test(is_admin)
-def create_group_chat_room(request):
-    if request.method == 'POST':
-        form = ChatRoomForm(request.POST)
-        if form.is_valid():
-            chat_room = form.save(commit=False)
-            chat_room.created_by = request.user
-            chat_room.save()
-            messages.success(request,'Group Created Successfully you can create another or exit')
-            return redirect(request.path)  # Change to your room listing view
-    else:
-        form = ChatRoomForm()
-
-    return render(request, 'studentchat/create_group_chat.html', { 'form': form })
-
-
-def chat_management(request):
-    return render(request, 'studentchat/chat_management.html')
 
 
 @login_required

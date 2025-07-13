@@ -92,6 +92,33 @@ body {
   color: #004d40;
 }
 
+.tableBtn1 {
+  background-color: #3498db;
+  color: black;
+  padding: 6px;
+  text-decoration: none;
+  border-radius: 2px;
+  font-size: 19px;
+  margin-right: 0.5rem;
+}
+.tableBtn1:hover {
+  background-color: white;
+  color: black;
+}
+
+.tableBtn2 {
+  background-color: #7c2217;
+  color: whitesmoke;
+  padding: 6px;
+  text-decoration: none;
+  border-radius: 2px;
+  display: inline-block;
+  font-size: 19px;
+}
+.tableBtn2:hover {
+  background-color: red;
+}
+
 .researchHeading {
   font-size: 25px;
 }
@@ -165,6 +192,54 @@ body {
 
 .colorWhite {
   color: white;
+}
+
+.icon-blue {
+  color: #007bff;
+}
+
+.icon-green {
+  color: #28a745;
+}
+
+.icon-cyan {
+  color: #17a2b8;
+}
+
+.icon-yellow {
+  color: #ffc107;
+}
+
+.icon-teal {
+  color: #20c997;
+}
+
+.icon-purple {
+  color: #6610f2;
+}
+
+.icon-orange {
+  color: #fd7e14;
+}
+
+.icon-red {
+  color: #dc3545;
+}
+
+.icon-indigo {
+  color: #6f42c1;
+}
+
+.icon-pink {
+  color: #e83e8c;
+}
+
+.icon-dark-green {
+  color: #198754;
+}
+
+.icon-danger {
+  color: #d63384;
 }
 
 .form_title {
@@ -443,55 +518,36 @@ body {
 .tableHeading {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
   border: 2px solid rgba(255, 255, 255, 0.193);
   border-bottom: none;
   padding: 8px;
   font-weight: bold;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+.tableHeading1, .tableHeading10, .tableHeading15, .tableHeading20, .tableHeading30 {
+  min-width: 0;
+  padding: 8px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 .tableHeading1 {
+  flex: 1;
+}
+.tableHeading10 {
   flex: 0 0 10%;
-  padding: 8px;
 }
-.tableHeading2 {
-  flex: 1;
-  padding: 8px;
+.tableHeading15 {
+  flex: 0 0 15%;
 }
-.tableHeading3 {
-  flex: 1;
-  padding: 8px;
+.tableHeading20 {
+  flex: 0 0 20%;
 }
-.tableHeading4 {
-  flex: 0 0 10%;
-  padding: 8px;
-}
-.tableHeading5 {
-  flex: 1;
-  padding: 8px;
-}
-.tableHeading5Btn1 {
-  background-color: #3498db;
-  color: black;
-  padding: 6px;
-  text-decoration: none;
-  border-radius: 2px;
-  font-size: 19px;
-  margin-right: 0.5rem;
-}
-.tableHeading5Btn1:hover {
-  background-color: white;
-  color: black;
-}
-.tableHeading5Btn2 {
-  background-color: #7c2217;
-  color: whitesmoke;
-  padding: 6px;
-  text-decoration: none;
-  border-radius: 2px;
-  display: inline-block;
-  font-size: 19px;
-}
-.tableHeading5Btn2:hover {
-  background-color: red;
+.tableHeading30 {
+  flex: 0 0 30%;
 }
 
 .tableData {
@@ -501,6 +557,9 @@ body {
   border-bottom: none;
   padding: 8px;
   font-size: 20px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .tableData:last-child {
@@ -1526,37 +1585,6 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.admin .adminContainer .rightNavContainer .adminRightNavRow1Container .rightNavRow1Col1 {
-  background-color: #e74c3c;
-  color: white;
-}
-.admin .adminContainer .rightNavContainer .adminRightNavRow1Container .rightNavRow1Col2 {
-  background-color: #3498db;
-  color: white;
-}
-.admin .adminContainer .rightNavContainer .adminRightNavRow1Container .rightNavRow1Col3 {
-  background-color: #e74c3c;
-  color: white;
-}
-.admin .adminContainer .rightNavContainer .adminRightNavRow1Container .rightNavRow1Col1Text1 {
-  font-size: 20px;
-  background-color: rgba(0, 0, 0, 0.281);
-  text-align: center;
-  font-family: "Times New Roman", Times, serif;
-  color: whitesmoke;
-  border: 0.5px solid rgba(11, 116, 173, 0.546);
-}
-.admin .adminContainer .rightNavContainer .adminRightNavRow1Container .rightNavRow1Col1Text3 {
-  background-color: whitesmoke;
-  padding: 8px;
-  color: black;
-  border-radius: 9px;
-  font-size: 15px;
-}
-.admin .adminContainer .rightNavContainer .adminRightNavRow1Container .rightNavRow1Col1Text3:hover {
-  background-color: black;
-  color: white;
-}
 .admin .adminContainer .rightNavContainer .adminRightNavRow2Container {
   display: flex;
   flex-direction: row;
@@ -1564,46 +1592,22 @@ body {
 .admin .adminContainer .rightNavContainer .adminRightNavRow2Container .adminRightNavRow2Container1 {
   flex: 1;
 }
-.admin .adminContainer .rightNavContainer .adminRightNavRow2Container .adminRightNavRow2Container1 h1 {
-  text-align: center;
-  font-size: 22px;
-  margin-bottom: 10px;
-  color: white;
-  font-family: "Times New Roman", Times, serif;
-}
-.admin .adminContainer .rightNavContainer .adminRightNavRow2Container .adminRightNavRow2Container1Card {
-  flex: 1;
-  display: flex;
-  border: 2px solid #ccc;
-  border-radius: 12px;
-  overflow: hidden;
-  height: 50px;
-  font-weight: bold;
-  font-family: "Times New Roman", Times, serif;
-}
-.admin .adminContainer .rightNavContainer .adminRightNavRow2Container .adminRightNavRow2Container1CardMale, .admin .adminContainer .rightNavContainer .adminRightNavRow2Container .adminRightNavRow2Container1CardFemale {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-}
-.admin .adminContainer .rightNavContainer .adminRightNavRow2Container .adminRightNavRow2Container1CardMale {
-  background-color: #3498db;
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
-}
-.admin .adminContainer .rightNavContainer .adminRightNavRow2Container .adminRightNavRow2Container1CardFemale {
-  background-color: #e74c3c;
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
-}
 .admin .adminContainer .rightNavContainer .adminRightNavRow2Container .adminRightNavRow2Container2 {
   flex: 1;
 }
 
 .generalAdminLinkContainer {
-  border: 2px solid whitesmoke;
+  border: 2px solid rgba(245, 245, 245, 0.274);
   padding: 5px;
+}
+
+.kpi-chart-box {
+  background: rgb(255, 255, 255);
+  padding: 1rem;
+  border-radius: 8px;
+  flex: 1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.07);
+  text-align: center;
 }
 
 .nonacademicstaffList {

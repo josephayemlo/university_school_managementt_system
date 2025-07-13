@@ -35,12 +35,12 @@ def add_aspirant(request):
                     gender=gender,
                     address=address
                 )
-                # Manually create Student object
+                # Manually create Aspirant object
                 aspirant = AspirantStudent.objects.create(
-                    admin=user,
+                    admin=user, #Aspirant should fill the rest data or admin use edit to complete the profile data
                 )
                 messages.success(request, "Aspirant successfully added.")
-                return render(request,'management/partials/success.html')
+                return redirect(request.path)
             except Exception as e:
                 messages.error(request, "Could not add student: " + str(e))
         else:
