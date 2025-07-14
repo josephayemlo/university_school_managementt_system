@@ -1,8 +1,23 @@
-<h1>
-    Welcom to School Fees Payment Portal
-</h1>
 
-<a href="{% url 'generate_school_fee' %}" class="ajax_link">Generate School fee</a>
-<br>
-<a href="{% url 'manage_student_invoice' %}" class="ajax_link">View Generated Fees</a>
- 
+<h1 class="form_title">School Fees Payment  Dashboard</h1>
+<div class="generalAdminLinkContainer">
+
+    <div class="tableContainer">
+        <div class="tableHeading">
+            <span class="tableHeading10">SN</span>
+            <span class="tableHeading1">LINK NAME</span>
+            <span class="tableHeading1">NAVIGATION</span>
+        </div>
+        <div class="tableData">
+            <span class="tableHeading10">1</span>
+            <span class="tableHeading1">Generate School Fees</span>
+            <span class="tableHeading1"><a href="{% url 'student_generate_school_fee' %}" class=" generalAdminBtn ajax_link">Generate</a></span>
+        </div>
+        <div class="tableData">
+            <span class="tableHeading10">2</span>
+            <span class="tableHeading1">Check Generated School Fees and Make Payment</span>
+            <span class="tableHeading1"><a href="{% url 'student_manage_student_invoice' %}" class=" generalAdminBtn ajax_link">Check</a></span>
+        </div>
+      </div>
+    </div>
+    

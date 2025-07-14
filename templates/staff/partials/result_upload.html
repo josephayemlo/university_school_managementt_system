@@ -22,7 +22,7 @@
   </h4>
 
   <!-- Result Form -->
-  <form class="ajax_form" method="post" action="{% url 'result_upload' assigned_course.course.id %}">
+  <form class="ajax_form" method="post" action="{% url 'acdstaff_result_upload' assigned_course.course.id %}">
     {% csrf_token %}
 
     <table class="result_table">

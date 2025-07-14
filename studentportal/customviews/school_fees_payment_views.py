@@ -36,7 +36,7 @@ def pay_school_fee(request, invoice_id):
         "Content-Type": "application/json",
     }
 
-    callback_url = request.build_absolute_uri(reverse('payment_callback'))
+    callback_url = request.build_absolute_uri(reverse('student_payment_callback'))
 
     payment_data = {
         "email": student.admin.email,
@@ -73,7 +73,7 @@ def payment_callback(request):
     reference = request.GET.get('reference')
     if not reference:
         messages.error(request, "No reference provided.")
-        return redirect('manage_student_invoice')
+        return redirect('student_manage_student_invoice')
 
     headers = {
         "Authorization": f"Bearer {settings.PAYSTACK_SECRET_KEY}",
@@ -100,7 +100,7 @@ def payment_callback(request):
             invoice.save()
         messages.error(request, " Payment verification failed.")
 
-    return redirect('manage_student_invoice')
+    return redirect('student_manage_student_invoice')
 
 
 

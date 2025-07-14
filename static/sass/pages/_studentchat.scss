@@ -1,0 +1,126 @@
+.studentChatContainer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.192);
+  overflow: hidden;
+
+  &TopNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5rem;
+    background-color: #0a2b42;
+    padding: 1rem 2rem;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+
+    &Row1{
+      flex: 0 0 20%;
+    }
+    &Row2{
+      flex: 0 0 80%;
+    }
+
+
+  }
+
+  &Chat {
+    margin-top: 4rem; // offset TopNav
+    height: calc(100vh - 4rem - 5.5rem); // reserve space for fixed input
+    display: flex;
+    flex-direction: column;
+  }
+
+  &ChatMessagesContainer {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem 2rem 6rem; // bottom padding prevents overlap with fixed input
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    
+  }
+
+  &ChatInputContainer {
+    position: fixed;
+    bottom: 0;
+    left: 20%;
+    right: 0;
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.089);
+    z-index: 1000;
+    color: white;
+
+    display: flex;
+
+    &Input {
+      flex: 1;
+      padding: 0.6rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    &Btn {
+      margin-left: 1rem;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 20px;
+      font-weight: 500;
+      cursor: pointer;
+
+      &:hover {
+        background: #0056b3;
+      }
+    }
+  }
+}
+
+
+
+
+.chatSenderNameSelf {
+  font-weight: bold;
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  color: #be810f;
+  text-align: left;
+  align-self: flex-start;
+}
+.chatSenderNameOther {
+  font-weight: bold;
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  color: white;
+  text-align: left;
+  align-self: flex-start;
+}
+
+
+.chatMessage {
+  padding: 0.6rem 1rem;
+  margin-top: 0.2rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  max-width: 60%;
+  word-wrap: break-word;
+  text-align: left;
+  align-self: flex-start;
+
+  &.chatSelf {
+    background: #0c422a; // greenish for own message
+    color: white;
+  }
+
+  &.chatOther {
+    background: #050708; // grey for other messages
+    color: white;
+  }
+}

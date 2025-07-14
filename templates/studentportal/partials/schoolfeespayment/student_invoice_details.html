@@ -41,7 +41,7 @@
   </table>
 
   {% if not invoice.is_paid %}
-  <form method="post" action="{% url 'pay_school_fee' invoice.id %}">
+  <form method="post" action="{% url 'student_pay_school_fee' invoice.id %}">
     {% csrf_token %}
     <button type="submit" class="pay_button">Confirm and Pay</button>
   </form>

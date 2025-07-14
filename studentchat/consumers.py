@@ -41,6 +41,8 @@ class GroupChatConsumer(AsyncWebsocketConsumer):
                 "type": "chat_message",
                 "message": message,
                 "sender": self.user.first_name,
+                "sender_id": self.scope["user"].id, 
+
             }
         )
 
@@ -48,6 +50,8 @@ class GroupChatConsumer(AsyncWebsocketConsumer):
         await self.send(text_data=json.dumps({
             "message": event["message"],
             "sender": event["sender"],
+            "sender_id": event["sender_id"],
+
         }))
 
     @database_sync_to_async
@@ -104,6 +108,7 @@ class PrivateChatConsumer(AsyncWebsocketConsumer):
                 "type": "chat_message",
                 "message": message,
                 "sender": self.user.first_name,
+                "sender_id": self.scope["user"].id, 
             }
         )
 
@@ -114,6 +119,7 @@ class PrivateChatConsumer(AsyncWebsocketConsumer):
         await self.send(text_data=json.dumps({
             "message": event["message"],
             "sender": event["sender"],
+            "sender_id": event["sender_id"],
         }))
 
     @database_sync_to_async

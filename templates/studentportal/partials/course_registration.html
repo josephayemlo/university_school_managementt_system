@@ -1,13 +1,19 @@
-{% load static %}
 
-{% block content %}
 
-<div>
-    <h1>Welcome to course registration page</h1>
-    <a href="{% url 'student_available_course' %}" class="ajax_link">Register Semester Course</a>
+<h1 class="form_title">course registration  Dashboard</h1>
+<div class="generalAdminLinkContainer">
+
+    <div class="tableContainer">
+        <div class="tableHeading">
+            <span class="tableHeading10">SN</span>
+            <span class="tableHeading1">LINK NAME</span>
+            <span class="tableHeading1">NAVIGATION</span>
+        </div>
+        <div class="tableData">
+            <span class="tableHeading10">1</span>
+            <span class="tableHeading1">Check Availabe Courses to Register</span>
+            <span class="tableHeading1"><a href="{% url 'student_available_course' %}" class=" generalAdminBtn ajax_link">Check</a></span>
+        </div>
+      </div>
+    </div>
     
-    
-
-</div>
-
-{% endblock content%}

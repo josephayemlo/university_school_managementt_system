@@ -1,0 +1,42 @@
+<h2 class="form_title">Available Group Chat Rooms</h2>
+<!-- Back Btn start -->
+<a class=" tableBtn1 ajax_link" href="{% url 'student_chat_dashboard' %}">
+  <i class="fas fa-arrow-left"></i> Back
+</a>
+ <!-- Back Btn end -->
+<div class="generalAdminLinkContainer">
+  <div class="tableContainer">
+
+    <div class="tableHeading">
+      <span class="tableHeading10">SN</span>
+      <span class="tableHeading1">ROOM NAME</span>
+      <span class="tableHeading1">ACTION</span>
+    </div>
+
+    {% for room in rooms %}
+      <div class="tableData">
+        <span class="tableHeading10">{{ forloop.counter }}</span>
+        <span class="tableHeading1"><strong>{{ room.name }}</strong></span>
+        <span class="tableHeading1">
+          {% if room.id in joined_room_ids %}
+            <a class="generalAdminBtn ajax_link" href="{% url 'student_group_chat' room.id %}">Enter Chat</a>
+          {% else %}
+            <form class="ajax_form" method="post" 
+              onsubmit="this.querySelector('button[type=submit]').disabled = true;"          
+              action="{% url 'student_join_group_room' room.id %}"
+            >
+              {% csrf_token %}
+              <button type="submit" class="generalAdminBtn">Join Room</button>
+            </form>
+          {% endif %}
+        </span>
+      </div>
+    {% empty %}
+      <div class="tableData">
+        <span class="tableHeading10">-</span>
+        <span class="tableHeading1" colspan="2">No available group chat rooms.</span>
+      </div>
+    {% endfor %}
+
+  </div>
+</div>

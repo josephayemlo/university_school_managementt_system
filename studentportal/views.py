@@ -162,12 +162,15 @@ def student_available_course(request):
 def register_courses(request):
     student = get_object_or_404(Student, admin=request.user)
     current_calendar = AcademicCalendar.objects.get(is_current=True)
+
+    # Get the courses relevant to the student's level, semester, and program
     level_courses = LevelCourse.objects.filter(
         level=student.level,
         semester=current_calendar.semester,
         course_of_study=student.course_of_study
     ).select_related('course')
 
+    # Extract the actual course objects
     available_courses = Course.objects.filter(id__in=level_courses.values_list('course_id', flat=True))
 
     if request.method == 'POST':
@@ -175,13 +178,13 @@ def register_courses(request):
         if form.is_valid():
             selected_courses = form.cleaned_data['courses']
 
-            # Remove any previously registered courses for this semester/session
+            # Remove any previously registered courses for this session/semester
             RegisteredCourse.objects.filter(
                 student=student,
                 academic_calendar=current_calendar
             ).delete()
 
-            # Register new ones
+            # Save new course registrations
             RegisteredCourse.objects.bulk_create([
                 RegisteredCourse(
                     student=student,
@@ -193,24 +196,26 @@ def register_courses(request):
 
             messages.success(request, "Courses registered successfully.")
             print('course registered')
-            # with redirect, django cannot redirct to a parital template so the best option is to return a rendered page
             return render(request, 'studentportal/partials/success.html')
+
     else:
-         # GET request – preselect previously registered courses
+        # Handle GET: preselect already registered courses
         previously_registered_courses = RegisteredCourse.objects.filter(
-        student=student,
-        academic_calendar=current_calendar
-        ).values_list('course_id', flat=True) #this just allows us to get all id's of already registered course instead of returning the model
+            student=student,
+            academic_calendar=current_calendar
+        ).values_list('course_id', flat=True)
 
         form = CourseRegistrationForm(
             available_courses=available_courses,
             initial={'courses': previously_registered_courses}
         )
 
+    # Zip each checkbox field with the matching Course object
+    course_fields = zip(form['courses'], available_courses)
+
     return render(request, 'studentportal/partials/register_courses.html', {
         'form': form,
         'student': student,
         'semester': current_calendar.semester,
+        'course_fields': course_fields,
     })
-
-

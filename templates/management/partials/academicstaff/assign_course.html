@@ -5,7 +5,10 @@
   <i class="fas fa-arrow-left"></i> Back
 </a>
 <!-- Back Btn end -->
-  <form method="post" class="ajax_form custom_form" action="{% url 'admin_assign_course' %}">
+  <form method="post" class="ajax_form custom_form" 
+    onsubmit="this.querySelector('button[type=submit]').disabled = true;"          
+    action="{% url 'admin_assign_course' %}"
+  >
     {% csrf_token %}
     {% include 'management/partials/form_fields_template.html' with form=form %}
    <!-- MESSAGES -->

@@ -1,0 +1,32 @@
+<h3 class="form_title">Manage  Student | Student Message List</h3>
+     <!-- Back Btn start -->
+     <a class=" tableBtn1 ajax_link" href="{% url 'student_chat_dashboard' %}">
+      <i class="fas fa-arrow-left"></i> Back
+    </a>
+     <!-- Back Btn end -->
+
+<div class="tableContainer">
+  <div class="tableHeading">
+      <span class="tableHeading10">SN</span>
+      <span class="tableHeading1">Full Name</span>
+      <span class="tableHeading1">Email</span>
+      <span class="tableHeading15">Gender</span>
+      <span class="tableHeading15">Link</span>
+  </div>
+
+  {% if student_list %}
+    {% for student in student_list %}
+      <div class="tableData">
+          <span class="tableHeading10">{{ forloop.counter }}</span>
+          <span class="tableHeading1">{{ student.admin.first_name }} {{ student.admin.last_name }}</span>
+          <span class="tableHeading1">{{ student.admin.email }}</span>
+          <span class="tableHeading15">{{ student.admin.gender }}</span>
+          <span class="tableHeading15"> 
+              <a href="{% url 'student_private_chat' student.admin.id %}" class="tableBtn1 ajax_link">Message</a> 
+          </span>
+      </div>
+    {% endfor %}
+  {% else %}
+      <h2>No Student available</h2>
+  {% endif %}
+</div>

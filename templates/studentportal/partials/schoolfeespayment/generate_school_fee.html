@@ -1,48 +1,54 @@
-<h1 class="form_title">List of {{academic_calender.session}} School fees for {{student.course_of_study.department}} {{academic_calender.semester}} semester</h1>
 
- <!-- MESSAGES -->
- <div>
-  {% if messages %}
-    {% for message in messages %}
-      <div class="form_messages">
-        {{ message }}
-      </div>
-    {% endfor %}
-{% endif %}
-</div>
-<!-- MESSAGES -->
-<h3 class="form_title">{{student.admin.first_name}} {{student.admin.last_name}} {{student.matric_no}} {{student.level}} Level</h3>
+    <h1 class="form_title">{{academic_calender.session}} School fees for {{student.course_of_study.department.name}} {{academic_calender.semester}} semester</h1>
 
-
-<div class="registeredCourseList">
-  <div class="tableContainer ">
-    <div class="tableHeading ">
-        <span class="tableHeading1 ">SN</span>
-        <span class="tableHeading2">Session</span>
-        <span class="tableHeading3">department</span>
-        <span class="tableHeading4">Level</span>
-        <span class="tableHeading5"></span>
-    </div>
-    {% if school_fees  %}
-          {% for fee in school_fees %}
-    <div class="tableData  ">
-        <span class="tableHeading1">{{ forloop.counter }}</span>
-        <span class="tableHeading2">{{fee.academic_calender.session}} </span>
-        <span class="tableHeading3">{{fee.department}}</span>
-        <span class="tableHeading4">{{fee.level}}</span>
-        <span class="tableHeading5"> 
-          <form method="post" class="ajax_form" action="{% url 'generate_student_invoice' %}">
-            {% csrf_token %}
-            <input type="hidden" name="department_fee_id" value="{{ fee.id }}">
-            <button type="submit">Generate Fee</button>
-          </form>
-        </span>
-    </div>
-
-    {% endfor %}
-    {% else %}
-            <h2>No School Fees available</h2>
+    <!-- MESSAGES -->
+    <div>
+      {% if messages %}
+        {% for message in messages %}
+          <div class="form_messages">
+            {{ message }}
+          </div>
+        {% endfor %}
     {% endif %}
-  </div>
+    </div>
+    <!-- MESSAGES -->
+    <h3 class="form_title">{{student.admin.first_name}} {{student.admin.last_name}} {{student.matric_no}} {{student.level}} Level</h3>
 
-</div>
+<!-- Back Btn start -->
+<a class=" tableBtn1 ajax_link" href="{% url 'student_school_fees_dashboard' %}">
+  <i class="fas fa-arrow-left"></i> Back
+</a>
+<!-- Back Btn end -->
+    <div class="registeredCourseList">
+      <div class="tableContainer ">
+        <div class="tableHeading ">
+            <span class="tableHeading10 ">SN</span>
+
+            <span class="tableHeading1">Session</span>
+            <span class="tableHeading1">department</span>
+            <span class="tableHeading1">Level</span>
+            <span class="tableHeading1"></span>
+        </div>
+        {% if school_fees  %}
+              {% for fee in school_fees %}
+        <div class="tableData  ">
+            <span class="tableHeading10">{{ forloop.counter }}</span>
+            <span class="tableHeading1">{{fee.academic_calender.session}} </span>
+            <span class="tableHeading1">{{fee.department}}</span>
+            <span class="tableHeading1">{{fee.level}}</span>
+            <span class="tableHeading1"> 
+              <form method="post" class="ajax_form" action="{% url 'student_generate_student_invoice' %}">
+                {% csrf_token %}
+                <input type="hidden" name="department_fee_id" value="{{ fee.id }}">
+                <button class="tableBtn1" type="submit">Generate Fee</button>
+              </form>
+            </span>
+        </div>
+
+        {% endfor %}
+        {% else %}
+                <h2>No School Fees available</h2>
+        {% endif %}
+      </div>
+
+    </div>

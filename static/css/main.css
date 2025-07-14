@@ -163,9 +163,21 @@ body {
   font-size: 18px;
 }
 
+.centerFix {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  border: 2px solid rgba(255, 255, 255, 0.199);
+}
+
 .btnWhite {
   color: white;
   text-decoration: none;
+}
+
+.center {
+  text-align: center;
 }
 
 .btnBlack {
@@ -564,6 +576,7 @@ body {
 
 .tableData:last-child {
   border-bottom: 2px solid rgba(255, 255, 255, 0.203);
+  margin-bottom: 7rem;
 }
 
 .course_table {
@@ -1366,7 +1379,6 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   background-size: cover;
   height: 100vh;
   color: whitesmoke;
@@ -1427,12 +1439,11 @@ body {
 .studentadmin .studentadminContainer .rightNavContainer {
   flex: 1;
   padding: 2px;
-  overflow-y: auto;
-  height: 100%;
   background-image: linear-gradient(90deg, #0a2b42 0%, #0a2b42 25%, rgba(0, 0, 0, 0.728) 70%, #0a2b42 99%), url("../images/student2.jpg");
   background-size: cover;
   height: 100vh;
   color: whitesmoke;
+  overflow-y: auto;
 }
 
 .invoice-container {
@@ -1505,6 +1516,151 @@ body {
     display: none !important;
   }
 }
+.course_table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: sans-serif;
+  margin-top: 1rem;
+}
+.course_table th,
+.course_table td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: center;
+}
+.course_table_head {
+  background-color: #f2f2f2;
+}
+.course_table_head_row {
+  background-color: #e6e6e6;
+}
+.course_table_header {
+  font-weight: bold;
+  color: #333;
+}
+.course_table_row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.course_table_row:hover {
+  background-color: #eef;
+}
+.course_table_cell {
+  font-size: 0.95rem;
+  color: #444;
+}
+.course_table_body {
+  background-color: #fff;
+}
+
+.studentChatContainer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.192);
+  overflow: hidden;
+}
+.studentChatContainerTopNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5rem;
+  background-color: #0a2b42;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+}
+.studentChatContainerTopNavRow1 {
+  flex: 0 0 20%;
+}
+.studentChatContainerTopNavRow2 {
+  flex: 0 0 80%;
+}
+.studentChatContainerChat {
+  margin-top: 4rem;
+  height: calc(100vh - 4rem - 5.5rem);
+  display: flex;
+  flex-direction: column;
+}
+.studentChatContainerChatMessagesContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 2rem 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.studentChatContainerChatInputContainer {
+  position: fixed;
+  bottom: 0;
+  left: 20%;
+  right: 0;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.089);
+  z-index: 1000;
+  color: white;
+  display: flex;
+}
+.studentChatContainerChatInputContainerInput {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 1rem;
+  outline: none;
+}
+.studentChatContainerChatInputContainerBtn {
+  margin-left: 1rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.studentChatContainerChatInputContainerBtn:hover {
+  background: #0056b3;
+}
+
+.chatSenderNameSelf {
+  font-weight: bold;
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  color: #be810f;
+  text-align: left;
+  align-self: flex-start;
+}
+
+.chatSenderNameOther {
+  font-weight: bold;
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  color: white;
+  text-align: left;
+  align-self: flex-start;
+}
+
+.chatMessage {
+  padding: 0.6rem 1rem;
+  margin-top: 0.2rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  max-width: 60%;
+  word-wrap: break-word;
+  text-align: left;
+  align-self: flex-start;
+}
+.chatMessage.chatSelf {
+  background: #0c422a;
+  color: white;
+}
+.chatMessage.chatOther {
+  background: #050708;
+  color: white;
+}
+
 .admin {
   height: 100vh;
   display: flex;

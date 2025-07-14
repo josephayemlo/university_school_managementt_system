@@ -1,8 +1,23 @@
+
+.centerFix{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  border: 2px solid rgba(255, 255, 255, 0.199);
+}
+
+
+
 .btnWhite{
     color: white;
     text-decoration: none;
 
     
+}
+
+.center{
+  text-align: center;
 }
 .btnBlack{
     color: black;

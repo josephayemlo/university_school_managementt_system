@@ -2,12 +2,14 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('privatechat/<int:user_id>/', views.private_chat_view, name='private_chat'),
-    path('chat_dashboard/', views.chat_dashboard, name='chat_dashboard'),
-    path('student_list/', views.student_list, name='student_list'),
-    path('group-rooms/', views.available_group_rooms, name='available_group_rooms'),
-    path('join-group-room/<int:room_id>/', views.join_group_room, name='join_group_room'),
-    path('group-chat/<int:room_id>/', views.group_chat_view, name='group_chat'),
+
+    # student
+    path('chat_dashboard/', views.chat_dashboard, name='student_chat_dashboard'),
+    path('student_list/', views.student_list, name='student_chat_student_list'),
+    path('group-rooms/', views.available_group_rooms, name='student_available_group_rooms'),
+    path('privatechat/<int:user_id>/', views.private_chat_view, name='student_private_chat'),
+    path('join-group-room/<int:room_id>/', views.join_group_room, name='student_join_group_room'),
+    path('group-chat/<int:room_id>/', views.group_chat_view, name='student_group_chat'),
 
     # Admin
     path('chat_management/', views.chat_management, name='admin_chat_management'),

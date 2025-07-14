@@ -2,7 +2,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    // overflow: hidden;
 
         background-size: cover;
         height: 100vh;
@@ -73,8 +73,6 @@
       .rightNavContainer {
         flex: 1;
         padding: 2px;
-        overflow-y: auto;
-        height: 100%;
         background-image:linear-gradient(
           90deg, 
           #0a2b42 0%, 
@@ -84,6 +82,8 @@
           background-size: cover;
           height: 100vh;
           color: whitesmoke;
+          overflow-y: auto;
+
         }
     }
   }
@@ -166,6 +166,53 @@
     .pay-button,
     .print-button {
       display: none !important;
+    }
+  }
+  
+
+
+  // registere course
+  .course_table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: sans-serif;
+    margin-top: 1rem;
+  
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      text-align: center;
+    }
+  
+    &_head {
+      background-color: #f2f2f2;
+  
+      &_row {
+        background-color: #e6e6e6;
+      }
+    }
+  
+    &_header {
+      font-weight: bold;
+      color: #333;
+    }
+  
+    &_row:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  
+    &_row:hover {
+      background-color: #eef;
+    }
+  
+    &_cell {
+      font-size: 0.95rem;
+      color: #444;
+    }
+  
+    &_body {
+      background-color: #fff;
     }
   }
   

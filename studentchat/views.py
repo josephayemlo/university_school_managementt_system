@@ -11,7 +11,7 @@ from django.contrib import messages
 
 # Chat Dashboard
 def chat_dashboard(request):
-    return render(request, 'studentchat/chat_dashboard.html')
+    return render(request, 'studentchat/student/chat_dashboard.html')
 
 # Chat Management
 def chat_management(request):
@@ -73,7 +73,7 @@ def private_chat_view(request, user_id):
         'other_user': other_user,
         'messages': messages,
         }
-    return render(request, 'studentchat/private_chat.html', context)
+    return render(request, 'studentchat/student/private_chat.html', context)
 
 
 
@@ -87,7 +87,7 @@ def student_list(request):
         course_of_study=student.course_of_study,
         level = student.level
     )
-    return render(request, 'studentchat/student_list.html', {'student_list': student_list})
+    return render(request, 'studentchat/student/student_list.html', {'student_list': student_list})
 
 
 @login_required
@@ -101,7 +101,7 @@ def group_chat_view(request, room_id):
 
     messages = GroupMessage.objects.filter(room=room).order_by("timestamp")
 
-    return render(request, "studentchat/group_chat.html", {
+    return render(request, "studentchat/student/group_chat.html", {
         "room": room,
         "messages": messages,
     })
@@ -121,7 +121,7 @@ def available_group_rooms(request):
         user=request.user
     ).values_list('room_id', flat=True)
 
-    return render(request, 'studentchat/available_rooms.html', {
+    return render(request, 'studentchat/student/available_rooms.html', {
         'rooms': rooms,
         'joined_room_ids': joined_room_ids
     })

@@ -1,44 +1,45 @@
-<h2 class="form_title">
-    {{ student.admin.first_name }} {{ student.admin.last_name }} - {{ student.level }} Level
-</h2>
 <h3 class="form_title">
     School Fees for {{ current_session }} Session
 </h3>
-
+<!-- Back Btn start -->
+<a class=" tableBtn1 ajax_link" href="{% url 'student_school_fees_dashboard' %}">
+    <i class="fas fa-arrow-left"></i> Back
+  </a>
+  <!-- Back Btn end -->
 <div class="tableContainer">
    <div class="tableHeading">
-       <span class="tableHeading1">SN</span>
-       <span class="tableHeading2">Semester</span>
-       <span class="tableHeading3">Level</span>
-       <span class="tableHeading3">Reference</span>
-       <span class="tableHeading3">Total</span>
-       <span class="tableHeading3">Status</span>
-       <span class="tableHeading3">Pay</span>
+       <span class="tableHeading10">SN</span>
+       <span class="tableHeading1">Semester</span>
+       <span class="tableHeading1">Level</span>
+       <span class="tableHeading20">Reference</span>
+       <span class="tableHeading1">Total</span>
+       <span class="tableHeading1">Status</span>
+       <span class="tableHeading1">Pay</span>
    </div>
 
    {% if invoices %}
        {% for invoice in invoices %}
        <div class="tableData">
-           <span class="tableHeading1">{{ forloop.counter }}</span>
-           <span class="tableHeading2">{{ invoice.academic_calendar.semester }}</span>
-           <span class="tableHeading3">{{ invoice.level }}</span>
-           <span class="tableHeading3">{{ invoice.reference }}</span>
-           <span class="tableHeading3">₦{{ invoice.total_amount }}</span>
-           <span class="tableHeading3">
+           <span class="tableHeading10">{{ forloop.counter }}</span>
+           <span class="tableHeading1">{{ invoice.academic_calendar.semester }}</span>
+           <span class="tableHeading1">{{ invoice.level }}</span>
+           <span class="tableHeading20">{{ invoice.reference }}</span>
+           <span class="tableHeading1">₦{{ invoice.total_amount }}</span>
+           <span class="tableHeading1">
                {% if invoice.is_paid %}
                    ✅ Paid
                {% else %}
                    ❌ Not Paid
                {% endif %}
            </span>
-           <span class="tableHeading3">
+           <span class="tableHeading1">
                {% if not invoice.is_paid %}
                    <form method="post" action="{% url 'student_invoice_details' invoice.id %}">
                        {% csrf_token %}
-                       <button type="submit">Pay Now</button>
+                       <button class="tableBtn1" type="submit">Pay Now</button>
                    </form>
                {% else %}
-                   <a href="{% url 'student_invoice_details' invoice.id %}">Print Receipt</a>
+                   <a href="{% url 'student_invoice_details' invoice.id %}" class="tableBtn1">Print Receipt</a>
                {% endif %}
            </span>
        </div>

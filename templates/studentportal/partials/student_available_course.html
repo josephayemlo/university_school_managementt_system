@@ -1,33 +1,31 @@
-{% load static %}
 
-{% block content %}
-<div>
+   
 
-    <h1>Course Registeration</h1>
-    {% if messages %}
-    <div class="message-container">
-      {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">
-          {{ message }}
-        </div>
+<h2 class="form_title"> {{ student.course_of_study.name }} - {{ student.level }}L ({{ semester }} Semester) Courses</h2>
+
+   <div class="tableContainer">
+      <div class="tableHeading">
+          <span class="tableHeading10">SN</span>
+          <span class="tableHeading1">Code</span>
+          <span class="tableHeading30">Title</span>
+          <span class="tableHeading1">Unit</span>
+          <span class="tableHeading1">Category</span>
+      </div>
+      {% if courses  %}
+            {% for courses in courses %}
+      <div class="tableData">
+          <span class="tableHeading10">{{ forloop.counter }}</span>
+          <span class="tableHeading1">{{courses.course.code}}</span>
+          <span class="tableHeading30">{{courses.course.title}}</span>
+          <span class="tableHeading1">{{courses.course.unit}}</span>
+          <span class="tableHeading1">{{courses.course.category}}</span>
+      </div>
+
       {% endfor %}
-    </div>
-    {% endif %}
-    <h2>Courses for {{ student.course_of_study.name }} - {{ student.level }}L ({{ semester }} Semester)</h2>
+      <div class=" centerFix" >
+          <a href="{% url 'student_register_courses' %}" class="ajax_link tableBtn1">Proceed to Register</a>
+      </div>
 
-    {% if courses %}
-        <ul>
-            {% for lc in courses %}
-                <li>{{ lc.course.code }} - {{ lc.course.title }}{% if not lc.is_compulsory %} (Elective){% endif %}</li>
-            {% endfor %}
-    <a href="{% url 'register_courses' %}" class="ajax_link">Register Course</a>
-
-        </ul>
-    {% else %}
-        <p>No courses found for your level and semester.</p>
-    {% endif %}
-
-
-</div>
-
-{% endblock content%}
+      {% else %}
+              <h2>No Courses available</h2>
+      {% endif %}

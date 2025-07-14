@@ -1,0 +1,81 @@
+
+<div class="studentChatContainer">
+  <div class="studentChatContainerTopNav"> 
+    <div class="studentChatContainerTopNavRow1">
+          <!-- Back Btn start -->
+          <a class=" tableBtn1 ajax_link" href="{% url 'student_available_group_rooms' %}">
+            <i class="fas fa-arrow-left"></i> Back
+          </a>
+        <!-- Back Btn end -->
+    </div>
+    <div class="studentChatContainerTopNavRow2">
+        <h2 class="form_title">Group Chat: {{ room.name }}</h2>
+    </div>
+
+  </div>
+  
+  <div class="studentChatContainerChat">
+    <!-- previous messages start -->
+      <div id="chat-log" class="studentChatContainerChatMessagesContainer">
+        {% for message in messages %}
+        {% if message.sender.id == request.user.id %}
+          <div class="chatSenderNameSelf chatSelf">{{ message.sender.first_name }} {{ message.sender.last_name }}</div>
+          <div class="chatMessage chatSelf">{{ message.body }}</div>
+        {% else %}
+          <div class="chatSenderNameOther chatOther">{{ message.sender.first_name }} {{ message.sender.last_name }}</div>
+          <div class="chatMessage chatOther">{{ message.body }}</div>
+        {% endif %}
+      {% endfor %}
+
+      </div>
+    <!-- previous messages end -->
+
+    <!-- new message start -->
+      <div class="studentChatContainerChatInputContainer">
+        <input class="studentChatContainerChatInputContainerInput" id="chat-message-input" type="text" placeholder="Type your message...">
+        <button class="studentChatContainerChatInputContainerBtn" id="chat-message-submit">Send</button>
+    <!-- new message start -->
+      </div>
+
+  </div>
+
+</div>
+
+
+<script>
+  const roomId = "{{ room.id }}";
+  const userId = "{{ request.user.id }}";
+  const socket = new WebSocket(`ws://${window.location.host}/ws/groupchat/${roomId}/`);
+
+  socket.onmessage = function(e) {
+    const data = JSON.parse(e.data);
+      const chatLog = document.querySelector('#chat-log');
+
+      const isOwnMessage = data.sender_id == userId;
+
+      // Sender name
+      const senderDiv = document.createElement("div");
+      senderDiv.className = isOwnMessage
+        ? "chatSenderNameSelf chatSelf"
+        : "chatSenderNameOther chatOther";
+      senderDiv.textContent = data.sender;
+
+      // Message bubble
+      const messageDiv = document.createElement("div");
+      messageDiv.className = isOwnMessage
+        ? "chatMessage chatSelf"
+        : "chatMessage chatOther";
+      messageDiv.textContent = data.message;
+
+      // Append
+      chatLog.appendChild(senderDiv);
+      chatLog.appendChild(messageDiv);
+      chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  document.getElementById("chat-message-submit").onclick = function() {
+    const msg = document.getElementById("chat-message-input").value;
+    socket.send(JSON.stringify({ 'message': msg }));
+    document.getElementById("chat-message-input").value = '';
+  }
+</script>
