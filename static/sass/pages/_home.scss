@@ -1,7 +1,9 @@
 
 @use "../base/media";
 
-
+.homeContainer{
+ padding: 10px;
+}
 // ================== News Section ==================
 .newsHomeSection {
   display: flex;
@@ -212,10 +214,11 @@
       height: auto;
       display: block;
       object-fit: cover;
+      margin-bottom: 2rem;
+      
     }
   }
 
-  // ====== Responsive Styles ======
   @include media.down("sm") {
     .studyBtnRow {
       flex-direction: column;

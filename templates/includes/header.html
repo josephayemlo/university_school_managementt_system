@@ -1,88 +1,48 @@
 {% load static %}
 <header class="nivigation">
     <div class="navigationFixed">
-  
-        <!-- 🔘 Hamburger Icon (only visible on mobile) -->
-        <button class="hamburgerToggle" id="hamburgerToggle">&#9776;</button>
-      
-        <!-- 🖥️ Top Nav (for large screens) -->
+     
         <div class="topNavLinks">
-          {% include 'includes/main_nav_links.html' %}
-        </div>
-      
-        <!-- 📱 Side Nav (for small screens) -->
-        <div class="sideNav" id="sideNav">
-          <button class="closeBtn" id="closeSideNav">&times;</button>
-          {% include 'includes/main_nav_links.html' %}
+          {% include 'includes/hamburger_nav.html' with nav_links='includes/main_nav_links.html' %}
         </div>
       
     </div>
-      
-      
-      
-
   <div class="navigationFirst">
     <div class="row">
-      <a href="{% url 'home' %}" class="column1of4 column1of4One"
-        ><span class="title1">Community College USA</span></a
-      >
-      <a href="" class="column1of4 column1of4Two"
-        ><img
-          src="{% static 'images/img1.jpg' %}"
-          alt="StudentShapers"
-          class="img1"
-        />
-        <p class="title2">
-          StudentShapers – supporting students beyond the curriculum
-        </p></a
-      >
-      <a href="" class="column1of4 column1of4Three"
-        ><img
-          src="{% static 'images/img2.jpg' %}"
-          alt="climate art"
-          class="img1"
-        />
-        <p class="title3">
-          Climate art and allergy guidance: News from Imperial
-        </p></a
-      >
-      <a href="" class="column1of4 column1of4Four"
-        ><p class="title4">
-          More <br />
-          News &#187;
-        </p></a
-      >
+      <div class="rowFirst">
+              <a href="{% url 'home' %}" class="column1of4 column1of4One"
+              ><span class="title1">Community College USA</span></a
+            >
+            <a href="" class="column1of4 column1of4Two"
+              ><img
+                src="{% static 'images/img1.jpg' %}"
+                alt="StudentShapers"
+                class="img1"
+              />
+              <p class="title2">
+                StudentShapers – supporting students beyond the curriculum
+              </p></a
+            >
+      </div>
+      <div class="rowSecond">
+
+      <a href="" class="column1of4 column1of4Three"><img
+              src="{% static 'images/img2.jpg' %}"
+              alt="climate art"
+              class="img1"
+            />
+            <p class="title3">
+              Climate art and allergy guidance: News from Community College USA
+            </p></a>
+          <a href="" class="column1of4 column1of4Four"
+            ><p class="title4">
+              More <br />
+              News &#187;
+            </p> </a>
+      </div>
+      
     </div>
   </div>
-</header>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const toggleBtn = document.getElementById("hamburgerToggle");
-      const closeBtn = document.getElementById("closeSideNav");
-      const sideNav = document.getElementById("sideNav");
-  
-      toggleBtn.addEventListener("click", () => {
-        sideNav.classList.add("active");
-      });
-  
-      closeBtn.addEventListener("click", () => {
-        sideNav.classList.remove("active");
-      });
-  
-      // Optional: Close on click outside
-      document.addEventListener("click", function (e) {
-        if (!sideNav.contains(e.target) && !toggleBtn.contains(e.target)) {
-          sideNav.classList.remove("active");
-        }
-      });
-    });
 
-    // when already clicked and open with link still close the harburger if screen resizes
-    window.addEventListener("resize", function () {
-    const screenWidth = window.innerWidth;
-    if (screenWidth > 1024) {
-        sideNav.classList.remove("active");
-    }
-    });
-  </script>
   
+</header>

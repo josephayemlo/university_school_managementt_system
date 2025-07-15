@@ -726,17 +726,29 @@ body {
   border-bottom: 5px solid whitesmoke;
   padding-bottom: 20px;
   z-index: 1;
-  position: relative;
+  width: 100%;
 }
 .navigationFirst .row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+@media (max-width: 1024px) {
+  .navigationFirst .row {
+    flex-direction: column;
+  }
+}
+.navigationFirst .row .rowFirst,
+.navigationFirst .row .rowSecond {
+  flex: 1;
+  display: flex;
   gap: 1rem;
 }
 .navigationFirst .column1of4 {
+  flex: 1;
   text-decoration: none;
 }
-.navigationFirst .column1of4One, .navigationFirst .column1of4Four {
+.navigationFirst .column1of4.column1of4One, .navigationFirst .column1of4.column1of4Four {
   font-weight: 800;
   background-color: #003e74;
   color: white;
@@ -745,32 +757,32 @@ body {
   align-items: center;
   justify-content: center;
 }
-.navigationFirst .column1of4One:hover, .navigationFirst .column1of4Four:hover {
+.navigationFirst .column1of4.column1of4One:hover, .navigationFirst .column1of4.column1of4Four:hover {
   background-color: white;
   color: #003e74;
 }
-.navigationFirst .column1of4Two, .navigationFirst .column1of4Three {
+.navigationFirst .column1of4.column1of4Two, .navigationFirst .column1of4.column1of4Three {
   display: flex;
   align-items: center;
   background-color: #f5f5f5;
   color: black;
   padding: 0.5rem;
 }
-.navigationFirst .column1of4Two:hover, .navigationFirst .column1of4Three:hover {
+.navigationFirst .column1of4.column1of4Two:hover, .navigationFirst .column1of4.column1of4Three:hover {
   background-color: #f5f5f5;
   color: #002147;
 }
-.navigationFirst .column1of4Two img, .navigationFirst .column1of4Three img {
+.navigationFirst .column1of4.column1of4Two img, .navigationFirst .column1of4.column1of4Three img {
   width: 60px;
   height: 60px;
   object-fit: cover;
   margin-right: 1rem;
 }
-.navigationFirst .column1of4Two p, .navigationFirst .column1of4Three p {
+.navigationFirst .column1of4.column1of4Two p, .navigationFirst .column1of4.column1of4Three p {
   font-size: 14px;
   line-height: 1.3;
 }
-.navigationFirst .column1of4Four p {
+.navigationFirst .column1of4.column1of4Four p {
   text-align: center;
   font-size: 15px;
   line-height: 1.3;
@@ -780,23 +792,6 @@ body {
   font-size: 18px;
   padding: 0 1rem;
   line-height: 25px;
-}
-@media (max-width: 1024px) {
-  .navigationFirst .row {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .navigationFirst .column1of4 {
-    width: 100%;
-  }
-  .navigationFirst .title1 {
-    font-size: 16px;
-    padding: 0.5rem;
-  }
-}
-@media (max-width: 576px) {
-  .navigationFirst .row {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 .footer {
@@ -994,55 +989,16 @@ body {
   font-size: 14px;
   margin-left: 5px;
 }
+@media (max-width: 1024px) {
+  .navigationFixed .navigationFixedBtn {
+    background-color: #002147;
+    color: white;
+  }
+}
 .navigationFixed .topNavLinks {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-}
-.navigationFixed .hamburgerToggle {
-  font-size: 24px;
-  background: none;
-  color: white;
-  border: none;
-  cursor: pointer;
-  display: none;
-}
-.navigationFixed .sideNav {
-  position: fixed;
-  top: 0;
-  left: -250px;
-  width: 250px;
-  height: 100%;
-  background-color: #002147;
-  overflow-x: hidden;
-  transition: left 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-}
-.navigationFixed .sideNav .closeBtn {
-  font-size: 30px;
-  background: none;
-  color: white;
-  border: none;
-  align-self: flex-end;
-  cursor: pointer;
-}
-.navigationFixed .sideNav .navigationFixedBtn {
-  margin: 10px 0;
-  font-size: 16px;
-  text-align: center;
-}
-.navigationFixed .sideNav.active {
-  left: 0;
-}
-@media (max-width: 1024px) {
-  .navigationFixed .topNavLinks {
-    display: none;
-  }
-  .navigationFixed .hamburgerToggle {
-    display: inline-block;
-  }
 }
 
 .applyNavAspirant {
@@ -1059,6 +1015,57 @@ body {
   border-radius: 2px;
   font-size: 14px;
   margin-left: 5px;
+}
+
+.hamburgerToggle {
+  font-size: 24px;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+@media (max-width: 1024px) {
+  .hamburgerToggle {
+    display: inline-block;
+  }
+}
+
+.mainNavLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+@media (max-width: 1024px) {
+  .mainNavLinks {
+    display: none;
+  }
+}
+
+.sideNav {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #002147;
+  overflow-x: hidden;
+  transition: left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  z-index: 1000;
+}
+.sideNav.active {
+  left: 0;
+}
+.sideNav .closeBtn {
+  font-size: 30px;
+  background: none;
+  color: white;
+  border: none;
+  align-self: flex-end;
+  cursor: pointer;
 }
 
 .loginCardContainer {
@@ -1497,6 +1504,10 @@ body {
   color: white;
 }
 
+.homeContainer {
+  padding: 10px;
+}
+
 .newsHomeSection {
   display: flex;
   flex-wrap: wrap;
@@ -1680,6 +1691,7 @@ body {
   height: auto;
   display: block;
   object-fit: cover;
+  margin-bottom: 2rem;
 }
 @media (max-width: 768px) {
   .studyAtCommunityCollegeSection .studyBtnRow {
