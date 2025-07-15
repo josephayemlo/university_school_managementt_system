@@ -9,223 +9,172 @@
         <img src="{% static 'images/homebg.jpg' %}" alt="front page image" class="homebg">
     </div>
 
-
-</section>
-
-<!-- News section  -->
-<section class="newsHome">
-    <div class="newsHomeGrid1">
-        <div class=" CardContainer CardContainerGrid1 CardContainerGrid1AddMargin" >
-            <a href="" class="btnBlack CardContainerGrid "> 
-                <img src="{% static 'images/news1.jpeg' %}" alt="" class="CardContainerImage">
-                <span>
-                    <span class="CardContainerText1 ">News </span>
-                    <span class="CardContainerText2 homeNewsGreen">Health</span>
-                    <span class="CardContainerText4"><em>20 September 2023 </em></span>
-                    <span class="CardContainerText4"><em><strong> Surgery-free brain stimulation <br> could provide new <br>treatment for dementia </strong></em></span>
-                </span>
-            </a>
-        </div>
-        <div class=" CardContainer CardContainerGrid1" >
-            <a href="" class="btnBlack CardContainerGrid "> 
-                <img src="{% static 'images/news2.jpeg' %}" alt="" class="CardContainerImage">
-                <span>
-                    <span class="CardContainerText1 ">News </span>
-                    <span class="CardContainerText2 homeNewsGreen">Health</span>
-                    <span class="CardContainerText4"><em>20 September 2023 </em></span>
-                    <span class="CardContainerText4"><em><strong> Surgery-free brain stimulation <br> could provide new <br>treatment for dementia </strong></em></span>
-                </span>
-            </a>
-        </div>
-        
+<!-- ================== News Section ================== -->
+<section class="newsHomeSection">
+    <div class="newsCardColumn">
+      <div class="newsCardBox newsCardPrimary">
+        <a href="#" class="newsCardLink">
+          <img src="{% static 'images/news1.jpeg' %}" alt="News image" class="newsCardImage">
+          <div class="newsCardContent">
+            <span class="newsTag">News</span>
+            <span class="newsCategory">Health</span>
+            <span class="newsDate">20 September 2023</span>
+            <span class="newsTitle">Surgery-free brain stimulation <br> could provide new <br>treatment for dementia</span>
+          </div>
+        </a>
+      </div>
+  
+      <div class="newsCardBox">
+        <a href="#" class="newsCardLink">
+          <img src="{% static 'images/news2.jpeg' %}" alt="News image" class="newsCardImage">
+          <div class="newsCardContent">
+            <span class="newsTag">News</span>
+            <span class="newsCategory">Health</span>
+            <span class="newsDate">20 September 2023</span>
+            <span class="newsTitle">Surgery-free brain stimulation <br> could provide new <br>treatment for dementia</span>
+          </div>
+        </a>
+      </div>
     </div>
-    <div class="newsHomeGrid2" >
-       
-        <div class="slimCardContainer slimCardContainerAdjust1  " >
-            <div>
-                <img src="{% static 'images/news3.jpg' %}" alt="" class="slimCardContainerImage slimCardContainerImageNewsSection">
-            </div>
-            <div>
-                <h4 class="slimCardContainerTextHeading">Research Excellence </h4>
-                <p class="slimCardContainerText ">Lorem ipsum dolor sit, <br>hop ehdhdhdh ddn <br>djjdojfdjfodj   </p>
-            </div>
+  
+    <div class="newsAsideColumn">
+      <div class="newsHighlightCard">
+        <img src="{% static 'images/news3.jpg' %}" alt="Research" class="newsCardImage">
+        <div class="newsCardTextContainer">
+          <h4 class="heading">Research Excellence</h4>
+          <p class="text">Lorem ipsum dolor sit, hop ehdhdhdh ddn djjdojfdjfodj</p>
         </div>
-        <div class="slimCardContainer slimCardContainerAdjust2" >
-            <div class="homeNewsCardTextContainer">
-                <h1>Support Imperial with a gift today</h1>
-            </div>
-            <div>
-                <p class="slimCardContainerText slimCardContainerTextNewsSection">Lorem ipsum dolor sit, <br>hop ehdhdhdh ddn <br>djjdojfdjfodj  </p>
-                <a href="" class=" btnWhite btnNewsHomeMakeAGift"> <u> Make a gift today</u>  &#187;</a>
-            </div>
+      </div>
+  
+      <div class="newsGiftCard">
+        <div class="giftTextWrapper">
+          <h1>Support Community College USA with a gift today</h1>
         </div>
-    </div>
-
-
-
-</section>
-
-<!-- Study at Imperial Session-->
-<section class="studyWithUs">
-    <div class="studyWithUsContainerSub">
-        <h1 class="studyWithUsHeading">Studying at Imperial</h1>
-        <p class="textInStudy">See why students from around the world choose to study with us.</p>
-    </div>
-    <div class="linksContainerInStudyWithUS">
-        <a href="" class="btnInStudyWithUs btnCourses">Courses</a>
-        <a href="{% url 'apply'%}" class="btnInStudyWithUs btnBlack">Apply</a>
-        <a href="" class="btnInStudyWithUs btnBlack">Fees and funding</a>
-        <a href="" class="btnInStudyWithUs btnBlack">Visit</a>
-    </div>
-    <div class="imageContainerStudyWithUs">
-        <img src="{% static 'images/studywithus1.jpg' %}" alt="study with us image" class="imageInStudyWithUs">
-    </div>
-</section>
-
-<!-- Research and Innovation Session -->
-<section class="research">
-    <h1 class="researchHeading">Research and Innovation</h1>
-    <p class="researchHeadingSub">REF 2021 finds that Imperial has a greater proportion of world-leading research than any other UK university</p>
-
-    <!-- Grid One -->
-    <div class="researchContainerGridOne">
-        <!-- Resusable Card2 start -->
-        <div class="slimCardContainer " >
-            <div>
-                <img src="{% static 'images/research1.jpg' %}" alt="" class="slimCardContainerImage">
-            </div>
-            <div>
-                <h4 class="slimCardContainerTextHeading">Research Excellence Framework (REF2021)</h4>
-                <p class="slimCardContainerText"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, velit odit neque asperiores perspiciatis  </p>
-                <a href="" class="slimCardContainerBtn">Read more about &#187;</a>
-            </div>
+        <div>
+          <p class="text">Lorem ipsum dolor sit, hop ehdhdhdh ddn djjdojfdjfodj</p>
+          <a href="#" class="donateLink"> <u>Make a gift today</u> &#187;</a>
         </div>
-        <!-- Resusable Card2 end -->
-
-        <div class="researchContainerTwo">
-            <div>
-                <img src="{% static 'images/research2.jpg' %}" alt="" class="slimCardContainerImage">
-            </div>
-            <div>
-                <h4 class="minislimCardContainerTextHeading">Research impact</h4>
-                <p class="slimCardContainerText">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, velit odit neque asperiores perspiciatis  </p>
-                <a href="" class="slimCardContainerBtn">Read more about &#187;</a>
-            </div>
-        </div>
+      </div>
     </div>
-
-    <!-- Grid two -->
-    <div class="researchContainerGridTwo">
-        <div class="slimCardContainer grid2of1" >
-            <div>
-                <img src="{% static 'images/research3.jpg' %}" alt="" class="slimCardContainerImage">
-            </div>
-            <div>
-                <h4 class="slimCardContainerTextHeading">Research Excellence Framework (REF2021)</h4>
-                <p class="slimCardContainerText">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, velit odit neque asperiores perspiciatis  </p>
-                <a href="" class="slimCardContainerBtn">Read more about &#187;</a>
-            </div>
-        </div>
-        <div class="researchContainerTwo grid2of2">
-            <div>
-                <img src="{% static 'images/research4.jpg' %}" alt="" class="slimCardContainerImage">
-            </div>
-            <div>
-                <h4 class="minislimCardContainerTextHeading">Research impact</h4>
-                <p class="slimCardContainerText">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, velit odit neque asperiores perspiciatis  </p>
-                <a href="" class="slimCardContainerBtn">Read more about &#187;</a>
-            </div>
-        </div>
+  </section>
+  
+  <!-- ================== Study Section ================== -->
+  <section class="studyAtCommunityCollegeSection">
+    <div class="intro">
+      <h1>Studying at Community College USA</h1>
+      <p>See why students from around the world choose to study with us.</p>
     </div>
-</section>
-
-<!-- Event/Alumni Session -->
-<section class="eventsAndAlumni" >
-    <!-- Event -->
-    <div class="eventsContainer">
-        <span class="eventsHeading"> What's on at Imperial</span> / <a href="" class="btnBlack eventHeadingBtn"> Events</a>
-        <div class="eventsSubContainer">
-            <!-- resuable card start -->
-            <div class=" CardContainer CardContainerGrid1" >
-                <a href="" class="btnBlack CardContainerGrid "> 
-                    <img src="{% static 'images/event1.jpg' %}" alt="" class="CardContainerImage">
-                    <span>
-                        <span class="CardContainerText1">Event </span>
-                        <span class="CardContainerText2">Exhibition</span>
-                        <span class="CardContainerText3"><em>20 September 2023 - 02 November  2023, 10.00 - 17.00 <br> <strong> Of Lightness </strong></em></span>
-                        <span class="CardContainerText4"><em>Sherfield Building,  South Kensington Campus </em></span>
-                    </span>
-                </a>
-            </div>
-            <!-- resuable card end -->
-
-            <div class=" CardContainer CardContainerGrid2" >
-                <a href="" class="btnBlack CardContainerGrid "> 
-                    <img src="{% static 'images/event2.jpg' %}" alt="" class="CardContainerImage">
-                    <span >
-                        <span class="CardContainerText1">Event </span>
-                        <span class="CardContainerText2 CardContainerText2Sub">Seminar</span>
-                        <span class="CardContainerText3"><em>20 September 2023 - 02 November  2023, 10.00 - 17.00  <br> <strong> CfAE Grammar for speaking </strong></em></span>
-                        <span class="CardContainerText4"><em>Sherfield Building, South Kensington Campus </em></span>
-                    </span>
-                </a>
-            </div>
-            <div class=" CardContainer CardContainerGrid3" >
-                <a href="" class="btnBlack CardContainerGrid eventGrid3Text "> 
-                    <span> <em>
-                        <span>
-                            26 October 2023, 12.30–13.30 
-                            Seminar   <strong>Cardiac Function Spring Autumn 
-                            Series 2023 – LSR: Reversibility  of adverse…</strong>
-                            <br><br><br><br><br><br>
-                                                
-                        </span>
-                        <span>
-                            26 October 2023, 13.00–14.00 
-                            Practice session <strong> CfAE Speaking  
-                            interactions (OL)</strong> 
-                        </span>
-                        <br><br><br><br><br><br>
-                        <span>
-                            26 October 2023, 13.00–13.45 
-                            Social <strong> Lunchtime Concert – Lucy Parham (piano)</strong> 
-
-                        </span>
-                        <br><br><br><br><br><br>
-                        <span >
-                            26 October 2023, 14.00–15.00 
-                            Seminar <strong>Ayman Rimah Said: Local well-posedness and singularity formation beyond the… </strong> 
-
-                        </span>
-                        
-                        
-                    </span></em>
-                </a>
-            </div>
-        </div>
-
+  
+    <div class="studyBtnRow">
+      <a href="#" class="studyBtn courses">Courses</a>
+      <a href="{% url 'apply' %}" class="studyBtn">Apply</a>
+      <a href="#" class="studyBtn">Fees and funding</a>
+      <a href="#" class="studyBtn">Visit</a>
     </div>
-
-    <!-- Alumni -->
-    <div class="AlumniContainer">
-        <span class="eventsHeading"> Alumni</span> / <a href="" class="btnBlack eventHeadingBtn"> Fo To Alumni</a>
-        <div class=" CardContainer CardContainerGrid4" >
-            <a href="" class="btnBlack CardContainerGrid "> 
-                <img src="{% static 'images/alumni1.jpeg' %}" alt="" class="CardContainerImage">
-                <span class="alumniTextContainer">
-                    <span class="colorWhite alumniTextContainerTitle">Your Network </span>
-                    <p class="colorWhite alumniTextContainerText1">As an Imperial alumnus, you are a member of a lifelong community of over 190,000 across the globe. Access exclusive alumni benefits, join a local group and keep in touch.</p>
-                    <span class="colorWhite alumniTextContainerText2"><em>Find out more &raquo;</em></span>
-                    <br><br>
-                </span>
-                
-            </a>
-        </div>
-
+  
+    <div class="studyImageBox">
+      <img src="{% static 'images/studywithus1.jpg' %}" alt="Study at Community College USA">
     </div>
- 
-
-</section>
-
-
+  </section>
+  
+  <!-- ================== Research Section ================== -->
+  <!-- ================== Research Section ================== -->
+<section class="researchBlock">
+    <div class="sectionHeader">
+      <h1>Research and Innovation</h1>
+      <p>REF 2021 finds that Community College USA has a greater proportion of world-leading research than any other UK university</p>
+    </div>
+  
+    <!-- Row 1 -->
+    <div class="researchRow">
+      <div class="researchCard">
+        <img src="{% static 'images/research1.jpg' %}" alt="Research">
+        <div>
+          <h4>Research Excellence Framework (REF2021)</h4>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, velit odit neque asperiores perspiciatis</p>
+          <a href="#">Read more about &#187;</a>
+        </div>
+      </div>
+  
+      <div class="impactCard">
+        <img src="{% static 'images/research2.jpg' %}" alt="Impact">
+        <div>
+          <h4>Research impact</h4>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, velit odit neque asperiores perspiciatis</p>
+          <a href="#">Read more about &#187;</a>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Row 2 -->
+    <div class="researchRow">
+      <div class="researchCard greenCard">
+        <img src="{% static 'images/research3.jpg' %}" alt="Research">
+        <div>
+          <h4>AI for Healthcare Systems</h4>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, velit odit neque asperiores perspiciatis</p>
+          <a href="#">Read more about &#187;</a>
+        </div>
+      </div>
+  
+      <div class="impactCard blueCard">
+        <img src="{% static 'images/research4.jpg' %}" alt="Tech">
+        <div>
+          <h4>Transforming Global Tech</h4>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, velit odit neque asperiores perspiciatis</p>
+          <a href="#">Read more about &#187;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <!-- ================== Events and Alumni Section ================== -->
+  <section class="eventsAlumniSection">
+    <div class="eventsBlock">
+      <span class="eventsHeader">What's on at Community College USA</span> / <a href="#" class="eventsBtn">Events</a>
+      <div class="eventsCardsWrapper">
+        <div class="eventBox">
+          <a href="#" class="eventLink">
+            <img src="{% static 'images/event1.jpg' %}" class="eventImage">
+            <div class="eventDetails">
+              <span class="eventLabel">Event</span>
+              <span class="eventType">Exhibition</span>
+              <span class="eventDate">20 Sep - 02 Nov 2023, 10:00 - 17:00</span>
+              <span class="eventLocation">Sherfield Building, South Kensington Campus</span>
+            </div>
+          </a>
+        </div>
+  
+        <div class="eventBox">
+          <a href="#" class="eventLink">
+            <img src="{% static 'images/event2.jpg' %}" class="eventImage">
+            <div class="eventDetails">
+              <span class="eventLabel">Event</span>
+              <span class="eventType">Seminar</span>
+              <span class="eventDate">20 Sep - 02 Nov 2023, 10:00 - 17:00</span>
+              <span class="eventLocation">Sherfield Building, South Kensington Campus</span>
+            </div>
+          </a>
+        </div>
+  
+        <div class="eventsListTextCard">
+          <p><strong>26 October:</strong> Seminar - Cardiac Function Series, Practice Session - CfAE Speaking, Social - Lunchtime Concert, Seminar - Ayman Rimah Said</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="alumniBlock">
+      <span class="eventsHeader">Alumni</span> / <a href="#" class="eventsBtn">Go to Alumni</a>
+      <div class="alumniCard">
+        <img src="{% static 'images/alumni1.jpeg' %}" class="alumniImage">
+        <div class="alumniText">
+          <span class="title">Your Network</span>
+          <p class="desc">As an Community College USA alumnus, you are a member of a lifelong community of over 190,000 across the globe. Access exclusive alumni benefits, join a local group and keep in touch.</p>
+          <span class="linkText">Find out more &raquo;</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
 {% endblock content%}

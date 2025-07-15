@@ -1,94 +1,83 @@
-.btnCourses{
-    color: whitesmoke;
-    background-color: #F04A00;
-}
-
-.btnInStudyWithUs{
-    flex-grow: 1;
-    text-decoration: none;
-    border: 2px solid #0000001a;
-    
-}
-
 
 .eventHeadingBtn{
-    font-size: 16px;
-    font-weight: bold;
+  font-size: 16px;
+  font-weight: bold;
 }
 .btnNewsHomeMakeAGift{
-    font-size: 17px;
-    font-weight: bold;
+  font-size: 17px;
+  font-weight: bold;
 
 }
 .loginBackBtn{
-    text-decoration: none;
-    padding: 10px;
-    background-color: #002147;
-    color: whitesmoke;
-    font-size: 14px;
+  text-decoration: none;
+  padding: 10px;
+  background-color: #002147;
+  color: whitesmoke;
+  font-size: 14px;
 }
 .loginResetPassBtn{
-    text-decoration: none;
-    padding: 10px;
-    background-color: white;
-    color: #002147;
-    font-size: 14px;
-    font-weight: bold;
+  text-decoration: none;
+  padding: 10px;
+  background-color: white;
+  color: #002147;
+  font-size: 14px;
+  font-weight: bold;
 }
 .loginSignInBtn{
-    text-decoration: none;
-    padding: 10px;
-    background-color: #003e74;
-    color: whitesmoke;
-    font-size: 14px;
-    margin-bottom: 4rem;
+  text-decoration: none;
+  padding: 10px;
+  background-color: #003e74;
+  color: whitesmoke;
+  font-size: 14px;
+  margin-bottom: 4rem;
 }
 
 .generalAdminBtn{
-    background-color: #2a5c80;
-    text-decoration: none;
-    color: whitesmoke;
-    border-radius: 4px;
-    padding: 10px;
-    font-size: 30px;
-    font-family: Times;
-    text-align: center;
-    display: block;
+  background-color: #2a5c80;
+  text-decoration: none;
+  color: whitesmoke;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 30px;
+  font-family: Times;
+  text-align: center;
+  display: block;
 
-    &:hover {
-        background-color: #e0f7fa;
-        border-left: 4px solid #00acc1;
-        color: #004d40;
-      }
+  &:hover {
+      background-color: #e0f7fa;
+      border-left: 4px solid #00acc1;
+      color: #004d40;
+    }
 
 
 
 }
 .tableBtn1 {
-    background-color: #3498db;
-    color: black;
-    padding: 6px;
-    text-decoration: none;
-    border-radius: 2px;
-    font-size: 19px;
-    margin-right: 0.5rem;
+  background-color: #3498db;
+  color: black;
+  padding: 6px;
+  text-decoration: none;
+  border-radius: 2px;
+  font-size: 19px;
+  margin-right: 0.5rem;
 
-    &:hover {
-      background-color: white;
-      color: black;
-    }
+  &:hover {
+    background-color: white;
+    color: black;
   }
+}
 
 .tableBtn2 {
-    background-color: #7c2217;
-    color: whitesmoke;
-    padding: 6px;
-    text-decoration: none;
-    border-radius: 2px;
-    display: inline-block;
-    font-size: 19px;
+  background-color: #7c2217;
+  color: whitesmoke;
+  padding: 6px;
+  text-decoration: none;
+  border-radius: 2px;
+  display: inline-block;
+  font-size: 19px;
 
-    &:hover {
-      background-color: red;
-    }
+  &:hover {
+    background-color: red;
   }
+}
+

@@ -1,3 +1,4 @@
+@use "../base/media"; 
 .apply{
 
 
@@ -42,26 +43,91 @@
 }
 
 
-.navigationFixed{
-    background-color:#002147;
-    float: left;
+
+// home nav start
+.navigationFixed {
+    background-color: #002147;
     position: fixed;
     width: 100%;
-    overflow: hidden;
     top: 0;
-
-    &Btn{
-        text-decoration: none;
-        color: #003e74;
-        background-color: white;
-        padding: 5px;
-        border-radius: 2px;
-        font-size: 14px;
-        margin-left: 5px;
-
-
+    z-index: 10;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    .navigationFixedBtn {
+      text-decoration: none;
+      color: #003e74;
+      background-color: white;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      margin-left: 5px;
     }
-}
+  
+    .topNavLinks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  
+    .hamburgerToggle {
+      font-size: 24px;
+      background: none;
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: none;
+    }
+  
+    .sideNav {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #002147;
+      overflow-x: hidden;
+      transition: left 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+  
+      .closeBtn {
+        font-size: 30px;
+        background: none;
+        color: white;
+        border: none;
+        align-self: flex-end;
+        cursor: pointer;
+      }
+  
+      .navigationFixedBtn {
+        margin: 10px 0;
+        font-size: 16px;
+        text-align: center;
+      }
+  
+      &.active {
+        left: 0;
+      }
+    }
+  
+    // Mobile styles
+    @include media.down("md") {
+      .topNavLinks {
+        display: none;
+      }
+  
+      .hamburgerToggle {
+        display: inline-block;
+      }
+    }
+  }
+  
+  
+// home nav end
 
 .applyNavAspirant{
     background-color:#003e74;

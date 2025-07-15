@@ -1,3 +1,4 @@
+@use "../base/media";
 .footer{
     background-color: #002147;
     display: flex;
@@ -8,12 +9,22 @@
     display: flex;
     flex-direction: row;
     padding: 25px;
+
+    @include media.down("md") {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.5rem 1rem;
+      }
     
 }
 .footerGrid1Row{
     display: flex;
     flex-direction: column;
     font-size: 15px;
+
+    @include media.down("sm") {
+        font-size: 14px;
+      }
 }
 
 .footerGrid1RowHeader{
@@ -30,6 +41,11 @@
     padding-top: 0;
     padding-bottom: 0;
 
+    @include media.down("md") {
+        flex-direction: column;
+        padding: 1.5rem 1rem;
+      }
+
 
     &Row1{
         padding: 10px;
@@ -39,11 +55,25 @@
         border-right: 0.5px solid rgba(245, 245, 245, 0.439);
         padding-bottom: 1.5rem;
 
+        @include media.down("md") {
+            border-right: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-right: 0;
+          }
+
+        @include media.down("sm") {
+            padding: 1rem 0;
+          }
+
     }
     &Row2{
         padding: 20px;
         padding-top: 25px;
         padding-bottom: 1.5rem;
+
+        @include media.down("sm") {
+            padding: 1rem 0;
+          }
 
     }
 }
@@ -66,9 +96,17 @@
     flex-direction: row;
     font-size: 13px;
 
+    @include media.down("sm") {
+        flex-direction: column;
+      }
+
 }
 .footerClosingContainer2{
     font-size: 13px;
+
+    @include media.down("sm") {
+        font-size: 12.5px;
+      }
 
 }
 .linksfooterGrid2Row2{
@@ -78,6 +116,10 @@
 }
 .linksfooterGrid2Row2:not(:first-child){
     margin-left: 0.7rem;
+
+    @include media.down("sm") {
+        margin: 0;
+      }
 
         
 }

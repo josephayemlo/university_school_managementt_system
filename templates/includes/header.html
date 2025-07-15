@@ -1,59 +1,88 @@
 {% load static %}
 <header class="nivigation">
     <div class="navigationFixed">
-        
-
-
-
-     <!-- Aspirant link start -->
-        {% if user.is_authenticated and user.user_type == "5" %}       
-            <!-- display non -->
-     <!-- Aspirant link end -->
-
-     <!-- Student link start -->
-        {% elif user.is_authenticated and user.user_type == "4" %}       
-            <a href="{% url 'student_portal' %}"class="navigationFixedBtn">Student Portal</a>
-            <a href="{% url 'scholarship_application_form' %}"class="navigationFixedBtn">Apply Scholarship</a>
-            <a href="{% url 'logout_user' %}"class="navigationFixedBtn">Logout</a>
-     <!-- Student link end -->
-
-
-     <!-- Admin link start -->
-        {% elif user.is_authenticated and user.user_type == "1" %}       
-        <a href="{% url 'management_home' %}"class="navigationFixedBtn">Admin</a>
-        <a href="{% url 'logout_user' %}"class="navigationFixedBtn">Logout</a>
-    <!-- Admin link end -->
-    <!-- Academicstaff link start -->
-    {% elif user.is_authenticated and user.user_type == "2" %}       
-    <a href="{% url 'academicstaff_home' %}"class="navigationFixedBtn">Academic Staff Portal</a>
-    <a href="{% url 'logout_user' %}"class="navigationFixedBtn">Logout</a>
-    <!-- Academicstaff link end -->
-
-    <!-- Academicstaff link start -->
-    {% elif user.is_authenticated and user.user_type == "3" %}       
-    <a href="{% url 'nonacademicstaff_home' %}"class="navigationFixedBtn">NonAcademic Staff Portal</a>
-    <a href="{% url 'logout_user' %}"class="navigationFixedBtn">Logout</a>
-    <!-- Academicstaff link end -->
-       {% else %}
-            <a class="navigationFixedBtn" href="{% url 'login_page'%}">Login</a>
-            <a href="{% url 'apply' %}"class="navigationFixedBtn">Apply here</a>
-            <a href="{% url 'home' %}"class="navigationFixedBtn">Home</a>
-            <a href="{% url 'student_home' %}"class="navigationFixedBtn">View Student Page</a>
-       {% endif %}
-
-    </div>
-
-    <div class="navigationFirst">
-        <div class="row">
-          <a href="{% url 'home' %}" class="column1of4 column1of4One"><span class="title1">Imperial College London</span></a>
-          <a href="" class="column1of4 column1of4Two"><img src="{% static 'images/img1.jpg' %}" alt="StudentShapers" class="img1" > <p class="title2">StudentShapers – supporting students  beyond the curriculum</p></a>
-          <a href="" class="column1of4 column1of4Three"><img src="{% static 'images/img2.jpg' %}" alt="climate art" class="img1" > <p class="title3">Climate art and allergy guidance:  News from Imperial</p></a>      
-          <a href="" class="column1of4 column1of4Four"><p class="title4">More <br> News &#187;  </p></a>      
-
+  
+        <!-- 🔘 Hamburger Icon (only visible on mobile) -->
+        <button class="hamburgerToggle" id="hamburgerToggle">&#9776;</button>
+      
+        <!-- 🖥️ Top Nav (for large screens) -->
+        <div class="topNavLinks">
+          {% include 'includes/main_nav_links.html' %}
         </div>
-       
-
+      
+        <!-- 📱 Side Nav (for small screens) -->
+        <div class="sideNav" id="sideNav">
+          <button class="closeBtn" id="closeSideNav">&times;</button>
+          {% include 'includes/main_nav_links.html' %}
+        </div>
+      
     </div>
-   
- 
+      
+      
+      
+
+  <div class="navigationFirst">
+    <div class="row">
+      <a href="{% url 'home' %}" class="column1of4 column1of4One"
+        ><span class="title1">Community College USA</span></a
+      >
+      <a href="" class="column1of4 column1of4Two"
+        ><img
+          src="{% static 'images/img1.jpg' %}"
+          alt="StudentShapers"
+          class="img1"
+        />
+        <p class="title2">
+          StudentShapers – supporting students beyond the curriculum
+        </p></a
+      >
+      <a href="" class="column1of4 column1of4Three"
+        ><img
+          src="{% static 'images/img2.jpg' %}"
+          alt="climate art"
+          class="img1"
+        />
+        <p class="title3">
+          Climate art and allergy guidance: News from Imperial
+        </p></a
+      >
+      <a href="" class="column1of4 column1of4Four"
+        ><p class="title4">
+          More <br />
+          News &#187;
+        </p></a
+      >
+    </div>
+  </div>
 </header>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleBtn = document.getElementById("hamburgerToggle");
+      const closeBtn = document.getElementById("closeSideNav");
+      const sideNav = document.getElementById("sideNav");
+  
+      toggleBtn.addEventListener("click", () => {
+        sideNav.classList.add("active");
+      });
+  
+      closeBtn.addEventListener("click", () => {
+        sideNav.classList.remove("active");
+      });
+  
+      // Optional: Close on click outside
+      document.addEventListener("click", function (e) {
+        if (!sideNav.contains(e.target) && !toggleBtn.contains(e.target)) {
+          sideNav.classList.remove("active");
+        }
+      });
+    });
+
+    // when already clicked and open with link still close the harburger if screen resizes
+    window.addEventListener("resize", function () {
+    const screenWidth = window.innerWidth;
+    if (screenWidth > 1024) {
+        sideNav.classList.remove("active");
+    }
+    });
+  </script>
+  

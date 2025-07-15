@@ -1,0 +1,695 @@
+
+@use "../base/media"; 
+
+.row {
+    display: flex;   
+    
+}
+
+    // research section
+
+    .research {
+      border: 1px solid #0000001a;
+      padding: 2rem;
+      background-color: #f9f9f9;
+    
+      .researchHeading {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        color: #002147;
+      }
+    
+      .researchHeadingSub {
+        font-size: 1rem;
+        text-align: center;
+        color: #333;
+        margin-bottom: 2rem;
+      }
+    
+      .researchContainerGridOne,
+      .researchContainerGridTwo {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    
+        // Cards will stack on smaller screens
+        @include media.down("sm") {
+          flex-direction: column;
+        }
+      }
+    
+      .researchContainerGridTwo {
+        margin-top: 1.5rem;
+      }
+    
+      .researchContainerTwo {
+        background-color: #276db2;
+        display: flex;
+        flex: 1;
+        color: whitesmoke;
+        padding: 1rem;
+        gap: 1rem;
+    
+        img {
+          width: 10rem;
+          height: 7rem;
+          object-fit: cover;
+        }
+    
+        @include media.down("sm") {
+          flex-direction: column;
+          align-items: center;
+    
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+    
+      .slimCardContainer {
+        display: flex;
+        flex: 1;
+        background-color: #00853e;
+        color: whitesmoke;
+        padding: 1rem;
+        gap: 1rem;
+    
+        &.grid2of1 {
+          background-color: #3b89c8;
+        }
+    
+        &.grid2of2 {
+          background-color: #00853e;
+        }
+    
+        img {
+          width: 10rem;
+          height: 7rem;
+          object-fit: cover;
+        }
+    
+        @include media.down("sm") {
+          flex-direction: column;
+          align-items: center;
+    
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+    
+      .slimCardContainerTextHeading,
+      .minislimCardContainerTextHeading {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+    
+      .slimCardContainerText {
+        font-size: 0.95rem;
+        line-height: 1.4;
+        margin-bottom: 0.5rem;
+      }
+    
+      .slimCardContainerBtn {
+        text-decoration: none;
+        color: whitesmoke;
+        font-weight: bold;
+    
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    
+
+
+
+
+// events and alumni
+.eventsAndAlumni {
+  display: flex;
+  flex-wrap: wrap;
+  border: 0.5px solid rgba(0, 0, 0, 0.156);
+  border-bottom: none;
+  padding: 2rem;
+  gap: 2rem;
+
+  .eventsContainer {
+    flex: 1;
+  }
+
+  .AlumniContainer {
+    flex: 0 0 25%;
+
+    @include media.down("md") {
+      flex: 1 1 100%;
+    }
+  }
+
+  .eventsHeading {
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+
+  .eventHeadingBtn {
+    font-size: 0.95rem;
+    padding: 0.3rem 0.6rem;
+    margin-left: 0.5rem;
+    display: inline-block;
+  }
+
+  .eventsSubContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    @include media.down("sm") {
+      flex-direction: column;
+    }
+  }
+
+  .eventGrid3Text {
+    padding: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    background-color: #f5f5f5;
+    color: #002147;
+    overflow-y: auto;
+    height: 100%;
+  }
+
+  .CardContainerGrid3 {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    flex: 1;
+    min-width: 16rem;
+
+    @include media.down("sm") {
+      order: 3;
+    }
+  }
+
+  .CardContainerGrid4 {
+    background-color: #002147;
+    padding: 1rem;
+    margin-top: 2rem;
+
+    .alumniTextContainer {
+      padding: 1rem;
+
+      .alumniTextContainerTitle {
+        font-size: 1.1rem;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      .alumniTextContainerText1 {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+      }
+
+      .alumniTextContainerText2 {
+        font-size: 0.95rem;
+        font-weight: bold;
+        display: block;
+      }
+
+      .colorWhite {
+        color: white;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+}
+
+
+// news section
+
+.newsHome {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem;
+
+  @include media.down("md") {
+    flex-direction: column;
+  }
+
+  &Grid1 {
+    flex: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+
+    @include media.down("md") {
+      flex-direction: column;
+    }
+  }
+
+  &Grid2 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @include media.down("md") {
+      flex-direction: column;
+      margin-top: 1rem;
+    }
+
+    .slimCardContainer {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      padding: 1rem;
+
+      @include media.down("sm") {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      &Image {
+        width: 15rem;
+        height: 10rem;
+        object-fit: cover;
+
+        @include media.down("sm") {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      &TextHeading {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      &Text {
+        font-size: 15px;
+        margin-bottom: 0.5rem;
+      }
+
+      &Btn {
+        color: whitesmoke;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+      }
+    }
+
+    .slimCardContainerAdjust1 {
+      background-color: whitesmoke;
+      border: 1px solid #00000020;
+
+      @include media.down("sm") {
+        padding: 1rem;
+      }
+    }
+
+    .slimCardContainerAdjust2 {
+      background-color: #002147;
+      color: white;
+
+      .homeNewsCardTextContainer {
+        width: 100%;
+        max-width: 14.5rem;
+        padding: 1rem;
+        border-right: 1px solid white;
+        font-weight: bold;
+        text-align: center;
+
+        @include media.down("sm") {
+          border-right: none;
+          border-bottom: 1px solid white;
+          margin-bottom: 1rem;
+        }
+      }
+
+      .slimCardContainerTextNewsSection {
+        margin-top: 15px;
+        font-size: 14px;
+      }
+
+      .btnNewsHomeMakeAGift {
+        color: white;
+        background-color: transparent;
+        font-weight: bold;
+        font-size: 14px;
+        display: inline-block;
+        margin-top: 0.5rem;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.homeNewsGreen {
+  background-color: #00853e;
+}
+
+// Reusable Card 1
+.CardContainer {
+  border: 2px solid rgba(0, 0, 0, 0.123);
+  margin-bottom: 2rem;
+  width: 100%;
+
+  &Grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &Image {
+    object-fit: cover;
+    width: 100%;
+    height: 12rem;
+
+    @include media.down("sm") {
+      height: 10rem;
+    }
+  }
+
+  &Grid1,
+  &Grid2,
+  &Grid3 {
+    font-size: 14px;
+    flex: 1;
+  }
+
+  &Grid2 {
+    margin-left: 7px;
+    margin-right: 7px;
+  }
+
+  &Grid3 {
+    font-size: 11px;
+    margin-right: 0.8rem;
+  }
+
+  &Grid4 {
+    background-color: #a51900;
+    color: white;
+  }
+
+  &Text1 {
+    border: 2px solid rgba(0, 0, 0, 0.279);
+    border-top: none;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+    padding: 5px 2rem;
+    margin-right: -2rem;
+    background-color: whitesmoke;
+    color: black;
+    font-weight: bold;
+  }
+
+  &Text2 {
+    background-color: #dd2501;
+    padding: 5px 1.5rem 5px 2rem;
+    margin-right: 4.2rem;
+    height: 80%;
+    clip-path: polygon(20% 0, 100% 0, 85% 100%, 0 100%);
+    font-weight: bold;
+    font-family: 'Lato', serif;
+    border: 2px solid rgba(0, 0, 0, 0.279);
+    border-top: none;
+    color: white;
+  }
+
+  &Text2Sub {
+    background-color: #006eaf;
+  }
+
+  &Text3,
+  &Text4 {
+    padding: 1rem;
+    font-size: 13px;
+    display: block;
+  }
+
+  &Text3 {
+    margin-bottom: 4rem;
+  }
+}
+
+.CardContainerGrid1AddMargin {
+  margin-right: 2.5rem;
+}
+
+// Reusable Card 2 (slim cards)
+.slimCardContainer {
+  display: flex;
+  background-color: #00853e;
+  width: 100%;
+  padding: 1rem;
+
+  &Image {
+    object-fit: cover;
+    width: 15rem;
+    height: 10rem;
+    padding-right: 20px;
+
+    @include media.down("sm") {
+      width: 100%;
+      height: auto;
+      padding-right: 0;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &TextHeading {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  &Text {
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+
+  &Btn {
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  @include media.down("sm") {
+    flex-direction: column;
+  }
+}
+
+.slimCardContainerAdjust1,
+.slimCardContainerAdjust2 {
+  margin-bottom: 2rem;
+  margin-left: 0;
+  padding-right: 1rem;
+  width: 100%;
+
+  @include media.down("sm") {
+    padding: 0;
+  }
+}
+
+.slimCardContainerAdjust1 {
+  background-color: whitesmoke;
+  border: 1px solid #00000020;
+}
+
+.slimCardContainerAdjust2 {
+  background-color: #002147;
+  color: white;
+}
+
+.slimCardContainerImageNewsSection {
+  margin-right: 15px;
+}
+
+.slimCardContainerTextNewsSection {
+  margin-top: 15px;
+}
+
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    
+<!-- front page -->
+<section class="frontPage">
+    <div>
+        <img src="{% static 'images/homebg.jpg' %}" alt="front page image" class="homebg">
+    </div>
+
+
+</section>
+<!-- ================== News Section ================== -->
+<section class="homeNewsSection">
+  <div class="homeNewsMain">
+    <div class="newsCardBox newsCardPrimary">
+      <a href="#" class="newsCardLink">
+        <img src="{% static 'images/news1.jpeg' %}" alt="News image" class="newsCardImage">
+        <div class="newsCardContent">
+          <span class="newsTag">News</span>
+          <span class="newsCategory">Health</span>
+          <span class="newsDate">20 September 2023</span>
+          <span class="newsTitle">Surgery-free brain stimulation <br> could provide new <br>treatment for dementia</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="newsCardBox">
+      <a href="#" class="newsCardLink">
+        <img src="{% static 'images/news2.jpeg' %}" alt="News image" class="newsCardImage">
+        <div class="newsCardContent">
+          <span class="newsTag">News</span>
+          <span class="newsCategory">Health</span>
+          <span class="newsDate">20 September 2023</span>
+          <span class="newsTitle">Surgery-free brain stimulation <br> could provide new <br>treatment for dementia</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="homeNewsAside">
+    <div class="homeNewsCard cardLight">
+      <img src="{% static 'images/news3.jpg' %}" alt="Research" class="homeNewsAsideImage">
+      <div>
+        <h4 class="homeNewsCardTitle">Research Excellence</h4>
+        <p class="homeNewsCardText">Lorem ipsum dolor sit, hop ehdhdhdh ddn djjdojfdjfodj</p>
+      </div>
+    </div>
+
+    <div class="homeNewsCard cardDark">
+      <div class="homeNewsCardHighlight">
+        <h1>Support Imperial with a gift today</h1>
+      </div>
+      <div>
+        <p class="homeNewsCardText">Lorem ipsum dolor sit, hop ehdhdhdh ddn djjdojfdjfodj</p>
+        <a href="#" class="btnMakeAGift"> <u>Make a gift today</u> &#187;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================== Study With Us Section ================== -->
+<section class="studySection">
+  <div class="studyIntro">
+    <h1 class="studyTitle">Studying at Imperial</h1>
+    <p class="studyText">See why students from around the world choose to study with us.</p>
+  </div>
+
+  <div class="studyLinks">
+    <a href="#" class="studyBtn studyBtnOrange">Courses</a>
+    <a href="{% url 'apply' %}" class="studyBtn">Apply</a>
+    <a href="#" class="studyBtn">Fees and funding</a>
+    <a href="#" class="studyBtn">Visit</a>
+  </div>
+
+  <div class="studyImageBox">
+    <img src="{% static 'images/studywithus1.jpg' %}" alt="Study at Imperial" class="studyImage">
+  </div>
+</section>
+
+
+<!-- ================== Research Section ================== -->
+<section class="researchSection">
+  <h1 class="researchTitle">Research and Innovation</h1>
+  <p class="researchSubtitle">REF 2021 finds that Imperial has a greater proportion of world-leading research than any other UK university</p>
+
+  <div class="researchGrid">
+    <div class="researchCard greenCard">
+      <img src="{% static 'images/research1.jpg' %}" alt="Research" class="researchImage">
+      <div>
+        <h4 class="researchCardTitle">Research Excellence Framework (REF2021)</h4>
+        <p class="researchCardText">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, velit odit neque asperiores perspiciatis</p>
+        <a href="#" class="researchCardBtn">Read more about &#187;</a>
+      </div>
+    </div>
+
+    <div class="researchCard blueCard">
+      <img src="{% static 'images/research2.jpg' %}" alt="Impact" class="researchImage">
+      <div>
+        <h4 class="researchCardTitle">Research impact</h4>
+        <p class="researchCardText">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, velit odit neque asperiores perspiciatis</p>
+        <a href="#" class="researchCardBtn">Read more about &#187;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================== Events & Alumni Section ================== -->
+<section class="eventsAlumniSection">
+  <div class="eventsColumn">
+    <span class="eventsHeader">What's on at Imperial</span> / <a href="#" class="eventsBtn">Events</a>
+    <div class="eventsGrid">
+      <div class="eventBox">
+        <a href="#" class="eventLink">
+          <img src="{% static 'images/event1.jpg' %}" class="eventImage">
+          <div class="eventDetails">
+            <span class="eventLabel">Event</span>
+            <span class="eventType">Exhibition</span>
+            <span class="eventDate">20 Sep - 02 Nov 2023, 10:00 - 17:00</span>
+            <span class="eventLocation">Sherfield Building, South Kensington Campus</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="eventBox">
+        <a href="#" class="eventLink">
+          <img src="{% static 'images/event2.jpg' %}" class="eventImage">
+          <div class="eventDetails">
+            <span class="eventLabel">Event</span>
+            <span class="eventType">Seminar</span>
+            <span class="eventDate">20 Sep - 02 Nov 2023, 10:00 - 17:00</span>
+            <span class="eventLocation">Sherfield Building, South Kensington Campus</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="eventBox wideTextBox">
+        <a href="#" class="eventLink">
+          <div class="eventTextOnly">
+            <p><strong>26 October:</strong> Seminar - Cardiac Function Series, Practice Session - CfAE Speaking, Social - Lunchtime Concert, Seminar - Ayman Rimah Said</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="alumniColumn">
+    <span class="eventsHeader">Alumni</span> / <a href="#" class="eventsBtn">Go to Alumni</a>
+    <div class="alumniBox">
+      <a href="#" class="alumniLink">
+        <img src="{% static 'images/alumni1.jpeg' %}" class="alumniImage">
+        <div class="alumniContent">
+          <span class="alumniTitle">Your Network</span>
+          <p class="alumniText">As an Imperial alumnus, you are a member of a lifelong community of over 190,000 across the globe. Access exclusive alumni benefits, join a local group and keep in touch.</p>
+          <span class="alumniMore">Find out more &raquo;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+{% endblock content%}

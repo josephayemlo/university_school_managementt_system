@@ -1,33 +1,28 @@
+@use "./base/media";
+@use "./abstracts/variables";
+@use "./base/base";
+@use "./abstracts/mixins";
 
-@use "abstracts/variables";
-@use "base/base";
+@use "./components/images";
+@use "./components/button";
+@use "./components/typography";
+@use "./components/utilities";
+@use "./components/forms";
+@use "./components/tables";
+@use "./components/form_messages";
 
-@use "abstracts/mixins";
+@use "./layouts/header";
+@use "./layouts/footer";
+@use "./layouts/grid";
+@use "./layouts/nav";
 
-@use "components/images";
-@use "components/button";
-@use "components/typography";
-@use "components/utilities";
-@use "components/forms";
-@use "components/tables";
-@use "components/form_messages";
-
-@use "layouts/header";
-@use "layouts/footer";
-@use "layouts/grid";
-@use "layouts/nav";
-
-@use "pages/login";
-@use "pages/student";
-@use "pages/studentportal";
-@use "pages/studentchat";
-
-
-@use "pages/admin";
-@use "pages/staff";
-@use "pages/apply";
+@use "./pages/login";
+@use "./pages/student";
+@use "./pages/studentportal";
+@use "./pages/studentchat";
+@use "./pages/home";
 
 
-
-
-
+@use "./pages/admin";
+@use "./pages/staff";
+@use "./pages/apply";

@@ -1,0 +1,20 @@
+{% if user.is_authenticated and user.user_type == "5" %}
+  <!-- Aspirant -->
+{% elif user.is_authenticated and user.user_type == "4" %}
+  <a href="{% url 'student_portal' %}" class="navigationFixedBtn">Student Portal</a>
+  <a href="{% url 'logout_user' %}" class="navigationFixedBtn">Logout</a>
+{% elif user.is_authenticated and user.user_type == "1" %}
+  <a href="{% url 'management_home' %}" class="navigationFixedBtn">Admin</a>
+  <a href="{% url 'logout_user' %}" class="navigationFixedBtn">Logout</a>
+{% elif user.is_authenticated and user.user_type == "2" %}
+  <a href="{% url 'academicstaff_home' %}" class="navigationFixedBtn">Academic Staff Portal</a>
+  <a href="{% url 'logout_user' %}" class="navigationFixedBtn">Logout</a>
+{% elif user.is_authenticated and user.user_type == "3" %}
+  <a href="{% url 'nonacademicstaff_home' %}" class="navigationFixedBtn">NonAcademic Staff Portal</a>
+  <a href="{% url 'logout_user' %}" class="navigationFixedBtn">Logout</a>
+{% else %}
+  <a class="navigationFixedBtn" href="{% url 'login_page'%}">Login</a>
+  <a href="{% url 'apply' %}" class="navigationFixedBtn">Apply here</a>
+  <a href="{% url 'home' %}" class="navigationFixedBtn">Home</a>
+  <a href="{% url 'student_home' %}" class="navigationFixedBtn">View Student Page</a>
+{% endif %}
