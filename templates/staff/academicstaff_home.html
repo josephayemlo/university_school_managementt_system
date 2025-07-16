@@ -24,21 +24,11 @@
         </div>
         
         <div class="adminContainer">
+            <!-- Side nav start -->
             <div class="leftNavContainer">
-                <a class="leftNavContainerBtn" href="{% url 'academicstaff_home' %}">
-                  <i class="fas fa-tachometer-alt"></i> Dashboard
-                </a>
-                <a class="leftNavContainerBtn ajax_link" href="{% url 'acdstaff_assigned_course' %}">
-                    <i class="fas fa-tachometer-alt"></i> Assigned Course
-                </a>
-                <a class="leftNavContainerBtn ajax_link" href="{% url 'acdstaff_upload_result_dashboard' %}">
-                <i class="fas fa-tachometer-alt"></i> Upload Result
-                </a>
-                <a class="leftNavContainerBtn" href="{% url 'logout_user' %}">
-                  <i class="fas fa-briefcase"></i> Logout
-                </a>
-                
-            </div>
+                {% include 'includes/hamburger_nav.html' with nav_links='includes/acdstaff_nav_links.html' %}
+              </div>
+            <!-- Side nav end -->
               
             <div class="rightNavContainer" id="ajaxContainer">      
              

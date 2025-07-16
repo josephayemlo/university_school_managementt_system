@@ -1,3 +1,4 @@
+@use "../base/media"; 
 
 .eventHeadingBtn{
   font-size: 16px;
@@ -42,6 +43,10 @@
   font-family: Times;
   text-align: center;
   display: block;
+  @include media.down("sm") {  
+    font-size: 9px;
+      
+    }
 
   &:hover {
       background-color: #e0f7fa;
@@ -61,6 +66,13 @@
   font-size: 19px;
   margin-right: 0.5rem;
 
+  @include media.down("sm") {  
+    font-size: 10px;
+    display: inline-block;
+    margin-bottom: 6px;
+      
+    }
+
   &:hover {
     background-color: white;
     color: black;
@@ -75,6 +87,11 @@
   border-radius: 2px;
   display: inline-block;
   font-size: 19px;
+
+  @include media.down("sm") {  
+    font-size:9px;
+      
+    }
 
   &:hover {
     background-color: red;

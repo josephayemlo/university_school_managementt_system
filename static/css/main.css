@@ -74,6 +74,11 @@ body {
   text-align: center;
   display: block;
 }
+@media (max-width: 768px) {
+  .generalAdminBtn {
+    font-size: 9px;
+  }
+}
 .generalAdminBtn:hover {
   background-color: #e0f7fa;
   border-left: 4px solid #00acc1;
@@ -89,6 +94,13 @@ body {
   font-size: 19px;
   margin-right: 0.5rem;
 }
+@media (max-width: 768px) {
+  .tableBtn1 {
+    font-size: 10px;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+}
 .tableBtn1:hover {
   background-color: white;
   color: black;
@@ -102,6 +114,11 @@ body {
   border-radius: 2px;
   display: inline-block;
   font-size: 19px;
+}
+@media (max-width: 768px) {
+  .tableBtn2 {
+    font-size: 9px;
+  }
 }
 .tableBtn2:hover {
   background-color: red;
@@ -252,6 +269,11 @@ body {
   margin-bottom: 2rem;
   position: relative;
 }
+@media (max-width: 768px) {
+  .form_title {
+    font-size: 11px;
+  }
+}
 .form_title::after {
   content: "";
   display: block;
@@ -330,6 +352,11 @@ body {
   color: rgba(245, 245, 245, 0.678);
   margin-bottom: 0.5rem;
 }
+@media (max-width: 768px) {
+  .result_form .result_form_title {
+    font-size: 11px;
+  }
+}
 .result_form .result_form_title::after {
   content: "";
   display: block;
@@ -345,6 +372,11 @@ body {
   font-size: 2rem;
   margin-bottom: 2rem;
   text-transform: uppercase;
+}
+@media (max-width: 768px) {
+  .result_form .result_form_subtitle {
+    font-size: 11px;
+  }
 }
 .result_form .result_table {
   width: 100%;
@@ -514,6 +546,12 @@ body {
 .tableContainer {
   padding: 50px;
 }
+@media (max-width: 768px) {
+  .tableContainer {
+    font-size: 8px;
+    padding: 0px;
+  }
+}
 
 .tableHeading {
   display: flex;
@@ -527,6 +565,12 @@ body {
   font-weight: bold;
   text-transform: uppercase;
   font-size: 20px;
+}
+@media (max-width: 768px) {
+  .tableHeading {
+    font-size: 10px;
+    padding: 0px;
+  }
 }
 .tableHeading1, .tableHeading10, .tableHeading15, .tableHeading20, .tableHeading30 {
   min-width: 0;
@@ -546,6 +590,11 @@ body {
 .tableHeading20 {
   flex: 0 0 20%;
 }
+@media (max-width: 768px) {
+  .tableHeading20 {
+    flex: 0 0 25%;
+  }
+}
 .tableHeading30 {
   flex: 0 0 30%;
 }
@@ -560,6 +609,11 @@ body {
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: flex-start;
+}
+@media (max-width: 768px) {
+  .tableData {
+    font-size: 10px;
+  }
 }
 
 .tableData:last-child {
@@ -1916,6 +1970,32 @@ body {
   color: #3498db;
   flex-shrink: 0;
 }
+@media (max-width: 1024px) {
+  .admin .topAdminContainerNav {
+    font-size: 12px;
+    margin-left: 4rem;
+  }
+}
+@media (max-width: 768px) {
+  .admin .topAdminContainerNav {
+    padding: 0;
+    background-color: white;
+  }
+}
+@media (max-width: 768px) {
+  .admin .topAdminContainerNavLeft {
+    font-size: 12px;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  .admin .topAdminContainerNavRight {
+    display: none;
+  }
+}
 .admin .adminContainer {
   display: flex;
   flex: 1;
@@ -1931,7 +2011,12 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  border-right: 1px solid #ddd;
+}
+@media (max-width: 1024px) {
+  .admin .adminContainer .leftNavContainer {
+    flex: 0 0 0%;
+    overflow-y: hidden;
+  }
 }
 .admin .adminContainer .leftNavContainer .leftNavContainerBtn {
   display: flex;
@@ -1959,39 +2044,62 @@ body {
   border-left: 4px solid #00acc1;
   color: #004d40;
 }
-.admin .adminContainer .rightNavContainer {
+.admin .adminContainer .rightContentContainer {
   flex: 1;
   padding: 2rem;
   overflow-y: auto;
   height: 100%;
 }
-.admin .adminContainer .rightNavContainer .adminRightNavRow1Container {
+.admin .adminContainer .rightContentContainer .adminRightContentRow1Container {
   display: flex;
   gap: 1rem;
   margin-bottom: 2rem;
+  flex-direction: row;
 }
-.admin .adminContainer .rightNavContainer .adminRightNavRow1Container .rightNavRow1Col1,
-.admin .adminContainer .rightNavContainer .adminRightNavRow1Container .rightNavRow1Col2,
-.admin .adminContainer .rightNavContainer .adminRightNavRow1Container .rightNavRow1Col3 {
+@media (max-width: 1199px) {
+  .admin .adminContainer .rightContentContainer .adminRightContentRow1Container {
+    flex-direction: column;
+  }
+}
+.admin .adminContainer .rightContentContainer .adminRightContentRow1ContainerFlex1 {
   flex: 1;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.admin .adminContainer .rightNavContainer .adminRightNavRow2Container {
+.admin .adminContainer .rightContentContainer .adminRightContentRow1ContainerFlex2 {
+  flex: 1;
+}
+.admin .adminContainer .rightContentContainer .adminRightContentRow1ContainerFlex3 {
+  flex: 1;
+}
+.admin .adminContainer .rightContentContainer .adminRightContentRow2Container {
   display: flex;
   flex-direction: row;
 }
-.admin .adminContainer .rightNavContainer .adminRightNavRow2Container .adminRightNavRow2Container1 {
+@media (max-width: 1024px) {
+  .admin .adminContainer .rightContentContainer .adminRightContentRow2Container {
+    flex-direction: column;
+  }
+}
+.admin .adminContainer .rightContentContainer .adminRightContentRow2Container .adminRightContentRow2Container1 {
   flex: 1;
 }
-.admin .adminContainer .rightNavContainer .adminRightNavRow2Container .adminRightNavRow2Container2 {
+@media (max-width: 768px) {
+  .admin .adminContainer .rightContentContainer .adminRightContentRow2Container .adminRightContentRow2Container1 {
+    margin-bottom: 2rem;
+  }
+}
+.admin .adminContainer .rightContentContainer .adminRightContentRow2Container .adminRightContentRow2Container2 {
   flex: 1;
 }
 
 .generalAdminLinkContainer {
   border: 2px solid rgba(245, 245, 245, 0.274);
   padding: 5px;
+}
+@media (max-width: 768px) {
+  .generalAdminLinkContainer {
+    padding: 0px;
+    border: none;
+  }
 }
 
 .kpi-chart-box {

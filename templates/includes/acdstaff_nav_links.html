@@ -1,0 +1,15 @@
+
+  <a class="leftNavContainerBtn" href="{% url 'nonacademicstaff_home' %}">
+    <i class="fas fa-tachometer-alt icon-blue"></i> Dashboard
+  </a>
+
+  <a class="leftNavContainerBtn" href="{% url 'logout_user' %}">
+    <i class="fas fa-sign-out-alt icon-danger"></i> Logout
+  </a>
+  <a class="leftNavContainerBtn ajax_link" href="{% url 'acdstaff_assigned_course' %}">
+    <i class="fas fa-book-open icon-yellow"></i> Assigned Course
+  </a>
+
+  <a class="leftNavContainerBtn ajax_link" href="{% url 'acdstaff_upload_result_dashboard' %}">
+    <i class="fas fa-clipboard-check icon-dark-green"></i> Results & Assessment
+  </a>

@@ -30,21 +30,21 @@
             </div>
           <!-- Side nav end -->
                       
-            <div class="rightNavContainer" id="ajaxContainer">      
+            <div class="rightContentContainer" id="ajaxContainer">      
 
               <!-- R1: KPI Cards -->
-              <div class="adminRightNavRow1Container">
-                <div class="kpi-chart-box">
+              <div class="adminRightContentRow1Container">
+                <div class="kpi-chart-box  adminRightContentRow1ContainerFlex1" >
                   <div id="academicStaffKPI"
                        data-value="{{ total_academicstaff }}"
                        data-label="Academic Staff"></div>
                 </div>
-                <div class="kpi-chart-box">
+                <div class="kpi-chart-box adminRightContentRow1ContainerFlex2">
                   <div id="totalStudentsKPI"
                        data-value="{{ total_students }}"
                        data-label="Students"></div>
                 </div>
-                <div class="kpi-chart-box">
+                <div class="kpi-chart-box adminRightContentRow1ContainerFlex3">
                   <div id="nonAcademicStaffKPI"
                        data-value="{{ total_nonacademicstaff }}"
                        data-label="Non-Academic Staff"></div>
@@ -53,9 +53,9 @@
               </div>
               
               <!-- R2: Charts -->
-              <div class="adminRightNavRow2Container">
+              <div class="adminRightContentRow2Container">
                 <!-- Gender Donut Chart -->
-                <div class="adminRightNavRow2Container1">
+                <div class="adminRightContentRow2Container1">
                   <div id="genderPieChart"
                        data-male="{{ male_count }}"
                        data-female="{{ female_count }}">
@@ -63,7 +63,7 @@
                 </div>
             
                 <!-- Department Bar Chart -->
-                <div class="adminRightNavRow2Container2">
+                <div class="adminRightContentRow2Container2">
                   <div id="departmentBarChart"
                        data-labels="{{ department_name|join:',' }}"
                        data-values="{{ student_count|join:',' }}">
@@ -72,7 +72,7 @@
               </div>
             
               <!-- R3: Reserved for later -->
-              <div class="adminRightNavRow3Container"> 
+              <div class="adminRightContentRow3Container"> 
                 <!-- Optional: recent activity, chart logs, etc -->
                 <p>More stats coming soon...</p>
               </div>

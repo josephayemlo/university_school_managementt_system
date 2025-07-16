@@ -19,21 +19,14 @@
                 <h1>NonAcademic Staff Dashboard</h1>
             </div>
 
-        </div>
+        </div> 
         
         <div class="adminContainer">
-            <div class="leftNavContainer">
-                <a class="leftNavContainerBtn" href="{% url 'nonacademicstaff_home' %}">
-                  <i class="fas fa-tachometer-alt"></i> Dashboard
-                </a>
-                <a class="leftNavContainerBtn ajax_link" href="{% url 'nonacdstaff_addmissions' %}">
-                    <i class="fas fa-tachometer-alt"></i> Addmissions
-                    </a>
-                <a class="leftNavContainerBtn" href="{% url 'logout_user' %}">
-                  <i class="fas fa-briefcase"></i> Logout
-                </a>
-                
-            </div>
+             <!-- Side nav start -->
+             <div class="leftNavContainer">
+                {% include 'includes/hamburger_nav.html' with nav_links='includes/nonacdstaff_nav_links.html' %}
+              </div>
+            <!-- Side nav end -->
               
             <div class="rightNavContainer" id="ajaxContainer">      
              

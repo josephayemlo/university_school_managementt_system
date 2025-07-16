@@ -1,3 +1,5 @@
+@use "../base/media"; 
+
 .admin {
     height: 100vh;
     display: flex;
@@ -19,9 +21,37 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-    //   background-color: #001f3f;
       color: #3498db;
       flex-shrink: 0;
+
+      @include media.down("md") {  
+       font-size: 12px;
+       margin-left: 4rem;
+      }
+      @include media.down("sm") {  
+        padding: 0;
+        background-color: white;
+           
+       }
+
+       &Left{
+        @include media.down("sm") {  
+          font-size: 12px;
+          padding: 0;
+          text-align: left;
+          width: 100%;
+          text-align: center;
+          // margin-bottom: -1.5rem;
+
+             
+         }
+       }
+       &Right{
+       @include media.down("sm") {  
+        display: none;
+         }
+      
+       }
     }
   
     .adminContainer {
@@ -29,9 +59,9 @@
       flex: 1;
       height: calc(100vh - 80px); // Adjust height based on top nav
       overflow: hidden;
+   
   
       .leftNavContainer {
-        // background-color: #f7f9fb;
         color: #333;
         padding: 1rem;
         flex: 0 0 20%;
@@ -40,7 +70,16 @@
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-        border-right: 1px solid #ddd;
+
+
+        @include media.down("md") {  
+          flex: 0 0 0%;
+          overflow-y: hidden;
+    
+        }
+    
+
+
       
         .leftNavContainerBtn {
           display: flex;
@@ -54,6 +93,8 @@
           border-left: 4px solid transparent;
           transition: 0.2s ease-in-out;
           border-radius: 4px;
+
+      
       
           i {
             font-size: 16px;
@@ -70,41 +111,61 @@
             border-left: 4px solid #00acc1;
             color: #004d40;
           }
+
+          
         }
       }
       
   
-      .rightNavContainer {
+      .rightContentContainer {
         flex: 1;
         padding: 2rem;
         overflow-y: auto;
         height: 100%;
-  
-        .adminRightNavRow1Container {
+
+        .adminRightContentRow1Container {
           display: flex;
           gap: 1rem;
           margin-bottom: 2rem;
-  
-          .rightNavRow1Col1,
-          .rightNavRow1Col2,
-          .rightNavRow1Col3 {
-            flex: 1;
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
+          flex-direction: row;
+          @include media.down("lg") {  
+          flex-direction: column;
+            
           }
-         
+
+            &Flex1{
+              flex: 1;
+              
+
+            }
+            &Flex2{
+              flex: 1;
+
+              
+            }
+            &Flex3{
+              flex: 1;
+              
+            }
         }
-        .adminRightNavRow2Container{
+        .adminRightContentRow2Container{
           display: flex;
           flex-direction: row;
+          @include media.down("md") {  
+            flex-direction: column;
+              
+            }
+  
 
-          .adminRightNavRow2Container1 {
+          .adminRightContentRow2Container1 {
             flex: 1;
+            @include media.down("sm") {  
+                  margin-bottom: 2rem;                
+              }
+    
           }
 
-          .adminRightNavRow2Container2{
+          .adminRightContentRow2Container2{
             flex: 1;
 
 
@@ -118,6 +179,14 @@
 .generalAdminLinkContainer{
   border: 2px solid rgba(245, 245, 245, 0.274);
   padding: 5px;
+
+  @include media.down("sm") {  
+    padding: 0px;
+    border: none;
+
+      
+    }
+
 }
 
 

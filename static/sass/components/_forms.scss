@@ -1,3 +1,5 @@
+@use "../base/media"; 
+
 // Reusable form template design
 
 
@@ -11,6 +13,11 @@
   color: #3c6083;
   margin-bottom: 2rem;
   position: relative;
+
+  @include media.down("sm") {  
+    font-size: 11px;
+      
+    }
 
   &::after {
     content: "";
@@ -95,6 +102,8 @@
   }
 // end  
 
+
+
 // start result form Admin
 .result_form {
   .result_form_title {
@@ -105,6 +114,10 @@
     color: rgba(245, 245, 245, 0.678);
 
     margin-bottom: 0.5rem;
+    @include media.down("sm") {  
+      font-size: 11px;
+        
+      }
 
     &::after {
       content: "";
@@ -123,6 +136,11 @@
     font-size: 2rem;
     margin-bottom: 2rem;
     text-transform: uppercase;
+    
+    @include media.down("sm") {  
+      font-size: 11px;
+        
+      }
   }
 
 

@@ -1,6 +1,18 @@
+@use "../base/media"; 
+
+// Reusable Table template design
+
+// start Table  template | for partials
 
 .tableContainer{
     padding: 50px;
+    
+    @include media.down("sm") {  
+      font-size: 8px;
+    padding: 0px;
+
+        
+      }
 }
 
 
@@ -16,6 +28,14 @@
   font-weight: bold;
   text-transform: uppercase;
   font-size: 20px;
+  @include media.down("sm") {  
+    font-size: 10px;
+    padding: 0px;
+
+      
+    }
+
+  
 
    // Shared styles for all child blocks
    &1, &10, &15, &20, &30 {
@@ -35,6 +55,12 @@
   }
   &20 {
     flex: 0 0 20%;
+
+  @include media.down("sm") {  
+    flex: 0 0 25%;
+
+      
+    }
   }
   &30 {
     flex: 0 0 30%;
@@ -56,12 +82,17 @@
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: flex-start;
+    @include media.down("sm") {  
+      font-size: 10px;
+        
+      }
 }
 .tableData:last-child{
     border-bottom: 2px solid rgba(255, 255, 255, 0.203);
     margin-bottom: 7rem;
 }
 
+// end Table template | for partials
 
 // Student Registered Course and scores table start
 
