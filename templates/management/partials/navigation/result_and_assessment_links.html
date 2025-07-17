@@ -8,8 +8,33 @@
         </div>
         <div class="tableData">
             <span class="tableHeading10">1</span>
-            <span class="tableHeading1">Department</span>
+            <span class="tableHeading1">Upload Scores</span>
             <span class="tableHeading1"><a href="{% url 'admin_result_select_department' %}" class=" generalAdminBtn ajax_link">Select Department</a></span>
+        </div>
+        <div class="tableData">
+            <span class="tableHeading10">2</span>
+            <span class="tableHeading1">Compute Semester Result Per Student</span>
+            <span class="tableHeading1"><a href="{% url 'admin_semester_results_list' %}" class=" generalAdminBtn ajax_link">Compute Result</a></span>
+        </div>
+        <div class="tableData">
+            <span class="tableHeading10">3</span>
+            <span class="tableHeading1">Compute Semester Result by Department</span>
+            <span class="tableHeading1"><a href="{% url 'admin_compute_by_department' %}" class=" generalAdminBtn ajax_link">Compute Result</a></span>
+        </div>
+        <div class="tableData">
+            <span class="tableHeading10">4</span>
+            <span class="tableHeading1">Compute Semester Result for all Student</span>
+            <span class="tableHeading1"><a href="{% url 'admin_compute_all_semester_results_dashboard' %}" class=" generalAdminBtn ajax_link">Compute Result</a></span>
+        </div>
+        <div class="tableData">
+            <span class="tableHeading10">3</span>
+            <span class="tableHeading1">Release Semester Result by Department</span>
+            <span class="tableHeading1"><a href="{% url 'admin_release_by_department' %}" class=" generalAdminBtn ajax_link">Release Result</a></span>
+        </div>
+        <div class="tableData">
+            <span class="tableHeading10">4</span>
+            <span class="tableHeading1">Release Semester Result for all Student</span>
+            <span class="tableHeading1"><a href="{% url 'admin_release_all_results_dashboard' %}" class=" generalAdminBtn ajax_link">Release Result</a></span>
         </div>
       </div>
     </div>

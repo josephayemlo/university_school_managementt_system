@@ -1,7 +1,18 @@
+@use "../base/media";
+
 .apply{
     margin-bottom: 4rem;
     padding-left: 50px;
     padding-right: 50px;
+    @include media.down("sm") {
+        padding: 0;
+    
+      }
+    
+    &Heading{
+        font-size: 28px;
+        font-weight: bold;
+    }
 }
 .applyNav{
     background-color: #003e74;
@@ -27,25 +38,45 @@
             padding: 15px;
             margin-top: 20%;
             margin-left: 4rem ;
+            @include media.down("sm") {
+                flex: 0 0 70%;
+                height: 30vh;
+
+
+            }
+
         }
         &Text1{
             color: #002147;
             font-size: 24px;
             font-weight: bold;
             line-height: -10px;
+            @include media.down("sm") {
+                font-size: 15px;
+            }
+
         }
         &Text2{
             color: #002147;
             font-size: 15px;
+            @include media.down("sm") {
+                font-size: 11px;
+            }
         }
 
 }
 .studyLinksContainer{
     display: flex;
+    flex-direction: row;
     background-color: #002147;
     padding: 30px;
     margin-top: 2px;
     text-align: center;
+  @include media.down("sm") {
+    flex-direction: column;
+    gap: 1rem;
+
+  }
 
 
     &Btn{
@@ -68,6 +99,11 @@
     margin-top: 3rem;
     padding: 40px;
     color: #002147;
+    @include media.down("sm") {
+        flex-direction: column;
+        gap: 1rem;
+    
+      }
 
 
 
@@ -105,23 +141,38 @@
 
 }
 
-.meetSomeoneAtImperial{
+.meetSomeoneAtCommunityCollege{
     padding-top: 4rem;
     padding-right: 15rem;
     padding-left: 10rem;
+    @include media.down("sm") {
+        padding: 4rem;
+    }
+
 
 
     &Text1{
         color: #002147;
         font-size: 55px;
+        @include media.down("sm") {
+            font-size: 20px ;
+        }
     }
     &Text2{
         color:#0f8291;
+        @include media.down("sm") {
+            font-size: 20px ;
+        }
     }
     &Text3{
         color: #003e74;
         font-size: 14px;
         margin-left: 20rem;
+        @include media.down("sm") {
+            font-size: 10px ;
+            margin-left: 5rem;
+
+        }
     }
     
 }
@@ -129,6 +180,16 @@
 .applyCard{
     display: flex;
     margin-top: 9rem;
+
+    @include media.down("sm") {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 3rem;
+        margin-top: 0;
+        text-align: center;
+
+    
+      }
 }
 .applyCardContainer{
     flex: 1;
@@ -190,16 +251,31 @@
             padding: 15px;
             margin-top: 20%;
             margin-left: 4rem ;
+            @include media.down("sm") {
+                flex: 0 0 75%;
+
+            }
         }
         &Text1{
             color: #002147;
             font-size: 24px;
             font-weight: bold;
             line-height: -10px;
+
+            @include media.down("sm") {
+                font-size: 16px;
+
+
+            }
         }
         &Text2{
             color: #002147;
             font-size: 15px;
+            @include media.down("sm") {
+                font-size: 14px;
+
+
+            }
         }
         &Btn1{
             display: inline-block;
@@ -212,6 +288,11 @@
             font-size: 18px;
             font-weight: bold;
             margin-top: 17px;
+            @include media.down("sm") {
+                font-size: 15px;
+
+
+            }
 
         }
         &Btn{
@@ -227,6 +308,10 @@
 }
 .applyUG{
     padding: 40px;
+    @include media.down("sm") {
+        padding: 10px;
+
+    }
 }
 
 .applyUndergraduateAddedCard{
@@ -313,3 +398,42 @@
     }
 
 }
+
+.applyContentAndNavContainer{
+    display: flex;
+    flex-direction: row;
+    @include media.down("sm") {
+            flex-direction: column;
+            gap: 1rem;
+      }
+
+}
+.applyLeftNavContainer{
+    flex: 0 0 20%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ebeeee  ;
+
+
+    &Btn{
+        text-decoration: none;
+        color: black;
+        padding: 10px;
+        border: 2px solid rgba(0, 0, 0, 0.142);
+        border-bottom: none;
+        font-size: 14px;
+        background-color: white;
+    }
+    &Btn:last-child{
+        border-bottom: 2px solid rgba(0, 0, 0, 0.142);
+
+    }
+}
+
+.applyRightContentContainer{
+    flex: 1;
+    border: 1.5px solid rgba(0, 0, 0, 0.213);
+    padding: 25px;
+}
+

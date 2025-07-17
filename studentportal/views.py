@@ -7,7 +7,7 @@ from django.contrib.auth import update_session_auth_hash
 from .forms import StudentProfileForm
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-
+from core.models import SemesterResult, StudentResult
 # Models
     
 # Create your views here.
@@ -219,3 +219,37 @@ def register_courses(request):
         'semester': current_calendar.semester,
         'course_fields': course_fields,
     })
+
+
+def student_approved_result_dashboard (request):
+    student = request.user.student  # adjust if you use OneToOne or a custom method
+    released_results = SemesterResult.objects.filter(
+        student=student,
+        is_released=True
+    ).select_related('academic_calendar').order_by('-academic_calendar__session')
+
+    context = {
+        'released_results': released_results,
+    }
+    return render(request, 'studentportal/partials/student_approved_result_dashboard.html', context)
+
+@login_required
+def student_approved_result_details(request, result_id):
+    student = request.user.student
+    result = get_object_or_404(
+        SemesterResult,
+        id=result_id,
+        student=student,
+        is_released=True
+    )
+
+    detailed_results = StudentResult.objects.filter(
+        semester_result=result
+    ).select_related('registered_course__course')
+
+    context = {
+        'result': result,
+        'detailed_results': detailed_results,
+    }
+    return render(request, 'studentportal/partials/student_approved_result_details.html', context)
+

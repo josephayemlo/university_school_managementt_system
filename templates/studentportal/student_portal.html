@@ -20,136 +20,16 @@
     </div>
     
     <div class="studentadminContainer">
-        <div class="leftNavContainer">
-            <a class="leftNavContainerBtn" href="{% url 'student_portal' %}">
-              <i class="fas fa-tachometer-alt icon-blue"></i> Dashboard
-            </a>
-          
-            <a class="leftNavContainerBtn ajax_link" href="{% url 'student_chat_dashboard' %}">
-              <i class="fas fa-comments icon-cyan"></i> Chat Dashboard
-            </a>
-          
-            <a class="leftNavContainerBtn ajax_link" href="{% url 'student_course_registration' %}">
-              <i class="fas fa-pencil-alt icon-yellow"></i> Course Registration
-            </a>
-          
-            <a class="leftNavContainerBtn ajax_link" href="{% url 'student_available_course' %}">
-              <i class="fas fa-book-open icon-teal"></i> Available Courses
-            </a>
-          
-            <a class="leftNavContainerBtn ajax_link" href="{% url 'student_register_courses' %}">
-              <i class="fas fa-check-square icon-green"></i> Register Semester Course
-            </a>
-          
-            <a class="leftNavContainerBtn ajax_link" href="{% url 'registered_courses' %}">
-              <i class="fas fa-list-alt icon-purple"></i> Registered Courses
-            </a>
-          
-            <a class="leftNavContainerBtn ajax_link" href="{% url 'previous_registered_courses' %}">
-              <i class="fas fa-history icon-orange"></i> Previous Registered Courses
-            </a>
-          
-            <a class="leftNavContainerBtn ajax_link" href="{% url 'student_school_fees_dashboard' %}">
-              <i class="fas fa-money-bill-wave icon-teal"></i> School Fees Payment
-            </a>
-          
-            <a class="leftNavContainerBtn ajax_link" href="{% url 'edit_student' %}">
-              <i class="fas fa-user-edit icon-indigo"></i> Edit Profile
-            </a>
-          
-            <a class="leftNavContainerBtn" href="{% url 'logout_user' %}">
-              <i class="fas fa-sign-out-alt icon-danger"></i> Logout
-            </a>
+       <!-- Side nav start -->
+          <div class="leftNavContainer">
+             {% include 'includes/hamburger_nav.html' with nav_links='includes/studentportal_nav_links.html' %}
           </div>
+      <!-- Side nav end -->
         
         <div class="rightNavContainer" id="ajaxContainer">
 
           <h1>Main content</h1>
-            <!-- AJAX content will load here -->
-              <!-- <div>
-
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique consectetur ex tempore atque vero, sint nam praesentium quod aut aliquid aperiam, earum temporibus illo sequi sapiente totam suscipit, dicta vel.
-
-             </div> -->
+           
         </div>
     </div>
 </section>

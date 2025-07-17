@@ -3,116 +3,35 @@
 
 {% block content%}
 
-
-<section class="undergraduateApplicationFormContainer">
-
-    <div class="undergraduateApplicationFormContainerMainHeading">
-        <h1>Undergraduate Application Form</h1>
-        <p>your journey towards becoming an Imperial College Student begins here...</p>
-    </div>
-    <div>
-                {% if messages %}
-        <div class="message-container">
-            {% for message in messages %}
-            <div class="alert {{ message.tags }}">
-                {{ message }}
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
+<section class="applicationFormUG">
+<h3 class="form_title">Undergraduate Application Form</h3>
+<!-- <p class="">your journey towards becoming an Imperial College Student begins here...</p> -->
 
 
-    </div>
-    <form method="post" enctype="multipart/form-data" class="applicationForm">
+    <form method="post" enctype="multipart/form-data" class="custom_form">
         {% csrf_token %}
 
-        <!-- Bio Data Start -->
-        <div class="applicationFormContainer" > 
-            <h1 class="applicationFormHeading">Personal Information</h1>
-            <div>
-                <div class="applicationFormSubHeading">Full Name</div>
-                <div class="applicationFormInputContainer">
-                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.first_name}}</div>
-                    <div class="applicationFormInputContainerSub">{{form.last_name}}</div>
-                </div>
-                <div class="applicationFormLabelContainer">
-                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.first_name.label}}</div>
-                    <div class="applicationFormLabelContainerSub">{{form.last_name.label}}</div>
-                </div>
-            </div>
-            <div>
-                <div class="applicationFormInputContainer">
-                    <div class="applicationFormInputContainerSub marginFixRight">{{form.gender}}</div>
-                    <div class="applicationFormInputContainerSub">{{form.dob}}</div>
-                </div>
-                <div class="applicationFormLabelContainer">
-                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.gender.label}}</div>
-                    <div class="applicationFormLabelContainerSub">{{form.dob.label}}</div>
-                </div>
-            </div>
-            
-            <div>
-                <div class="applicationFormSubHeading">Email/Phone Number</div>
-                <div class="applicationFormInputContainer">
-                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.email}}</div>
-                    <div class="applicationFormInputContainerSub">{{form.phone_number}}</div>
-                </div>
-                <div class="applicationFormLabelContainer">
-                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.email.label}}</div>
-                    <div class="applicationFormLabelContainerSub">{{form.phone_number.label}}</div>
-                </div>
-            </div>
-            <div>
-                <div class="applicationFormSubHeading">Address</div>
-                <div class="applicationFormInputLabelWideContainer">
-                    <div class="applicationFormInputLabelWideContainerSub  ">{{form.address_1}}</div>
-                    <div class="applicationFormInputLabelWideContainerSub">{{form.address_1.label}}</div>
-                </div>
-                <div class="applicationFormInputLabelWideContainer">
-                    <div class="applicationFormInputLabelWideContainerSub">{{form.address_2}}</div>
-                    <div class="applicationFormInputLabelWideContainerSub">{{form.address_2.label}}</div>
-                </div>
-            </div> 
-            
-            <div>
-                <div class="applicationFormInputContainer">
-                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.city}}</div>
-                    <div class="applicationFormInputContainerSub">{{form.state_province}}</div>
-                </div>
-                <div class="applicationFormLabelContainer">
-                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.city.label}}</div>
-                    <div class="applicationFormLabelContainerSub">{{form.state_province.label}}</div>
-                </div>
-            </div>
-            <div>
-                <div class="applicationFormInputContainer">
-                    <div class="applicationFormInputContainerSub marginFixRight ">{{form.postal_code}}</div>
-                    <div class="applicationFormInputContainerSub">{{form.country}}</div>
-                </div>
-                <div class="applicationFormLabelContainer">
-                    <div class="applicationFormLabelContainerSub marginFixRight">{{form.postal_code.label}}</div>
-                    <div class="applicationFormLabelContainerSub">{{form.country.label}}</div>
-                </div>
-            </div>
-        </div>
-        <!-- Bio Data End -->
-        
-        <div class="applicationFormContainer" > 
-            <h1 class="applicationFormHeading">Course Applying</h1>  
-           <div class="applicationFormInputLabelWideContainer">
-            <p class="applicationFormTextInformation">Kindly ensure that you select the right course as this action can not be undone later on. </p>
-                    <div class="applicationFormInputLabelWideContainerSub  ">{{form.course_of_study}}</div>
-                    <div class="applicationFormInputLabelWideContainerSub">{{form.course_of_study.label}}</div>
-            </div>
+ {% include 'management/partials/form_fields_template.html' with form=form %}
+  <!-- MESSAGES -->
+<div>
+ {% if messages %}
+   {% for message in messages %}
+     <div class="form_messages">
+       {{ message }}
+     </div>
+   {% endfor %}
+{% endif %}
+</div>
+<!-- MESSAGES -->
 
-        </div>
-        
-        <button type="submit">submit application</button>
-        <button type="reset">Clear Form</button>
-    </form>
+ <button type="submit" class="btn">Add</button>
+</form>
+
 </section>
 
 
-
-
-{% endblock content%}
+        <!-- Exluding footer -->
+        {% block footer %} 
+        {% endblock footer %}
+        
+        {% endblock content%}

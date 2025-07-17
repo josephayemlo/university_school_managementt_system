@@ -201,4 +201,4 @@ class AdmissionStatusForm(forms.ModelForm):
 class StudentResultForm(forms.ModelForm):
     class Meta:
         model = StudentResult
-        fields = ['registered_course', 'ca1', 'ca2', 'ca3', 'exam', 'grade_point', 'remark', 'is_released']
+        fields = ['registered_course', 'ca1', 'ca2', 'ca3', 'exam',  'remark']

@@ -98,17 +98,47 @@ class LevelCourse(models.Model):
 
 
 class StudentResult(models.Model):
+    semester_result = models.ForeignKey('core.SemesterResult', on_delete=models.CASCADE, null=True, blank=True,  related_name='student_results')
     registered_course = models.OneToOneField('RegisteredCourse', on_delete=models.CASCADE)
     ca1 = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     ca2 = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     ca3 = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     exam = models.DecimalField(max_digits=5, decimal_places=2, default=0)
-    grade_point = models.DecimalField(max_digits=4, decimal_places=2, default=0)
     remark = models.TextField(null=True, blank=True)
-    is_released = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     updated_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def total_score(self):
+        return float(self.ca1 + self.ca2 + self.ca3 + self.exam)
+
+    def get_grade_point(self):
+        score = self.total_score()
+        if score >= 70:
+            return 5.0
+        elif score >= 60:
+            return 4.0
+        elif score >= 50:
+            return 3.0
+        elif score >= 45:
+            return 2.0
+        elif score >= 40:
+            return 1.0
+        return 0.0
+
+    def get_grade_letter(self):
+        score = self.total_score()
+        if score >= 70:
+            return "A"
+        elif score >= 60:
+            return "B"
+        elif score >= 50:
+            return "C"
+        elif score >= 45:
+            return "D"
+        elif score >= 40:
+            return "E"
+        return "F"
 
     def __str__(self):
         rc = self.registered_course
@@ -117,8 +147,73 @@ class StudentResult(models.Model):
 
 class SemesterResult(models.Model):
     student = models.ForeignKey('core.Student', on_delete=models.CASCADE)
-    session = models.CharField(max_length=20)
-    semester = models.CharField(max_length=10)
+    academic_calendar = models.ForeignKey('AcademicCalendar', on_delete=models.PROTECT, null=True, blank=True) #Rm change null to false and remove blank
+    total_units_registered = models.PositiveIntegerField(default=0)
+    total_units_passed = models.PositiveIntegerField(default=0)
+    total_grade_points = models.DecimalField(max_digits=6, decimal_places=2, default=0)
+    gpa = models.DecimalField(max_digits=4, decimal_places=2, default=0)
+    cgpa = models.DecimalField(max_digits=4, decimal_places=2, default=0) 
+    remark = models.CharField(max_length=255, null=True, blank=True)
+    is_released = models.BooleanField(default=False)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = ('student', 'academic_calendar')
+    
+    def compute_result(self):
+
+        results = StudentResult.objects.filter(
+            registered_course__student=self.student,
+            registered_course__academic_calendar=self.academic_calendar
+        ).select_related('registered_course__course')
+
+        total_units = 0
+        total_passed_units = 0
+        total_grade_points = 0.0
+
+        for result in results:
+            course = result.registered_course.course
+            credit_unit = course.unit
+            grade_point = result.get_grade_point()
+
+            total_units += credit_unit
+            total_grade_points += credit_unit * grade_point
+
+            if grade_point >= 1.0:  # Passed
+                total_passed_units += credit_unit
+
+        self.total_units_registered = total_units
+        self.total_units_passed = total_passed_units
+        self.total_grade_points = round(total_grade_points, 2)
+        self.gpa = round((total_grade_points / total_units), 2) if total_units else 0
+
+        # Compute CGPA
+        self.cgpa = self.compute_cgpa()
+
+        # Set remark
+        self.remark = "PASS" if self.gpa >= 1.0 else "PROBATION" if self.gpa >= 0.5 else "FAIL"
+
+        self.save()
+
+    def compute_cgpa(self):
+        past_results = SemesterResult.objects.filter(
+            student=self.student,
+            is_released=True
+        ).exclude(id=self.id)
+
+        total_units = self.total_units_registered
+        total_points = float(self.total_grade_points)
+
+        for sr in past_results:
+            total_units += sr.total_units_registered
+            total_points += float(sr.total_grade_points)
+
+        return round(total_points / total_units, 2) if total_units else 0.0
+
+    
+"""
+how abut 
+"""
 
 
 class AssignCourse(models.Model):

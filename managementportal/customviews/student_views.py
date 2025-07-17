@@ -56,7 +56,7 @@ def add_student(request):
 
 
 def manage_student(request):
-    students = Student.objects.select_related('admin').order_by('admin__last_name')
+    students = Student.objects.select_related('admin').order_by('course_of_study__name')
     return render(request, 'management/partials/student/manage_student.html', {'students': students})
 
 

@@ -1,0 +1,39 @@
+<div class="form_title">All Student Result Release</div>
+<!-- Back Btn start -->
+<a class=" tableBtn1 ajax_link" href="{% url 'admin_result_and_assessment' %}">
+    <i class="fas fa-arrow-left"></i> Back
+  </a>
+  <!-- Back Btn end -->
+  
+ <!-- MESSAGES -->
+ <div>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="form_messages">
+          {{ message }}
+        </div>
+      {% endfor %}
+  {% endif %}
+  </div>
+  <!-- MESSAGES -->
+<div class="generalAdminLinkContainer">
+    <div class="tableContainer">
+        <div class="tableHeading">
+            <span class="tableHeading10">SN</span>
+            <span class="tableHeading1"> NAME</span>
+            <span class="tableHeading1">NAVIGATION</span>
+        </div>
+        <div class="tableData">
+            <span class="tableHeading10">1</span>
+            <span class="tableHeading1">Click the Release Button to Release results for all students</span>
+            <span class="tableHeading1"><a href="{% url 'admin_release_all_results' %}" class=" generalAdminBtn ajax_link">🔓Release all Results</a></span>
+        </div>
+        <div class="tableData">
+            <span class="tableHeading10">2</span>
+            <span class="tableHeading1">Click the UnRelease Button to UnRelease results for all students</span>
+            <span class="tableHeading1"><a href="{% url 'admin_unrelease_all_results' %}" class=" generalAdminBtn ajax_link">🔓UnRelease all Results</a></span>
+        </div>
+   
+      </div>
+    </div>
+    

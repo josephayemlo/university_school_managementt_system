@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% load static %}
+
+<div class="invoice_container" id="print-area">
+  <h2 class="invoice_title">Semester Result Summary</h2>
+
+  <div class="invoice_meta">
+    <p><strong>Name:</strong> {{ result.student.admin.first_name }} {{ result.student.admin.last_name }}</p>
+    <p><strong>Matric No:</strong> {{ result.student.matric_no }}</p>
+    <p><strong>Level:</strong> {{ result.level }}</p>
+    <p><strong>Department:</strong> {{ result.student.course_of_study.department }}</p>
+    <p><strong>Semester:</strong> {{ result.academic_calendar.semester }}</p>
+    <p><strong>Session:</strong> {{ result.academic_calendar.session }}</p>
+    <p><strong>Date Released:</strong> {{ result.released_at|date:"F j, Y" }}</p>
+  </div>
+
+  <table class="invoice_table">
+    <thead class="invoice_table_head">
+      <tr class="invoice_table_row invoice_table_head_row">
+        <th class="invoice_table_header">SN</th>
+        <th class="invoice_table_header">Course Code</th>
+        <th class="invoice_table_header">Course Title</th>
+        <th class="invoice_table_header">Unit</th>
+        <th class="invoice_table_header">Score</th>
+        <th class="invoice_table_header">Grade</th>
+      </tr>
+    </thead>
+    <tbody class="invoice_table_body">
+      {% for item in detailed_results %}
+      <tr class="invoice_table_row">
+        <td class="invoice_table_cell">{{ forloop.counter }}</td>
+        <td class="invoice_table_cell">{{ item.registered_course.course.code }}</td>
+        <td class="invoice_table_cell">{{ item.registered_course.course.title }}</td>
+        <td class="invoice_table_cell">{{ item.registered_course.course.unit }}</td>
+        <td class="invoice_table_cell">{{ item.total_score }}</td>
+        <td class="invoice_table_cell">{{ item.grade }}</td>
+      </tr>
+      {% endfor %}
+
+      <tr class="invoice_table_row invoice_total">
+        <td colspan="3" class="invoice_table_cell"><strong>Total Units</strong></td>
+        <td class="invoice_table_cell"><strong>{{ result.total_units }}</strong></td>
+        <td colspan="1" class="invoice_table_cell"><strong>GPA</strong></td>
+        <td class="invoice_table_cell"><strong>{{ result.gpa }}</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button onclick="window.print()" class="print_button">🖨️ Print Result</button>
+</div>
+
+{% block footer %} 
+{% endblock footer %}
+
+{% endblock content %}

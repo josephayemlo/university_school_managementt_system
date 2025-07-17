@@ -1,0 +1,34 @@
+<div class="form_title">All Student Result Computation</div>
+<!-- Back Btn start -->
+<a class=" tableBtn1 ajax_link" href="{% url 'admin_result_and_assessment' %}">
+    <i class="fas fa-arrow-left"></i> Back
+  </a>
+  <!-- Back Btn end -->
+  
+ <!-- MESSAGES -->
+ <div>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="form_messages">
+          {{ message }}
+        </div>
+      {% endfor %}
+  {% endif %}
+  </div>
+  <!-- MESSAGES -->
+<div class="generalAdminLinkContainer">
+    <div class="tableContainer">
+        <div class="tableHeading">
+            <span class="tableHeading10">SN</span>
+            <span class="tableHeading1"> NAME</span>
+            <span class="tableHeading1">NAVIGATION</span>
+        </div>
+        <div class="tableData">
+            <span class="tableHeading10">1</span>
+            <span class="tableHeading1">Click the Compute Button to compute results for all students</span>
+            <span class="tableHeading1"><a href="{% url 'admin_compute_all_semester_results' %}" class=" generalAdminBtn ajax_link">Compute Result</a></span>
+        </div>
+   
+      </div>
+    </div>
+    

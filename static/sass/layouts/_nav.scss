@@ -1,47 +1,4 @@
 @use "../base/media"; 
-.apply{
-
-
-    &Heading{
-        font-size: 28px;
-        font-weight: bold;
-    }
-}
-
-.applyContentAndNavContainer{
-    display: flex;
-    flex-direction: row;
-
-}
-.applyLeftNavContainer{
-    flex: 0 0 20%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    background-color: #ebeeee  ;
-
-
-    &Btn{
-        text-decoration: none;
-        color: black;
-        padding: 10px;
-        border: 2px solid rgba(0, 0, 0, 0.142);
-        border-bottom: none;
-        font-size: 14px;
-        background-color: white;
-    }
-    &Btn:last-child{
-        border-bottom: 2px solid rgba(0, 0, 0, 0.142);
-
-    }
-}
-
-.applyRightContentContainer{
-    flex: 1;
-    border: 1.5px solid rgba(0, 0, 0, 0.213);
-    padding: 25px;
-}
-
 
 
 // home nav start

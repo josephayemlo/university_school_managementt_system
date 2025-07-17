@@ -1,6 +1,12 @@
 from . import views
 from django.urls import path
-from .customviews.student_result_views import result_registeredcourse_students, result_select_department, result_department_course
+from .customviews.student_result_views import (
+    result_registeredcourse_students, result_select_department, 
+    result_department_course,semester_result,semester_results_list, compute_semester_result_individual, 
+    compute_all_semester_results, compute_all_semester_results_dashboard, compute_by_department,
+    release_by_department, release_all_results, release_all_results_dashboard, unrelease_all_results
+
+)
 from .customviews.aspirant_views import add_aspirant, manage_aspirant, edit_aspirant, delete_aspirant
 from .customviews.student_views import add_student, manage_student, edit_student, delete_student
 from .customviews.academic_staff_views import (
@@ -60,6 +66,23 @@ urlpatterns = [
     path("result_select_department", result_select_department, name='admin_result_select_department'),
     path('department/<int:department_id>/courses/', result_department_course, name='admin_result_department_course'),
     path('course/<int:course_id>/students/', result_registeredcourse_students, name='admin_result_registeredcourse_students'),
+    path("semester_result", semester_result, name='admin_semester_result'),
+    path('admin/semester-results/', semester_results_list, name='admin_semester_results_list'),
+    path('admin/compute-semester-result/<int:result_id>/', compute_semester_result_individual, name='admin_compute_semester_result_individual'),
+    path('admin/compute-all-results/', compute_all_semester_results, name='admin_compute_all_semester_results'),
+    path('admin/compute-all-results/dashboard', compute_all_semester_results_dashboard, name='admin_compute_all_semester_results_dashboard'),
+    path('admin/compute-by-department/', compute_by_department, name='admin_compute_by_department'),
+    path('admin/release-by-department/', release_by_department, name='admin_release_by_department'),
+    path('admin/release-all/result', release_all_results, name='admin_release_all_results'),
+    path('admin/unrelease-all/result', unrelease_all_results, name='admin_unrelease_all_results'),
+
+    path('admin/release-all/dashboard', release_all_results_dashboard, name='admin_release_all_results_dashboard'),
+
+
+
+
+
+
 
     # aspirant URL
     path("aspirant/add", add_aspirant, name='admin_add_aspirant'),

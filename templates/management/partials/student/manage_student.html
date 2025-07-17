@@ -9,16 +9,19 @@
       <span class="tableHeading10">SN</span>
       <span class="tableHeading1">Full Name</span>
       <span class="tableHeading1">Email</span>
+      <span class="tableHeading20">Department</span>
       <span class="tableHeading15">Gender</span>
+
       <span class="tableHeading20">Edit/Delete</span>
   </div>
 
   {% if students %}
-    {% for student in students %}
+    {% for student in students %} 
       <div class="tableData">
           <span class="tableHeading10">{{ forloop.counter }}</span>
           <span class="tableHeading1">{{ student.admin.first_name }} {{ student.admin.last_name }}</span>
           <span class="tableHeading1">{{ student.admin.email }}</span>
+          <span class="tableHeading20">{{ student.course_of_study.department.name }}</span>
           <span class="tableHeading15">{{ student.admin.gender }}</span>
           <span class="tableHeading20"> 
               <a href="{% url 'admin_edit_student' student.id %}" class="tableBtn1 ajax_link">Edit</a> - 

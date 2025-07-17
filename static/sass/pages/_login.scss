@@ -1,3 +1,4 @@
+@use "../base/media";
 
 .loginCardContainer{
     width: 29rem;
@@ -9,6 +10,13 @@
     left: 0;
     right: 0;    
     margin: auto;
+
+  @include media.down("sm") {
+    height: 100vh;
+    width: 100%;
+
+
+  }
 
 }
 

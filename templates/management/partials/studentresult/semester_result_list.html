@@ -1,0 +1,49 @@
+<div class="form_title">Student Result Computation</div>
+
+<!-- Back Btn start -->
+<a class="tableBtn1 ajax_link" href="{% url 'admin_result_and_assessment' %}">
+  <i class="fas fa-arrow-left"></i> Back
+</a>
+<!-- Back Btn end -->
+
+<!-- MESSAGES -->
+<div>
+  {% if messages %}
+    {% for message in messages %}
+      <div class="form_messages">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>
+<!-- MESSAGES -->
+
+<div class="generalAdminLinkContainer">
+  <div class="tableContainer">
+    <div class="tableHeading">
+      <span class="tableHeading10">SN</span>
+      <span class="tableHeading1">Student</span>
+      <span class="tableHeading1">Session</span>
+      <span class="tableHeading1">GPA</span>
+      <span class="tableHeading1">CGPA</span>
+      <span class="tableHeading1">Total Units</span>
+      <span class="tableHeading1">Remark</span>
+      <span class="tableHeading20">Action</span>
+    </div>
+
+    {% for result in results %}
+    <div class="tableData">
+      <span class="tableHeading10">{{ forloop.counter }}</span>
+      <span class="tableHeading1">{{ result.student.admin.first_name }} {{ result.student.admin.last_name }}</span>
+      <span class="tableHeading1">{{ result.academic_calendar.session }}</span>
+      <span class="tableHeading1">{{ result.gpa }}</span>
+      <span class="tableHeading1">{{ result.cgpa }}</span>
+      <span class="tableHeading1">{{ result.total_units_registered }}</span>
+      <span class="tableHeading1">{{ result.remark }}</span>
+      <span class="tableHeading20">
+        <a href="{% url 'admin_compute_semester_result_individual' result.id %}" class="generalAdminBtn ajax_link">Compute</a>
+      </span>
+    </div>
+    {% endfor %}
+  </div>
+</div>

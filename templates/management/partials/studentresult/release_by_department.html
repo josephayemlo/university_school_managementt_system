@@ -1,0 +1,44 @@
+<div class="form_title">Release Semester Results by Department</div>
+
+<!-- Back Btn -->
+<a class="tableBtn1 ajax_link" href="{% url 'admin_result_and_assessment' %}">
+  <i class="fas fa-arrow-left"></i> Back
+</a>
+
+<!-- Messages -->
+<div>
+  {% if messages %}
+    {% for message in messages %}
+      <div class="form_messages">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+</div>
+
+<div class="generalAdminLinkContainer">
+  <div class="tableContainer">
+    <div class="tableHeading">
+      <span class="tableHeading10">SN</span>
+      <span class="tableHeading1">Department</span>
+      <span class="tableHeading1">Action</span>
+    </div>
+
+    {% for dept in departments %}
+    <div class="tableData">
+      <span class="tableHeading10">{{ forloop.counter }}</span>
+      <span class="tableHeading1">{{ dept.name }}</span>
+      <span class="tableHeading1">
+        <form 
+          method="post" style="display: inline;"
+          class="ajax_form"
+          onsubmit="this.querySelector('button[type=submit]').disabled = true;"
+          action="{% url 'admin_release_by_department' %}"
+        >
+          {% csrf_token %}
+          <input type="hidden" name="department" value="{{ dept.id }}">
+          <button type="submit" class="generalAdminBtn">🔓 Release</button>
+        </form>
+      </span>
+    </div>
+    {% endfor %}
+  </div>
+</div>

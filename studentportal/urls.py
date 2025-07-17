@@ -10,6 +10,10 @@ from .customviews.school_fees_payment_views import (
 urlpatterns = [
     
     path("student/course_registration", views.course_registration, name='student_course_registration'),
+    path("student/student_approved_result_dashboard", views.student_approved_result_dashboard, name='student_approved_result_dashboard'),
+    path("student/student_approved_result_details/<int:result_id>/", views.student_approved_result_details, name='student_approved_result_details'),
+
+
     path("student/available_course", views.student_available_course, name='student_available_course'),
     path("student/register_course", views.register_courses, name='student_register_courses'),
     path("student_portal", views.student_portal, name='student_portal'),

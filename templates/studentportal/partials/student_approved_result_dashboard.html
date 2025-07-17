@@ -1,0 +1,35 @@
+<div class="form_title">My Released Semester Results</div>
+
+{% if released_results %}
+  <div class="generalAdminLinkContainer">
+    <div class="tableContainer">
+      <div class="tableHeading">
+        <span class="tableHeading10">SN</span>
+        <span class="tableHeading1">Session</span>
+        <span class="tableHeading1">Semester</span>
+        <span class="tableHeading1">GPA</span>
+        <span class="tableHeading1">CGPA</span>
+        <span class="tableHeading1">Total Units</span>
+        <span class="tableHeading1">Remark</span>
+        <span class="tableHeading1">Action</span>
+      </div>
+
+      {% for result in released_results %}
+      <div class="tableData">
+        <span class="tableHeading10">{{ forloop.counter }}</span>
+        <span class="tableHeading1">{{ result.academic_calendar.session }}</span>
+        <span class="tableHeading1">{{ result.academic_calendar.semester }}</span>
+        <span class="tableHeading1">{{ result.gpa }}</span>
+        <span class="tableHeading1">{{ result.cgpa }}</span>
+        <span class="tableHeading1">{{ result.total_units_registered }}</span>
+        <span class="tableHeading1">{{ result.remark }}</span>
+        <span class="tableHeading1">
+          <a href="{% url 'student_approved_result_details' result.id %}" class="generalAdminBtn ">View</a>
+        </span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% else %}
+  <div class="form_messages">No released results yet.</div>
+{% endif %}
