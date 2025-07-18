@@ -30,7 +30,6 @@
       }
       @include media.down("sm") {  
         padding: 0;
-        background-color: white;
            
        }
 
@@ -59,6 +58,10 @@
       flex: 1;
       height: calc(100vh - 80px); // Adjust height based on top nav
       overflow: hidden;
+      @include media.down("md") {  
+        // flex-direction: column;
+           
+       }
    
   
       .leftNavContainer {
@@ -70,11 +73,19 @@
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+        border-right: 1px solid rgba(139, 126, 126, 0.534);
+
 
 
         @include media.down("md") {  
           flex: 0 0 0%;
-          overflow-y: hidden;
+          overflow: hidden;
+          padding-top: 0;
+          border-right: none;
+          height: auto;
+          margin-right: -2.5rem;
+
+
     
         }
     
@@ -93,6 +104,7 @@
           border-left: 4px solid transparent;
           transition: 0.2s ease-in-out;
           border-radius: 4px;
+
 
       
       
@@ -123,11 +135,20 @@
         overflow-y: auto;
         height: 100%;
 
+
+        @include media.down("md") {  
+            
+          }
+
+
+
         .adminRightContentRow1Container {
           display: flex;
           gap: 1rem;
           margin-bottom: 2rem;
           flex-direction: row;
+
+
           @include media.down("lg") {  
           flex-direction: column;
             
@@ -189,6 +210,122 @@
 
 }
 
+// result
+.result_desktop {
+  display: block;
+  @include media.down("sm") {  
+    display: none;
+  }
+}
+.result_mobile {
+  display: none;
+
+  @include media.down("sm") {
+    display: block;
+    padding: 1rem;
+    background-color: rgba(30, 41, 59, 0.9); // Dark Slate with slight transparency
+  }
+
+  .result_form_mobile {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .result_form_title_mobile {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #f8fafc; // Lightest gray
+    margin-bottom: 0.3rem;
+    text-align: center;
+  }
+
+  .result_form_subtitle_mobile {
+    font-size: 1rem;
+    color: #cbd5e1; // Cool gray
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .student_card_mobile {
+    background-color: rgba(255, 255, 255, 0.05); // Translucent white for dark UI
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 4px rgba(255, 255, 255, 0.06);
+  }
+
+  .student_info_mobile {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e2e8f0; // Very light slate
+    margin-bottom: 0.75rem;
+
+    small {
+      font-size: 0.875rem;
+      color: #94a3b8; // Mid gray
+    }
+  }
+
+  .input_group_mobile {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.75rem;
+
+    label {
+      font-size: 0.875rem;
+      color: #cbd5e1;
+      margin-bottom: 0.25rem;
+    }
+
+    input {
+      padding: 0.5rem;
+      font-size: 0.95rem;
+      background-color: #1e293b;
+      color: #f1f5f9;
+      border: 1px solid #334155;
+      border-radius: 4px;
+      transition: border 0.2s;
+
+      &:focus {
+        border-color: #3b82f6;
+        outline: none;
+      }
+    }
+  }
+
+  .total_score_mobile {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #93c5fd; // Sky blue
+    background-color: rgba(255, 255, 255, 0.06);
+    padding: 0.5rem;
+    border-radius: 4px;
+    text-align: right;
+  }
+
+  .result_submit_button_mobile {
+    display: block;
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    background-color: #3b82f6;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #2563eb;
+    }
+  }
+}
+
+
+
 
 // ApexChart 
 
@@ -200,4 +337,6 @@
   box-shadow: 0 2px 5px rgba(0,0,0,0.07);
   text-align: center;
 }
+
+
 

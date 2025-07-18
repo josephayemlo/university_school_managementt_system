@@ -52,8 +52,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    # cutom login middleware
-    # 'accounts.middleware.LoginCheckMiddleWare',
+    
 
     'core.middleware.ForceAspirantProfileCompletionMiddleware',
     'core.middleware.ForceAspirantToAspirantPortal',

@@ -94,14 +94,29 @@
 
 // end Table template | for partials
 
-// Student Registered Course and scores table start
+// Student Registered/Register Course and scores table start
+.table-wrapper2 {
+  display: flex;
+  justify-content: center;
 
+}
+
+.table-wrapper {
+  display: flex;
+  justify-content: center;
+
+}
 .course_table {
-    width: 100%;
     border-collapse: collapse;
     font-family: sans-serif;
     margin-top: 1rem;
-  
+    margin: 1rem;
+    font-size: 14px;
+    @include media.down("sm") {  
+      font-size: 11px;
+
+        
+      }
     th,
     td {
       border: 1px solid #ccc;

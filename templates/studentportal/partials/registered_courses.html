@@ -1,6 +1,6 @@
 <div class="form_title">{{academic_calendar.semester}} Semester {{academic_calendar.session}} Session </div>
 {% if registered_courses %}
-
+<div class="table-wrapper">
 <table class="course_table">
     <thead class="course_table_head">
         <tr class="course_table_row course_table_head_row">
@@ -31,6 +31,7 @@
         {% endfor %}
     </tbody>
 </table>
+</div>
 {% else %}
 <p>No registered courses found.</p>
 {% endif %}

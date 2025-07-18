@@ -7,9 +7,15 @@
     border: none;
     cursor: pointer;
     display: none;
+    top: 0;
+    margin-left: 0;
+    align-self: flex-start;
+    z-index: 900;
+
   
     @include media.down("md") {  
       display: inline-block;
+      
     }
   }
   

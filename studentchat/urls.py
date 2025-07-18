@@ -5,7 +5,7 @@ urlpatterns = [
 
     # student
     path('chat_dashboard/', views.chat_dashboard, name='student_chat_dashboard'),
-    path('student_list/', views.student_list, name='student_chat_student_list'),
+    path('student_list/', views.student_chat_list, name='student_chat_student_list'),
     path('group-rooms/', views.available_group_rooms, name='student_available_group_rooms'),
     path('privatechat/<int:user_id>/', views.private_chat_view, name='student_private_chat'),
     path('join-group-room/<int:room_id>/', views.join_group_room, name='student_join_group_room'),

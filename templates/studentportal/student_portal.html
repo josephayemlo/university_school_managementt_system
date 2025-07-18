@@ -26,9 +26,15 @@
           </div>
       <!-- Side nav end -->
         
-        <div class="rightNavContainer" id="ajaxContainer">
+        <div class="rightContentContainer" id="ajaxContainer">
 
-          <h1>Main content</h1>
+            <div id="chartContainer" 
+                data-level="{{ student_level }}" 
+                data-duration="{{ study_duration }}">
+                <div id="progressRoadmapChart" style="max-width: 650px; margin-top: 20px;"></div>
+            </div>
+
+
            
         </div>
     </div>

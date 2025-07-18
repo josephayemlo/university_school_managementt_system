@@ -7,10 +7,25 @@ from django.contrib.auth import update_session_auth_hash
 from .forms import StudentProfileForm
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from core.models import SemesterResult, StudentResult
+from core.models import SemesterResult, StudentResult, CourseOfStudy
 # Models
     
 # Create your views here.
+
+# Student Portal home
+@login_required
+def student_portal (request):
+    student = request.user.student
+    context= {
+        'student': student,
+        'student_level': student.level,
+        'study_duration': student.course_of_study.duration_years
+
+    }
+    
+    return render(request, 'studentportal/student_portal.html', context)
+
+
 
 @login_required
 def edit_student(request):
@@ -45,10 +60,6 @@ def edit_student(request):
     return render(request, "studentportal/partials/edit_student.html", context)
 
 
-# Student Portal home
-@login_required
-def student_portal (request):
-    return render(request, 'studentportal/student_portal.html')
 
 # Previous Registered Courses
 def previous_registered_courses(request):

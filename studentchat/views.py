@@ -81,12 +81,15 @@ def private_chat_view(request, user_id):
 
 
 
-def student_list(request):
+def student_chat_list(request):
     student = request.user.student
+    current_user = request.user
+
     student_list = Student.objects.filter(
         course_of_study=student.course_of_study,
         level = student.level
-    )
+    ).exclude(admin=current_user) #the current user cant be in the list... i.e user should not chat with self
+
     return render(request, 'studentchat/student/student_list.html', {'student_list': student_list})
 
 

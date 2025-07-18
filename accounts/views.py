@@ -28,7 +28,7 @@ def login_page (request):
         elif request.user.user_type == '4':
             return redirect(reverse("student_portal"))
         else:
-            return redirect(reverse("aspirant_student_home"))
+            return redirect(reverse("aspirant_home"))
     return render(request, 'accounts/login.html')
 
 def login_user(request, **kwargs):
@@ -47,7 +47,7 @@ def login_user(request, **kwargs):
             elif request.user.user_type == '4':
                 return redirect(reverse("student_portal"))
             else:
-                return redirect(reverse("aspirant_student_home"))
+                return redirect(reverse("aspirant_home"))
         else:
             messages.error(request, "Invalid details")
             return redirect("login_page")

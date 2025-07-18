@@ -1,35 +1,36 @@
 
 <h2 class="form_title"> {{ student.course_of_study.name }} - {{ student.level }}L ({{ semester }} Semester) Courses</h2>
-<form method="post" action="{% url 'student_register_courses' %}" class="ajax_form">
-    {% csrf_token %}
-  
-    <table class="course_table">
-      <thead class="course_table_head">
-        <tr class="course_table_head_row">
-          <th class="course_table_header">Select</th>
-          <th class="course_table_header">Code</th>
-          <th class="course_table_header">Title</th>
-          <th class="course_table_header">Unit</th>
-          <th class="course_table_header">Category</th>
-        </tr>
-      </thead>
-      <tbody class="course_table_body">
-        {% for field, course in course_fields %}
-        <tr class="course_table_row">
-          <td class="course_table_cell">{{ field }}</td>
-          <td class="course_table_cell">{{ course.code }}</td>
-          <td class="course_table_cell">{{ course.title }}</td>
-          <td class="course_table_cell">{{ course.unit }}</td>
-          <td class="course_table_cell">{{ course.category }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  
-    <div class="formBtnWrapper" style="text-align:center; margin-top: 20px;">
-      <button type="submit" class="tableBtn1">Register Courses</button>
-    </div>
-  </form>
-  
-  <div id="ajax_form_response"></div>
-  
+<div class="table-wrapper2">
+  <form method="post" action="{% url 'student_register_courses' %}" class="ajax_form">
+      {% csrf_token %}
+    
+      <table class="course_table">
+        <thead class="course_table_head">
+          <tr class="course_table_head_row">
+            <th class="course_table_header">Select</th>
+            <th class="course_table_header">Code</th>
+            <th class="course_table_header">Title</th>
+            <th class="course_table_header">Unit</th>
+            <th class="course_table_header">Category</th>
+          </tr>
+        </thead>
+        <tbody class="course_table_body">
+          {% for field, course in course_fields %}
+          <tr class="course_table_row">
+            <td class="course_table_cell">{{ field }}</td>
+            <td class="course_table_cell">{{ course.code }}</td>
+            <td class="course_table_cell">{{ course.title }}</td>
+            <td class="course_table_cell">{{ course.unit }}</td>
+            <td class="course_table_cell">{{ course.category }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    
+      <div class="formBtnWrapper" style="text-align:center; margin-top: 20px;">
+        <button type="submit" class="tableBtn1">Register Courses</button>
+      </div>
+    </form>
+    
+    <div id="ajax_form_response"></div>
+</div>
