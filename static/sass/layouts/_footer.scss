@@ -127,9 +127,10 @@
 .socialIconsContainer{
     display: flex;
     flex-direction: row;
+    gap: 1rem;
 }
 
-.fa{
+.fab{
     padding: 22px;
     padding-left: 0;
 }

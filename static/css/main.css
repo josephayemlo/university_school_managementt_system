@@ -911,9 +911,10 @@ body {
 .socialIconsContainer {
   display: flex;
   flex-direction: row;
+  gap: 1rem;
 }
 
-.fa {
+.fab {
   padding: 22px;
   padding-left: 0;
 }
@@ -1527,6 +1528,70 @@ body {
 .chatMessage.chatOther {
   background: #143546;
   color: white;
+}
+
+.passwordResetContainer {
+  height: 100vh;
+  padding: 2rem;
+}
+
+.auth-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+  background-color: #f9f9f9;
+  min-height: 80vh;
+}
+
+.auth-card {
+  background: #ffffff;
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  max-width: 500px;
+  width: 100%;
+}
+
+.auth-title {
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+  color: #1a1a1a;
+}
+
+.auth-subtitle {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+.auth-form .form-group {
+  margin-bottom: 1.25rem;
+}
+.auth-form .form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.auth-form .form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+.auth-form .btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+}
+.auth-form .btn-primary {
+  background-color: #007bff;
+  color: #fff;
 }
 
 .homeContainer {
