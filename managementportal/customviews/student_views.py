@@ -6,8 +6,16 @@ from core.models import Student
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
-# Create your views here.
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
+
+# permission check
+def is_custom_superuser(user):
+    return user.is_authenticated and user.user_type == '1'
+
 # add
+@login_required
+@user_passes_test(is_custom_superuser)
 def add_student(request):
     form = StudentForm(request.POST or None, request.FILES or None)
     context = {'form': form, 'page_title': 'Add Student'}
@@ -54,13 +62,15 @@ def add_student(request):
     return render(request, 'management/partials/student/add_student.html', context)
 
 
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def manage_student(request):
     students = Student.objects.select_related('admin').order_by('course_of_study__name')
     return render(request, 'management/partials/student/manage_student.html', {'students': students})
 
 
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def edit_student(request, student_id):
     student = get_object_or_404(Student, id=student_id)
     user = student.admin  # linked User object
@@ -101,7 +111,10 @@ def edit_student(request, student_id):
         'page_title': 'Edit Student'
     }
     return render(request, "management/partials/student/edit_student.html", context)
+
 # delete
+@login_required
+@user_passes_test(is_custom_superuser)
 def delete_student(request, student_id):
     if request.method == 'POST':
         student = get_object_or_404(Student, id=student_id)

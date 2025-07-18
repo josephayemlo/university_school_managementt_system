@@ -4,6 +4,16 @@ from core.forms import DepartmentSchoolFeeForm, DepartmentFeeItemForm
 from core.models import DepartmentSchoolFee, DepartmentFeeItem
 
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
+
+# permission check
+def is_custom_superuser(user):
+    return user.is_authenticated and user.user_type == '1'
+
+
+@login_required
+@user_passes_test(is_custom_superuser)
 def department_fee_item(request, department_fee_id ):
     department_fee = get_object_or_404(DepartmentSchoolFee, id=department_fee_id)
     fee_item = DepartmentFeeItem.objects.filter(
@@ -16,7 +26,8 @@ def department_fee_item(request, department_fee_id ):
     return render(request, 'management/partials/schoolfeespayment/department_fee_item.html', context)
 
 
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def manage_department_school_fees(request):
     department_fee = DepartmentSchoolFee.objects.all()
     context={
@@ -27,7 +38,8 @@ def manage_department_school_fees(request):
 
 
 
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def add_department_school_fees(request):
     form = DepartmentSchoolFeeForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
@@ -42,7 +54,8 @@ def add_department_school_fees(request):
     return render (request, 'management/partials/schoolfeespayment/add_department_school_fees.html', context)
 
 
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def add_item_to_department_school_fee(request):
 
     form = DepartmentFeeItemForm(request.POST or None)

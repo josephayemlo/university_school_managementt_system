@@ -2,8 +2,16 @@ from core.forms import StudentResultForm
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from core.models import Department, AcademicCalendar, Course, RegisteredCourse, StudentResult, SemesterResult
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 
+# permission check
+def is_custom_superuser(user):
+    return user.is_authenticated and user.user_type == '1'
 
+# add
+@login_required
+@user_passes_test(is_custom_superuser)
 def result_select_department(request):
     department = Department.objects.all()
     context = {
@@ -11,7 +19,8 @@ def result_select_department(request):
     }
     return render(request, 'management/partials/studentresult/result_select_department.html', context)
 
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def result_department_course(request, department_id ):
     department = get_object_or_404(Department, id=department_id)
     current_calendar = AcademicCalendar.objects.filter(is_current=True).first()
@@ -38,7 +47,8 @@ def result_department_course(request, department_id ):
 
 
 
-# working on
+@login_required
+@user_passes_test(is_custom_superuser)
 def result_registeredcourse_students(request, course_id):
     course = get_object_or_404(Course, id=course_id)
     calendar = AcademicCalendar.objects.filter(is_current=True).first()
@@ -89,11 +99,13 @@ def result_registeredcourse_students(request, course_id):
     }
     return render(request, 'management/partials/studentresult/result_registeredcourse_students.html', context)
 
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def semester_result(request):
     return render(request, 'management/partials/studentresult/semester_result.html')
      
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def semester_results_list(request):
     results = SemesterResult.objects.select_related('student', 'academic_calendar').all()
 
@@ -109,7 +121,8 @@ def semester_results_list(request):
     return render(request, 'management/partials/studentresult/semester_result_list.html', context)
 
 
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def compute_semester_result_individual(request, result_id):
     result = get_object_or_404(SemesterResult, id=result_id)
     result.compute_result()
@@ -117,9 +130,13 @@ def compute_semester_result_individual(request, result_id):
     messages.success(request, f"Computed GPA/CGPA for {result.student} - {result.academic_calendar}")
     return redirect('admin_semester_results_list')
 
+@login_required
+@user_passes_test(is_custom_superuser)
 def compute_all_semester_results_dashboard(request):
     return render(request, 'management/partials/studentresult/compute_all_semester_result.html')
 
+@login_required
+@user_passes_test(is_custom_superuser)
 def compute_all_semester_results(request):
     calendar = AcademicCalendar.objects.filter(is_current=True).first()
 
@@ -137,6 +154,8 @@ def compute_all_semester_results(request):
     messages.success(request, f"{count} semester result(s) successfully computed.")
     return redirect('admin_compute_all_semester_results_dashboard')
 
+@login_required
+@user_passes_test(is_custom_superuser)
 def compute_by_department(request):
     calendar = AcademicCalendar.objects.filter(is_current=True).first()
 
@@ -174,6 +193,8 @@ def compute_by_department(request):
     return render(request, 'management/partials/studentresult/compute_by_department.html', context)
 
 
+@login_required
+@user_passes_test(is_custom_superuser)
 def release_by_department(request):
     calendar = AcademicCalendar.objects.filter(is_current=True).first()
 
@@ -210,11 +231,13 @@ def release_by_department(request):
 
 
 
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def release_all_results_dashboard(request):
     return render(request, 'management/partials/studentresult/release_all_results_dashboard.html')
 
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def release_all_results(request):
     calendar = AcademicCalendar.objects.filter(is_current=True).first()
 
@@ -233,6 +256,8 @@ def release_all_results(request):
     return redirect('admin_release_all_results_dashboard')
 
 
+@login_required
+@user_passes_test(is_custom_superuser)
 def unrelease_all_results(request):
     calendar = AcademicCalendar.objects.filter(is_current=True).first()
 

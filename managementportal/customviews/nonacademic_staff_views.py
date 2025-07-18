@@ -5,10 +5,18 @@ from core.models import NonAcademicStaff
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 User = get_user_model()
-# Create your views here.
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
+
+# permission check
+def is_custom_superuser(user):
+    return user.is_authenticated and user.user_type == '1'
+
 
 
 # add academic staff
+@login_required
+@user_passes_test(is_custom_superuser)
 def add_nonacademicstaff(request):
     form = NonAcademicStaffForm(request.POST or None, request.FILES or None)
     context = {'form': form, 'page_title': 'Add NonAcademicStaff'}
@@ -54,14 +62,15 @@ def add_nonacademicstaff(request):
 
 
 # list
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def manage_nonacademicstaff(request):
     nonacademicstaff = NonAcademicStaff.objects.select_related('admin').order_by('admin__last_name')
     return render(request, 'management/partials/nonacademicstaff/manage_nonacademicstaff.html', {'nonacademicstaff': nonacademicstaff})
 
 # edit
-
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def edit_nonacademicstaff(request, nonacademicstaff_id):
     nonacademicstaff = get_object_or_404(NonAcademicStaff, id=nonacademicstaff_id)
     user = nonacademicstaff.admin  # linked User object
@@ -99,7 +108,10 @@ def edit_nonacademicstaff(request, nonacademicstaff_id):
         'nonacademicstaff': nonacademicstaff,
     }
     return render(request, "management/partials/nonacademicstaff/edit_nonacademicstaff.html", context)
+
 # delete
+@login_required
+@user_passes_test(is_custom_superuser)
 def delete_nonacademicstaff(request, nonacademicstaff_id):
     if request.method == 'POST':
         nonacademicstaff = get_object_or_404(NonAcademicStaff, id=nonacademicstaff_id)

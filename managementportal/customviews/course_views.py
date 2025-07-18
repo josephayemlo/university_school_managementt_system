@@ -2,8 +2,16 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from core.models import Course
 from ..forms import CourseForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
+
+# permission check
+def is_custom_superuser(user):
+    return user.is_authenticated and user.user_type == '1'
 
 # add
+@login_required
+@user_passes_test(is_custom_superuser)
 def add_course(request):
     form = CourseForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
@@ -13,12 +21,16 @@ def add_course(request):
     return render(request, 'management/partials/course/add_course.html', {'form': form})
 
 # manage/view
+@login_required
+@user_passes_test(is_custom_superuser)
 def manage_course(request):
     course = Course.objects.all()
     context= {"course":course}
     return render(request, 'management/partials/course/manage_course.html', context)
 
 # edit
+@login_required
+@user_passes_test(is_custom_superuser)
 def edit_course(request, course_id):
     course = get_object_or_404(Course, id=course_id)
     if request.method == 'POST':
@@ -38,6 +50,8 @@ def edit_course(request, course_id):
     return render(request, 'management/partials/course/edit_course.html', context)
 
 # delete
+@login_required
+@user_passes_test(is_custom_superuser)
 def delete_course(request, course_id):
     if request.method == 'POST':
         course = get_object_or_404(Course, id=course_id)

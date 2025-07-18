@@ -1,15 +1,21 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import update_session_auth_hash
 from core.models import AspirantStudent
 from core.forms import AspirantStudentForm
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.urls import reverse
-
 User = get_user_model()
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
+
+# permission check
+def is_custom_superuser(user):
+    return user.is_authenticated and user.user_type == '1'
+
 
 # Create your views here.
 # add
+@login_required
+@user_passes_test(is_custom_superuser)
 def add_aspirant(request):
     form = AspirantStudentForm(request.POST or None, request.FILES or None)
     context = {'form': form, 'page_title': 'Add Aspirant'}
@@ -48,13 +54,15 @@ def add_aspirant(request):
     return render(request, 'management/partials/aspirant/add_aspirant.html', context)
 
 
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def manage_aspirant(request):
     aspirants = AspirantStudent.objects.select_related('admin').order_by('admin__last_name')
     return render(request, 'management/partials/aspirant/manage_aspirant.html', {'aspirants': aspirants})
 
 
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def edit_aspirant(request, aspirant_id):
     aspirant = get_object_or_404(AspirantStudent, id=aspirant_id)
     user = aspirant.admin  # linked User object
@@ -139,7 +147,10 @@ def edit_aspirant(request, aspirant_id):
         'page_title': 'Edit aspirant'
     }
     return render(request, "management/partials/aspirant/edit_aspirant.html", context)
+
 # delete
+@login_required
+@user_passes_test(is_custom_superuser)
 def delete_aspirant(request, aspirant_id):
     if request.method == 'POST':
         aspirant = get_object_or_404(AspirantStudent, id=aspirant_id)

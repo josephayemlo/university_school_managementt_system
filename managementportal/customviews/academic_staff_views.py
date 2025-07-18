@@ -8,18 +8,18 @@ User = get_user_model()
 from core.forms import AssignCourseForm
 from django.http import JsonResponse
 from django.db import IntegrityError
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 
 
-
-
-
-
-
-
-
+# permission check
+def is_custom_superuser(user):
+    return user.is_authenticated and user.user_type == '1'
 
 
 # assign course
+@login_required
+@user_passes_test(is_custom_superuser)
 def assign_course(request):
     form = AssignCourseForm(request.POST or None, request.FILES or None)
 
@@ -42,12 +42,16 @@ def assign_course(request):
 
 
 # manage/view
+@login_required
+@user_passes_test(is_custom_superuser)
 def manage_assigned_course(request):
     assigned_course = AssignCourse.objects.all()
     context= {"assigned_course":assigned_course}
     return render(request, 'management/partials/academicstaff/manage_assigned_course.html', context)
 
 # edit
+@login_required
+@user_passes_test(is_custom_superuser)
 def edit_assigned_course(request, assigned_course_id):
     assigned_course = get_object_or_404(AssignCourse, id=assigned_course_id)
     if request.method == 'POST':
@@ -66,6 +70,8 @@ def edit_assigned_course(request, assigned_course_id):
     return render(request, 'management/partials/academicstaff/edit_assigned_course.html', context)
 
 # delete
+@login_required
+@user_passes_test(is_custom_superuser)
 def delete_assigned_course(request, assigned_course_id):
     if request.method == 'POST':
         assigned_course = get_object_or_404(AssignCourse, id=assigned_course_id)
@@ -78,6 +84,8 @@ def delete_assigned_course(request, assigned_course_id):
 
 
 # add academic staff
+@login_required
+@user_passes_test(is_custom_superuser)
 def add_academicstaff(request):
     form = AcademicStaffForm(request.POST or None, request.FILES or None)
     context = {'form': form, 'page_title': 'Add AcademicStaff'}
@@ -127,14 +135,15 @@ def add_academicstaff(request):
 
 
 # list
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def manage_academicstaff(request):
     academicstaff = AcademicStaff.objects.select_related('admin').order_by('admin__last_name')
     return render(request, 'management/partials/academicstaff/manage_academicstaff.html', {'academicstaff': academicstaff})
 
 # edit
-
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def edit_academicstaff(request, academicstaff_id):
     academicstaff = get_object_or_404(AcademicStaff, id=academicstaff_id)
     user = academicstaff.admin  # linked User object
@@ -175,7 +184,10 @@ def edit_academicstaff(request, academicstaff_id):
         'academicstaff': academicstaff,
     }
     return render(request, "management/partials/academicstaff/edit_academicstaff.html", context)
+
 # delete
+@login_required
+@user_passes_test(is_custom_superuser)
 def delete_academicstaff(request, academicstaff_id):
     if request.method == 'POST':
         academicstaff = get_object_or_404(AcademicStaff, id=academicstaff_id)

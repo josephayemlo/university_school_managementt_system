@@ -1,12 +1,22 @@
 from django.shortcuts import render
-from core.models import AssignCourse, AcademicCalendar, Course, RegisteredCourse, StudentResult
+from core.models import AssignCourse, AcademicCalendar,  RegisteredCourse, StudentResult
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
+
+# permission check
+def is_acd_staff(user):
+    return user.is_authenticated and user.user_type == '2'
 
 
+@login_required
+@user_passes_test(is_acd_staff)
+def academicstaff_home (request):
+    return render(request, 'staff/academicstaff_home.html')
 
-# Create your views here.
-
+@login_required
+@user_passes_test(is_acd_staff)
 def result_upload(request, course_id):
     calendar = AcademicCalendar.objects.filter(is_current=True).first()
     if not calendar:
@@ -53,7 +63,8 @@ def result_upload(request, course_id):
 
 
 
-
+@login_required
+@user_passes_test(is_acd_staff)
 def upload_result_dashboard (request):
     academic_calendar = AcademicCalendar.objects.filter(is_current=True).first()
     assigned_course = AssignCourse.objects.filter(
@@ -67,14 +78,13 @@ def upload_result_dashboard (request):
     return render(request, 'staff/partials/upload_result_dashboard.html',context)
 
 
-
+@login_required
+@user_passes_test(is_acd_staff)
 def assigned_course(request):
     assigned_course = AssignCourse.objects.filter(academic_staff=request.user.academicstaff)
     context={'assigned_course': assigned_course}
     return render(request, 'staff/partials/assigned_course.html', context)
 
-def academicstaff_home (request):
-    return render(request, 'staff/academicstaff_home.html')
 
 
 

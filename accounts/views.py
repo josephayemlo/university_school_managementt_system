@@ -13,9 +13,6 @@ User = get_user_model()
 # Create your views here.
 
 
-# success
-def success(request):
-    return render(request, 'core/success.html')
 
 def login_page (request):
     if request.user.is_authenticated:

@@ -8,21 +8,27 @@ from django.http import HttpResponseForbidden
 from .forms import ChatRoomForm
 from django.contrib import messages
 
+# permission check
+def is_custom_superuser(user):
+    return user.is_authenticated and user.user_type == '1'
+def is_student(user):
+    return user.is_authenticated and user.user_type == '4'
 
 # Chat Dashboard
+@login_required
+@user_passes_test(is_student)
 def chat_dashboard(request):
     return render(request, 'studentchat/student/chat_dashboard.html')
 
 # Chat Management
+@login_required
+@user_passes_test(is_custom_superuser)
 def chat_management(request):
     return render(request, 'studentchat/chat_management.html')
 
-# permmission
-def is_admin(user):
-    return user.is_authenticated and user.is_superuser
 
 @login_required
-@user_passes_test(is_admin)
+@user_passes_test(is_custom_superuser)
 def create_group_chat_room(request):
     if request.method == 'POST':
         form = ChatRoomForm(request.POST)
@@ -38,12 +44,16 @@ def create_group_chat_room(request):
     return render(request, 'studentchat/create_group_chat.html', { 'form': form })
 
 # Manage Group Chat
+@login_required
+@user_passes_test(is_custom_superuser)
 def manage_group_chat(request):
     groupchat = ChatRoom.objects.all()
     return render(request, 'studentchat/manage_group_chat.html', { 'groupchat': groupchat })
 
 
 # edit
+@login_required
+@user_passes_test(is_custom_superuser)
 def edit_group_chat(request, group_chat_id):
     group_chat = get_object_or_404(ChatRoom, id=group_chat_id)
     if request.method == 'POST':
@@ -62,6 +72,7 @@ def edit_group_chat(request, group_chat_id):
 
 
 @login_required
+@user_passes_test(is_student)
 def private_chat_view(request, user_id):
     other_user = get_object_or_404(User, id=user_id)
     # getting previous messages
@@ -75,12 +86,8 @@ def private_chat_view(request, user_id):
         }
     return render(request, 'studentchat/student/private_chat.html', context)
 
-
-
-
-
-
-
+@login_required
+@user_passes_test(is_student)
 def student_chat_list(request):
     student = request.user.student
     current_user = request.user
@@ -94,6 +101,7 @@ def student_chat_list(request):
 
 
 @login_required
+@user_passes_test(is_student)
 def group_chat_view(request, room_id):
     room = get_object_or_404(ChatRoom, id=room_id)
 
@@ -112,6 +120,7 @@ def group_chat_view(request, room_id):
 
 
 @login_required
+@user_passes_test(is_student)
 def available_group_rooms(request):
     student = request.user.student  
 
@@ -130,6 +139,7 @@ def available_group_rooms(request):
     })
 
 @login_required
+@user_passes_test(is_student)
 def join_group_room(request, room_id):
     student = request.user.student
     room = get_object_or_404(ChatRoom, id=room_id)

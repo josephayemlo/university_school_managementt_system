@@ -6,14 +6,18 @@ from core.models import AcademicCalendar, RegisteredCourse, Course, LevelCourse,
 from django.contrib.auth import update_session_auth_hash
 from .forms import StudentProfileForm
 from django.urls import reverse
+from core.models import SemesterResult, StudentResult
 from django.contrib.auth.decorators import login_required
-from core.models import SemesterResult, StudentResult, CourseOfStudy
-# Models
+from django.contrib.auth.decorators import user_passes_test
+
     
-# Create your views here.
+def is_student(user):
+    return user.is_authenticated and user.user_type == '4'
+
 
 # Student Portal home
 @login_required
+@user_passes_test(is_student)
 def student_portal (request):
     student = request.user.student
     context= {
@@ -28,6 +32,7 @@ def student_portal (request):
 
 
 @login_required
+@user_passes_test(is_student)
 def edit_student(request):
     student = get_object_or_404(Student, admin=request.user)
     form = StudentProfileForm(request.POST or None, instance=student)
@@ -62,6 +67,8 @@ def edit_student(request):
 
 
 # Previous Registered Courses
+@login_required
+@user_passes_test(is_student)
 def previous_registered_courses(request):
     student = get_object_or_404(Student, admin=request.user)
 
@@ -111,6 +118,8 @@ def previous_registered_courses(request):
     })
 
 # previous registered courese details view
+@login_required
+@user_passes_test(is_student)
 def previous_course_registration_details(request, level, semester):
     student = get_object_or_404(Student, admin=request.user)
 
@@ -135,6 +144,8 @@ def previous_course_registration_details(request, level, semester):
 
 
 # Current Registered courses
+@login_required
+@user_passes_test(is_student)
 def registered_courses(request):
     student = get_object_or_404(Student, admin=request.user)
     academic_calendar = AcademicCalendar.objects.get(is_current=True)
@@ -151,10 +162,14 @@ def registered_courses(request):
     return render (request, 'studentportal/partials/registered_courses.html',context)
 
 # course registration
+@login_required
+@user_passes_test(is_student)
 def course_registration(request):
     return render (request, 'studentportal/partials/course_registration.html')
 
 # Current Semester Available courses
+@login_required
+@user_passes_test(is_student)
 def student_available_course(request):
     student = get_object_or_404(Student, admin=request.user)
     current_calendar = AcademicCalendar.objects.get(is_current=True)
@@ -170,6 +185,8 @@ def student_available_course(request):
     })
 
 # Register courses
+@login_required
+@user_passes_test(is_student)
 def register_courses(request):
     student = get_object_or_404(Student, admin=request.user)
     current_calendar = AcademicCalendar.objects.get(is_current=True)
@@ -231,7 +248,8 @@ def register_courses(request):
         'course_fields': course_fields,
     })
 
-
+@login_required
+@user_passes_test(is_student)
 def student_approved_result_dashboard (request):
     student = request.user.student  # adjust if you use OneToOne or a custom method
     released_results = SemesterResult.objects.filter(
@@ -245,6 +263,7 @@ def student_approved_result_dashboard (request):
     return render(request, 'studentportal/partials/student_approved_result_dashboard.html', context)
 
 @login_required
+@user_passes_test(is_student)
 def student_approved_result_details(request, result_id):
     student = request.user.student
     result = get_object_or_404(

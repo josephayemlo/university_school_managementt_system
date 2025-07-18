@@ -2,10 +2,16 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from ..forms import AcademicCalenderForm, AspirantAcademicCalendarForm
 from core.models import AcademicCalendar, AspirantAcademicCalendar
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 
-
+# permission check
+def is_custom_superuser(user):
+    return user.is_authenticated and user.user_type == '1'
 
 # add
+@login_required
+@user_passes_test(is_custom_superuser)
 def add_academic_calender(request):
     form = AcademicCalenderForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
@@ -16,12 +22,16 @@ def add_academic_calender(request):
 
 
 # manage/view
+@login_required
+@user_passes_test(is_custom_superuser)
 def manage_academic_calender(request):
     academic_calender = AcademicCalendar.objects.all()
     context= {"academic_calender":academic_calender}
     return render(request, 'management/partials/academiccalender/manage_academic_calender.html', context)
 
 # edit
+@login_required
+@user_passes_test(is_custom_superuser)
 def edit_academic_calender(request, academic_calender_id):
     academic_calender = get_object_or_404(AcademicCalendar, id=academic_calender_id)
     if request.method == 'POST':
@@ -40,7 +50,8 @@ def edit_academic_calender(request, academic_calender_id):
 
 
 # AsprantAcademicCalender
-# add
+@login_required
+@user_passes_test(is_custom_superuser)
 def add_aspirant_academic_calender(request):
     form = AspirantAcademicCalendarForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
@@ -51,12 +62,16 @@ def add_aspirant_academic_calender(request):
 
 
 # manage/view
+@login_required
+@user_passes_test(is_custom_superuser)
 def manage_aspirant_academic_calender(request):
     aspirant_academic_calender = AspirantAcademicCalendar.objects.all()
     context= {"aspirant_academic_calender":aspirant_academic_calender}
     return render(request, 'management/partials/academiccalender/manage_aspirant_academic_calender.html', context)
 
 # edit
+@login_required
+@user_passes_test(is_custom_superuser)
 def edit_aspirant_academic_calender(request, aspirant_academic_calender_id):
     aspirant_academic_calender = get_object_or_404(AspirantAcademicCalendar, id=aspirant_academic_calender_id)
     if request.method == 'POST':

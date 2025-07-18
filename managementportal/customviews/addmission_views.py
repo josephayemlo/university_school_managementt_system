@@ -3,14 +3,22 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.shortcuts import render
 from core.models import AspirantStudent, AspirantAcademicCalendar, CourseOfStudy
 from core.forms import AdmissionStatusForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 
+# permission check
+def is_custom_superuser(user):
+    return user.is_authenticated and user.user_type == '1'
 
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def addmissions (request):
     session = AspirantAcademicCalendar.objects.all()
     return render(request, 'management/partials/addmission/addmissions.html', {'session':session})
 
 # list course applied
+@login_required
+@user_passes_test(is_custom_superuser)
 def addmissions_courses(request, session_id):
     session = get_object_or_404(AspirantAcademicCalendar, id=session_id)
     
@@ -26,6 +34,8 @@ def addmissions_courses(request, session_id):
 
 
 # list applicants
+@login_required
+@user_passes_test(is_custom_superuser)
 def addmissions_applicants(request, session_id, course_id):
     session = get_object_or_404(AspirantAcademicCalendar, id=session_id)
     course = get_object_or_404(CourseOfStudy, id=course_id)
@@ -41,7 +51,8 @@ def addmissions_applicants(request, session_id, course_id):
         'applicants': applicants,
     })
 
-
+@login_required
+@user_passes_test(is_custom_superuser)
 def change_addmission_status(request, aspirant_id):
     aspirant = get_object_or_404(AspirantStudent, id=aspirant_id)
     

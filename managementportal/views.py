@@ -1,8 +1,16 @@
 from django.shortcuts import render
 from core.models import AcademicStaff, NonAcademicStaff, Student
 from django.db.models import Count
-# Create your views here.
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 
+# permission check
+def is_custom_superuser(user):
+    return user.is_authenticated and user.user_type == '1'
+
+# add
+@login_required
+@user_passes_test(is_custom_superuser)
 def management_home (request):
     total_academicstaff = AcademicStaff.objects.all().count()
     total_nonacademicstaff = NonAcademicStaff.objects.all().count()

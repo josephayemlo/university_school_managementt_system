@@ -113,17 +113,17 @@ Name: {first_name} {last_name}
 Email: {email}
 Course Applied: {course_of_study}
                         """,
-                        from_email='no-reply@imperialCollege.edu',
+                        from_email='no-reply@CommunityCollege.edu',
                         to=['josephayemlojay@gmail.com'],
                         reply_to=[email]
                     ).send()
 
                     EmailMessage(
-                        subject=f'Welcome to Imperial College, {first_name}',
+                        subject=f'Welcome to Community College, {first_name}',
                         body=f"""
 Dear {first_name},
 
-Thank you for applying to Imperial College.
+Thank you for applying to Community College USA.
 
 Your application has been received successfully.
 
@@ -133,12 +133,12 @@ Please log in to your Aspirant Portal and complete your profile.
 Email: {email}
 Password: {custom_password}
 
-Use the above credentials at: https://imperialcollege.edu/aspirant-login
+Use the above credentials at: https://Communitycollege.edu/aspirant-login
 
 Best regards,
-Imperial College Admissions
+Community College Admissions
                         """,
-                        from_email='no-reply@imperialCollege.edu',
+                        from_email='no-reply@CommunityCollege.edu',
                         to=[email]
                     ).send()
                 messages.success(request, "Registeration Successful, check your email for further instructions.")
@@ -167,7 +167,7 @@ def scholarship_Application_Form_View(request):
             EmailMessage(
                'Scholarship Application Form Submission from {}'.format(first_name),
                last_name,
-               'imperialCollege@example.com', # Send from (your website)
+               'CommunityCollege@example.com', # Send from (your website)
                ['josephayemlo@gmail.com'], # Send to (your admin email)
                [],
                reply_to=[email] # Email from the form to get back to
@@ -175,7 +175,7 @@ def scholarship_Application_Form_View(request):
             EmailMessage(
                'Your scholarship application has been recieved sucessfuly {}'.format(first_name),
                last_name,
-               'imperialCollege@example.com', # Send from (your website)
+               'CommunityCollege@example.com', # Send from (your website)
                [email], # Send to (your admin email)
                [],
                reply_to=[email] # Email from the form to get back to

@@ -5,15 +5,20 @@ from .forms import AspirantStudentProfileForm
 from core.models import AspirantStudent
 from django.contrib import messages
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 
 
 # AspirantPortal Home
+
+@login_required
 def aspirant_home (request):
     aspirant = request.user.aspirant
     return render(request, 'aspirantportal/aspirant_home.html', {'aspirant': aspirant})
 
 # Aspirant Edit View 
+
+@login_required
 def edit_aspirant(request):
   
     aspirantstudent = get_object_or_404(AspirantStudent, admin=request.user)
