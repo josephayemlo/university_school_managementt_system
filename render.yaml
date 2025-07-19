@@ -2,7 +2,9 @@ services:
   - type: web
     name: school-management-system
     env: python
-    buildCommand: "./build.sh"
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
     startCommand: "daphne -b 0.0.0.0 -p 10000 project.asgi:application"
     pythonVersion: 3.11.9
     envVars:
