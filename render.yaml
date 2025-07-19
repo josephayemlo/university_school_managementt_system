@@ -4,6 +4,7 @@ services:
     env: python
     buildCommand: "./build.sh"
     startCommand: "daphne -b 0.0.0.0 -p 10000 project.asgi:application"
+    pythonVersion: 3.11.9
     envVars:
       - key: DEBUG
         value: "False"
