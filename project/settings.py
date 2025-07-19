@@ -87,7 +87,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'project.wsgi.application'
 
 
-
 if os.getenv("DATABASE_URL"):
     # 🚀 Production: PostgreSQL on Railway
     DATABASES = {

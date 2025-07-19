@@ -3,178 +3,177 @@
 
 {% block content %}
 <div class="homeContainer">
-<!-- front page -->
-<section class="frontPage">
-    <div>
-        <img src="{% static 'images/homebg.jpg' %}" alt="front page image" class="homebg">
-    </div>
-</section>
-<!-- ================== News Section ================== -->
-<section class="newsHomeSection">
-    <div class="newsCardColumn">
-      <div class="newsCardBox newsCardPrimary">
-        <a href="#" class="newsCardLink">
-          <img src="{% static 'images/news1.png' %}" alt="News image" class="newsCardImage">
-          <div class="newsCardContent">
-            <span class="newsTag">News</span>
-            <span class="newsCategory">Graduation</span>
-            <span class="newsDate">20 September 2025</span>
-            <span class="newsTitle">Your way to graduation <br> starts here <br>Success begins here</span>
-          </div>
-        </a>
+  <!-- front page -->
+  <section class="frontPage">
+      <div>
+          <img src="{% static 'images/homebg.jpg' %}" alt="front page image" class="homebg">
       </div>
-  
-      <div class="newsCardBox">
-        <a href="#" class="newsCardLink">
-          <img src="{% static 'images/news2.jpeg' %}" alt="News image" class="newsCardImage">
-          <div class="newsCardContent">
-            <span class="newsTag">News</span>
-            <span class="newsCategory">Student</span>
-            <span class="newsDate">20 September 2024</span>
-            <span class="newsTitle">Student lifestyle <br> Fun Moments <br>Always Community College USA</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  
-    <div class="newsAsideColumn">
-      <div class="newsHighlightCard">
-        <img src="{% static 'images/news3.jpg' %}" alt="Research" class="newsCardImage">
-        <div class="newsCardTextContainer">
-          <h4 class="heading">Research Excellence</h4>
-          <p class="text">Lorem ipsum dolor sit, hop ehdhdhdh ddn djjdojfdjfodj</p>
-        </div>
-      </div>
-  
-      <div class="newsGiftCard">
-        <div class="giftTextWrapper">
-          <h1>Support Community College USA with a gift today</h1>
-        </div>
-        <div>
-          <p class="text">Lorem ipsum dolor sit, hop ehdhdhdh ddn djjdojfdjfodj</p>
-          <a href="#" class="donateLink"> <u>Make a gift today</u> &#187;</a>
-        </div>
-      </div>
-    </div>
   </section>
-  
-  <!-- ================== Study Section ================== -->
-  <section class="studyAtCommunityCollegeSection">
-    <div class="intro">
-      <h1>Studying at Community College USA</h1>
-      <p>See why students from around the world choose to study with us.</p>
-    </div>
-  
-    <div class="studyBtnRow">
-      <a href="#" class="studyBtn courses">Courses</a>
-      <a href="{% url 'apply' %}" class="studyBtn">Apply</a>
-      <a href="#" class="studyBtn">Fees and funding</a>
-      <a href="#" class="studyBtn">Visit</a>
-    </div>
-  
-    <div class="studyImageBox">
-      <img src="{% static 'images/studywithus1.jpg' %}" alt="Study at Community College USA">
-    </div>
-  </section>
-  
-  <!-- ================== Research Section ================== -->
-  <!-- ================== Research Section ================== -->
-<section class="researchBlock">
-    <div class="sectionHeader">
-      <h1>Research and Innovation</h1>
-      <p>REF 2021 finds that Community College USA has a greater proportion of world-leading research than any other UK university</p>
-    </div>
-  
-    <!-- Row 1 -->
-    <div class="researchRow">
-      <div class="researchCard">
-        <img src="{% static 'images/research1.jpg' %}" alt="Research">
-        <div>
-          <h4>Research Excellence Framework (REF2021)</h4>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, velit odit neque asperiores perspiciatis</p>
-          <a href="#">Read more about &#187;</a>
-        </div>
-      </div>
-  
-      <div class="impactCard">
-        <img src="{% static 'images/research2.jpg' %}" alt="Impact">
-        <div>
-          <h4>Research impact</h4>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, velit odit neque asperiores perspiciatis</p>
-          <a href="#">Read more about &#187;</a>
-        </div>
-      </div>
-    </div>
-  
-    <!-- Row 2 -->
-    <div class="researchRow">
-      <div class="researchCard greenCard">
-        <img src="{% static 'images/research3.jpg' %}" alt="Research">
-        <div>
-          <h4>AI for Healthcare Systems</h4>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, velit odit neque asperiores perspiciatis</p>
-          <a href="#">Read more about &#187;</a>
-        </div>
-      </div>
-  
-      <div class="impactCard blueCard">
-        <img src="{% static 'images/research4.jpg' %}" alt="Tech">
-        <div>
-          <h4>Transforming Global Tech</h4>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, velit odit neque asperiores perspiciatis</p>
-          <a href="#">Read more about &#187;</a>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  
-  <!-- ================== Events and Alumni Section ================== -->
-  <section class="eventsAlumniSection">
-    <div class="eventsBlock">
-      <span class="eventsHeader">What's on at Community College USA</span> / <a href="#" class="eventsBtn">Events</a>
-      <div class="eventsCardsWrapper">
-        <div class="eventBox">
-          <a href="#" class="eventLink">
-            <img src="{% static 'images/event1.jpg' %}" class="eventImage">
-            <div class="eventDetails">
-              <span class="eventLabel">Event</span>
-              <span class="eventType">Exhibition</span>
-              <span class="eventDate">20 Sep - 02 Nov 2023, 10:00 - 17:00</span>
-              <span class="eventLocation">Sherfield Building, South Kensington Campus</span>
+  <!-- ================== News Section ================== -->
+  <section class="newsHomeSection">
+      <div class="newsCardColumn">
+        <div class="newsCardBox newsCardPrimary">
+          <a href="#" class="newsCardLink">
+            <img src="{% static 'images/news1.png' %}" alt="News image" class="newsCardImage">
+            <div class="newsCardContent">
+              <span class="newsTag">News</span>
+              <span class="newsCategory">Graduation</span>
+              <span class="newsDate">20 September 2025</span>
+              <span class="newsTitle">Your way to graduation <br> starts here <br>Success begins here</span>
             </div>
           </a>
         </div>
-  
-        <div class="eventBox">
-          <a href="#" class="eventLink">
-            <img src="{% static 'images/event2.jpg' %}" class="eventImage">
-            <div class="eventDetails">
-              <span class="eventLabel">Event</span>
-              <span class="eventType">Seminar</span>
-              <span class="eventDate">20 Sep - 02 Nov 2023, 10:00 - 17:00</span>
-              <span class="eventLocation">Sherfield Building, South Kensington Campus</span>
+    
+        <div class="newsCardBox">
+          <a href="#" class="newsCardLink">
+            <img src="{% static 'images/news2.jpeg' %}" alt="News image" class="newsCardImage">
+            <div class="newsCardContent">
+              <span class="newsTag">News</span>
+              <span class="newsCategory">Student</span>
+              <span class="newsDate">20 September 2024</span>
+              <span class="newsTitle">Student lifestyle <br> Fun Moments <br>Always Community College USA</span>
             </div>
           </a>
         </div>
-  
-        <div class="eventsListTextCard">
-          <p><strong>26 October:</strong> Seminar - Cardiac Function Series, Practice Session - CfAE Speaking, Social - Lunchtime Concert, Seminar - Ayman Rimah Said</p>
+      </div>
+    
+      <div class="newsAsideColumn">
+        <div class="newsHighlightCard">
+          <img src="{% static 'images/news3.jpg' %}" alt="Research" class="newsCardImage">
+          <div class="newsCardTextContainer">
+            <h4 class="heading">Research Excellence</h4>
+            <p class="text">Lorem ipsum dolor sit, hop ehdhdhdh ddn djjdojfdjfodj</p>
+          </div>
+        </div>
+    
+        <div class="newsGiftCard">
+          <div class="giftTextWrapper">
+            <h1>Support Community College USA with a gift today</h1>
+          </div>
+          <div>
+            <p class="text">Lorem ipsum dolor sit, hop ehdhdhdh ddn djjdojfdjfodj</p>
+            <a href="#" class="donateLink"> <u>Make a gift today</u> &#187;</a>
+          </div>
         </div>
       </div>
-    </div>
-  
-    <div class="alumniBlock">
-      <span class="eventsHeader">Alumni</span> / <a href="#" class="eventsBtn">Go to Alumni</a>
-      <div class="alumniCard">
-        <img src="{% static 'images/alumni1.jpg' %}" class="alumniImage">
-        <div class="alumniText">
-          <span class="title">Your Network</span>
-          <p class="desc">As an Community College USA alumnus, you are a member of a lifelong community of over 190,000 across the globe. Access exclusive alumni benefits, join a local group and keep in touch.</p>
-          <span class="linkText">Find out more &raquo;</span>
+    </section>
+    
+    <!-- ================== Study Section ================== -->
+    <section class="studyAtCommunityCollegeSection">
+      <div class="intro">
+        <h1>Studying at Community College USA</h1>
+        <p>See why students from around the world choose to study with us.</p>
+      </div>
+    
+      <div class="studyBtnRow">
+        <a href="#" class="studyBtn courses">Courses</a>
+        <a href="{% url 'apply' %}" class="studyBtn">Apply</a>
+        <a href="#" class="studyBtn">Fees and funding</a>
+        <a href="#" class="studyBtn">Visit</a>
+      </div>
+    
+      <div class="studyImageBox">
+        <img src="{% static 'images/studywithus1.jpg' %}" alt="Study at Community College USA">
+      </div>
+    </section>
+    
+    <!-- ================== Research Section ================== -->
+  <section class="researchBlock">
+      <div class="sectionHeader">
+        <h1>Research and Innovation</h1>
+        <p>REF 2021 finds that Community College USA has a greater proportion of world-leading research than any other UK university</p>
+      </div>
+    
+      <!-- Row 1 -->
+      <div class="researchRow">
+        <div class="researchCard">
+          <img src="{% static 'images/research1.jpg' %}" alt="Research">
+          <div>
+            <h4>Research Excellence Framework (REF2021)</h4>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, velit odit neque asperiores perspiciatis</p>
+            <a href="#">Read more about &#187;</a>
+          </div>
+        </div>
+    
+        <div class="impactCard">
+          <img src="{% static 'images/research2.jpg' %}" alt="Impact">
+          <div>
+            <h4>Research impact</h4>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, velit odit neque asperiores perspiciatis</p>
+            <a href="#">Read more about &#187;</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    
+      <!-- Row 2 -->
+      <div class="researchRow">
+        <div class="researchCard greenCard">
+          <img src="{% static 'images/research3.jpg' %}" alt="Research">
+          <div>
+            <h4>AI for Healthcare Systems</h4>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, velit odit neque asperiores perspiciatis</p>
+            <a href="#">Read more about &#187;</a>
+          </div>
+        </div>
+    
+        <div class="impactCard blueCard">
+          <img src="{% static 'images/research4.jpg' %}" alt="Tech">
+          <div>
+            <h4>Transforming Global Tech</h4>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, velit odit neque asperiores perspiciatis</p>
+            <a href="#">Read more about &#187;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <!-- ================== Events and Alumni Section ================== -->
+    <section class="eventsAlumniSection">
+      <div class="eventsBlock">
+        <span class="eventsHeader">What's on at Community College USA</span> / <a href="#" class="eventsBtn">Events</a>
+        <div class="eventsCardsWrapper">
+          <div class="eventBox">
+            <a href="#" class="eventLink">
+              <img src="{% static 'images/event1.jpg' %}" class="eventImage">
+              <div class="eventDetails">
+                <span class="eventLabel">Event</span>
+                <span class="eventType">Exhibition</span>
+                <span class="eventDate">20 Sep - 02 Nov 2023, 10:00 - 17:00</span>
+                <span class="eventLocation">Sherfield Building, South Kensington Campus</span>
+              </div>
+            </a>
+          </div>
+    
+          <div class="eventBox">
+            <a href="#" class="eventLink">
+              <img src="{% static 'images/event2.jpg' %}" class="eventImage">
+              <div class="eventDetails">
+                <span class="eventLabel">Event</span>
+                <span class="eventType">Seminar</span>
+                <span class="eventDate">20 Sep - 02 Nov 2023, 10:00 - 17:00</span>
+                <span class="eventLocation">Sherfield Building, South Kensington Campus</span>
+              </div>
+            </a>
+          </div>
+    
+          <div class="eventsListTextCard">
+            <p><strong>26 October:</strong> Seminar - Cardiac Function Series, Practice Session - CfAE Speaking, Social - Lunchtime Concert, Seminar - Ayman Rimah Said</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="alumniBlock">
+        <span class="eventsHeader">Alumni</span> / <a href="#" class="eventsBtn">Go to Alumni</a>
+        <div class="alumniCard">
+          <img src="{% static 'images/alumni1.jpg' %}" class="alumniImage">
+          <div class="alumniText">
+            <span class="title">Your Network</span>
+            <p class="desc">As an Community College USA alumnus, you are a member of a lifelong community of over 190,000 across the globe. Access exclusive alumni benefits, join a local group and keep in touch.</p>
+            <span class="linkText">Find out more &raquo;</span>
+          </div>
+        </div>
+      </div>
+    </section>
 </div>
-{% endblock content%}
+{% endblock %}
