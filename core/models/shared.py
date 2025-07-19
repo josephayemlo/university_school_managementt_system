@@ -40,10 +40,10 @@ class Course(models.Model):
     code = models.CharField(max_length=10)
     title = models.CharField(max_length=100)
     unit = models.PositiveIntegerField()
-    level = models.CharField(max_length=3, choices=LevelChoices.choices)
-    semester = models.CharField(max_length=10, choices=SemesterChoices.choices)
+    level = models.CharField(max_length=30, choices=LevelChoices.choices)
+    semester = models.CharField(max_length=30, choices=SemesterChoices.choices)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
-    category = models.CharField(max_length=20, choices=CourseCategoryChoices.choices)
+    category = models.CharField(max_length=30, choices=CourseCategoryChoices.choices)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -62,7 +62,7 @@ class AspirantAcademicCalendar(models.Model):
 # this is used to activate a session only one calalender can take is_current=True
 class AcademicCalendar(models.Model):
     session = models.CharField(max_length=20)  # e.g., '2024/2025'
-    semester = models.CharField(max_length=10, choices=SemesterChoices.choices)
+    semester = models.CharField(max_length=30, choices=SemesterChoices.choices)
     is_current = models.BooleanField(default=False)
 
     def __str__(self):
@@ -84,8 +84,8 @@ class RegisteredCourse(models.Model):
 
 
 class LevelCourse(models.Model):
-    level = models.CharField(max_length=3, choices=LevelChoices.choices)
-    semester = models.CharField(max_length=10, choices=SemesterChoices.choices)
+    level = models.CharField(max_length=30, choices=LevelChoices.choices)
+    semester = models.CharField(max_length=30, choices=SemesterChoices.choices)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     course_of_study = models.ForeignKey(CourseOfStudy, on_delete=models.CASCADE)
     is_compulsory = models.BooleanField(default=True)

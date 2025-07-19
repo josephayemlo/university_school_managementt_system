@@ -40,8 +40,8 @@ class CustomUser(AbstractUser):
 
     username = None  # Removed username, using email instead
     email = models.EmailField(unique=True)
-    user_type = models.CharField(default=1, choices=USER_TYPE, max_length=1)
-    gender = models.CharField(max_length=1, choices=GENDER)
+    user_type = models.CharField(default=30, choices=USER_TYPE, max_length=1)
+    gender = models.CharField(max_length=20, choices=GENDER)
     address = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -125,8 +125,8 @@ class Student(models.Model):
 # Lecturers
 class AcademicStaff(models.Model):
     admin = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='academicstaff')
-    position = models.CharField(max_length=20, choices=AcademicStaffPosition.choices, default=AcademicStaffPosition.GRADUATE_ASSISTANT)
-    role = models.CharField(max_length=20, choices=AcademicStaffRole.choices, default=AcademicStaffRole.STAFF)
+    position = models.CharField(max_length=30, choices=AcademicStaffPosition.choices, default=AcademicStaffPosition.GRADUATE_ASSISTANT)
+    role = models.CharField(max_length=30, choices=AcademicStaffRole.choices, default=AcademicStaffRole.STAFF)
     department = models.ForeignKey('core.Department', on_delete=models.DO_NOTHING)
 
     def __str__(self):
@@ -138,7 +138,7 @@ class AcademicStaff(models.Model):
 # Secretary, security.. etc
 class NonAcademicStaff(models.Model):
     admin = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='nonacademicstaff')
-    role = models.CharField(max_length=20, choices=NonAcademicStaffRole.choices, default=NonAcademicStaffRole.STAFF)
+    role = models.CharField(max_length=30, choices=NonAcademicStaffRole.choices, default=NonAcademicStaffRole.STAFF)
 
     def __str__(self):
         return str(self.admin.email)

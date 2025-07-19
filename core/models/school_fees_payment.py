@@ -8,7 +8,7 @@ from core.models.utils import generate_reference
 class DepartmentSchoolFee(models.Model):
     department = models.ForeignKey('core.Department', on_delete=models.CASCADE)
     academic_calendar = models.ForeignKey('core.AcademicCalendar', on_delete=models.CASCADE)  
-    level = models.CharField(max_length=3, choices=LevelChoices.choices)
+    level = models.CharField(max_length=30, choices=LevelChoices.choices)
     total_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -41,7 +41,7 @@ def update_department_fee_total(sender, instance, **kwargs):
 class StudentSchoolFee(models.Model):
     student = models.ForeignKey('core.Student', on_delete=models.CASCADE)
     department = models.ForeignKey('core.Department', on_delete=models.CASCADE)
-    level = models.CharField(max_length=10)
+    level = models.CharField(max_length=30)
     academic_calendar = models.ForeignKey('core.AcademicCalendar', on_delete=models.CASCADE)
     
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
