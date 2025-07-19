@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: school-management-system
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "daphne -b 0.0.0.0 -p 10000 project.asgi:application"
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        value: "your-very-secret-key"
+      - key: ALLOWED_HOSTS
+        value: "your-render-subdomain.onrender.com"
+      - key: REDIS_URL
+        value: "redis://default:<password>@<hostname>:<port>"
+      - key: DATABASE_URL
+        value: "your_postgres_url"

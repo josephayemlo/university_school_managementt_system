@@ -2,6 +2,11 @@ import os
 from django.core.asgi import get_asgi_application
 from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.auth import AuthMiddlewareStack
+import django
+
+# Initialize Django before importing models, routes, etc.
+django.setup()
+
 import studentchat.routing  # Your app's routing file
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
