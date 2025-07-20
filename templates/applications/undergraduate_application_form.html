@@ -5,6 +5,16 @@
 
 <section class="applicationFormUG">
 <h3 class="form_title">Undergraduate Application Form</h3>
+<div>
+  {% if messages %}
+    {% for message in messages %}
+      <div class="form_messages">
+        {{ message }}
+      </div>
+    {% endfor %}
+ {% endif %}
+ </div>
+ <!-- MESSAGES -->
 <!-- <p class="">your journey towards becoming an Imperial College Student begins here...</p> -->
 
 
@@ -13,16 +23,7 @@
 
  {% include 'management/partials/form_fields_template.html' with form=form %}
   <!-- MESSAGES -->
-<div>
- {% if messages %}
-   {% for message in messages %}
-     <div class="form_messages">
-       {{ message }}
-     </div>
-   {% endfor %}
-{% endif %}
-</div>
-<!-- MESSAGES -->
+
 
  <button type="submit" class="btn">Submit</button>
 </form>

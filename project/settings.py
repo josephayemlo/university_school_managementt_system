@@ -97,7 +97,7 @@ DATABASES = {
     )
 }
 """
-# 🧪 Development: SQLite locally
+# 🧪 Development: SQLite locally or leave if you want to push your sqlite and use it
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -173,8 +173,13 @@ PAYSTACK_PUBLIC_KEY = os.environ.get('PAYSTACK_PUBLIC_KEY')
 PAYSTACK_INITIALIZE_URL = os.environ.get('PAYSTACK_INITIALIZE_URL')
 PAYSTACK_VERIFY_URL = os.environ.get('PAYSTACK_VERIFY_URL')
     
+
+# Get Redis URL from environment or fallback to localhost (for local dev)
+REDIS_URL = os.environ.get('REDIS_URL', 'redis://127.0.0.1:6379/0')
+
+
 # Celery Configuaration | we are telling Celery to use Redis
-CELERY_BROKER_URL = 'redis://localhost:6379/0' #communication port between them
+CELERY_BROKER_URL = REDIS_URL
 CELERY_ACCEPT_CONTENT = ['json'] #method of sending the task will be json
 CELERY_TASK_SERIALIZER = 'json'
 
@@ -188,7 +193,9 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            'hosts': [os.environ.get('REDIS_URL', 'redis://127.0.0.1:6379')],
+            'hosts': [REDIS_URL],  # Works for both dev and prod
         },
     },
 }
+
+
