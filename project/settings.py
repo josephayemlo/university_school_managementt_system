@@ -148,7 +148,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/accounts/'
 LOGIN_URL = '/accounts/'
 
+# 
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://joseph-ayemlo-school-management.onrender.com'
+]
 
 # EmailBackend
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
