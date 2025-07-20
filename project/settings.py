@@ -3,7 +3,6 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 load_dotenv()
-import dj_database_url
 
 
 
@@ -89,6 +88,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 # 🚀 Production: PostgreSQL on Railway
 """
+import dj_database_url
 DATABASES = {
     "default": dj_database_url.config(
         default=os.getenv("DATABASE_URL"),
