@@ -65,11 +65,12 @@
   border-radius: 2px;
   font-size: 19px;
   margin-right: 0.5rem;
+  margin-bottom: 6px;
+
 
   @include media.down("sm") {  
     font-size: 10px;
     display: inline-block;
-    margin-bottom: 6px;
       
     }
 

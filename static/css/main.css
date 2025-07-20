@@ -93,12 +93,12 @@ body {
   border-radius: 2px;
   font-size: 19px;
   margin-right: 0.5rem;
+  margin-bottom: 6px;
 }
 @media (max-width: 768px) {
   .tableBtn1 {
     font-size: 10px;
     display: inline-block;
-    margin-bottom: 6px;
   }
 }
 .tableBtn1:hover {
@@ -483,7 +483,7 @@ body {
 }
 @media (max-width: 768px) {
   .tableHeading {
-    font-size: 10px;
+    font-size: 8px;
     padding: 0px;
   }
 }
@@ -1041,7 +1041,7 @@ body {
 }
 
 .loginBackground {
-  background-image: linear-gradient(105deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 33, 71, 0.6) 50%), url("../images/login1.jpg");
+  background-image: linear-gradient(105deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 33, 71, 0.6) 50%), url("../images/news1.jpg");
   background-size: cover;
   height: 100vh;
 }
@@ -1193,7 +1193,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-image: linear-gradient(90deg, #0a2b42 0%, #0a2b42 25%, rgba(0, 0, 0, 0.728) 70%, #0a2b42 99%), url("../images/student2.jpg");
+  background-image: linear-gradient(90deg, #0a2b42 0%, #0a2b42 25%, rgba(0, 0, 0, 0.728) 70%, #0a2b42 99%), url("../images/news1.jpg");
   background-size: cover;
   color: whitesmoke;
   background-size: cover;
@@ -1204,7 +1204,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0 1rem;
   color: whitesmoke;
   flex-shrink: 0;
   width: 100%;
@@ -1400,23 +1400,36 @@ body {
 }
 
 .studentChatContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80vw;
   height: 100vh;
+  background: rgba(0, 0, 0, 0.192);
+  z-index: 9999;
   display: flex;
   flex-direction: column;
-  background: rgba(0, 0, 0, 0.192);
-  overflow: hidden;
+}
+@media (max-width: 768px) {
+  .studentChatContainer {
+    width: 100vw;
+  }
 }
 .studentChatContainerTopNav {
-  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 5rem;
+  height: 4.2rem;
+  z-index: 1000;
   background-color: #0a2b42;
   padding: 1rem 2rem;
-  z-index: 1000;
   display: flex;
   flex-direction: row;
+}
+@media (max-width: 768px) {
+  .studentChatContainerTopNav {
+    height: 3.7rem;
+  }
 }
 .studentChatContainerTopNavRow1 {
   flex: 0 0 20%;
@@ -1425,41 +1438,25 @@ body {
   flex: 0 0 80%;
 }
 .studentChatContainerChat {
-  margin-top: 4rem;
-  height: calc(100vh - 4rem - 5.5rem);
+  flex: 1;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 .studentChatContainerChatMessagesContainer {
   flex: 1;
   overflow-y: auto;
-  padding: 1rem 2rem 6rem;
+  padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-@media (max-width: 1024px) {
-  .studentChatContainerChatMessagesContainer {
-    left: 0;
-  }
-}
 .studentChatContainerChatInputContainer {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  left: 20%;
+  display: flex;
+  gap: 1rem;
   padding: 1rem 2rem;
   background: rgba(0, 0, 0, 0.089);
-  z-index: 1000;
   color: white;
-  flex: 1;
-  display: flex;
-}
-@media (max-width: 1024px) {
-  .studentChatContainerChatInputContainer {
-    left: 0;
-    gap: 2px;
-  }
 }
 .studentChatContainerChatInputContainerInput {
   flex: 1;
@@ -1469,13 +1466,7 @@ body {
   font-size: 1rem;
   outline: none;
 }
-@media (max-width: 1024px) {
-  .studentChatContainerChatInputContainerInput {
-    flex: 0 0 10%;
-  }
-}
 .studentChatContainerChatInputContainerBtn {
-  margin-left: 1rem;
   padding: 0.6rem 1.2rem;
   border: none;
   background: #007bff;
@@ -1483,11 +1474,6 @@ body {
   border-radius: 20px;
   font-weight: 500;
   cursor: pointer;
-}
-@media (max-width: 1024px) {
-  .studentChatContainerChatInputContainerBtn {
-    flex: 0 0 10%;
-  }
 }
 .studentChatContainerChatInputContainerBtn:hover {
   background: #0056b3;
@@ -2290,7 +2276,7 @@ body {
 }
 
 .applyFrontPageBg {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.073) 0%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.113) 70%, rgba(0, 0, 0, 0.108) 99%), url("../images/student1.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.073) 0%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.113) 70%, rgba(0, 0, 0, 0.108) 99%), url("../images/news1.jpg");
   background-size: cover;
   height: 100vh;
   display: flex;

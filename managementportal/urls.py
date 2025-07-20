@@ -38,7 +38,8 @@ from .customviews.navigation_views import (
     department_and_faculty, academic_course,
     session_and_academic_calender, result_and_assessment,
     student_management, student_school_fees_management, 
-    academic_staff, nonacademic_staff, aspirant_management
+    academic_staff, nonacademic_staff, aspirant_management,
+    student_course_registration
 )
 from .customviews.student_school_fees_views import (
     add_department_school_fees, 
@@ -48,6 +49,8 @@ from .customviews.student_school_fees_views import (
 )
 
 from .customviews.addmission_views import addmissions, addmissions_courses, addmissions_applicants, change_addmission_status
+from .customviews.student_course_registration_views import unapprove_all_course_reg, approve_all_course_reg, approve_all_course_reg_dashboard
+
 
 # URLs
 urlpatterns = [
@@ -60,6 +63,11 @@ urlpatterns = [
     path("add_item_to_department_school_fee/", add_item_to_department_school_fee, name='admin_add_item_to_department_school_fee'),
     path("manage_department_school_fees/", manage_department_school_fees, name='admin_manage_department_school_fees'),
     path('department_fee_item/<int:department_fee_id>/', department_fee_item, name='admin_department_fee_item'),
+
+    # course registration
+    path('admin/approve_all_course_reg/dashboard', approve_all_course_reg_dashboard, name='admin_approve_all_course_reg_dashboard'),
+    path('admin/unapprove_all_course_reg/', unapprove_all_course_reg, name='admin_unapprove_all_course_reg'),
+    path('admin/approve_all_course_reg/', approve_all_course_reg, name='admin_approve_all_course_reg'),
 
 
     # Result
@@ -75,13 +83,7 @@ urlpatterns = [
     path('admin/release-by-department/', release_by_department, name='admin_release_by_department'),
     path('admin/release-all/result', release_all_results, name='admin_release_all_results'),
     path('admin/unrelease-all/result', unrelease_all_results, name='admin_unrelease_all_results'),
-
     path('admin/release-all/dashboard', release_all_results_dashboard, name='admin_release_all_results_dashboard'),
-
-
-
-
-
 
 
     # aspirant URL
@@ -163,6 +165,8 @@ urlpatterns = [
     path('academic_staff/', academic_staff, name='admin_academic_staff'),
     path('nonacademic_staff/', nonacademic_staff, name='admin_nonacademic_staff'),
     path('aspirant_management/', aspirant_management, name='admin_aspirant_management'),
+    path('student_course_registration/', student_course_registration, name='admin_student_course_registration'),
+
 
     # Addmission
     path("addmissions/",addmissions, name='admin_addmissions'),

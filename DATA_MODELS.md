@@ -79,12 +79,16 @@
 ## Model: AcademicStaff
 
 - admin (OneToOne to CustomUser)
+- position
+- role
+- department
 
 ---
 
 ## Model: NonAcademicStaff
 
 - admin (OneToOne to CustomUser)
+- role
 
 ## Models/user end
 
@@ -156,7 +160,12 @@
 
 ## Model: SemesterResult
 
-- student (FK), session, semester
+- student (FK),
+- academic session(FK to Acdemic Calendar)
+- total registered units
+- total units passed
+- toal grade point
+- gpa, cgpa, remark, is_released, updated at
 
 ## Models/shared end
 

@@ -1,3 +1,4 @@
+
 @use "../base/media";
 
 .apply{
@@ -25,7 +26,7 @@
         rgba(0, 0, 0, 0.073) 0%, 
         rgba(0, 0, 0, 0) 25%,
         rgba(0, 0, 0, 0.113) 70%,
-        rgba(0, 0, 0, 0.108) 99%), url("../images/student1.jpg");
+        rgba(0, 0, 0, 0.108) 99%), url("../images/news1.jpg");
         background-size: cover;
         height: 100vh;
         display: flex;

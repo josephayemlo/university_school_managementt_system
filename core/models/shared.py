@@ -25,7 +25,6 @@ class Department(models.Model):
 class CourseOfStudy(models.Model):
     name = models.CharField(max_length=100)
     department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='courses_of_study')
-    
     duration_years = models.PositiveIntegerField(default=4)
     # this unique together just allows us to have same department name under different faculty bu
     # same dptm mame cannot exist in same faculty
@@ -209,11 +208,6 @@ class SemesterResult(models.Model):
             total_points += float(sr.total_grade_points)
 
         return round(total_points / total_units, 2) if total_units else 0.0
-
-    
-"""
-how abut 
-"""
 
 
 class AssignCourse(models.Model):

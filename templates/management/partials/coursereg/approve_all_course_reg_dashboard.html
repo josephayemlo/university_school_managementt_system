@@ -1,0 +1,39 @@
+<div class="form_title">All Student Course Registreation Approval</div>
+<!-- Back Btn start -->
+<a class=" tableBtn1 ajax_link" href="{% url 'admin_result_and_assessment' %}">
+    <i class="fas fa-arrow-left"></i> Back
+  </a>
+  <!-- Back Btn end -->
+  
+ <!-- MESSAGES -->
+ <div>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="form_messages">
+          {{ message }}
+        </div>
+      {% endfor %}
+  {% endif %}
+  </div>
+  <!-- MESSAGES -->
+<div class="generalAdminLinkContainer">
+    <div class="tableContainer">
+        <div class="tableHeading">
+            <span class="tableHeading10">SN</span>
+            <span class="tableHeading1"> NAME</span>
+            <span class="tableHeading1">NAVIGATION</span>
+        </div>
+        <div class="tableData">
+            <span class="tableHeading10">1</span>
+            <span class="tableHeading1">Click the Aprrove Button to aprrove registered courses for all students</span>
+            <span class="tableHeading1"><a href="{% url 'admin_approve_all_course_reg' %}" class=" generalAdminBtn ajax_link">🔓Approve all Course</a></span>
+        </div>
+        <div class="tableData">
+            <span class="tableHeading10">2</span>
+            <span class="tableHeading1">Click the UnAprrove Button to unaprrove registered courses for all students</span>
+            <span class="tableHeading1"><a href="{% url 'admin_unapprove_all_course_reg' %}" class=" generalAdminBtn ajax_link">🔓UnApprove all Course</a></span>
+        </div>
+   
+      </div>
+    </div>
+    
