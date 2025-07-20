@@ -42,8 +42,10 @@
     const userId = "{{ request.user.id }}";
     const otherUserId = "{{ other_user.id }}";  // Pass this from your view
 
+    const protocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://'; //switching dynamically between http and https incase of production
+
     const chatSocket = new WebSocket(
-      'ws://' + window.location.host +
+      protocol + window.location.host +
       '/ws/privatechat/' + otherUserId + '/'
     );
 

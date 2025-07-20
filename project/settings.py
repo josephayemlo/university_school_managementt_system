@@ -37,11 +37,6 @@ INSTALLED_APPS = [
     'applications.apps.ApplicationsConfig',
     'studentchat.apps.StudentchatConfig',
 
-
-
-
-    
-
 ]
 
 AUTH_USER_MODEL = 'core.CustomUser'
