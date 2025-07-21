@@ -778,6 +778,10 @@ body {
   padding: 0 1rem;
   line-height: 25px;
 }
+.navigationFirst .title1:hover {
+  background-color: white;
+  color: #003e74;
+}
 
 .footer {
   background-color: #002147;

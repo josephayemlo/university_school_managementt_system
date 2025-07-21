@@ -24,6 +24,7 @@ class AspirantStudentProfileForm(CustomUserForm):
             'referee_first_name', 'referee_last_name', 'referee_email',
             'referee_phone_number', 'referee_address_1', 'referee_address_2',
             'referee_city', 'referee_postal_code', 'referee_state_province', 'referee_country',
+            'session'
 
            
         ]
