@@ -19,21 +19,34 @@ def cache_old_status(sender, instance, **kwargs):
         instance._previous_admission_status = None
 
 
-# Step 2: On save, check if status changed to 'admitted' and act
+# Step 2: On save, check if status changed to 'admitted' or was reverted
 @receiver(post_save, sender=AspirantStudent)
 def handle_admission_status_change(sender, instance, created, **kwargs):
 
     if created:
         return
 
+    user = instance.admin
+
+    # Reversion logic added here
+    if getattr(instance, '_previous_admission_status', None) == 'admitted' and instance.admission_status != 'admitted':
+        # Revert user_type to Aspirant
+        user.user_type = '5'  # Aspirant
+        user.save()
+        print("⚠️ user_type reverted to aspirant")
+
+        # Delete student profile if it exists
+        if hasattr(user, 'student'):
+            user.student.delete()
+            print("⚠️ student profile deleted due to status reversion")
+        return  # Prevent further processing
+
+    # Proceed if newly admitted
     if getattr(instance, '_previous_admission_status', None) != instance.admission_status and instance.admission_status == 'admitted':
 
-        user = instance.admin
-
-        # Update user_type to '4' (Student)
-        user.user_type = '4'
+        user.user_type = '4'  # Student
         user.save()
-        print("✅ user_type updated to student")
+        print("user_type updated to student")
 
         # Create student profile if it doesn't exist yet
         """
@@ -45,10 +58,14 @@ def handle_admission_status_change(sender, instance, created, **kwargs):
         get the course from here then dynamically assign matric number from here based on course and department
         """
 
-        custom_matric = "CSA/2025/"+ str(random.randint(2001, 2002))
+        custom_matric = "CSA/2025/" + str(random.randint(2001, 2002))
 
         if not hasattr(user, 'student'):
-            Student.objects.create(admin=user, matric_no =custom_matric)
+            Student.objects.create(
+                admin=user, 
+                matric_no=custom_matric,
+                course_of_study=instance.course_applied  # 🆕 Ensure course_of_study is set
+            )
             print("✅ student profile created")
 
         # Send confirmation email
@@ -65,7 +82,7 @@ You are now officially a student.
 Login Email: {user.email}
 (Use the same password you created during application)
 
-Login here to continue: https://yourdomain.com/login/
+Login here to continue: https://joseph-ayemlo-school-management.onrender.com/accounts/
 
 Regards,  
 Admissions Office

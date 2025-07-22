@@ -1,0 +1,3 @@
+- check signals.py line 38 in core app
+- default all addmissions to 100l for now. later you can add a logic to select which level you
+- want to addmit student, and also selct course to addmit them

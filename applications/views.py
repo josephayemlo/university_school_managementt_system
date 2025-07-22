@@ -133,7 +133,7 @@ Please log in to your Aspirant Portal and complete your profile.
 Email: {email}
 Password: {custom_password}
 
-Use the above credentials at: https://Communitycollege.edu/aspirant-login
+Use the above credentials at: https://joseph-ayemlo-school-management.onrender.com/accounts/
 
 Best regards,
 Community College Admissions
