@@ -5,6 +5,7 @@ from core.models import AspirantStudent
 from django.core.mail import send_mail
 from django.conf import settings
 import random
+from core.models.enums import LevelChoices
 
 # Step 1: Capture the previous status before saving
 @receiver(pre_save, sender=AspirantStudent)
